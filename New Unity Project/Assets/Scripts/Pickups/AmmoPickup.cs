@@ -2,17 +2,21 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AmmoPickup : MonoBehaviour
+public class AmmoPickup : Pickup
 {
-    // Start is called before the first frame update
-    void Start()
+
+    [SerializeField] private AmmoType ammoType;
+    [SerializeField] private int amount;
+
+    public void Setup(AmmoType ammoType, int amount)
     {
-        
+        this.ammoType = ammoType;
+        this.amount = amount;
     }
 
-    // Update is called once per frame
-    void Update()
+    protected override bool OnPickedUp(Player player)
     {
-        
+        return player.ammoContainer.AddAmmo(ammoType, amount);
     }
+
 }
