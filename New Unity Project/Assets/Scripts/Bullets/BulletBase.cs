@@ -17,4 +17,9 @@ public class BulletBase : MonoBehaviour
         Destroy(this.gameObject, 2f);
     }
 
+    private void OnCollisionEnter(Collision collision)
+    {
+        Destroy(this.gameObject);
+    }
+
 }

@@ -12,7 +12,7 @@ public class FirearmWeapon : CooldownWeapon
     {
         if (owner.ammoContainer.SpendAmmo(ammoType, 1))
         {
-            BulletBase newBullet = Instantiate(bulletPrefab, transform.position + transform.forward * 0.4f, transform.rotation);
+            BulletBase newBullet = Instantiate(bulletPrefab, transform.position + transform.forward * 0.5f, transform.rotation);
             newBullet.Setup(this, 1000f);
         }
     }
