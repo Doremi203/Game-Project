@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 8441526025296156509}
   - component: {fileID: 8441526025296156508}
   m_Layer: 0
-  m_Name: WeaponTest
+  m_Name: ShootgunTest
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -43,9 +43,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e91e4b534f499a54ca53488a589454b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  displayName: TestWeapon
-  cooldown: 0.2
-  isAutomatic: 1
+  displayName: SpaceCowboy
+  cooldown: 0.4
+  isAutomatic: 0
+  bulletSpreadingMultiplier: 0.4
+  bulletsCount: 8
+  bulletsSpeed: 1400
+  magCapacity: 2
   ammoType: {fileID: 11400000, guid: 6e1dae67b50998348b59c64ecc046261, type: 2}
   bulletPrefab: {fileID: 6444695937657245857, guid: a46be6a792e635446b920a87e1c6faec,
     type: 3}
