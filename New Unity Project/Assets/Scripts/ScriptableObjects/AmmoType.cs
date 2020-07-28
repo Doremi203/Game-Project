@@ -20,6 +20,20 @@ public class AmmoType : ScriptableObject
         return ammoTypes;
     }
 
+    // Получить AmmoType по id (id = имя файла)
+    public static AmmoType GetAmmoType(string id)
+    {
+        AmmoType ammoType = default;
+        foreach (var item in Resources.LoadAll<AmmoType>(AmmoTypesPath))
+        {
+            if(item.name == id)
+            {
+                ammoType = item;
+            }
+        }
+        return ammoType;
+    }
+
     // Max amount of ammo that player can pick up
     public int maxAmount;
 
