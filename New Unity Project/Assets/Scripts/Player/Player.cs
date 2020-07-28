@@ -18,4 +18,10 @@ public class Player : Actor
         controller = this.GetComponent<PlayerController>();
     }
 
+    // Я не уверен, что это должно быть тут, но пусть пока будет.
+    private void Update()
+    {
+        if (weaponHolder.currentWeapon != null) weaponHolder.currentWeapon.Use(Input.GetMouseButton(0));
+    }
+
 }
