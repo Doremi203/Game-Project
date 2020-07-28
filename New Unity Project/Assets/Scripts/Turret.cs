@@ -2,17 +2,31 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(WeaponHolder))]
 public class Turret : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+
+    [SerializeField] private float fireRate;
+
+    private WeaponHolder weaponHolder;
+    private float nextFireTime;
+
+    private void Awake()
     {
-        
+        weaponHolder = this.GetComponent<WeaponHolder>();
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Update()
     {
-        
+        if (Time.time >= nextFireTime)
+        {
+            weaponHolder.currentWeapon.Use(true);
+            nextFireTime = Time.time + fireRate;
+        }
+        else
+        {
+            weaponHolder.currentWeapon.Use(false);
+        }
     }
+
 }

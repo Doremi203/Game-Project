@@ -5,6 +5,9 @@ using UnityEngine;
 public abstract class CooldownWeapon : WeaponBase
 {
 
+    // Класс оружия с кулдауном на использование. 
+    // Кулдаун может быть равным 0, но в таком случае лучше наследоваться от WeaponBase.
+
     [SerializeField] private float cooldown;
     [SerializeField] private bool isAutomatic;
 

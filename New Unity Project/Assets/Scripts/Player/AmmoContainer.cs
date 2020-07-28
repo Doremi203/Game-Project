@@ -5,6 +5,8 @@ using UnityEngine;
 public class AmmoContainer : MonoBehaviour
 {
 
+    [SerializeField] private bool infiniteAmmo;
+
     // Ammo inventory
     private List<AmmoSlot> inventory = new List<AmmoSlot>();
 
@@ -35,6 +37,11 @@ public class AmmoContainer : MonoBehaviour
     // This returns true if it is possible to spend this type of ammo
     public bool SpendAmmo(AmmoType type, int amount)
     {
+
+        // Если включены бесконечные патроны
+        if (infiniteAmmo == true) return true;
+
+        // Иначе ищем нужные патроны в инвентаре
         foreach (var item in inventory)
         {
             if (item.type == type)
@@ -56,6 +63,9 @@ public class AmmoContainer : MonoBehaviour
 
     public int GetAmountOfAmmo(AmmoType type)
     {
+        // Если включены бесконечные патроны (Хуйня какая-то, я перепишу потом)
+        if (infiniteAmmo) return 9999;
+
         foreach (var item in inventory)
         {
             if (item.type == type)

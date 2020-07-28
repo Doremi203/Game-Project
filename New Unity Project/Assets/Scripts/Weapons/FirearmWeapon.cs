@@ -5,6 +5,8 @@ using UnityEngine;
 public class FirearmWeapon : CooldownWeapon
 {
 
+    // Основной класс всех огнестрельных оружий.
+
     [SerializeField] private float bulletSpreadingMultiplier;
     [SerializeField] private int bulletsCount = 1;
     [SerializeField] private float bulletsSpeed = 1000f;
@@ -28,8 +30,10 @@ public class FirearmWeapon : CooldownWeapon
         }
     }
 
+    // Это для перезарядки. Потом доделаю.
     protected override bool CanUse()
     {
+        return true;
         if (ammoInMagazin > 0)
         {
             return true;
@@ -41,6 +45,7 @@ public class FirearmWeapon : CooldownWeapon
         return false;
     }
 
+    // Не используется.
     protected virtual void Reload()
     {
         Debug.Log("Reloading...");

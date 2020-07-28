@@ -13,21 +13,13 @@ public class WeaponHolder : MonoBehaviour
     [SerializeField] private WeaponBase weaponPrefab;
 
     public AmmoContainer ammoContainer { get; private set; }
-    private WeaponBase currentWeapon;
+    public WeaponBase currentWeapon { get; private set; }
 
     private void Awake()
     {
         ammoContainer = GetComponent<AmmoContainer>();
         currentWeapon = Instantiate(weaponPrefab, this.transform);
         currentWeapon.SetOwner(this);
-    }
-
-    private void Update()
-    {
-        if (currentWeapon != null)
-        {
-            currentWeapon.Use(Input.GetMouseButton(0));
-        }
     }
 
 }
