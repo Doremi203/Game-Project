@@ -3,8 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(AmmoContainer))]
-public class Player : MonoBehaviour
+public class WeaponHolder : MonoBehaviour 
 {
+
+    // Название скрипта не окончательное. Я не могу придумать ничего лучше. 
+    // Этот скрипт отвечает за управление оружием, какие-нибудь условные турели могут его использовать,
+    // игрок может, нпс могут.
 
     [SerializeField] private WeaponBase weaponPrefab;
 

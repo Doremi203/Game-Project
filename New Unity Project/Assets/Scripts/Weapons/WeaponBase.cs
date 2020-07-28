@@ -8,9 +8,9 @@ public abstract class WeaponBase : MonoBehaviour
     [SerializeField] private string displayName; 
 
     protected bool isUsing;
-    protected Player owner;
+    protected WeaponHolder owner;
 
-    public void SetOwner(Player owner)
+    public void SetOwner(WeaponHolder owner)
     {
         this.owner = owner;
     }

@@ -7,12 +7,12 @@ public abstract class Pickup : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.GetComponent<Player>())
+        if (other.GetComponent<WeaponHolder>())
         {
-            if (OnPickedUp(other.GetComponent<Player>())) Destroy(this.gameObject);
+            if (OnPickedUp(other.GetComponent<WeaponHolder>())) Destroy(this.gameObject);
         }
     }
 
-    protected abstract bool OnPickedUp(Player player);
+    protected abstract bool OnPickedUp(WeaponHolder player);
 
 }
