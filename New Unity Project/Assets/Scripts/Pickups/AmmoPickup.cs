@@ -14,9 +14,9 @@ public class AmmoPickup : Pickup
         this.amount = amount;
     }
 
-    protected override bool OnPickedUp(WeaponHolder player)
+    protected override bool OnPickedUp(Player player)
     {
-        return player.ammoContainer.AddAmmo(ammoType, amount);
+        return player.weaponHolder.ammoContainer.AddAmmo(ammoType, amount);
     }
 
 }
