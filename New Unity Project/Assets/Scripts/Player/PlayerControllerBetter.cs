@@ -6,21 +6,25 @@ using UnityEngine;
 public class PlayerControllerBetter : MonoBehaviour
 {
 	private Vector3 movementDir;
-    public float moveSpeed = 3.0f;
+    public float moveSpeed = 7.0f;
     public float gravity = 9.81f;
     public Animator animator;
     private CharacterController playerController;
     private Vector3 lastMoveDir;
     private bool isIdle;
-
-    void Start () {
+    private Dash dash;
+    private void Awake() {
         playerController = gameObject.GetComponent<CharacterController>();
+        dash = GetComponent<Dash>();
     }
 	
     void Update () {
 		MovementHandler();
+		if (Input.GetAxisRaw("Jump") == 1)
+			DashHandler();
 		CameraHandler();
-		UpdateAnimator();
+		if(animator)
+			UpdateAnimator();
     }
 
     private void MovementHandler()
@@ -33,7 +37,7 @@ public class PlayerControllerBetter : MonoBehaviour
 	    
 	    movementDir.y -= gravity * Time.deltaTime;
 
-	    isIdle = movementDir.x < 0.0001 && movementDir.z < 0.0001;
+	    isIdle = movementDir.x == 0 && movementDir.z == 0;
 	    
 	    playerController.Move(movementDir * (moveSpeed * Time.deltaTime)); 
 	    
@@ -54,8 +58,18 @@ public class PlayerControllerBetter : MonoBehaviour
 
     private void UpdateAnimator()
     {
-	    Vector3 localMove =transform.TransformDirection(new Vector3(Input.GetAxisRaw("Horizontal"),0, Input.GetAxisRaw("Vertical")));
+	    Vector3 localMove =
+			    transform.TransformDirection(new Vector3(Input.GetAxisRaw("Horizontal"), 0,
+				    Input.GetAxisRaw("Vertical")));
 	    animator.SetFloat("Horizontal", localMove.x);
-	    animator.SetFloat("Vertical",  localMove.z);
+	    animator.SetFloat("Vertical", localMove.z);
+    }
+
+    private void DashHandler()
+    {
+	    if (!isIdle)
+	    {
+		    dash.Cast();
+	    }
     }
 }

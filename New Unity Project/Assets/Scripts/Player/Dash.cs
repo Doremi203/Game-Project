@@ -2,54 +2,28 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Dash : Ablity
+public class Dash : Ability
 {
     [SerializeField] private float dashForce = 5f;
     private CharacterController characterController;
     private Vector3 dashDir;
-    private bool dashed;
-    private float cooldownTimeDash = 3f;
+
+    public float currentCoolDown;
+    //private bool dashed;
     void Awake()
     {
         characterController = gameObject.GetComponent<CharacterController>();
     }
 
-    // Update is called once per frame
-    void Update()
+    protected override void DoCast()
     {
-        CoolDownUpdater();
-        if (Input.GetKeyDown(KeyCode.Space) && !dashed)
-            StartCoroutine(Cast());
-    }
-
-    public override IEnumerator Cast()
-    {
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            dashDir = new Vector3(Input.GetAxis("Horizontal")*dashForce,0, Input.GetAxis("Vertical") * dashForce);
+        dashDir = new Vector3(Input.GetAxis("Horizontal") * dashForce, 0, Input.GetAxis("Vertical") * dashForce);
             //dashDir = transform.TransformDirection(dashDir);
             //DashDirection *= dashSpeed * Time.deltaTime;
-            characterController.Move(dashDir);
-            dashed = true;
-            yield return null;
-            
-        }
+        characterController.Move(dashDir);
+            //dashed = true;
     }
-
-    public override void CoolDownUpdater()
-    {
-        if(dashed)
-        {
-            cooldownTimeDash -= Time.deltaTime;
-            Debug.Log(cooldownTimeDash);
-            if (cooldownTimeDash < 0.0001)
-            {
-                //cooldownTimeDash = 5f;
-                dashed = false;
-                cooldownTimeDash = 3f; 
-                Debug.Log(cooldownTimeDash);
-            }
-        }
-    }
+    
+    public override float coolDown => 2f;
 }
 

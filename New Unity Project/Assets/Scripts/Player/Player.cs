@@ -4,19 +4,22 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(WeaponHolder))]
-[RequireComponent(typeof(PlayerController))]
+[RequireComponent(typeof(PlayerControllerBetter))]
 public class Player : Actor
 {
 
     public WeaponHolder weaponHolder { get; private set; }
-    public PlayerController controller { get; private set; }
+    public PlayerControllerBetter controller { get; private set; }
 
     [Header("FOR TESTING")]
     [SerializeField] private WeaponBase prefabWeaponA;
     [SerializeField] private WeaponBase prefabWeaponB;
-
+    
     private WeaponBase weaponA;
     private WeaponBase weaponB;
+
+    public List<Ability> abilities;
+    
 
     public void SetWeapons(WeaponBase weaponA, WeaponBase weaponB)
     {
@@ -27,8 +30,9 @@ public class Player : Actor
 
     protected override void Awake()
     {
+        abilities = new List<Ability> {this.GetComponent<Dash>()};
         weaponHolder = this.GetComponent<WeaponHolder>();
-        controller = this.GetComponent<PlayerController>();
+        controller = this.GetComponent<PlayerControllerBetter>();
     }
 
     private void Start()

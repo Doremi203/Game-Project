@@ -10,13 +10,19 @@ public class PlayerUI : MonoBehaviour
 
     [SerializeField] private Player player;
     [SerializeField] private TextMeshProUGUI weaponInfoText;
-
+    [SerializeField] private TextMeshProUGUI dashInfoText;
+    
     private WeaponBase currentWeapon;
 
     private void Awake()
     {
         player.weaponHolder.OnWeaponChanged.AddListener(WeaponChanged);
         player.weaponHolder.ammoContainer.OnAmmoChangedEvent.AddListener(RefreshUI);
+    }
+
+    private void Update()
+    {
+        dashInfoText.text = $"CoolDown: {Time.time - player.abilities[0].nextUseTime}";
     }
 
     private void WeaponChanged()
@@ -29,11 +35,11 @@ public class PlayerUI : MonoBehaviour
         currentWeapon?.OnUsingStartEvent.AddListener(RefreshUI);
         RefreshUI();
     }
-
+    
     private void RefreshUI()
     {
         string ammoCount = player.weaponHolder.ammoContainer.GetAmountOfAmmo((currentWeapon as FirearmWeapon)?.AmmoType).ToString();
-        weaponInfoText.text = currentWeapon.DisplayName + " | " + ammoCount;
+        weaponInfoText.text = $"{currentWeapon.DisplayName} | {ammoCount}";
     }
 
 }
