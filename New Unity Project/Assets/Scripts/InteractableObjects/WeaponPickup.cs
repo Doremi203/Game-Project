@@ -2,8 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class WeaponPickup : Pickup
+public class WeaponPickup : InteractableObject
 {
+
+    // Забейте пока на этот класс, он мёртв внутри.
 
     [SerializeField] private WeaponBase startWeapon;
 
@@ -12,9 +14,9 @@ public class WeaponPickup : Pickup
 
     }
 
-    protected override bool OnPickedUp(Player player)
+    public override void Interact(Player player)
     {
-        throw new System.NotImplementedException();
+        base.Interact(player);
     }
 
     private void Awake()

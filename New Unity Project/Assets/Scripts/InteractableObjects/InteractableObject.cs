@@ -19,5 +19,19 @@ public abstract class InteractableObject : MonoBehaviour
     {
 
     }
-  
+
+    /*
+    private void OnTriggerEnter(Collider other)
+    {
+        Player player = other.GetComponent<Player>();
+        player?.interactableObjects.Add(this);
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        Player player = other.GetComponent<Player>();
+        player?.interactableObjects.Remove(this);
+    }
+    */
+
 }

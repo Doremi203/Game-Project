@@ -7,6 +7,7 @@ public class Turret : MonoBehaviour
 {
 
     [SerializeField] private float fireRate;
+    [SerializeField] private WeaponBase weaponPrefab;
 
     private WeaponHolder weaponHolder;
     private float nextFireTime;
@@ -14,6 +15,7 @@ public class Turret : MonoBehaviour
     private void Awake()
     {
         weaponHolder = this.GetComponent<WeaponHolder>();
+        weaponHolder.EquipWeapon(Instantiate(weaponPrefab, this.transform));
     }
 
     private void Update()

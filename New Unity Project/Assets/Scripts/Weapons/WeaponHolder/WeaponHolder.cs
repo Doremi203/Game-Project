@@ -10,8 +10,6 @@ public class WeaponHolder : MonoBehaviour
     // Этот скрипт отвечает за управление оружием, какие-нибудь условные турели могут его использовать,
     // игрок может, нпс могут.
 
-    [SerializeField] private WeaponBase weaponPrefab; // Это для теста. Нужно будет удалить.
-
     public AmmoContainer ammoContainer { get; private set; }
     public WeaponBase currentWeapon { get; private set; }
 
@@ -25,7 +23,6 @@ public class WeaponHolder : MonoBehaviour
     private void Awake()
     {
         ammoContainer = GetComponent<AmmoContainer>();
-        EquipWeapon(Instantiate(weaponPrefab, this.transform));
     }
 
 }
