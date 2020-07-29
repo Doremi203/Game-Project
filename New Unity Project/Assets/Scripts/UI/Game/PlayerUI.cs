@@ -22,7 +22,15 @@ public class PlayerUI : MonoBehaviour
 
     private void Update()
     {
-        dashInfoText.text = $"CoolDown: {Time.time - player.abilities[0].nextUseTime}";
+        float cooldown = player.abilities[0].nextUseTime - Time.time;
+        if(cooldown > 0)
+        {
+            dashInfoText.text = $"CoolDown: " + cooldown;
+        }
+        else
+        {
+            dashInfoText.text = $"Dash is ready";
+        }
     }
 
     private void WeaponChanged()
