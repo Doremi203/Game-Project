@@ -28,6 +28,7 @@ public class BulletBase : MonoBehaviour, IDamageable
 
     private void OnCollisionEnter(Collision collision)
     {
+        //if (owner.Owner.gameObject == collision.transform.gameObject) Debug.LogError("HITTED ITSELF");
         IDamageable damageable = collision.transform.GetComponent<IDamageable>();
         if(damageable != null)
         {

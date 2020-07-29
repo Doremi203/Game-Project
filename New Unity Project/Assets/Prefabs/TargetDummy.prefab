@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 7400002312963790756}
   - component: {fileID: 7400002312963790759}
   - component: {fileID: 7400002312963790754}
+  - component: {fileID: 5980500326149676303}
   m_Layer: 0
   m_Name: TargetDummy
   m_TagString: Untagged
@@ -63,11 +64,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3970a0991b8f98648880ee72cbda468a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isInvencible: 0
-  destroyDelay: 0
   OnDeath:
     m_PersistentCalls:
       m_Calls: []
+  destroyDelay: 0
 --- !u!65 &7400002312963790754
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -81,6 +81,22 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 2, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!208 &5980500326149676303
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7400002312963790758}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.5, y: 1, z: 0.5}
+  m_MoveThreshold: 0.1
+  m_Carve: 0
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0, z: 0}
+  m_TimeToStationary: 0.5
 --- !u!1 &7400002313483759255
 GameObject:
   m_ObjectHideFlags: 0

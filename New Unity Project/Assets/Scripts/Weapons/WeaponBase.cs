@@ -13,6 +13,7 @@ public abstract class WeaponBase : MonoBehaviour
 
     protected bool isUsing;
     protected WeaponHolder owner;
+    public WeaponHolder Owner => owner;
 
     public UnityEvent OnUsingStartEvent;
 

@@ -27,6 +27,7 @@ public class Player : Actor
 
     protected override void Awake()
     {
+        base.Awake();
         weaponHolder = this.GetComponent<WeaponHolder>();
         controller = this.GetComponent<PlayerController>();
     }
