@@ -13,7 +13,7 @@ public class PlayerUI : MonoBehaviour
 
     private WeaponBase currentWeapon;
 
-    private void Start()
+    private void Awake()
     {
         player.weaponHolder.OnWeaponChanged.AddListener(WeaponChanged);
         player.weaponHolder.ammoContainer.OnAmmoChangedEvent.AddListener(RefreshUI);
