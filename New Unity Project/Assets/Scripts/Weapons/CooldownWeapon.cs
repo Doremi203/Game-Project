@@ -27,7 +27,7 @@ public abstract class CooldownWeapon : WeaponBase
 
     }
 
-    protected virtual void Update()
+    private void Update()
     {
         if (isAutomatic && isUsing)
         {
