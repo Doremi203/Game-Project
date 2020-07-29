@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 6650729077964527326}
   - component: {fileID: 1055375311243947125}
   - component: {fileID: 4507553717034476560}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -88,7 +88,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5306901948298552673}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: leg_right
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -121,7 +121,7 @@ GameObject:
   - component: {fileID: 2560323361725821646}
   - component: {fileID: 2429821368667022871}
   - component: {fileID: 6350697413578401582}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -198,7 +198,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7850818663490988790}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Visuals
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -231,7 +231,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3005964543597437601}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: leg_left
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -268,7 +268,7 @@ GameObject:
   - component: {fileID: 6851913591751166064}
   - component: {fileID: 644702065143471220}
   - component: {fileID: 2499621001023819872}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -333,7 +333,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d0d51418dd78d4c4badd92c6c68dc902, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weaponPrefab: {fileID: 0}
 --- !u!114 &6851913591751166064
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -359,7 +358,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d4bc19bf69facbb40afac38af6116178, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startHealth: 1
+  startHealth: 1000
   OnHealthChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -379,6 +378,10 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   destroyDelay: 1
+  prefabWeaponA: {fileID: 8441526025296156508, guid: 76492f7ad3cc55a4399b4e8327d5b69e,
+    type: 3}
+  prefabWeaponB: {fileID: 8441526025296156508, guid: 7dcde77e320f2a14fa57ca2a52a4d07b,
+    type: 3}
 --- !u!1 &8037512695283583350
 GameObject:
   m_ObjectHideFlags: 0
@@ -390,7 +393,7 @@ GameObject:
   - component: {fileID: 8037512695283583337}
   - component: {fileID: 8037512695283583339}
   - component: {fileID: 8037512695283583336}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Arrow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -469,7 +472,7 @@ GameObject:
   - component: {fileID: 8037512695867687359}
   - component: {fileID: 8037512695867687356}
   - component: {fileID: 8037512695867687357}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Body
   m_TagString: Untagged
   m_Icon: {fileID: 0}

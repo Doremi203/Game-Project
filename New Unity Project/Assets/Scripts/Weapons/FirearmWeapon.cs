@@ -13,6 +13,8 @@ public class FirearmWeapon : CooldownWeapon
     [SerializeField] private int magCapacity = 10;
     [SerializeField] private AmmoType ammoType;
     [SerializeField] private BulletBase bulletPrefab;
+    [SerializeField] private float damage;
+    [SerializeField] private DamageType damageType;
 
     private int ammoInMagazin;
 
@@ -25,7 +27,7 @@ public class FirearmWeapon : CooldownWeapon
                 Vector3 spreadOffset = transform.right * Random.Range(-bulletSpreadingMultiplier, bulletSpreadingMultiplier);
                 Vector3 bulletSpawnPosition = transform.position + transform.forward * 0.5f;
                 BulletBase newBullet = Instantiate(bulletPrefab, bulletSpawnPosition, transform.rotation);
-                newBullet.Setup(this, transform.forward + spreadOffset, bulletsSpeed);
+                newBullet.Setup(this, transform.forward + spreadOffset, bulletsSpeed, damage, damageType);
             }
         }
     }

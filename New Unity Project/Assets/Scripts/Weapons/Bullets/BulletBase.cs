@@ -8,15 +8,19 @@ public class BulletBase : MonoBehaviour, IDamageable
 
     protected Rigidbody rb;
     protected WeaponBase owner;
+    protected float damage;
+    protected DamageType damageType;
 
     public void ApplyDamage(float damage, DamageType damageType)
     {
         Destroy(this.gameObject);
     }
 
-    public void Setup(WeaponBase owner, Vector3 pushDirection, float pushForce)
+    public void Setup(WeaponBase owner, Vector3 pushDirection, float pushForce, float damage, DamageType damageType)
     {
         this.owner = owner;
+        this.damage = damage;
+        this.damageType = damageType;
         rb = GetComponent<Rigidbody>();
         rb.AddForce(pushDirection * pushForce);
         Destroy(this.gameObject, 2f);
@@ -27,7 +31,7 @@ public class BulletBase : MonoBehaviour, IDamageable
         IDamageable damageable = collision.transform.GetComponent<IDamageable>();
         if(damageable != null)
         {
-            damageable.ApplyDamage(10, null);
+            damageable.ApplyDamage(damage, damageType);
         }
         Destroy(this.gameObject);
     }
