@@ -49,9 +49,10 @@ MonoBehaviour:
   bulletSpreadingMultiplier: 0.05
   bulletsCount: 1
   bulletsSpeed: 2000
-  magCapacity: 10
+  magCapacity: 5
   ammoType: {fileID: 11400000, guid: 6e1dae67b50998348b59c64ecc046261, type: 2}
   bulletPrefab: {fileID: 6444695937657245857, guid: a46be6a792e635446b920a87e1c6faec,
     type: 3}
   damage: 600
   damageType: {fileID: 11400000, guid: c5ca7e9201afad441b8efca35b93cc1a, type: 2}
+  reloadingTime: 1

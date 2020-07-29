@@ -19,14 +19,12 @@ public abstract class WeaponBase : MonoBehaviour
 
     public void Use(bool b)
     {
-        /*
         if (CanUse() == false)
         {
             isUsing = false;
             OnUsingEnd();
             return;
         }
-        */
         if (isUsing)
         {
             if(b == false)
