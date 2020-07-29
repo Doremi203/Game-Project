@@ -1,9 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class AmmoContainer : MonoBehaviour
 {
+
+    public UnityEvent OnAmmoChangedEvent;
 
     [SerializeField] private bool infiniteAmmo;
 
@@ -21,6 +24,7 @@ public class AmmoContainer : MonoBehaviour
                 if(item.amount + amount <= item.type.maxAmount)
                 {
                     item.amount += amount;
+                    OnAmmoChangedEvent.Invoke();
                     return true;
                 }
                 else
@@ -31,6 +35,7 @@ public class AmmoContainer : MonoBehaviour
         }
         // If we do not, we will create it
         inventory.Add(new AmmoSlot(type, amount));
+        OnAmmoChangedEvent.Invoke();
         return true;
     }
 
@@ -49,6 +54,7 @@ public class AmmoContainer : MonoBehaviour
                 if (item.amount - amount >= 0)
                 {
                     item.amount -= amount;
+                    OnAmmoChangedEvent.Invoke();
                     return true;
                 }
                 else

@@ -1,16 +1,20 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public abstract class WeaponBase : MonoBehaviour
 {
 
     // Основной класс оружия.
 
-    [SerializeField] private string displayName; 
+    [SerializeField] private string displayName;
+    public string DisplayName => displayName;
 
     protected bool isUsing;
     protected WeaponHolder owner;
+
+    public UnityEvent OnUsingStartEvent;
 
     public void SetOwner(WeaponHolder owner)
     {
@@ -39,6 +43,7 @@ public abstract class WeaponBase : MonoBehaviour
             if (b == true)
             {
                 OnUsingStart();
+                OnUsingStartEvent.Invoke();
             }
         }
         isUsing = b;

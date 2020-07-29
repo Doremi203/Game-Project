@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class FirearmWeapon : CooldownWeapon
 {
@@ -12,14 +13,18 @@ public class FirearmWeapon : CooldownWeapon
     [SerializeField] private float bulletsSpeed = 1000f;
     [SerializeField] private int magCapacity = 10;
     [SerializeField] private AmmoType ammoType;
+    public AmmoType AmmoType => ammoType;
     [SerializeField] private BulletBase bulletPrefab;
     [SerializeField] private float damage;
     [SerializeField] private DamageType damageType;
+
+    public UnityEvent OnShootEvent;
 
     private int ammoInMagazin;
 
     protected override void OnShoot()
     {
+        OnShootEvent.Invoke();
         if (owner.ammoContainer.SpendAmmo(ammoType, 1))
         {
             for (int i = 0; i < bulletsCount; i++)
