@@ -13,6 +13,7 @@ public abstract class BaseState
 
     protected GameObject target;
 
+    public abstract void OnStateEnter();
     public abstract Type Tick();
 
 }

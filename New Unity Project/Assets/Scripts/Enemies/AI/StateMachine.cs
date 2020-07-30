@@ -13,6 +13,8 @@ public class StateMachine : MonoBehaviour
     private Dictionary<Type, BaseState> states;
     private BaseState currentState;
 
+    public Sprite abilityImage;
+
     public void SetStates(Dictionary<Type, BaseState> states)
     {
         this.states = states;
@@ -31,6 +33,7 @@ public class StateMachine : MonoBehaviour
     private void SwitchState(Type newState)
     {
         currentState = states[newState];
+        currentState.OnStateEnter();
         OnStateChanged?.Invoke(currentState);
     }
 

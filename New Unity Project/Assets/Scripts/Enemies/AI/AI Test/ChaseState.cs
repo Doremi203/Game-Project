@@ -14,32 +14,30 @@ public class ChaseState : BaseState
         baseEnemy = target;
     }
 
-    public override Type Tick()
+    public override void OnStateEnter()
     {
         Debug.Log("Chase");
         baseEnemy.Agent.isStopped = false;
+    }
+
+    public override Type Tick()
+    {
         Player player = GameObject.FindObjectOfType<Player>();
-        if (player)
+
+        if (!player) return typeof(WanderState);
+
+        float f = Vector3.Distance(baseEnemy.transform.position, player.transform.position);
+
+        if (f > baseEnemy.DetectRadius) return typeof(WanderState);
+
+        if (f <= 10)
         {
-            float f = Vector3.Distance(baseEnemy.transform.position, player.transform.position);
-            if (f > 10)
-            {
-                if (f > baseEnemy.DetectRadius)
-                {
-                    return typeof(WanderState);
-                }
-                else
-                {
-                    baseEnemy.Agent.SetDestination(player.transform.position);
-                }
-            }
-            else
-            {              
-                return typeof(AttackState);
-            }
+            if (baseEnemy.CanSeeThePlayer()) return typeof(AttackState);
         }
 
-        return typeof(WanderState);
+        baseEnemy.Agent.SetDestination(player.transform.position);
+
+        return null;
     }
 
 }

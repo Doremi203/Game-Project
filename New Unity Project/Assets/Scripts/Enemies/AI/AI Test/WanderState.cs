@@ -14,15 +14,23 @@ public class WanderState : BaseState
         baseEnemy = target;
     }
 
-    public override Type Tick()
+    public override void OnStateEnter()
     {
         Debug.Log("Wander");
         baseEnemy.Agent.isStopped = false;
+        nextChangeTime = 0;
+    }
+
+    public override Type Tick()
+    {
         Player player = GameObject.FindObjectOfType<Player>();
+
         if (player)
         {
             if (Vector3.Distance(baseEnemy.transform.position, player.transform.position) <= baseEnemy.DetectRadius)
+            {
                 return typeof(ChaseState);
+            }
         }
 
         if(Time.time >= nextChangeTime)
