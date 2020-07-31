@@ -19,13 +19,14 @@ public class WeaponHolder : MonoBehaviour
     public void EquipWeapon(WeaponBase weapon)
     {
         currentWeapon = weapon;
-        currentWeapon.SetOwner(this);
+        currentWeapon.SetOwner(this, GetComponent<Actor>());
         OnWeaponChanged.Invoke();
     }
 
     private void Awake()
     {
         ammoContainer = GetComponent<AmmoContainer>();
+        if (GetComponent<Actor>() == null) Debug.LogError("There is no actor component on " + gameObject.name);
     }
 
 }

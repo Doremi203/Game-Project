@@ -22,7 +22,7 @@ public class FirearmWeapon : CooldownWeapon
     protected override void OnShoot()
     {
         OnShootEvent.Invoke();
-        if (owner.ammoContainer.SpendAmmo(ammoType, 1))
+        if (weaponHolder.ammoContainer.SpendAmmo(ammoType, 1))
         {
             for (int i = 0; i < bulletsCount; i++)
             {

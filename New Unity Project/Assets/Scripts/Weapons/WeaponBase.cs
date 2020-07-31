@@ -12,26 +12,28 @@ public abstract class WeaponBase : MonoBehaviour
     public string DisplayName => displayName;
 
     protected bool isUsing;
-    protected WeaponHolder owner;
-    public WeaponHolder Owner => owner;
+    protected Actor owner;
+    public Actor Owner => owner;
+
+    protected WeaponHolder weaponHolder;
+    public WeaponHolder WeaponHolder => weaponHolder;
 
     public UnityEvent OnUsingStartEvent;
 
-    public void SetOwner(WeaponHolder owner)
+    public void SetOwner(WeaponHolder weaponHolder, Actor owner)
     {
         this.owner = owner;
+        this.weaponHolder = weaponHolder;
     }
 
     public void Use(bool b)
     {
-        /*
         if (CanUse() == false)
         {
             isUsing = false;
             OnUsingEnd();
             return;
         }
-        */
         if (isUsing)
         {
             if(b == false)

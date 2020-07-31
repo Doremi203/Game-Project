@@ -15,6 +15,8 @@ public class Actor : MonoBehaviour, IDamageable
     public bool isDead { get; private set; }
 
     [SerializeField] private float destroyDelay = 1f;
+    [SerializeField] private Team team;
+    public Team Team => team;
 
     private HealthComponent healthComponent;
 

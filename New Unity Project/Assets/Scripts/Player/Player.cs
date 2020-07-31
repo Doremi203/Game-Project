@@ -51,4 +51,9 @@ public class Player : Actor
         if (Input.GetKeyDown(KeyCode.Alpha2)) weaponHolder.EquipWeapon(weaponB);
     }
 
+    protected override void Death()
+    {
+        base.Death();
+    }
+
 }

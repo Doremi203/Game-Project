@@ -6,6 +6,8 @@ using UnityEngine;
 public class BulletBase : MonoBehaviour, IDamageable
 {
 
+    [SerializeField] private TrailRenderer trail;
+
     protected Rigidbody rb;
     protected WeaponBase owner;
     protected float damage;
@@ -23,17 +25,26 @@ public class BulletBase : MonoBehaviour, IDamageable
         this.damageType = damageType;
         rb = GetComponent<Rigidbody>();
         rb.AddForce(pushDirection * pushForce);
+        trail.startColor = owner.Owner.Team.bulletsColor;
+        trail.endColor = owner.Owner.Team.bulletsColor;
         Destroy(this.gameObject, 2f);
     }
 
-    private void OnCollisionEnter(Collision collision)
+    private void OnTriggerEnter(Collider other)
     {
-        //if (owner.Owner.gameObject == collision.transform.gameObject) Debug.LogError("HITTED ITSELF");
-        IDamageable damageable = collision.transform.GetComponent<IDamageable>();
-        if(damageable != null)
+        if (other.transform.GetComponent<BulletBase>()) return;
+
+        if (owner != null)
+            if (other.transform == owner.Owner.transform) return;
+
+        if (other.transform.GetComponent<Actor>()?.Team == owner.Owner.Team) return;
+
+        IDamageable damageable = other.transform.GetComponent<IDamageable>();
+        if (damageable != null)
         {
             damageable.ApplyDamage(damage, damageType);
         }
+
         Destroy(this.gameObject);
     }
 
