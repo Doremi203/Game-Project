@@ -8,6 +8,7 @@ public class PlayerController : MonoBehaviour
 {
 
     [SerializeField] private float moveSpeed;
+    [SerializeField] private Animator animator;
 
     private CharacterController characterController;
     private Vector3 moveDirection;
@@ -19,6 +20,12 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
+
+        Vector3 vector = new Vector3(Input.GetAxisRaw("Horizontal"), 0, Input.GetAxisRaw("Vertical"));
+        vector = transform.TransformDirection(vector);
+        animator.SetFloat("Horizontal", vector.x);
+        animator.SetFloat("Vertical", vector.z);
+        animator.SetFloat("Speed", characterController.velocity.magnitude / 2f);
 
         // Rotate to the mouse position
         Ray cameraRay = Camera.main.ScreenPointToRay(Input.mousePosition);

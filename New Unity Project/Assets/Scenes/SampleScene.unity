@@ -139,6 +139,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Admin (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 6324773115944375857, guid: e6ba626cb9ee6b5408e7ffe23885cd40,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6324773115944375858, guid: e6ba626cb9ee6b5408e7ffe23885cd40,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -214,7 +219,7 @@ PrefabInstance:
     - target: {fileID: 6324773115944375859, guid: e6ba626cb9ee6b5408e7ffe23885cd40,
         type: 3}
       propertyPath: rotationSpeed
-      value: 20
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 6324773115944375859, guid: e6ba626cb9ee6b5408e7ffe23885cd40,
         type: 3}
@@ -239,6 +244,11 @@ PrefabInstance:
     - target: {fileID: 6324773115944375860, guid: e6ba626cb9ee6b5408e7ffe23885cd40,
         type: 3}
       propertyPath: startHealth
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7399654514826884130, guid: e6ba626cb9ee6b5408e7ffe23885cd40,
+        type: 3}
+      propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7463129834237037514, guid: e6ba626cb9ee6b5408e7ffe23885cd40,
@@ -901,6 +911,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Admin (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 6324773115944375857, guid: e6ba626cb9ee6b5408e7ffe23885cd40,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6324773115944375858, guid: e6ba626cb9ee6b5408e7ffe23885cd40,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -976,7 +991,7 @@ PrefabInstance:
     - target: {fileID: 6324773115944375859, guid: e6ba626cb9ee6b5408e7ffe23885cd40,
         type: 3}
       propertyPath: rotationSpeed
-      value: 20
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 6324773115944375859, guid: e6ba626cb9ee6b5408e7ffe23885cd40,
         type: 3}
@@ -1001,6 +1016,11 @@ PrefabInstance:
     - target: {fileID: 6324773115944375860, guid: e6ba626cb9ee6b5408e7ffe23885cd40,
         type: 3}
       propertyPath: startHealth
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7399654514826884130, guid: e6ba626cb9ee6b5408e7ffe23885cd40,
+        type: 3}
+      propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7463129834237037514, guid: e6ba626cb9ee6b5408e7ffe23885cd40,
@@ -1182,6 +1202,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: AdminDefault
       objectReference: {fileID: 0}
+    - target: {fileID: 6324773115944375857, guid: e6ba626cb9ee6b5408e7ffe23885cd40,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6324773115944375858, guid: e6ba626cb9ee6b5408e7ffe23885cd40,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1245,7 +1270,7 @@ PrefabInstance:
     - target: {fileID: 6324773115944375859, guid: e6ba626cb9ee6b5408e7ffe23885cd40,
         type: 3}
       propertyPath: rotationSpeed
-      value: 20
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 6324773115944375859, guid: e6ba626cb9ee6b5408e7ffe23885cd40,
         type: 3}
@@ -1270,6 +1295,11 @@ PrefabInstance:
     - target: {fileID: 6324773115944375860, guid: e6ba626cb9ee6b5408e7ffe23885cd40,
         type: 3}
       propertyPath: startHealth
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7399654514826884130, guid: e6ba626cb9ee6b5408e7ffe23885cd40,
+        type: 3}
+      propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -1972,6 +2002,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Admin (5)
       objectReference: {fileID: 0}
+    - target: {fileID: 6324773115944375857, guid: e6ba626cb9ee6b5408e7ffe23885cd40,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6324773115944375858, guid: e6ba626cb9ee6b5408e7ffe23885cd40,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2047,7 +2082,7 @@ PrefabInstance:
     - target: {fileID: 6324773115944375859, guid: e6ba626cb9ee6b5408e7ffe23885cd40,
         type: 3}
       propertyPath: rotationSpeed
-      value: 20
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 6324773115944375859, guid: e6ba626cb9ee6b5408e7ffe23885cd40,
         type: 3}
@@ -2072,6 +2107,11 @@ PrefabInstance:
     - target: {fileID: 6324773115944375860, guid: e6ba626cb9ee6b5408e7ffe23885cd40,
         type: 3}
       propertyPath: startHealth
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7399654514826884130, guid: e6ba626cb9ee6b5408e7ffe23885cd40,
+        type: 3}
+      propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7463129834237037514, guid: e6ba626cb9ee6b5408e7ffe23885cd40,
@@ -4195,6 +4235,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 5517167365406351814, guid: e6a2e2cb5a8a2b844893c4934b59361b,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 9071986108450816976, guid: e6a2e2cb5a8a2b844893c4934b59361b,
         type: 3}
       propertyPath: startHealth
@@ -4204,6 +4249,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: AdminShootgun (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 9071986108450816981, guid: e6a2e2cb5a8a2b844893c4934b59361b,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 9071986108450816982, guid: e6a2e2cb5a8a2b844893c4934b59361b,
         type: 3}
@@ -4268,7 +4318,7 @@ PrefabInstance:
     - target: {fileID: 9071986108450816983, guid: e6a2e2cb5a8a2b844893c4934b59361b,
         type: 3}
       propertyPath: rotationSpeed
-      value: 20
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 9071986108450816983, guid: e6a2e2cb5a8a2b844893c4934b59361b,
         type: 3}
@@ -4568,6 +4618,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Admin (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 6324773115944375857, guid: e6ba626cb9ee6b5408e7ffe23885cd40,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6324773115944375858, guid: e6ba626cb9ee6b5408e7ffe23885cd40,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -4643,7 +4698,7 @@ PrefabInstance:
     - target: {fileID: 6324773115944375859, guid: e6ba626cb9ee6b5408e7ffe23885cd40,
         type: 3}
       propertyPath: rotationSpeed
-      value: 20
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 6324773115944375859, guid: e6ba626cb9ee6b5408e7ffe23885cd40,
         type: 3}
@@ -4670,6 +4725,11 @@ PrefabInstance:
       propertyPath: startHealth
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 7399654514826884130, guid: e6ba626cb9ee6b5408e7ffe23885cd40,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7463129834237037514, guid: e6ba626cb9ee6b5408e7ffe23885cd40,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -4693,6 +4753,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Admin (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6324773115944375857, guid: e6ba626cb9ee6b5408e7ffe23885cd40,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6324773115944375858, guid: e6ba626cb9ee6b5408e7ffe23885cd40,
         type: 3}
@@ -4769,7 +4834,7 @@ PrefabInstance:
     - target: {fileID: 6324773115944375859, guid: e6ba626cb9ee6b5408e7ffe23885cd40,
         type: 3}
       propertyPath: rotationSpeed
-      value: 20
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 6324773115944375859, guid: e6ba626cb9ee6b5408e7ffe23885cd40,
         type: 3}
@@ -4794,6 +4859,11 @@ PrefabInstance:
     - target: {fileID: 6324773115944375860, guid: e6ba626cb9ee6b5408e7ffe23885cd40,
         type: 3}
       propertyPath: startHealth
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7399654514826884130, guid: e6ba626cb9ee6b5408e7ffe23885cd40,
+        type: 3}
+      propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7463129834237037514, guid: e6ba626cb9ee6b5408e7ffe23885cd40,
@@ -5065,7 +5135,7 @@ PrefabInstance:
     - target: {fileID: 6324773115944375859, guid: e6ba626cb9ee6b5408e7ffe23885cd40,
         type: 3}
       propertyPath: rotationSpeed
-      value: 20
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 6324773115944375859, guid: e6ba626cb9ee6b5408e7ffe23885cd40,
         type: 3}
@@ -5090,6 +5160,11 @@ PrefabInstance:
     - target: {fileID: 6324773115944375860, guid: e6ba626cb9ee6b5408e7ffe23885cd40,
         type: 3}
       propertyPath: startHealth
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7399654514826884130, guid: e6ba626cb9ee6b5408e7ffe23885cd40,
+        type: 3}
+      propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -5287,6 +5362,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 5517167365406351814, guid: e6a2e2cb5a8a2b844893c4934b59361b,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 9071986108450816976, guid: e6a2e2cb5a8a2b844893c4934b59361b,
         type: 3}
       propertyPath: startHealth
@@ -5296,6 +5376,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: AdminShootgun
+      objectReference: {fileID: 0}
+    - target: {fileID: 9071986108450816981, guid: e6a2e2cb5a8a2b844893c4934b59361b,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 9071986108450816982, guid: e6a2e2cb5a8a2b844893c4934b59361b,
         type: 3}
@@ -5360,7 +5445,7 @@ PrefabInstance:
     - target: {fileID: 9071986108450816983, guid: e6a2e2cb5a8a2b844893c4934b59361b,
         type: 3}
       propertyPath: rotationSpeed
-      value: 20
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 9071986108450816983, guid: e6a2e2cb5a8a2b844893c4934b59361b,
         type: 3}
@@ -5395,6 +5480,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Admin
+      objectReference: {fileID: 0}
+    - target: {fileID: 6324773115944375857, guid: e6ba626cb9ee6b5408e7ffe23885cd40,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6324773115944375858, guid: e6ba626cb9ee6b5408e7ffe23885cd40,
         type: 3}
@@ -5465,7 +5555,7 @@ PrefabInstance:
     - target: {fileID: 6324773115944375859, guid: e6ba626cb9ee6b5408e7ffe23885cd40,
         type: 3}
       propertyPath: rotationSpeed
-      value: 20
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 6324773115944375859, guid: e6ba626cb9ee6b5408e7ffe23885cd40,
         type: 3}
@@ -5490,6 +5580,16 @@ PrefabInstance:
     - target: {fileID: 6324773115944375860, guid: e6ba626cb9ee6b5408e7ffe23885cd40,
         type: 3}
       propertyPath: startHealth
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7373799193638050202, guid: e6ba626cb9ee6b5408e7ffe23885cd40,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7399654514826884130, guid: e6ba626cb9ee6b5408e7ffe23885cd40,
+        type: 3}
+      propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
