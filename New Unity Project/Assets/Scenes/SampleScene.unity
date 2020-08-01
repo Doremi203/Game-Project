@@ -2886,7 +2886,7 @@ PrefabInstance:
     - target: {fileID: 644702065143471220, guid: 5fa44e7047692224ab359260df78c4e8,
         type: 3}
       propertyPath: startHealth
-      value: 1
+      value: 1000000
       objectReference: {fileID: 0}
     - target: {fileID: 2499621001023819872, guid: 5fa44e7047692224ab359260df78c4e8,
         type: 3}
@@ -3116,7 +3116,7 @@ PrefabInstance:
     - target: {fileID: 3710585974801631198, guid: 8835bfcbde2a076429a60e4967750ffd,
         type: 3}
       propertyPath: m_RootOrder
-      value: 6
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 3710585974801631198, guid: 8835bfcbde2a076429a60e4967750ffd,
         type: 3}
@@ -4549,7 +4549,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &2093093760
 PrefabInstance:

@@ -12,18 +12,17 @@ public class Actor : MonoBehaviour, IDamageable
     public event ActorDeath OnActorDeath;
     public UnityEvent OnDeath;
 
-    private bool isDead;
+    public Vector3 eyesPosition => transform.position + eyesOffset;
+    public Team Team => team;
     public bool IsDead => isDead;
 
+    [Header("Actor Settings")]
     [SerializeField] private Vector3 eyesOffset;
-    protected Vector3 eyesPosition => transform.position + eyesOffset;
-
     [SerializeField] private float destroyDelay = 1f;
-
     [SerializeField] private Team team;
-    public Team Team => team;
 
     private HealthComponent healthComponent;
+    private bool isDead;
 
     public virtual void ApplyDamage(Actor damageCauser, float damage, DamageType damageType)
     {

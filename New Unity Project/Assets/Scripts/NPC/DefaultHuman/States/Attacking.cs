@@ -10,7 +10,6 @@ public class Attacking : IState
     private NewTestNPC npc;
     private NavMeshAgent agent;
     private WeaponHolder weaponHolder;
-    private float nextShootTime;
     private float nextPositionTime;
     private Vector3 currentTargetPosition;
 
@@ -24,7 +23,6 @@ public class Attacking : IState
     public void OnEnter()
     {
         agent.enabled = true;
-        nextShootTime = Time.time + UnityEngine.Random.Range(0.1f, 0.2f);
         nextPositionTime = 0;
     }
 
@@ -42,9 +40,9 @@ public class Attacking : IState
 
         Debug.DrawLine(currentTargetPosition, currentTargetPosition + Vector3.up * 100f);
 
-        //if (Time.time >= nextShootTime) Shoot();
         if (Time.time >= nextPositionTime) FindNewLocation();
         //if (Vector3.Distance(npc.transform.position, currentTargetPosition) < 0.5f) FindNewLocation();
+
         weaponHolder.currentWeapon.Use(weaponHolder.currentWeapon.CanUse());
     }
 
@@ -62,16 +60,6 @@ public class Attacking : IState
         currentTargetPosition = newPosition;
         agent.enabled = true;
         agent.SetDestination(newPosition);
-    }
-
-    private void Shoot()
-    {
-        //agent.enabled = false;
-        //npc.transform.LookAt(npc.Target.transform);
-        //npc.transform.eulerAngles = new Vector3(0, npc.transform.eulerAngles.y, 0);
-        weaponHolder.currentWeapon.Use(true);
-        weaponHolder.currentWeapon.Use(false);
-        nextShootTime = Time.time + 0.2f;
     }
 
 }

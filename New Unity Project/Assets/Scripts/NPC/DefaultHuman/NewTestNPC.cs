@@ -22,8 +22,6 @@ public class NewTestNPC : BaseNPC
 
         weaponHolder.EquipWeapon(Instantiate(weaponPrefab, this.transform));
 
-        stateMachine = new NewStateMachine();
-
         // States
         var roaming = new Roaming(this, agent);
         var chasing = new Chasing(this, agent);

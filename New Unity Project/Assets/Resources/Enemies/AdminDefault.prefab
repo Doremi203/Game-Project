@@ -184,17 +184,21 @@ MonoBehaviour:
   OnDeath:
     m_PersistentCalls:
       m_Calls: []
+  eyesOffset: {x: 0, y: 0, z: 0}
   destroyDelay: 0
   team: {fileID: 11400000, guid: ae712937a776a6f4f811e4e8676d1419, type: 2}
-  playerDetectionMask:
+  Target: {fileID: 0}
+  desireRotation: {x: 0, y: 0, z: 0, w: 0}
+  detectionMask:
     serializedVersion: 2
-    m_Bits: 1025
+    m_Bits: 3073
+  rotationSpeed: 0
+  visionRange: 0
+  targetLostRange: 0
+  attackRange: 15
   weaponPrefab: {fileID: 8441526025296156508, guid: 76492f7ad3cc55a4399b4e8327d5b69e,
     type: 3}
   text: {fileID: 6324773116858397355}
-  agroRange: 15
-  deagroRange: 20
-  attackRange: 15
 --- !u!114 &6324773115944375864
 MonoBehaviour:
   m_ObjectHideFlags: 0

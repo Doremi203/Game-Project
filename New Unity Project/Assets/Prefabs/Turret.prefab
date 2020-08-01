@@ -90,7 +90,6 @@ GameObject:
   - component: {fileID: 6295850502759937493}
   - component: {fileID: 6295850502759937496}
   - component: {fileID: 6295850502759937495}
-  - component: {fileID: 6295850502759937494}
   - component: {fileID: 5790783500533728936}
   m_Layer: 0
   m_Name: Turret
@@ -145,26 +144,6 @@ MonoBehaviour:
   OnWeaponChanged:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &6295850502759937494
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6295850502759937492}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 27c4dc9f752b817489213d1b5c43695d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  OnDeath:
-    m_PersistentCalls:
-      m_Calls: []
-  destroyDelay: 0
-  team: {fileID: 11400000, guid: ae712937a776a6f4f811e4e8676d1419, type: 2}
-  fireRate: 2
-  weaponPrefab: {fileID: 8441526025296156508, guid: 76492f7ad3cc55a4399b4e8327d5b69e,
-    type: 3}
 --- !u!65 &5790783500533728936
 BoxCollider:
   m_ObjectHideFlags: 0

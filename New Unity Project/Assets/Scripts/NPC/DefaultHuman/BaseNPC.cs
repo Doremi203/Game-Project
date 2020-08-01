@@ -26,10 +26,10 @@ public class BaseNPC : Actor
     protected virtual void Update()
     {
         stateMachine.Tick();
-        this.transform.rotation = Quaternion.Lerp(transform.rotation, desireRotation, 15f * Time.deltaTime);
+        this.transform.rotation = Quaternion.Lerp(transform.rotation, desireRotation, rotationSpeed * Time.deltaTime);
     }
 
-    public void TryFindTarget()
+    public virtual void TryFindTarget()
     {
         Collider[] hits = Physics.OverlapSphere(transform.position, visionRange);
 
@@ -64,7 +64,7 @@ public class BaseNPC : Actor
         return Vector3.Distance(transform.position, Target.transform.position);
     }
 
-    public bool CanSeeTheTarget()
+    public virtual bool CanSeeTheTarget()
     {
         if (Target == null) return false;
         if (Target == IsDead) return false;

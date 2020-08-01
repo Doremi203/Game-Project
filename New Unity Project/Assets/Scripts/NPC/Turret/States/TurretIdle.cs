@@ -6,6 +6,7 @@ public class TurretIdle : IState
 {
 
     private Turret turret;
+    private float nextFindTargetTime;
 
     public TurretIdle(Turret turret)
     {
@@ -14,7 +15,7 @@ public class TurretIdle : IState
 
     public void OnEnter()
     {
-       
+        nextFindTargetTime = 0f;
     }
 
     public void OnExit()
@@ -24,7 +25,11 @@ public class TurretIdle : IState
 
     public void Tick()
     {
-     
+        if (Time.time >= nextFindTargetTime)
+        {
+            turret.TryFindTarget();
+            nextFindTargetTime = Time.time + 0.5f;
+        }
     }
 
 }
