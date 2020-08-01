@@ -20,7 +20,6 @@ public class Roaming : IState
 
     public void OnEnter()
     {
-        Debug.Log("Roaming");
         agent.enabled = true;
         nextChangeTime = 0;
         nextFindTargetTime = 0;
@@ -38,7 +37,7 @@ public class Roaming : IState
 
         Vector3 relativePos = agent.steeringTarget - npc.transform.position;
         Quaternion rotation = Quaternion.LookRotation(relativePos, Vector3.up);
-        npc.desiredRotation = rotation;
+        npc.desireRotation = rotation;
 
         if (Time.time >= nextChangeTime) SelectNewPosition();
         if (Time.time >= nextFindTargetTime) TryFindTarget();

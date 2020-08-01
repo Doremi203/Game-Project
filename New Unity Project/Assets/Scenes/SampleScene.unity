@@ -211,6 +211,36 @@ PrefabInstance:
       propertyPath: playerDetectionMask.m_Bits
       value: 3073
       objectReference: {fileID: 0}
+    - target: {fileID: 6324773115944375859, guid: e6ba626cb9ee6b5408e7ffe23885cd40,
+        type: 3}
+      propertyPath: rotationSpeed
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 6324773115944375859, guid: e6ba626cb9ee6b5408e7ffe23885cd40,
+        type: 3}
+      propertyPath: visionRange
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 6324773115944375859, guid: e6ba626cb9ee6b5408e7ffe23885cd40,
+        type: 3}
+      propertyPath: targetLostRange
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 6324773115944375859, guid: e6ba626cb9ee6b5408e7ffe23885cd40,
+        type: 3}
+      propertyPath: attackRange
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 6324773115944375859, guid: e6ba626cb9ee6b5408e7ffe23885cd40,
+        type: 3}
+      propertyPath: detectionMask.m_Bits
+      value: 3073
+      objectReference: {fileID: 0}
+    - target: {fileID: 6324773115944375860, guid: e6ba626cb9ee6b5408e7ffe23885cd40,
+        type: 3}
+      propertyPath: startHealth
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7463129834237037514, guid: e6ba626cb9ee6b5408e7ffe23885cd40,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -943,6 +973,36 @@ PrefabInstance:
       propertyPath: playerDetectionMask.m_Bits
       value: 3073
       objectReference: {fileID: 0}
+    - target: {fileID: 6324773115944375859, guid: e6ba626cb9ee6b5408e7ffe23885cd40,
+        type: 3}
+      propertyPath: rotationSpeed
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 6324773115944375859, guid: e6ba626cb9ee6b5408e7ffe23885cd40,
+        type: 3}
+      propertyPath: visionRange
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 6324773115944375859, guid: e6ba626cb9ee6b5408e7ffe23885cd40,
+        type: 3}
+      propertyPath: targetLostRange
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 6324773115944375859, guid: e6ba626cb9ee6b5408e7ffe23885cd40,
+        type: 3}
+      propertyPath: attackRange
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 6324773115944375859, guid: e6ba626cb9ee6b5408e7ffe23885cd40,
+        type: 3}
+      propertyPath: detectionMask.m_Bits
+      value: 3073
+      objectReference: {fileID: 0}
+    - target: {fileID: 6324773115944375860, guid: e6ba626cb9ee6b5408e7ffe23885cd40,
+        type: 3}
+      propertyPath: startHealth
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7463129834237037514, guid: e6ba626cb9ee6b5408e7ffe23885cd40,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -1160,7 +1220,7 @@ PrefabInstance:
     - target: {fileID: 6324773115944375858, guid: e6ba626cb9ee6b5408e7ffe23885cd40,
         type: 3}
       propertyPath: m_RootOrder
-      value: 14
+      value: 13
       objectReference: {fileID: 0}
     - target: {fileID: 6324773115944375858, guid: e6ba626cb9ee6b5408e7ffe23885cd40,
         type: 3}
@@ -1181,6 +1241,36 @@ PrefabInstance:
         type: 3}
       propertyPath: playerDetectionMask.m_Bits
       value: 3073
+      objectReference: {fileID: 0}
+    - target: {fileID: 6324773115944375859, guid: e6ba626cb9ee6b5408e7ffe23885cd40,
+        type: 3}
+      propertyPath: rotationSpeed
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 6324773115944375859, guid: e6ba626cb9ee6b5408e7ffe23885cd40,
+        type: 3}
+      propertyPath: visionRange
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 6324773115944375859, guid: e6ba626cb9ee6b5408e7ffe23885cd40,
+        type: 3}
+      propertyPath: targetLostRange
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 6324773115944375859, guid: e6ba626cb9ee6b5408e7ffe23885cd40,
+        type: 3}
+      propertyPath: attackRange
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 6324773115944375859, guid: e6ba626cb9ee6b5408e7ffe23885cd40,
+        type: 3}
+      propertyPath: detectionMask.m_Bits
+      value: 3073
+      objectReference: {fileID: 0}
+    - target: {fileID: 6324773115944375860, guid: e6ba626cb9ee6b5408e7ffe23885cd40,
+        type: 3}
+      propertyPath: startHealth
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e6ba626cb9ee6b5408e7ffe23885cd40, type: 3}
@@ -1865,6 +1955,132 @@ MonoBehaviour:
         m_Calls: []
   m_LegacyBlendHint: 0
   m_ComponentOwner: {fileID: 533183727}
+--- !u!1001 &779500060
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1187991531711288048, guid: e6ba626cb9ee6b5408e7ffe23885cd40,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 389d3c0715d8af546be41416be0b4e17, type: 2}
+    - target: {fileID: 6324773115944375857, guid: e6ba626cb9ee6b5408e7ffe23885cd40,
+        type: 3}
+      propertyPath: m_Name
+      value: Admin (5)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6324773115944375858, guid: e6ba626cb9ee6b5408e7ffe23885cd40,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 9.39
+      objectReference: {fileID: 0}
+    - target: {fileID: 6324773115944375858, guid: e6ba626cb9ee6b5408e7ffe23885cd40,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6324773115944375858, guid: e6ba626cb9ee6b5408e7ffe23885cd40,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -11.51
+      objectReference: {fileID: 0}
+    - target: {fileID: 6324773115944375858, guid: e6ba626cb9ee6b5408e7ffe23885cd40,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6324773115944375858, guid: e6ba626cb9ee6b5408e7ffe23885cd40,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6324773115944375858, guid: e6ba626cb9ee6b5408e7ffe23885cd40,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6324773115944375858, guid: e6ba626cb9ee6b5408e7ffe23885cd40,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6324773115944375858, guid: e6ba626cb9ee6b5408e7ffe23885cd40,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 21
+      objectReference: {fileID: 0}
+    - target: {fileID: 6324773115944375858, guid: e6ba626cb9ee6b5408e7ffe23885cd40,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6324773115944375858, guid: e6ba626cb9ee6b5408e7ffe23885cd40,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6324773115944375858, guid: e6ba626cb9ee6b5408e7ffe23885cd40,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6324773115944375859, guid: e6ba626cb9ee6b5408e7ffe23885cd40,
+        type: 3}
+      propertyPath: weaponPrefab
+      value: 
+      objectReference: {fileID: 8441526025296156508, guid: 7dcde77e320f2a14fa57ca2a52a4d07b,
+        type: 3}
+    - target: {fileID: 6324773115944375859, guid: e6ba626cb9ee6b5408e7ffe23885cd40,
+        type: 3}
+      propertyPath: team
+      value: 
+      objectReference: {fileID: 11400000, guid: bd4763a6798c2774594f82697c6c6499,
+        type: 2}
+    - target: {fileID: 6324773115944375859, guid: e6ba626cb9ee6b5408e7ffe23885cd40,
+        type: 3}
+      propertyPath: playerDetectionMask.m_Bits
+      value: 3073
+      objectReference: {fileID: 0}
+    - target: {fileID: 6324773115944375859, guid: e6ba626cb9ee6b5408e7ffe23885cd40,
+        type: 3}
+      propertyPath: rotationSpeed
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 6324773115944375859, guid: e6ba626cb9ee6b5408e7ffe23885cd40,
+        type: 3}
+      propertyPath: visionRange
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 6324773115944375859, guid: e6ba626cb9ee6b5408e7ffe23885cd40,
+        type: 3}
+      propertyPath: targetLostRange
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 6324773115944375859, guid: e6ba626cb9ee6b5408e7ffe23885cd40,
+        type: 3}
+      propertyPath: attackRange
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 6324773115944375859, guid: e6ba626cb9ee6b5408e7ffe23885cd40,
+        type: 3}
+      propertyPath: detectionMask.m_Bits
+      value: 3073
+      objectReference: {fileID: 0}
+    - target: {fileID: 6324773115944375860, guid: e6ba626cb9ee6b5408e7ffe23885cd40,
+        type: 3}
+      propertyPath: startHealth
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7463129834237037514, guid: e6ba626cb9ee6b5408e7ffe23885cd40,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 389d3c0715d8af546be41416be0b4e17, type: 2}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: e6ba626cb9ee6b5408e7ffe23885cd40, type: 3}
 --- !u!1 &787474972
 GameObject:
   m_ObjectHideFlags: 0
@@ -2670,7 +2886,7 @@ PrefabInstance:
     - target: {fileID: 644702065143471220, guid: 5fa44e7047692224ab359260df78c4e8,
         type: 3}
       propertyPath: startHealth
-      value: 100000
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2499621001023819872, guid: 5fa44e7047692224ab359260df78c4e8,
         type: 3}
@@ -3979,6 +4195,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 9071986108450816976, guid: e6a2e2cb5a8a2b844893c4934b59361b,
+        type: 3}
+      propertyPath: startHealth
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 9071986108450816981, guid: e6a2e2cb5a8a2b844893c4934b59361b,
         type: 3}
       propertyPath: m_Name
@@ -4022,7 +4243,7 @@ PrefabInstance:
     - target: {fileID: 9071986108450816982, guid: e6a2e2cb5a8a2b844893c4934b59361b,
         type: 3}
       propertyPath: m_RootOrder
-      value: 16
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 9071986108450816982, guid: e6a2e2cb5a8a2b844893c4934b59361b,
         type: 3}
@@ -4042,6 +4263,31 @@ PrefabInstance:
     - target: {fileID: 9071986108450816983, guid: e6a2e2cb5a8a2b844893c4934b59361b,
         type: 3}
       propertyPath: playerDetectionMask.m_Bits
+      value: 3073
+      objectReference: {fileID: 0}
+    - target: {fileID: 9071986108450816983, guid: e6a2e2cb5a8a2b844893c4934b59361b,
+        type: 3}
+      propertyPath: rotationSpeed
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 9071986108450816983, guid: e6a2e2cb5a8a2b844893c4934b59361b,
+        type: 3}
+      propertyPath: visionRange
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 9071986108450816983, guid: e6a2e2cb5a8a2b844893c4934b59361b,
+        type: 3}
+      propertyPath: targetLostRange
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 9071986108450816983, guid: e6a2e2cb5a8a2b844893c4934b59361b,
+        type: 3}
+      propertyPath: attackRange
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 9071986108450816983, guid: e6a2e2cb5a8a2b844893c4934b59361b,
+        type: 3}
+      propertyPath: detectionMask.m_Bits
       value: 3073
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -4394,6 +4640,36 @@ PrefabInstance:
       propertyPath: playerDetectionMask.m_Bits
       value: 3073
       objectReference: {fileID: 0}
+    - target: {fileID: 6324773115944375859, guid: e6ba626cb9ee6b5408e7ffe23885cd40,
+        type: 3}
+      propertyPath: rotationSpeed
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 6324773115944375859, guid: e6ba626cb9ee6b5408e7ffe23885cd40,
+        type: 3}
+      propertyPath: visionRange
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 6324773115944375859, guid: e6ba626cb9ee6b5408e7ffe23885cd40,
+        type: 3}
+      propertyPath: targetLostRange
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 6324773115944375859, guid: e6ba626cb9ee6b5408e7ffe23885cd40,
+        type: 3}
+      propertyPath: attackRange
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 6324773115944375859, guid: e6ba626cb9ee6b5408e7ffe23885cd40,
+        type: 3}
+      propertyPath: detectionMask.m_Bits
+      value: 3073
+      objectReference: {fileID: 0}
+    - target: {fileID: 6324773115944375860, guid: e6ba626cb9ee6b5408e7ffe23885cd40,
+        type: 3}
+      propertyPath: startHealth
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7463129834237037514, guid: e6ba626cb9ee6b5408e7ffe23885cd40,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -4490,10 +4766,35 @@ PrefabInstance:
       propertyPath: playerDetectionMask.m_Bits
       value: 3073
       objectReference: {fileID: 0}
+    - target: {fileID: 6324773115944375859, guid: e6ba626cb9ee6b5408e7ffe23885cd40,
+        type: 3}
+      propertyPath: rotationSpeed
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 6324773115944375859, guid: e6ba626cb9ee6b5408e7ffe23885cd40,
+        type: 3}
+      propertyPath: visionRange
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 6324773115944375859, guid: e6ba626cb9ee6b5408e7ffe23885cd40,
+        type: 3}
+      propertyPath: targetLostRange
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 6324773115944375859, guid: e6ba626cb9ee6b5408e7ffe23885cd40,
+        type: 3}
+      propertyPath: attackRange
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 6324773115944375859, guid: e6ba626cb9ee6b5408e7ffe23885cd40,
+        type: 3}
+      propertyPath: detectionMask.m_Bits
+      value: 3073
+      objectReference: {fileID: 0}
     - target: {fileID: 6324773115944375860, guid: e6ba626cb9ee6b5408e7ffe23885cd40,
         type: 3}
       propertyPath: startHealth
-      value: 4000
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7463129834237037514, guid: e6ba626cb9ee6b5408e7ffe23885cd40,
         type: 3}
@@ -4739,7 +5040,7 @@ PrefabInstance:
     - target: {fileID: 6324773115944375858, guid: e6ba626cb9ee6b5408e7ffe23885cd40,
         type: 3}
       propertyPath: m_RootOrder
-      value: 13
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 6324773115944375858, guid: e6ba626cb9ee6b5408e7ffe23885cd40,
         type: 3}
@@ -4760,6 +5061,36 @@ PrefabInstance:
         type: 3}
       propertyPath: playerDetectionMask.m_Bits
       value: 3073
+      objectReference: {fileID: 0}
+    - target: {fileID: 6324773115944375859, guid: e6ba626cb9ee6b5408e7ffe23885cd40,
+        type: 3}
+      propertyPath: rotationSpeed
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 6324773115944375859, guid: e6ba626cb9ee6b5408e7ffe23885cd40,
+        type: 3}
+      propertyPath: visionRange
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 6324773115944375859, guid: e6ba626cb9ee6b5408e7ffe23885cd40,
+        type: 3}
+      propertyPath: targetLostRange
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 6324773115944375859, guid: e6ba626cb9ee6b5408e7ffe23885cd40,
+        type: 3}
+      propertyPath: attackRange
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 6324773115944375859, guid: e6ba626cb9ee6b5408e7ffe23885cd40,
+        type: 3}
+      propertyPath: detectionMask.m_Bits
+      value: 3073
+      objectReference: {fileID: 0}
+    - target: {fileID: 6324773115944375860, guid: e6ba626cb9ee6b5408e7ffe23885cd40,
+        type: 3}
+      propertyPath: startHealth
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e6ba626cb9ee6b5408e7ffe23885cd40, type: 3}
@@ -4956,6 +5287,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 9071986108450816976, guid: e6a2e2cb5a8a2b844893c4934b59361b,
+        type: 3}
+      propertyPath: startHealth
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 9071986108450816981, guid: e6a2e2cb5a8a2b844893c4934b59361b,
         type: 3}
       propertyPath: m_Name
@@ -4999,7 +5335,7 @@ PrefabInstance:
     - target: {fileID: 9071986108450816982, guid: e6a2e2cb5a8a2b844893c4934b59361b,
         type: 3}
       propertyPath: m_RootOrder
-      value: 15
+      value: 14
       objectReference: {fileID: 0}
     - target: {fileID: 9071986108450816982, guid: e6a2e2cb5a8a2b844893c4934b59361b,
         type: 3}
@@ -5019,6 +5355,31 @@ PrefabInstance:
     - target: {fileID: 9071986108450816983, guid: e6a2e2cb5a8a2b844893c4934b59361b,
         type: 3}
       propertyPath: playerDetectionMask.m_Bits
+      value: 3073
+      objectReference: {fileID: 0}
+    - target: {fileID: 9071986108450816983, guid: e6a2e2cb5a8a2b844893c4934b59361b,
+        type: 3}
+      propertyPath: rotationSpeed
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 9071986108450816983, guid: e6a2e2cb5a8a2b844893c4934b59361b,
+        type: 3}
+      propertyPath: visionRange
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 9071986108450816983, guid: e6a2e2cb5a8a2b844893c4934b59361b,
+        type: 3}
+      propertyPath: targetLostRange
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 9071986108450816983, guid: e6a2e2cb5a8a2b844893c4934b59361b,
+        type: 3}
+      propertyPath: attackRange
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 9071986108450816983, guid: e6a2e2cb5a8a2b844893c4934b59361b,
+        type: 3}
+      propertyPath: detectionMask.m_Bits
       value: 3073
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -5073,7 +5434,7 @@ PrefabInstance:
     - target: {fileID: 6324773115944375858, guid: e6ba626cb9ee6b5408e7ffe23885cd40,
         type: 3}
       propertyPath: m_RootOrder
-      value: 12
+      value: 16
       objectReference: {fileID: 0}
     - target: {fileID: 6324773115944375858, guid: e6ba626cb9ee6b5408e7ffe23885cd40,
         type: 3}
@@ -5100,6 +5461,36 @@ PrefabInstance:
         type: 3}
       propertyPath: playerDetectionMask.m_Bits
       value: 3073
+      objectReference: {fileID: 0}
+    - target: {fileID: 6324773115944375859, guid: e6ba626cb9ee6b5408e7ffe23885cd40,
+        type: 3}
+      propertyPath: rotationSpeed
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 6324773115944375859, guid: e6ba626cb9ee6b5408e7ffe23885cd40,
+        type: 3}
+      propertyPath: visionRange
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 6324773115944375859, guid: e6ba626cb9ee6b5408e7ffe23885cd40,
+        type: 3}
+      propertyPath: targetLostRange
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 6324773115944375859, guid: e6ba626cb9ee6b5408e7ffe23885cd40,
+        type: 3}
+      propertyPath: attackRange
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 6324773115944375859, guid: e6ba626cb9ee6b5408e7ffe23885cd40,
+        type: 3}
+      propertyPath: detectionMask.m_Bits
+      value: 3073
+      objectReference: {fileID: 0}
+    - target: {fileID: 6324773115944375860, guid: e6ba626cb9ee6b5408e7ffe23885cd40,
+        type: 3}
+      propertyPath: startHealth
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e6ba626cb9ee6b5408e7ffe23885cd40, type: 3}

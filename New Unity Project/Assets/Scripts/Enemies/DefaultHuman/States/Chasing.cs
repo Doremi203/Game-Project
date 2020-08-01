@@ -19,7 +19,6 @@ public class Chasing : IState
 
     public void OnEnter()
     {
-        Debug.Log("Chasing");
         agent.enabled = true;
         nextPositionUpdate = 0;
         nextFindTargetTime = 0;
@@ -37,7 +36,7 @@ public class Chasing : IState
 
         Vector3 relativePos = agent.steeringTarget - npc.transform.position;
         Quaternion rotation = Quaternion.LookRotation(relativePos, Vector3.up);
-        npc.desiredRotation = rotation;
+        npc.desireRotation = rotation;
 
         if (Time.time >= nextPositionUpdate) UpdatePlayerPosition();
         if (Time.time >= nextFindTargetTime) TryFindTarget();

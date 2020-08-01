@@ -12,15 +12,20 @@ public class Actor : MonoBehaviour, IDamageable
     public event ActorDeath OnActorDeath;
     public UnityEvent OnDeath;
 
-    public bool isDead { get; private set; }
+    private bool isDead;
+    public bool IsDead => isDead;
+
+    [SerializeField] private Vector3 eyesOffset;
+    protected Vector3 eyesPosition => transform.position + eyesOffset;
 
     [SerializeField] private float destroyDelay = 1f;
+
     [SerializeField] private Team team;
     public Team Team => team;
 
     private HealthComponent healthComponent;
 
-    public virtual void ApplyDamage(float damage, DamageType damageType)
+    public virtual void ApplyDamage(Actor damageCauser, float damage, DamageType damageType)
     {
         healthComponent.ApplyDamage(damage);
     }
@@ -52,6 +57,11 @@ public class Actor : MonoBehaviour, IDamageable
                 Death();
             }
         }
+    }
+
+    protected void OnDrawGizmos()
+    {
+        Gizmos.DrawLine(eyesPosition, eyesPosition + transform.forward);
     }
 
 }

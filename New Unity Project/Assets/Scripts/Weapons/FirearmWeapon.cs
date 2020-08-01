@@ -19,6 +19,11 @@ public class FirearmWeapon : CooldownWeapon
 
     public UnityEvent OnShootEvent;
 
+    public override bool CanUse()
+    {
+        return true;
+    }
+
     protected override void OnShoot()
     {
         OnShootEvent.Invoke();
@@ -32,11 +37,6 @@ public class FirearmWeapon : CooldownWeapon
                 newBullet.Setup(this, transform.forward + spreadOffset, bulletsSpeed, damage, damageType);
             }
         }
-    }
-
-    protected override bool CanUse()
-    {
-        return true;
     }
 
 }

@@ -13,7 +13,7 @@ public class BulletBase : MonoBehaviour, IDamageable
     protected float damage;
     protected DamageType damageType;
 
-    public void ApplyDamage(float damage, DamageType damageType)
+    public void ApplyDamage(Actor damageCauser, float damage, DamageType damageType)
     {
         Destroy(this.gameObject);
     }
@@ -42,7 +42,7 @@ public class BulletBase : MonoBehaviour, IDamageable
         IDamageable damageable = other.transform.GetComponent<IDamageable>();
         if (damageable != null)
         {
-            damageable.ApplyDamage(damage, damageType);
+            damageable.ApplyDamage(owner.Owner, damage, damageType);
         }
 
         Destroy(this.gameObject);

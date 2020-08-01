@@ -23,7 +23,6 @@ public class Attacking : IState
 
     public void OnEnter()
     {
-        Debug.Log("Shooting");
         agent.enabled = true;
         nextShootTime = Time.time + UnityEngine.Random.Range(0.1f, 0.2f);
         nextPositionTime = 0;
@@ -31,6 +30,7 @@ public class Attacking : IState
 
     public void OnExit()
     {
+        weaponHolder.currentWeapon.Use(false);
         agent.enabled = false;
     }
 
@@ -38,23 +38,30 @@ public class Attacking : IState
     {
         Vector3 relativePos = npc.Target.transform.position - npc.transform.position;
         Quaternion rotation = Quaternion.LookRotation(relativePos, Vector3.up);
-        npc.desiredRotation = rotation;
+        npc.desireRotation = rotation;
 
-        if (Time.time >= nextShootTime) Shoot();
+        Debug.DrawLine(currentTargetPosition, currentTargetPosition + Vector3.up * 100f);
+
+        //if (Time.time >= nextShootTime) Shoot();
         if (Time.time >= nextPositionTime) FindNewLocation();
         //if (Vector3.Distance(npc.transform.position, currentTargetPosition) < 0.5f) FindNewLocation();
-        weaponHolder.currentWeapon.Use(false);
+        weaponHolder.currentWeapon.Use(weaponHolder.currentWeapon.CanUse());
     }
 
     private void FindNewLocation()
     {
         nextPositionTime = Time.time + 4f;
-        Vector3 newPosition = npc.Target.transform.position + UnityEngine.Random.onUnitSphere * 10f;
+
+        Vector3 newPosition = new Vector3();
+
+        //newPosition = npc.Target.transform.position + UnityEngine.Random.onUnitSphere * 10f;
+
+        newPosition = npc.Target.transform.position + Utils.GetRandomPositionInTorus(4f, npc.AttackRange);
         newPosition.y = 0;
+
         currentTargetPosition = newPosition;
         agent.enabled = true;
         agent.SetDestination(newPosition);
-        Debug.Log(currentTargetPosition);
     }
 
     private void Shoot()

@@ -5,6 +5,6 @@ using UnityEngine;
 public interface IDamageable 
 {
 
-    void ApplyDamage(float damage, DamageType damageType);
+    void ApplyDamage(Actor damageCauser, float damage, DamageType damageType);
 
 }

@@ -13,6 +13,11 @@ public abstract class CooldownWeapon : WeaponBase
 
     private float nextShootTime;
 
+    public override bool CanUse()
+    {
+        return Time.time > nextShootTime;
+    }
+
     protected override void OnUsingStart()
     {
         if (Time.time > nextShootTime)
