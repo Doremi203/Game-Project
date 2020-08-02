@@ -3117,14 +3117,8 @@ PrefabInstance:
     - target: {fileID: 644702065143471220, guid: 5fa44e7047692224ab359260df78c4e8,
         type: 3}
       propertyPath: startHealth
-      value: 99999999
+      value: 9999999
       objectReference: {fileID: 0}
-    - target: {fileID: 2499621001023819872, guid: 5fa44e7047692224ab359260df78c4e8,
-        type: 3}
-      propertyPath: prefabWeaponA
-      value: 
-      objectReference: {fileID: -6386357407385631847, guid: ac6652c404eb06245b52da11ec5cdcac,
-        type: 3}
     - target: {fileID: 8037512694796132850, guid: 5fa44e7047692224ab359260df78c4e8,
         type: 3}
       propertyPath: m_LocalPosition.x

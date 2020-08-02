@@ -12,7 +12,7 @@ public class MeleeWeapon : CooldownWeapon
 
     protected override void OnShoot()
     {
-        Collider[] hits = Physics.OverlapSphere(transform.position, attackRadius);
+        Collider[] hits = Physics.OverlapSphere(owner.transform.position, attackRadius);
         foreach (var item in hits)
         {
             Actor actor = item.GetComponent<Actor>();
@@ -21,7 +21,7 @@ public class MeleeWeapon : CooldownWeapon
             if (actor == owner) continue;
             if (actor.Team == owner.Team) continue;
 
-            if (Vector3.Angle(transform.forward, actor.transform.position) > attackAngle) continue;
+            if (Vector3.Angle(owner.transform.forward, actor.transform.position) > attackAngle) continue;
 
             actor.ApplyDamage(owner, damage, damageType);
         }
@@ -29,10 +29,11 @@ public class MeleeWeapon : CooldownWeapon
 
     private void OnDrawGizmos()
     {
-        Gizmos.DrawWireSphere(transform.position, attackRadius);
+        if (!owner) return;
+        Gizmos.DrawWireSphere(owner.transform.position, attackRadius);
         Gizmos.color = Color.red;
-        Gizmos.DrawLine(transform.position, transform.position + Quaternion.AngleAxis(-attackAngle / 2, Vector3.up) * transform.forward * attackRadius);
-        Gizmos.DrawLine(transform.position, transform.position + Quaternion.AngleAxis(attackAngle / 2, Vector3.up) * transform.forward * attackRadius);
+        Gizmos.DrawLine(owner.transform.position, owner.transform.position + Quaternion.AngleAxis(-attackAngle / 2, Vector3.up) * owner.transform.forward * attackRadius);
+        Gizmos.DrawLine(owner.transform.position, owner.transform.position + Quaternion.AngleAxis(attackAngle / 2, Vector3.up) * owner.transform.forward * attackRadius);
     }
 
 }

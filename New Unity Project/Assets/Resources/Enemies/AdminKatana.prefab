@@ -113,6 +113,7 @@ MonoBehaviour:
   rotationSpeed: 20
   weaponPrefab: {fileID: -6386357407385631847, guid: ac6652c404eb06245b52da11ec5cdcac,
     type: 3}
+  armBone: {fileID: 8072512852301729634}
 --- !u!114 &6324773115944375864
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -284,6 +285,12 @@ Transform:
 --- !u!95 &7373799193638050202 stripped
 Animator:
   m_CorrespondingSourceObject: {fileID: 7632966927066587667, guid: b9fbe0457683253488403558701b2ffb,
+    type: 3}
+  m_PrefabInstance: {fileID: 1133009035289721737}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &8072512852301729634 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 9204814607342384363, guid: b9fbe0457683253488403558701b2ffb,
     type: 3}
   m_PrefabInstance: {fileID: 1133009035289721737}
   m_PrefabAsset: {fileID: 0}

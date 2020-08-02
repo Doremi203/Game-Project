@@ -9,6 +9,7 @@ public class HumanNPC : BaseNPC
 {
 
     [SerializeField] private WeaponBase weaponPrefab;
+    [SerializeField] private Transform armBone;
 
     private NavMeshAgent agent;
     protected WeaponHolder weaponHolder;
@@ -19,7 +20,7 @@ public class HumanNPC : BaseNPC
         agent = GetComponent<NavMeshAgent>();
         weaponHolder = GetComponent<WeaponHolder>();
 
-        weaponHolder.EquipWeapon(Instantiate(weaponPrefab, this.transform));
+        weaponHolder.EquipWeapon(Instantiate(weaponPrefab, armBone));
     }
 
 }

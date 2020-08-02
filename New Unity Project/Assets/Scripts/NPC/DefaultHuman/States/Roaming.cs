@@ -37,6 +37,7 @@ public class Roaming : IState
     public void Tick()
     {
         Vector3 relativePos = agent.steeringTarget - npc.transform.position;
+        relativePos.y = 0;
         Vector3 rotation = Quaternion.LookRotation(relativePos, Vector3.up).eulerAngles;
         npc.desiredRotation = rotation;
 

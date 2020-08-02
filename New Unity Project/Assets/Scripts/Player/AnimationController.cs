@@ -11,8 +11,8 @@ public class AnimationController : MonoBehaviour
 
     private void Start()
     {
-	    player.abilities[typeof(Dash)].Casted.AddListener(DoDashAnimation);
-	    player.abilities[typeof(Katana)].Casted.AddListener(DoKatanaAnimation);
+	    //player.abilities[typeof(Dash)].Casted.AddListener(DoDashAnimation);
+	    //player.abilities[typeof(Katana)].Casted.AddListener(DoKatanaAnimation);
     }
 
     
@@ -24,11 +24,10 @@ public class AnimationController : MonoBehaviour
 
     private void UpdateAnimator()
     {
-	    Vector3 localMove =
-			    transform.TransformDirection(new Vector3(Input.GetAxisRaw("Horizontal"), 0,
-				    Input.GetAxisRaw("Vertical")));
-	    //animator.SetFloat("Horizontal", localMove.x);
-	    //animator.SetFloat("Vertical", localMove.z);
+        Vector3 localMove = transform.TransformDirection(new Vector3(Input.GetAxisRaw("Horizontal"), 0, Input.GetAxisRaw("Vertical")));
+	    animator.SetFloat("Horizontal", localMove.x);
+	    animator.SetFloat("Vertical", localMove.z);
+        animator.SetFloat("Speed", 1);
     }
     
     private void DoDashAnimation()
