@@ -14,9 +14,12 @@ public class Player : Actor
     [Header("FOR TESTING")]
     [SerializeField] private WeaponBase prefabWeaponA;
     [SerializeField] private WeaponBase prefabWeaponB;
-
-    private WeaponBase weaponA;
+	
+	private WeaponBase weaponA;
     private WeaponBase weaponB;
+	
+    public Dictionary<Type,Ability> abilities =new Dictionary<Type, Ability>();
+    
 
     public void SetWeapons(WeaponBase weaponA, WeaponBase weaponB)
     {
@@ -28,6 +31,10 @@ public class Player : Actor
     protected override void Awake()
     {
         base.Awake();
+		foreach (var ability in GetComponents<Ability>())
+        {
+            abilities.Add(ability.GetType(),ability);
+        }
         weaponHolder = this.GetComponent<WeaponHolder>();
         controller = this.GetComponent<PlayerController>();
     }

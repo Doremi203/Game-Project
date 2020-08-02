@@ -1,55 +1,32 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
-public class Dash : Ablity
+public class Dash : Ability
 {
     [SerializeField] private float dashForce = 5f;
     private CharacterController characterController;
     private Vector3 dashDir;
-    private bool dashed;
-    private float cooldownTimeDash = 3f;
+
     void Awake()
     {
         characterController = gameObject.GetComponent<CharacterController>();
     }
-
-    // Update is called once per frame
-    void Update()
+    
+    protected override void DoCast()
     {
-        CoolDownUpdater();
-        if (Input.GetKeyDown(KeyCode.Space) && !dashed)
-            StartCoroutine(Cast());
-    }
 
-    public override IEnumerator Cast()
-    {
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            dashDir = new Vector3(Input.GetAxis("Horizontal")*dashForce,0, Input.GetAxis("Vertical") * dashForce);
-            //dashDir = transform.TransformDirection(dashDir);
-            //DashDirection *= dashSpeed * Time.deltaTime;
-            characterController.Move(dashDir);
-            dashed = true;
-            yield return null;
-            
-        }
+        dashDir = new Vector3(Input.GetAxisRaw("Horizontal") * dashForce, 0,
+                Input.GetAxisRaw("Vertical") * dashForce);
+        //dashDir = transform.TransformDirection(dashDir);
+        //DashDirection *= dashSpeed * Time.deltaTime;
+        characterController.Move(dashDir);
     }
-
-    public override void CoolDownUpdater()
-    {
-        if(dashed)
-        {
-            cooldownTimeDash -= Time.deltaTime;
-            Debug.Log(cooldownTimeDash);
-            if (cooldownTimeDash < 0.0001)
-            {
-                //cooldownTimeDash = 5f;
-                dashed = false;
-                cooldownTimeDash = 3f; 
-                Debug.Log(cooldownTimeDash);
-            }
-        }
-    }
+    
+    public override float coolDown => 2f;
+    
+    public override string[] axises => new []{"Jump"};
+    //protected override Sprite skillImage =>
 }
 
