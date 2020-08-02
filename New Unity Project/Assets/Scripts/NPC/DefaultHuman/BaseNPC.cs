@@ -6,7 +6,7 @@ public class BaseNPC : Actor
 {
 
     [HideInInspector] public Actor Target;
-    [HideInInspector] public Quaternion desiredRotation;
+    [HideInInspector] public Vector3 desiredRotation;
 
     public float RotationSpeed => rotationSpeed;
 
@@ -15,9 +15,9 @@ public class BaseNPC : Actor
 
     protected virtual void Update()
     {
-        if (transform.rotation != desiredRotation)
+        if (transform.eulerAngles != desiredRotation)
         {
-            this.transform.rotation = Quaternion.Lerp(transform.rotation, desiredRotation, rotationSpeed * Time.deltaTime);
+            this.transform.eulerAngles = Vector3.Lerp(this.transform.eulerAngles, desiredRotation, rotationSpeed * Time.deltaTime);
         }
     }
 

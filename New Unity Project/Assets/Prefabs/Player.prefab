@@ -269,6 +269,8 @@ GameObject:
   - component: {fileID: 6851913591751166064}
   - component: {fileID: 644702065143471220}
   - component: {fileID: 2499621001023819872}
+  - component: {fileID: 358503627}
+  - component: {fileID: 358503628}
   m_Layer: 10
   m_Name: Player
   m_TagString: Untagged
@@ -352,8 +354,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d08c7091b433a8749974d632bf2825cd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 5
-  animator: {fileID: 5690306786254368672}
+  moveSpeed: 8
+  gravity: 9.81
+  player: {fileID: 2499621001023819872}
 --- !u!114 &644702065143471220
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -386,12 +389,45 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   eyesOffset: {x: 0, y: 0, z: 0}
-  destroyDelay: 1
+  destroyDelay: 0
   team: {fileID: 11400000, guid: d29a5ea4e91d4b54f866f89571407510, type: 2}
-  prefabWeaponA: {fileID: 8441526025296156508, guid: 76492f7ad3cc55a4399b4e8327d5b69e,
+  prefabWeaponA: {fileID: 8441526025296156508, guid: a4b55bd91332f074a93f44d526f79c8b,
     type: 3}
   prefabWeaponB: {fileID: 8441526025296156508, guid: 7dcde77e320f2a14fa57ca2a52a4d07b,
     type: 3}
+--- !u!114 &358503627
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8037512694796132851}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7507caf4e6ede54caf3a107a1a28640, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  skillSprite: {fileID: 0}
+  Casted:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!114 &358503628
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8037512694796132851}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e328ea5c3a1e02d4197a40e0c8b9af85, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  skillSprite: {fileID: 0}
+  Casted:
+    m_PersistentCalls:
+      m_Calls: []
+  dashForce: 5
 --- !u!1 &8037512695283583350
 GameObject:
   m_ObjectHideFlags: 0
@@ -620,12 +656,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b9fbe0457683253488403558701b2ffb, type: 3}
---- !u!95 &5690306786254368672 stripped
-Animator:
-  m_CorrespondingSourceObject: {fileID: 7632966927066587667, guid: b9fbe0457683253488403558701b2ffb,
-    type: 3}
-  m_PrefabInstance: {fileID: 2816360711623822771}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &8025781538676575538 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5221067163653161089, guid: b9fbe0457683253488403558701b2ffb,

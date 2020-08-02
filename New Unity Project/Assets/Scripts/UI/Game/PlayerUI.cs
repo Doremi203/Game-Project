@@ -44,8 +44,14 @@ public class PlayerUI : MonoBehaviour
 
     private void RefreshUI()
     {
-        string ammoCount = player.weaponHolder.ammoContainer.GetAmountOfAmmo((currentWeapon as FirearmWeapon)?.AmmoType).ToString();
-        weaponInfoText.text = $"{currentWeapon.DisplayName} | {ammoCount}";
+        string weaponInfo = default;
+        weaponInfo = currentWeapon.DisplayName;
+        if (currentWeapon is FirearmWeapon)
+        {
+            weaponInfo = weaponInfo + " | " + player.weaponHolder.ammoContainer.GetAmountOfAmmo((currentWeapon as FirearmWeapon)?.AmmoType).ToString();
+        }
+        weaponInfoText.text = weaponInfo;
+        //weaponInfoText.text = $"{currentWeapon.DisplayName} | {ammoCount}";
     }
 
 }

@@ -34,7 +34,7 @@ public class Chasing : IState
     public void Tick()
     {
         Vector3 relativePos = agent.steeringTarget - npc.transform.position;
-        Quaternion rotation = Quaternion.LookRotation(relativePos, Vector3.up);
+        Vector3 rotation = Quaternion.LookRotation(relativePos, Vector3.up).eulerAngles;
         npc.desiredRotation = rotation;
 
         if (Time.time >= nextPositionUpdate) UpdatePlayerPosition();

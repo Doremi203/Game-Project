@@ -37,7 +37,8 @@ public class Attacking : IState
     public void Tick()
     {
         Vector3 relativePos = ai.Target.transform.position - npc.transform.position;
-        Quaternion rotation = Quaternion.LookRotation(relativePos, Vector3.up);
+        relativePos.y = 0;
+        Vector3 rotation = Quaternion.LookRotation(relativePos, Vector3.up).eulerAngles;
         npc.desiredRotation = rotation;
 
         Debug.DrawLine(currentTargetPosition, currentTargetPosition + Vector3.up * 100f);
