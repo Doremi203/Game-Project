@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 5103233541033105293}
   - component: {fileID: 5103233541033105295}
   - component: {fileID: 5103233541033105292}
-  - component: {fileID: 8586806650670966910}
+  - component: {fileID: 5594018633926969015}
   m_Layer: 5
   m_Name: Skill-Image
   m_TagString: Untagged
@@ -76,7 +76,7 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &8586806650670966910
+--- !u!114 &5594018633926969015
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

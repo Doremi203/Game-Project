@@ -16,7 +16,7 @@ public class PlayerController : MonoBehaviour
 	[SerializeField] private Player player;
     private void Awake()
     {
-	    inputManager = gameObject.AddComponent<InputManager>();
+	    //inputManager = gameObject.AddComponent<InputManager>();
         playerController = gameObject.GetComponent<CharacterController>();
     }
     
@@ -25,12 +25,13 @@ public class PlayerController : MonoBehaviour
 	    
 	    CameraHandler();
 
-	    if (Input.anyKeyDown)
-	    {
-		    var key = Input.inputString;
-		    var action = GetActionByKey(key);
-		    action?.DoAction();
-		    //Debug.Log("1");
+	    // if (Input.anyKeyDown)
+	    // {
+		   //  var key = Input.inputString;
+		   //  var action = GetActionByKey(key);
+		   //  action?.DoAction();
+	    // }
+	    //Debug.Log("1");
 		    /*foreach (var kvp in player.abilities)
 		    {
 			    var axises = kvp.Value.axises;
@@ -50,7 +51,7 @@ public class PlayerController : MonoBehaviour
 					    break;
 			    }
 		    }*/
-	    }
+	    
 	    
 	    if (Input.anyKey)
 	    {
@@ -60,10 +61,10 @@ public class PlayerController : MonoBehaviour
 	    
     }
 
-    private IAction GetActionByKey(string key)
-    {
-	    throw new NotImplementedException();
-    }
+    // private IAction GetActionByKey(string key)
+    // {
+	   //  throw new NotImplementedException();
+    // }
 
     private void MovementHandler()
     {

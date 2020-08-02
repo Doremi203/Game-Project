@@ -4,19 +4,31 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.Events;
 using System;
+using JetBrains.Annotations;
+using UnityEngine.UI;
 
 public class PlayerUI : MonoBehaviour
 {
 
     [SerializeField] private Player player;
     [SerializeField] private TextMeshProUGUI weaponInfoText;
-
+    [SerializeField] private AbilityUi abilityUi;
+    [SerializeField] private Transform abilityPanel;
+    
     private WeaponBase currentWeapon;
 
     private void Awake()
     {
         player.weaponHolder.OnWeaponChanged.AddListener(WeaponChanged);
         player.weaponHolder.ammoContainer.OnAmmoChangedEvent.AddListener(RefreshUI);
+    }
+
+    private void Start()
+    {
+        foreach (var ability in player.abilities)
+        {
+            Instantiate(abilityUi,abilityPanel).Setup(ability.Value);
+        }
     }
 
     private void WeaponChanged()
@@ -33,7 +45,7 @@ public class PlayerUI : MonoBehaviour
     private void RefreshUI()
     {
         string ammoCount = player.weaponHolder.ammoContainer.GetAmountOfAmmo((currentWeapon as FirearmWeapon)?.AmmoType).ToString();
-        weaponInfoText.text = currentWeapon.DisplayName + " | " + ammoCount;
+        weaponInfoText.text = $"{currentWeapon.DisplayName} | {ammoCount}";
     }
 
 }
