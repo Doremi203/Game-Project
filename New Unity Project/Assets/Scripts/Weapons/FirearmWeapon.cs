@@ -32,7 +32,7 @@ public class FirearmWeapon : CooldownWeapon
             for (int i = 0; i < bulletsCount; i++)
             {
                 Vector3 spreadOffset = transform.right * Random.Range(-bulletSpreadingMultiplier, bulletSpreadingMultiplier);
-                Vector3 bulletSpawnPosition = transform.position + transform.forward * 1f;
+                Vector3 bulletSpawnPosition = owner.eyesPosition + transform.forward * 1f;
                 BulletBase newBullet = Instantiate(bulletPrefab, bulletSpawnPosition, transform.rotation);
                 newBullet.Setup(this, transform.forward + spreadOffset, bulletsSpeed, damage, damageType);
             }

@@ -105,7 +105,7 @@ MonoBehaviour:
   OnDeath:
     m_PersistentCalls:
       m_Calls: []
-  eyesOffset: {x: 0, y: 0, z: 0}
+  eyesOffset: {x: 0, y: 0.75, z: 0}
   destroyDelay: 0
   team: {fileID: 11400000, guid: ae712937a776a6f4f811e4e8676d1419, type: 2}
   Target: {fileID: 0}

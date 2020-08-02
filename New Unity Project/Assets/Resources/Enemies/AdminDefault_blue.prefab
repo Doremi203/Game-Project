@@ -105,11 +105,11 @@ MonoBehaviour:
   OnDeath:
     m_PersistentCalls:
       m_Calls: []
-  eyesOffset: {x: 0, y: 0, z: 0}
+  eyesOffset: {x: 0, y: 0.75, z: 0}
   destroyDelay: 0
   team: {fileID: 11400000, guid: bd4763a6798c2774594f82697c6c6499, type: 2}
   Target: {fileID: 0}
-  desireRotation: {x: 0, y: 0, z: 0, w: 0}
+  desiredRotation: {x: 0, y: 0, z: 0}
   rotationSpeed: 20
   weaponPrefab: {fileID: 8441526025296156508, guid: 76492f7ad3cc55a4399b4e8327d5b69e,
     type: 3}
