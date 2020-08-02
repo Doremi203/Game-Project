@@ -12,6 +12,7 @@ public class Roaming : IState
     private NPC_BaseAI ai;
     private float nextChangeTime;
     private float nextFindTargetTime;
+    private Vector3? startingPoint;
 
     public Roaming(HumanNPC newTestNPC, NavMeshAgent agent, NPC_BaseAI ai)
     {
@@ -25,6 +26,7 @@ public class Roaming : IState
         agent.enabled = true;
         nextChangeTime = 0;
         nextFindTargetTime = 0;
+        if (startingPoint == null) startingPoint = npc.transform.position; 
     }
 
     public void OnExit()
@@ -51,8 +53,10 @@ public class Roaming : IState
     private void SelectNewPosition()
     {
         Vector3 newDestination = new Vector3();
-        newDestination.x = npc.transform.position.x + UnityEngine.Random.Range(-10f, 10f);
-        newDestination.z = npc.transform.position.z + UnityEngine.Random.Range(-10f, 10f);
+        //newDestination.x = npc.transform.position.x + UnityEngine.Random.Range(-10f, 10f);
+        //newDestination.z = npc.transform.position.z + UnityEngine.Random.Range(-10f, 10f);
+        newDestination.x = startingPoint.Value.x + UnityEngine.Random.Range(-10f, 10f);
+        newDestination.z = startingPoint.Value.z + UnityEngine.Random.Range(-10f, 10f);
         agent.SetDestination(newDestination);
         nextChangeTime = Time.time + 2f;
     }
