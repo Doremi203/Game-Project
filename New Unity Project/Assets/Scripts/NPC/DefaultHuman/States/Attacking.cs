@@ -7,17 +7,19 @@ using UnityEngine.AI;
 public class Attacking : IState
 {
 
-    private NewTestNPC npc;
+    private HumanNPC npc;
     private NavMeshAgent agent;
     private WeaponHolder weaponHolder;
+    private NPC_BaseAI ai;
     private float nextPositionTime;
     private Vector3 currentTargetPosition;
 
-    public Attacking(NewTestNPC newTestNPC, NavMeshAgent agent, WeaponHolder weaponHolder)
+    public Attacking(HumanNPC newTestNPC, NavMeshAgent agent, WeaponHolder weaponHolder, NPC_BaseAI ai)
     {
-        npc = newTestNPC;
+        this.npc = newTestNPC;
         this.agent = agent;
         this.weaponHolder = weaponHolder;
+        this.ai = ai;
     }
 
     public void OnEnter()
@@ -34,14 +36,13 @@ public class Attacking : IState
 
     public void Tick()
     {
-        Vector3 relativePos = npc.Target.transform.position - npc.transform.position;
+        Vector3 relativePos = ai.Target.transform.position - npc.transform.position;
         Quaternion rotation = Quaternion.LookRotation(relativePos, Vector3.up);
-        npc.desireRotation = rotation;
+        npc.desiredRotation = rotation;
 
         Debug.DrawLine(currentTargetPosition, currentTargetPosition + Vector3.up * 100f);
 
         if (Time.time >= nextPositionTime) FindNewLocation();
-        //if (Vector3.Distance(npc.transform.position, currentTargetPosition) < 0.5f) FindNewLocation();
 
         weaponHolder.currentWeapon.Use(weaponHolder.currentWeapon.CanUse());
     }
@@ -52,9 +53,7 @@ public class Attacking : IState
 
         Vector3 newPosition = new Vector3();
 
-        //newPosition = npc.Target.transform.position + UnityEngine.Random.onUnitSphere * 10f;
-
-        newPosition = npc.Target.transform.position + Utils.GetRandomPositionInTorus(4f, npc.AttackRange);
+        newPosition = ai.Target.transform.position + Utils.GetRandomPositionInTorus(4f, ai.AttackRange);
         newPosition.y = 0;
 
         currentTargetPosition = newPosition;

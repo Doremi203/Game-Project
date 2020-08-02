@@ -18,7 +18,7 @@ GameObject:
   - component: {fileID: 7399654514826884130}
   - component: {fileID: 3530509493441726772}
   m_Layer: 11
-  m_Name: AdminDefault
+  m_Name: AdminDefault_blue
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -107,7 +107,7 @@ MonoBehaviour:
       m_Calls: []
   eyesOffset: {x: 0, y: 0, z: 0}
   destroyDelay: 0
-  team: {fileID: 11400000, guid: ae712937a776a6f4f811e4e8676d1419, type: 2}
+  team: {fileID: 11400000, guid: bd4763a6798c2774594f82697c6c6499, type: 2}
   Target: {fileID: 0}
   desireRotation: {x: 0, y: 0, z: 0, w: 0}
   rotationSpeed: 20
@@ -187,12 +187,12 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 45b314a5eeffd9b43b53cd53753b7d32, type: 2}
+      objectReference: {fileID: 2100000, guid: 389d3c0715d8af546be41416be0b4e17, type: 2}
     - target: {fileID: 4372892563700878884, guid: b9fbe0457683253488403558701b2ffb,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 45b314a5eeffd9b43b53cd53753b7d32, type: 2}
+      objectReference: {fileID: 2100000, guid: 389d3c0715d8af546be41416be0b4e17, type: 2}
     - target: {fileID: 5221067163653161089, guid: b9fbe0457683253488403558701b2ffb,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -257,12 +257,12 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 45b314a5eeffd9b43b53cd53753b7d32, type: 2}
+      objectReference: {fileID: 2100000, guid: 389d3c0715d8af546be41416be0b4e17, type: 2}
     - target: {fileID: 7484250733178775572, guid: b9fbe0457683253488403558701b2ffb,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 45b314a5eeffd9b43b53cd53753b7d32, type: 2}
+      objectReference: {fileID: 2100000, guid: 389d3c0715d8af546be41416be0b4e17, type: 2}
     - target: {fileID: 7632966927066587667, guid: b9fbe0457683253488403558701b2ffb,
         type: 3}
       propertyPath: m_ApplyRootMotion
@@ -272,7 +272,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 45b314a5eeffd9b43b53cd53753b7d32, type: 2}
+      objectReference: {fileID: 2100000, guid: 389d3c0715d8af546be41416be0b4e17, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b9fbe0457683253488403558701b2ffb, type: 3}
 --- !u!4 &5173990948119558920 stripped

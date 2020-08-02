@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEditorInternal;
 using UnityEngine;
 
-public class NewStateMachine 
+public class StateMachine 
 {
 
     private IState currentState;

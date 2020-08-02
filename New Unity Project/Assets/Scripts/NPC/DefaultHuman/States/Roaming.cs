@@ -7,15 +7,17 @@ using UnityEngine.AI;
 public class Roaming : IState
 {
 
-    private NewTestNPC npc;
+    private HumanNPC npc;
     private NavMeshAgent agent;
+    private NPC_BaseAI ai;
     private float nextChangeTime;
     private float nextFindTargetTime;
 
-    public Roaming(NewTestNPC newTestNPC, NavMeshAgent agent)
+    public Roaming(HumanNPC newTestNPC, NavMeshAgent agent, NPC_BaseAI ai)
     {
-        npc = newTestNPC;
+        this.npc = newTestNPC;
         this.agent = agent;
+        this.ai = ai;
     }
 
     public void OnEnter()
@@ -32,12 +34,9 @@ public class Roaming : IState
 
     public void Tick()
     {
-        //npc.transform.LookAt(agent.steeringTarget);
-        //npc.transform.eulerAngles = new Vector3(0, npc.transform.eulerAngles.y, 0);
-
         Vector3 relativePos = agent.steeringTarget - npc.transform.position;
         Quaternion rotation = Quaternion.LookRotation(relativePos, Vector3.up);
-        npc.desireRotation = rotation;
+        npc.desiredRotation = rotation;
 
         if (Time.time >= nextChangeTime) SelectNewPosition();
         if (Time.time >= nextFindTargetTime) TryFindTarget();
@@ -45,36 +44,7 @@ public class Roaming : IState
 
     private void TryFindTarget()
     {
-        /*
-        Collider[] hits = Physics.OverlapSphere(npc.transform.position, npc.AttackRange);
-
-        Actor closestActor = null;
-
-        foreach (var item in hits)
-        {
-            Actor actor = item.GetComponent<Actor>();
-            if (actor)
-            {
-                if(actor.Team != npc.Team && !actor.isDead)
-                {
-                    if (closestActor == null)
-                    {
-                        closestActor = actor;
-                    }
-                    else
-                    {
-                        float a = Vector3.Distance(npc.transform.position, actor.transform.position);
-                        float b = Vector3.Distance(npc.transform.position, closestActor.transform.position);
-                        if (a < b) closestActor = actor;
-                    }
-                }
-            }
-        }
-
-        npc.SetTarget(closestActor);
-        */
-
-        npc.TryFindTarget();
+        ai.Target = ai.GetClosestEnemyActor();
         nextFindTargetTime = Time.time + 0.5f;
     }
 

@@ -6,15 +6,17 @@ using UnityEngine.AI;
 public class Chasing : IState
 {
 
-    private NewTestNPC npc;
+    private HumanNPC npc;
     private NavMeshAgent agent;
+    private NPC_BaseAI ai;
     private float nextPositionUpdate;
     private float nextFindTargetTime;
 
-    public Chasing(NewTestNPC newTestNPC, NavMeshAgent agent)
+    public Chasing(HumanNPC newTestNPC, NavMeshAgent agent, NPC_BaseAI ai)
     {
-        npc = newTestNPC;
+        this.npc = newTestNPC;
         this.agent = agent;
+        this.ai = ai;
     }
 
     public void OnEnter()
@@ -31,12 +33,9 @@ public class Chasing : IState
 
     public void Tick()
     {
-        //npc.transform.LookAt(agent.steeringTarget);
-        //npc.transform.eulerAngles = new Vector3(0, npc.transform.eulerAngles.y, 0);
-
         Vector3 relativePos = agent.steeringTarget - npc.transform.position;
         Quaternion rotation = Quaternion.LookRotation(relativePos, Vector3.up);
-        npc.desireRotation = rotation;
+        npc.desiredRotation = rotation;
 
         if (Time.time >= nextPositionUpdate) UpdatePlayerPosition();
         if (Time.time >= nextFindTargetTime) TryFindTarget();
@@ -44,15 +43,15 @@ public class Chasing : IState
 
     private void TryFindTarget()
     {
-        npc.TryFindTarget();
+        ai.Target = ai.GetClosestEnemyActor();
         nextFindTargetTime = Time.time + 2f;
     }
 
     private void UpdatePlayerPosition()
     {
         Vector3 targetPosition = new Vector3();
-        targetPosition.x = npc.Target.transform.position.x + Random.Range(-1f, 1f);
-        targetPosition.z = npc.Target.transform.position.z + Random.Range(-1f, 1f);
+        targetPosition.x = ai.Target.transform.position.x + Random.Range(-1f, 1f);
+        targetPosition.z = ai.Target.transform.position.z + Random.Range(-1f, 1f);
         agent.SetDestination(targetPosition);
         nextPositionUpdate = Time.time + 0.1f;
     }
