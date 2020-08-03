@@ -15,6 +15,7 @@ public class BaseNPC : Actor
 
     protected virtual void Update()
     {
+        return;
         if (transform.eulerAngles != desiredRotation)
         {
             this.transform.eulerAngles = Vector3.Lerp(this.transform.eulerAngles, desiredRotation, rotationSpeed * Time.deltaTime);

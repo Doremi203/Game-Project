@@ -38,8 +38,13 @@ public class Roaming : IState
     {
         Vector3 relativePos = agent.steeringTarget - npc.transform.position;
         relativePos.y = 0;
-        Vector3 rotation = Quaternion.LookRotation(relativePos, Vector3.up).eulerAngles;
-        npc.desiredRotation = rotation;
+        if (relativePos != Vector3.zero)
+        {
+            Vector3 rotation = Vector3.zero;
+            rotation = Quaternion.LookRotation(relativePos, Vector3.up).eulerAngles;
+            //npc.desiredRotation = rotation;
+            npc.transform.eulerAngles = Vector3.Lerp(npc.transform.eulerAngles, rotation, npc.RotationSpeed * Time.deltaTime);
+        }
 
         if (Time.time >= nextChangeTime) SelectNewPosition();
         if (Time.time >= nextFindTargetTime) TryFindTarget();

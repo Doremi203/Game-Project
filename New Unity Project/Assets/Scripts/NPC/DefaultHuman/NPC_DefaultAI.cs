@@ -49,12 +49,17 @@ public class NPC_DefaultAI : NPC_BaseAI
     private void OnDrawGizmos()
     {
         if (!Application.isPlaying) return;
-        if (stateMachine != null)
-        {
-            IState currentState = stateMachine.GetCurrentState();
-            if (currentState == null) ;
-            Handles.Label(transform.position, currentState.ToString());
-        }
+        if (stateMachine == null) return;
+
+        IState currentState = stateMachine.GetCurrentState();
+
+        if (currentState == null) return;
+
+        GUIStyle style = new GUIStyle();
+        style.normal.textColor = Color.red;
+        style.fontSize = 25;
+
+        Handles.Label(transform.position, currentState.ToString(), style);
     }
 
 }

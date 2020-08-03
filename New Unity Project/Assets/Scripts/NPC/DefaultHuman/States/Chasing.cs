@@ -35,10 +35,15 @@ public class Chasing : IState
     {
         Vector3 relativePos = agent.steeringTarget - npc.transform.position;
         relativePos.y = 0;
-        Vector3 rotation = Quaternion.LookRotation(relativePos, Vector3.up).eulerAngles;
-        npc.desiredRotation = rotation;
+        if (relativePos != Vector3.zero)
+        {
+            Vector3 rotation = Vector3.zero;
+            rotation = Quaternion.LookRotation(relativePos, Vector3.up).eulerAngles;
+            //npc.desiredRotation = rotation;
+            npc.transform.eulerAngles = Vector3.Lerp(npc.transform.eulerAngles, rotation, npc.RotationSpeed * Time.deltaTime);
+        }
 
-        if (Time.time >= nextPositionUpdate) UpdatePlayerPosition();
+        if (Time.time >= nextPositionUpdate) UpdateTargetPosition();
         if (Time.time >= nextFindTargetTime) TryFindTarget();
     }
 
@@ -48,13 +53,11 @@ public class Chasing : IState
         nextFindTargetTime = Time.time + 2f;
     }
 
-    private void UpdatePlayerPosition()
+    private void UpdateTargetPosition()
     {
-        Vector3 targetPosition = new Vector3();
-        targetPosition.x = ai.Target.transform.position.x + Random.Range(-1f, 1f);
-        targetPosition.z = ai.Target.transform.position.z + Random.Range(-1f, 1f);
+        Vector3 targetPosition = ai.Target.transform.position;
         agent.SetDestination(targetPosition);
-        nextPositionUpdate = Time.time + 0.1f;
+        nextPositionUpdate = Time.time + 0.5f;
     }
 
 }
