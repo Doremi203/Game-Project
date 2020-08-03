@@ -320,7 +320,7 @@ MonoBehaviour:
       m_Calls: []
   cooldown: 0.2
   isAutomatic: 0
-  attackAngle: 120
+  attackAngle: 70
   attackRadius: 2.5
   damage: 1000
-  damageType: {fileID: 0}
+  damageType: {fileID: 11400000, guid: c5ca7e9201afad441b8efca35b93cc1a, type: 2}

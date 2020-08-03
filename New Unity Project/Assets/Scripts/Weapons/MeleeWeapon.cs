@@ -21,7 +21,10 @@ public class MeleeWeapon : CooldownWeapon
             if (actor == owner) continue;
             if (actor.Team == owner.Team) continue;
 
-            if (Vector3.Angle(owner.transform.forward, actor.transform.position) > attackAngle) continue;
+            Vector3 targetDir = actor.transform.position - owner.transform.position;
+            float angle = Vector3.Angle(targetDir, owner.transform.forward);
+
+            if (angle > attackAngle) continue;
 
             actor.ApplyDamage(owner, damage, damageType);
         }
@@ -32,8 +35,8 @@ public class MeleeWeapon : CooldownWeapon
         if (!owner) return;
         Gizmos.DrawWireSphere(owner.transform.position, attackRadius);
         Gizmos.color = Color.red;
-        Gizmos.DrawLine(owner.transform.position, owner.transform.position + Quaternion.AngleAxis(-attackAngle / 2, Vector3.up) * owner.transform.forward * attackRadius);
-        Gizmos.DrawLine(owner.transform.position, owner.transform.position + Quaternion.AngleAxis(attackAngle / 2, Vector3.up) * owner.transform.forward * attackRadius);
+        Gizmos.DrawLine(owner.transform.position, owner.transform.position + Quaternion.AngleAxis(-attackAngle, Vector3.up) * owner.transform.forward * attackRadius);
+        Gizmos.DrawLine(owner.transform.position, owner.transform.position + Quaternion.AngleAxis(attackAngle, Vector3.up) * owner.transform.forward * attackRadius);
     }
 
 }

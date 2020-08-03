@@ -15,7 +15,7 @@ PrefabInstance:
     - target: {fileID: 3530509493441726772, guid: e6ba626cb9ee6b5408e7ffe23885cd40,
         type: 3}
       propertyPath: attackRange
-      value: 5
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 3681379509842933165, guid: e6ba626cb9ee6b5408e7ffe23885cd40,
         type: 3}
@@ -118,6 +118,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Speed
       value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6324773115944375862, guid: e6ba626cb9ee6b5408e7ffe23885cd40,
+        type: 3}
+      propertyPath: m_Radius
+      value: 0.1
       objectReference: {fileID: 0}
     - target: {fileID: 7522181075726209949, guid: e6ba626cb9ee6b5408e7ffe23885cd40,
         type: 3}

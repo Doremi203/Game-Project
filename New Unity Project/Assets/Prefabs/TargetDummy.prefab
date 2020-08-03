@@ -48,7 +48,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d4bc19bf69facbb40afac38af6116178, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startHealth: 1
+  startHealth: 2147483647
   OnHealthChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -67,7 +67,9 @@ MonoBehaviour:
   OnDeath:
     m_PersistentCalls:
       m_Calls: []
+  eyesOffset: {x: 0, y: 0, z: 0}
   destroyDelay: 0
+  team: {fileID: 0}
 --- !u!65 &7400002312963790754
 BoxCollider:
   m_ObjectHideFlags: 0

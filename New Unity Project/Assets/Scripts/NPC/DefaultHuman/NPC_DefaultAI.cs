@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -43,6 +44,17 @@ public class NPC_DefaultAI : NPC_BaseAI
         Func<bool> leftShootingRange() => () => DistanceToTarget() > AttackRange;
 
         Func<bool> hasNoTarget() => () => Target == null || Target.IsDead;
+    }
+
+    private void OnDrawGizmos()
+    {
+        if (!Application.isPlaying) return;
+        if (stateMachine != null)
+        {
+            IState currentState = stateMachine.GetCurrentState();
+            if (currentState == null) ;
+            Handles.Label(transform.position, currentState.ToString());
+        }
     }
 
 }

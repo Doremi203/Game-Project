@@ -394,7 +394,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e91e4b534f499a54ca53488a589454b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  displayName: SpaceCowboy
+  displayName: Shootgun
   OnUsingStartEvent:
     m_PersistentCalls:
       m_Calls: []
