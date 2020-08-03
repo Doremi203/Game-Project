@@ -109,8 +109,8 @@ MonoBehaviour:
   destroyDelay: 0
   team: {fileID: 11400000, guid: ae712937a776a6f4f811e4e8676d1419, type: 2}
   Target: {fileID: 0}
-  desiredRotation: {x: 0, y: 0, z: 0}
-  rotationSpeed: 20
+  desiredRotation: {x: 0, y: 0, z: 0, w: 0}
+  rotationSpeed: 160
   weaponPrefab: {fileID: -6386357407385631847, guid: ac6652c404eb06245b52da11ec5cdcac,
     type: 3}
   armBone: {fileID: 8072512852301729634}

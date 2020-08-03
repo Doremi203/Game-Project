@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 
 [RequireComponent(typeof(BaseNPC))]
@@ -45,6 +46,9 @@ public abstract class NPC_BaseAI : MonoBehaviour
             {
                 if (actor.Team != npc.Team && !actor.IsDead)
                 {
+
+                    //if (CanSee(actor) == false) continue;
+
                     if (closestActor == null)
                     {
                         closestActor = actor;
@@ -91,6 +95,39 @@ public abstract class NPC_BaseAI : MonoBehaviour
         }
 
         return false;
+    }
+
+    public virtual bool CanSee(Actor targetActor)
+    {
+        if (targetActor == null) return false;
+        if (targetActor.IsDead) return false;
+
+        float distanceToPlayer = Vector3.Distance(transform.position, targetActor.transform.position);
+        if (distanceToPlayer > attackRange) return false;
+
+        RaycastHit hit;
+        if (Physics.Linecast(transform.position, targetActor.transform.position, out hit, detectionMask))
+        {
+            if (hit.transform == targetActor.transform) return true;
+        }
+
+        return false;
+    }
+
+    private void OnDrawGizmos()
+    {
+        if (!Application.isPlaying) return;
+        if (stateMachine == null) return;
+
+        IState currentState = stateMachine.GetCurrentState();
+
+        if (currentState == null) return;
+
+        GUIStyle style = new GUIStyle();
+        style.normal.textColor = Color.red;
+        style.fontSize = 25;
+
+        Handles.Label(transform.position, currentState.ToString(), style);
     }
 
 }

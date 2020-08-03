@@ -40,10 +40,8 @@ public class Roaming : IState
         relativePos.y = 0;
         if (relativePos != Vector3.zero)
         {
-            Vector3 rotation = Vector3.zero;
-            rotation = Quaternion.LookRotation(relativePos, Vector3.up).eulerAngles;
-            //npc.desiredRotation = rotation;
-            npc.transform.eulerAngles = Vector3.Lerp(npc.transform.eulerAngles, rotation, npc.RotationSpeed * Time.deltaTime);
+            npc.desiredRotation = Quaternion.LookRotation(relativePos, Vector3.up);
+            //npc.transform.eulerAngles = Vector3.Lerp(npc.transform.eulerAngles, rotation, npc.RotationSpeed * Time.deltaTime);
         }
 
         if (Time.time >= nextChangeTime) SelectNewPosition();
