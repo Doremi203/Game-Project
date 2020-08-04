@@ -22,27 +22,37 @@ public class NPC_PatrollingAI : NPC_BaseAI
         var patrolling = new Patrolling(npc as HumanNPC, agent, this);
         var chasing = new Chasing(npc as HumanNPC, agent, this);
         var attacking = new Attacking(npc as HumanNPC, agent, weaponHolder, this);
+        var investigating = new Investigating(npc as HumanNPC, agent, this);
 
         // Transitions
-        At(patrolling, chasing, inAgroRange());
-        At(chasing, patrolling, isPlayerFarAway());
+        At(patrolling, chasing, hasTarget());
+
         At(chasing, attacking, canShootPlayer());
+        At(chasing, investigating, cantSeeTarget());
+
+        At(investigating, chasing, canSeeTarget());
+
+        At(attacking, investigating, cantSeeTarget());
         At(attacking, chasing, cantShootPlayer());
-        At(attacking, chasing, leftShootingRange());
 
         stateMachine.AddAnyTransition(patrolling, hasNoTarget());
+        stateMachine.AddAnyTransition(patrolling, isPlayerFarAway());
+        stateMachine.AddAnyTransition(attacking, canShootPlayer());
 
         stateMachine.SetState(patrolling);
 
         void At(IState from, IState to, Func<bool> condition) => stateMachine.AddTransition(from, to, condition);
 
-        Func<bool> inAgroRange() => () => DistanceToTarget() <= VisionRange;
         Func<bool> isPlayerFarAway() => () => DistanceToTarget() > TargetLostRange;
-        Func<bool> canShootPlayer() => () => CanSeeTheTarget();
-        Func<bool> cantShootPlayer() => () => !CanSeeTheTarget();
-        Func<bool> leftShootingRange() => () => DistanceToTarget() > AttackRange;
 
+        Func<bool> canShootPlayer() => () => CanSee(Target) && DistanceToTarget() <= AttackRange;
+        Func<bool> cantShootPlayer() => () => !CanSee(Target) || DistanceToTarget() > AttackRange;
+
+        Func<bool> hasTarget() => () => Target && !Target.IsDead;
         Func<bool> hasNoTarget() => () => Target == null || Target.IsDead;
+
+        Func<bool> cantSeeTarget() => () => !CanSee(Target);
+        Func<bool> canSeeTarget() => () => CanSee(Target);
     }
 
 }

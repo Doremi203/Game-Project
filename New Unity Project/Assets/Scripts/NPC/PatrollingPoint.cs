@@ -26,7 +26,7 @@ public class PatrollingPoint : MonoBehaviour
         return _closestPoint;
     }
 
-    //[HideInInspector]
+    [HideInInspector]
     public List<PatrollingPoint> patrollingPoints = new List<PatrollingPoint>();
 
     private float detectionDistance = 10f;

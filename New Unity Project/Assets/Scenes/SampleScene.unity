@@ -134,6 +134,11 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3530509493441726772, guid: e6ba626cb9ee6b5408e7ffe23885cd40,
+        type: 3}
+      propertyPath: visionAngle
+      value: 90
+      objectReference: {fileID: 0}
     - target: {fileID: 6324773115944375857, guid: e6ba626cb9ee6b5408e7ffe23885cd40,
         type: 3}
       propertyPath: m_Name
@@ -1475,6 +1480,11 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1936217172872158416, guid: 2c4b2c512e946f2488e6937a1b3534c2,
+        type: 3}
+      propertyPath: visionAngle
+      value: 90
+      objectReference: {fileID: 0}
     - target: {fileID: 9071986108450816978, guid: 2c4b2c512e946f2488e6937a1b3534c2,
         type: 3}
       propertyPath: m_Radius
@@ -1756,6 +1766,11 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3530509493441726772, guid: e6ba626cb9ee6b5408e7ffe23885cd40,
+        type: 3}
+      propertyPath: visionAngle
+      value: 90
+      objectReference: {fileID: 0}
     - target: {fileID: 6324773115944375857, guid: e6ba626cb9ee6b5408e7ffe23885cd40,
         type: 3}
       propertyPath: m_Name
@@ -1985,6 +2000,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Enabled
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3530509493441726772, guid: 5e2fddbfbe5dccb4c84cb8a1291588ef,
+        type: 3}
+      propertyPath: visionAngle
+      value: 90
       objectReference: {fileID: 0}
     - target: {fileID: 6324773115944375857, guid: 5e2fddbfbe5dccb4c84cb8a1291588ef,
         type: 3}
@@ -2429,6 +2449,11 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1936217172872158416, guid: e6a2e2cb5a8a2b844893c4934b59361b,
+        type: 3}
+      propertyPath: visionAngle
+      value: 90
+      objectReference: {fileID: 0}
     - target: {fileID: 9071986108450816978, guid: e6a2e2cb5a8a2b844893c4934b59361b,
         type: 3}
       propertyPath: m_Radius
@@ -2706,6 +2731,11 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3530509493441726772, guid: 5e2fddbfbe5dccb4c84cb8a1291588ef,
+        type: 3}
+      propertyPath: visionAngle
+      value: 90
+      objectReference: {fileID: 0}
     - target: {fileID: 6324773115944375857, guid: 5e2fddbfbe5dccb4c84cb8a1291588ef,
         type: 3}
       propertyPath: m_Name
@@ -2838,6 +2868,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Enabled
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1936217172872158416, guid: 2c4b2c512e946f2488e6937a1b3534c2,
+        type: 3}
+      propertyPath: visionAngle
+      value: 90
       objectReference: {fileID: 0}
     - target: {fileID: 9071986108450816978, guid: 2c4b2c512e946f2488e6937a1b3534c2,
         type: 3}
@@ -3635,7 +3670,7 @@ PrefabInstance:
     - target: {fileID: 644702065143471220, guid: 5fa44e7047692224ab359260df78c4e8,
         type: 3}
       propertyPath: startHealth
-      value: 1000
+      value: 999999
       objectReference: {fileID: 0}
     - target: {fileID: 8037512694796132850, guid: 5fa44e7047692224ab359260df78c4e8,
         type: 3}
@@ -4124,6 +4159,11 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3530509493441726772, guid: e6ba626cb9ee6b5408e7ffe23885cd40,
+        type: 3}
+      propertyPath: visionAngle
+      value: 90
+      objectReference: {fileID: 0}
     - target: {fileID: 6324773115944375857, guid: e6ba626cb9ee6b5408e7ffe23885cd40,
         type: 3}
       propertyPath: m_Name
@@ -4593,6 +4633,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 958507514}
     m_Modifications:
+    - target: {fileID: 3530509493441726772, guid: d7a6d0e3c3ea4014b8435021c199b215,
+        type: 3}
+      propertyPath: visionAngle
+      value: 90
+      objectReference: {fileID: 0}
     - target: {fileID: 6324773115944375857, guid: d7a6d0e3c3ea4014b8435021c199b215,
         type: 3}
       propertyPath: m_Name
@@ -5015,6 +5060,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 958507514}
     m_Modifications:
+    - target: {fileID: 3530509493441726772, guid: d7a6d0e3c3ea4014b8435021c199b215,
+        type: 3}
+      propertyPath: visionAngle
+      value: 90
+      objectReference: {fileID: 0}
     - target: {fileID: 6324773115944375857, guid: d7a6d0e3c3ea4014b8435021c199b215,
         type: 3}
       propertyPath: m_Name
@@ -5427,6 +5477,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Enabled
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3530509493441726772, guid: 5e2fddbfbe5dccb4c84cb8a1291588ef,
+        type: 3}
+      propertyPath: visionAngle
+      value: 90
       objectReference: {fileID: 0}
     - target: {fileID: 6324773115944375857, guid: 5e2fddbfbe5dccb4c84cb8a1291588ef,
         type: 3}
@@ -5871,6 +5926,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 958507514}
     m_Modifications:
+    - target: {fileID: 3530509493441726772, guid: d7a6d0e3c3ea4014b8435021c199b215,
+        type: 3}
+      propertyPath: visionAngle
+      value: 90
+      objectReference: {fileID: 0}
     - target: {fileID: 6324773115944375857, guid: d7a6d0e3c3ea4014b8435021c199b215,
         type: 3}
       propertyPath: m_Name
@@ -5960,6 +6020,11 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1936217172872158416, guid: 2c4b2c512e946f2488e6937a1b3534c2,
+        type: 3}
+      propertyPath: visionAngle
+      value: 90
+      objectReference: {fileID: 0}
     - target: {fileID: 9071986108450816978, guid: 2c4b2c512e946f2488e6937a1b3534c2,
         type: 3}
       propertyPath: m_Radius
@@ -6048,6 +6113,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Enabled
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3530509493441726772, guid: e6ba626cb9ee6b5408e7ffe23885cd40,
+        type: 3}
+      propertyPath: visionAngle
+      value: 90
       objectReference: {fileID: 0}
     - target: {fileID: 6324773115944375857, guid: e6ba626cb9ee6b5408e7ffe23885cd40,
         type: 3}
@@ -6231,6 +6301,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Enabled
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3530509493441726772, guid: 5e2fddbfbe5dccb4c84cb8a1291588ef,
+        type: 3}
+      propertyPath: visionAngle
+      value: 90
       objectReference: {fileID: 0}
     - target: {fileID: 6324773115944375857, guid: 5e2fddbfbe5dccb4c84cb8a1291588ef,
         type: 3}
@@ -7012,9 +7087,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Target: {fileID: 0}
+  TargetLastKnownPosition: {x: 0, y: 0, z: 0}
   detectionMask:
     serializedVersion: 2
     m_Bits: 3073
+  visionAngle: 0
   visionRange: 15
   targetLostRange: 20
   attackRange: 10

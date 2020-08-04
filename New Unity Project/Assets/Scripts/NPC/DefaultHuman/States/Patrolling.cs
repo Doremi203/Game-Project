@@ -46,7 +46,6 @@ public class Patrolling : IState
         if (relativePos != Vector3.zero)
         {
             npc.desiredRotation = Quaternion.LookRotation(relativePos, Vector3.up);
-            //npc.transform.eulerAngles = Vector3.Lerp(npc.transform.eulerAngles, rotation, npc.RotationSpeed * Time.deltaTime);
         }
 
         Vector2 npcPosition = default;

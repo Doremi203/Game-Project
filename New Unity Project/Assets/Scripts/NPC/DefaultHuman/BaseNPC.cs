@@ -17,7 +17,6 @@ public class BaseNPC : Actor
     {
         if (transform.rotation != desiredRotation)
         {
-            //this.transform.rotation = Quaternion.Lerp(this.transform.rotation, desiredRotation, rotationSpeed * Time.deltaTime);
             this.transform.rotation = Quaternion.RotateTowards(this.transform.rotation, desiredRotation, rotationSpeed * Time.deltaTime);
         }
     }

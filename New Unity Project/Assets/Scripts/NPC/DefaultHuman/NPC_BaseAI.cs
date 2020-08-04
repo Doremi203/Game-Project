@@ -8,7 +8,9 @@ public abstract class NPC_BaseAI : MonoBehaviour
 {
 
     [HideInInspector] public Actor Target;
+    [HideInInspector] public Vector3 TargetLastKnownPosition;
 
+    public float VisionAngle => visionAngle;
     public float VisionRange => visionRange;
     public float TargetLostRange => targetLostRange;
     public float AttackRange => attackRange;
@@ -16,12 +18,15 @@ public abstract class NPC_BaseAI : MonoBehaviour
     [Header("Vision Raycast")]
     [SerializeField] private LayerMask detectionMask;
     [Header("BaseNPC")]
+    [SerializeField] private float visionAngle;
     [SerializeField] private float visionRange;
     [SerializeField] private float targetLostRange;
     [SerializeField] private float attackRange;
 
     protected StateMachine stateMachine = new StateMachine();
     protected BaseNPC npc;
+
+    private float positionRecordEndsTime;
 
     protected virtual void Awake()
     {
@@ -31,6 +36,12 @@ public abstract class NPC_BaseAI : MonoBehaviour
     protected virtual void Update()
     {
         stateMachine.Tick();
+        // Test
+        if (CanSee(Target)) positionRecordEndsTime = Time.time + 2f;
+        if (Target != null && Time.time <= positionRecordEndsTime)
+        {
+            TargetLastKnownPosition = Target.transform.position;
+        }
     }
 
     public virtual Actor GetClosestEnemyActor()
@@ -47,7 +58,7 @@ public abstract class NPC_BaseAI : MonoBehaviour
                 if (actor.Team != npc.Team && !actor.IsDead)
                 {
 
-                    //if (CanSee(actor) == false) continue;
+                    if (CanSee(actor) == false) continue;
 
                     if (closestActor == null)
                     {
@@ -71,41 +82,24 @@ public abstract class NPC_BaseAI : MonoBehaviour
         return Vector3.Distance(transform.position, Target.transform.position);
     }
 
-    public virtual bool CanSeeTheTarget()
-    {
-        if (Target == null) return false;
-        if (Target.IsDead) return false;
-
-        float distanceToPlayer = Vector3.Distance(transform.position, Target.transform.position);
-        if (distanceToPlayer > attackRange) return false;
-
-        RaycastHit hit;
-        Ray ray = new Ray(npc.eyesPosition, (Target.transform.position - npc.eyesPosition).normalized * distanceToPlayer);
-        if (Physics.Linecast(transform.position, Target.transform.position, out hit, detectionMask))
-        {
-            if (hit.transform == Target.transform)
-            {
-                Debug.DrawRay(npc.eyesPosition, (Target.transform.position - npc.eyesPosition).normalized * hit.distance, Color.green);
-                return true;
-            }
-            else
-            {
-                Debug.DrawRay(npc.eyesPosition, (Target.transform.position - npc.eyesPosition).normalized * hit.distance, Color.red);
-            }
-        }
-
-        return false;
-    }
-
     public virtual bool CanSee(Actor targetActor)
     {
         if (targetActor == null) return false;
         if (targetActor.IsDead) return false;
 
+        //
+        Vector3 targetDir = targetActor.transform.position - npc.transform.position;
+        float angle = Vector3.Angle(targetDir, npc.transform.forward);
+
+        if (angle > visionAngle) return false;
+        //
+
         float distanceToPlayer = Vector3.Distance(transform.position, targetActor.transform.position);
-        if (distanceToPlayer > attackRange) return false;
+
+        Ray ray = new Ray(npc.eyesPosition, (targetActor.transform.position - npc.eyesPosition).normalized * distanceToPlayer);
 
         RaycastHit hit;
+
         if (Physics.Linecast(transform.position, targetActor.transform.position, out hit, detectionMask))
         {
             if (hit.transform == targetActor.transform) return true;
@@ -128,6 +122,23 @@ public abstract class NPC_BaseAI : MonoBehaviour
         style.fontSize = 25;
 
         Handles.Label(transform.position, currentState.ToString(), style);
+    }
+
+    private void OnDrawGizmosSelected()
+    {
+
+        Handles.DrawWireCube(TargetLastKnownPosition, new Vector3(0.5f, 0.1f, 0.5f));
+
+        Handles.color = Color.red;
+        Handles.DrawWireDisc(this.transform.position, this.transform.up, attackRange);
+        Handles.color = Color.yellow;
+        Handles.DrawWireDisc(this.transform.position, this.transform.up, visionRange);
+        Handles.color = Color.green;
+        Handles.DrawWireDisc(this.transform.position, this.transform.up, targetLostRange);
+        if (npc == null) return;
+        Gizmos.color = Color.yellow;
+        Gizmos.DrawLine(npc.transform.position, npc.transform.position + Quaternion.AngleAxis(-visionAngle, Vector3.up) * npc.transform.forward * visionRange);
+        Gizmos.DrawLine(npc.transform.position, npc.transform.position + Quaternion.AngleAxis(visionAngle, Vector3.up) * npc.transform.forward * visionRange);
     }
 
 }
