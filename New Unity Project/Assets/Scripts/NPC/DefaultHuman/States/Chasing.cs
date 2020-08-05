@@ -52,7 +52,6 @@ public class Chasing : IState
 
     private void UpdateTargetPosition()
     {
-        //Vector3 targetPosition = ai.Target.transform.position;
         Vector3 targetPosition = ai.TargetLastKnownPosition;
         agent.SetDestination(targetPosition);
         nextPositionUpdate = Time.time + 0.5f;

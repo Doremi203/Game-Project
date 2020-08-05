@@ -5,9 +5,12 @@ using UnityEngine.AI;
 
 public class Investigating : IState
 {
+
     private HumanNPC npc;
     private NavMeshAgent agent;
     private NPC_BaseAI ai;
+
+    private float stuckTime;
 
     public Investigating(HumanNPC newTestNPC, NavMeshAgent agent, NPC_BaseAI ai)
     {
@@ -19,6 +22,7 @@ public class Investigating : IState
     public void OnEnter()
     {
         agent.enabled = true;
+        stuckTime = 0;
     }
 
     public void OnExit()
@@ -45,9 +49,24 @@ public class Investigating : IState
 
         agent.SetDestination(ai.TargetLastKnownPosition);
 
-        if (Vector2.Distance(npcPosition, targetPosition) < 0.5f)
+        if (Vector2.Distance(npcPosition, targetPosition) < 0.1f)
         {
             ai.Target = null;
+        }
+        else
+        {
+            if(agent.velocity.magnitude <= 0)
+            {
+                stuckTime += Time.deltaTime;
+            }
+            else
+            {
+                stuckTime = 0;
+            }
+            if(stuckTime > 1f)
+            {
+                ai.Target = null;
+            }
         }
     }
 

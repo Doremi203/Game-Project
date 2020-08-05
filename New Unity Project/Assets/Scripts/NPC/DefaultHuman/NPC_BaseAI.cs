@@ -11,6 +11,7 @@ public abstract class NPC_BaseAI : MonoBehaviour
     [HideInInspector] public Vector3 TargetLastKnownPosition;
 
     public float VisionAngle => visionAngle;
+    public float AbsoluteVisionRange => absoluteVisionRange;
     public float VisionRange => visionRange;
     public float TargetLostRange => targetLostRange;
     public float AttackRange => attackRange;
@@ -20,6 +21,7 @@ public abstract class NPC_BaseAI : MonoBehaviour
     [Header("BaseNPC")]
     [SerializeField] private float visionAngle;
     [SerializeField] private float visionRange;
+    [SerializeField] private float absoluteVisionRange;
     [SerializeField] private float targetLostRange;
     [SerializeField] private float attackRange;
 
@@ -87,14 +89,16 @@ public abstract class NPC_BaseAI : MonoBehaviour
         if (targetActor == null) return false;
         if (targetActor.IsDead) return false;
 
-        //
-        Vector3 targetDir = targetActor.transform.position - npc.transform.position;
-        float angle = Vector3.Angle(targetDir, npc.transform.forward);
-
-        if (angle > visionAngle) return false;
-        //
-
         float distanceToPlayer = Vector3.Distance(transform.position, targetActor.transform.position);
+
+        if (distanceToPlayer > absoluteVisionRange)
+        {
+            // Сравниваем углы.
+            Vector3 targetDir = targetActor.transform.position - npc.transform.position;
+            float angle = Vector3.Angle(targetDir, npc.transform.forward);
+
+            if (angle > visionAngle) return false;
+        }
 
         Ray ray = new Ray(npc.eyesPosition, (targetActor.transform.position - npc.eyesPosition).normalized * distanceToPlayer);
 
@@ -133,6 +137,7 @@ public abstract class NPC_BaseAI : MonoBehaviour
         Handles.DrawWireDisc(this.transform.position, this.transform.up, attackRange);
         Handles.color = Color.yellow;
         Handles.DrawWireDisc(this.transform.position, this.transform.up, visionRange);
+        Handles.DrawWireDisc(this.transform.position, this.transform.up, absoluteVisionRange);
         Handles.color = Color.green;
         Handles.DrawWireDisc(this.transform.position, this.transform.up, targetLostRange);
         if (npc == null) return;

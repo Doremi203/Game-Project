@@ -56,8 +56,6 @@ public class Roaming : IState
     private void SelectNewPosition()
     {
         Vector3 newDestination = new Vector3();
-        //newDestination.x = npc.transform.position.x + UnityEngine.Random.Range(-10f, 10f);
-        //newDestination.z = npc.transform.position.z + UnityEngine.Random.Range(-10f, 10f);
         newDestination.x = startingPoint.Value.x + UnityEngine.Random.Range(-10f, 10f);
         newDestination.z = startingPoint.Value.z + UnityEngine.Random.Range(-10f, 10f);
         agent.SetDestination(newDestination);
