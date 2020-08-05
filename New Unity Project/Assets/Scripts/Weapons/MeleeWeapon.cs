@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MeleeWeapon : CooldownWeapon
+public class MeleeWeapon : WeaponBase
 {
 
     [SerializeField] private float attackAngle = 90f;

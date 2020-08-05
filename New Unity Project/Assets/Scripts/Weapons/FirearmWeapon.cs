@@ -3,30 +3,24 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class FirearmWeapon : CooldownWeapon
+public class FirearmWeapon : WeaponBase
 {
 
     // Основной класс всех огнестрельных оружий.
+
+    public AmmoType AmmoType => ammoType;
 
     [SerializeField] private float bulletSpreadingMultiplier;
     [SerializeField] private int bulletsCount = 1;
     [SerializeField] private float bulletsSpeed = 1000f;
     [SerializeField] private AmmoType ammoType;
-    public AmmoType AmmoType => ammoType;
     [SerializeField] private BulletBase bulletPrefab;
     [SerializeField] private float damage;
     [SerializeField] private DamageType damageType;
 
-    public UnityEvent OnShootEvent;
-
-    public override bool CanUse()
-    {
-        return true;
-    }
-
     protected override void OnShoot()
     {
-        OnShootEvent.Invoke();
+        base.OnShoot();
         if (weaponHolder.ammoContainer.SpendAmmo(ammoType, 1))
         {
             for (int i = 0; i < bulletsCount; i++)
@@ -37,6 +31,9 @@ public class FirearmWeapon : CooldownWeapon
                 newBullet.Setup(this, owner.transform.forward + spreadOffset, bulletsSpeed, damage, damageType);
             }
         }
+
+        //test
+        SoundEventGenerator.GenerateSoundEvent(owner, owner.transform.position, 25f);
     }
 
 }

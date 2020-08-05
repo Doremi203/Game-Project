@@ -7,18 +7,22 @@ public abstract class WeaponBase : MonoBehaviour
 {
 
     // Основной класс оружия.
+    public Actor Owner => owner;
+    public WeaponHolder WeaponHolder => weaponHolder;
+    public string DisplayName => displayName;
 
     [SerializeField] private string displayName;
-    public string DisplayName => displayName;
+    [SerializeField] private float cooldown;
+    [SerializeField] private bool isAutomatic;
+
+    public UnityEvent OnUsingStartEvent;
+    public UnityEvent OnShootEvent;
 
     protected bool isUsing;
     protected Actor owner;
-    public Actor Owner => owner;
-
     protected WeaponHolder weaponHolder;
-    public WeaponHolder WeaponHolder => weaponHolder;
 
-    public UnityEvent OnUsingStartEvent;
+    private float nextShootTime;
 
     public void SetOwner(WeaponHolder weaponHolder, Actor owner)
     {
@@ -54,8 +58,37 @@ public abstract class WeaponBase : MonoBehaviour
         isUsing = b;
     }
 
-    public abstract bool CanUse();
-    protected abstract void OnUsingStart();
-    protected abstract void OnUsingEnd();
+    public virtual bool CanUse()
+    {
+        return Time.time > nextShootTime;
+    }
+
+    private void Update()
+    {
+        if (isAutomatic && isUsing)
+        {
+            if (Time.time >= nextShootTime)
+            {
+                nextShootTime = Time.time + cooldown;
+                OnShoot();
+            }
+        }
+    }
+
+    protected virtual void OnShoot() 
+    {
+        OnShootEvent.Invoke();
+    }
+
+    protected virtual void OnUsingStart()
+    {
+        if (Time.time > nextShootTime)
+        {
+            nextShootTime = Time.time + cooldown;
+            OnShoot();
+        }
+    }
+
+    protected virtual void OnUsingEnd() { }
 
 }

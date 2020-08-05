@@ -4,7 +4,7 @@ using UnityEditor;
 using UnityEngine;
 
 [RequireComponent(typeof(BaseNPC))]
-public abstract class NPC_BaseAI : MonoBehaviour
+public abstract class NPC_BaseAI : MonoBehaviour, ISoundsListener
 {
 
     [HideInInspector] public Actor Target;
@@ -30,6 +30,13 @@ public abstract class NPC_BaseAI : MonoBehaviour
 
     private float positionRecordEndsTime;
 
+    public void Test(Actor causer, Vector3 eventPosition)
+    {
+        if (causer.Team == npc.Team) return;
+        if (Target == null) Target = causer;
+        TargetLastKnownPosition = eventPosition;
+    }
+
     protected virtual void Awake()
     {
         npc = this.GetComponent<BaseNPC>();
@@ -38,7 +45,6 @@ public abstract class NPC_BaseAI : MonoBehaviour
     protected virtual void Update()
     {
         stateMachine.Tick();
-        // Test
         if (CanSee(Target)) positionRecordEndsTime = Time.time + 2f;
         if (Target != null && Time.time <= positionRecordEndsTime)
         {
@@ -125,7 +131,10 @@ public abstract class NPC_BaseAI : MonoBehaviour
         style.normal.textColor = Color.red;
         style.fontSize = 25;
 
-        Handles.Label(transform.position, currentState.ToString(), style);
+        string targetText = default;
+        if (Target != null) targetText = Target.ToString();
+
+        Handles.Label(transform.position, currentState.ToString() + "\n" + targetText, style);
     }
 
     private void OnDrawGizmosSelected()
