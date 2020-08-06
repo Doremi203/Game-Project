@@ -398,6 +398,7 @@ MonoBehaviour:
   displayName: Shootgun
   cooldown: 0.4
   isAutomatic: 0
+  soundEventDistance: 30
   OnUsingStartEvent:
     m_PersistentCalls:
       m_Calls: []
@@ -415,6 +416,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  OnUsingEndEvent:
+    m_PersistentCalls:
+      m_Calls: []
   bulletSpreadingMultiplier: 0.17
   bulletsCount: 10
   bulletsSpeed: 1000

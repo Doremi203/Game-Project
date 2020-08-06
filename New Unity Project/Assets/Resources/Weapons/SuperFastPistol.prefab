@@ -236,11 +236,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   displayName: Sokol++
+  cooldown: 0.05
+  isAutomatic: 1
+  soundEventDistance: 20
   OnUsingStartEvent:
     m_PersistentCalls:
       m_Calls: []
-  cooldown: 0.05
-  isAutomatic: 1
+  OnShootEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  OnUsingEndEvent:
+    m_PersistentCalls:
+      m_Calls: []
   bulletSpreadingMultiplier: 0.05
   bulletsCount: 1
   bulletsSpeed: 1500
@@ -249,9 +256,6 @@ MonoBehaviour:
     type: 3}
   damage: 100
   damageType: {fileID: 11400000, guid: c5ca7e9201afad441b8efca35b93cc1a, type: 2}
-  OnShootEvent:
-    m_PersistentCalls:
-      m_Calls: []
 --- !u!1 &8957750065556228022
 GameObject:
   m_ObjectHideFlags: 0

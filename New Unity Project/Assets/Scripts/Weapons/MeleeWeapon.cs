@@ -30,8 +30,9 @@ public class MeleeWeapon : WeaponBase
         }
     }
 
-    private void OnDrawGizmos()
+    protected override void OnDrawGizmos()
     {
+        base.OnDrawGizmos();
         if (!owner) return;
         Gizmos.DrawWireSphere(owner.transform.position, attackRadius);
         Gizmos.color = Color.red;

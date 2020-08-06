@@ -90,6 +90,13 @@ public abstract class NPC_BaseAI : MonoBehaviour, ISoundsListener
         return Vector3.Distance(transform.position, Target.transform.position);
     }
 
+    public float GetAngleToTarget()
+    {
+        Vector3 targetDir = Target.transform.position - npc.transform.position;
+        float angle = Vector3.Angle(targetDir, npc.transform.forward);
+        return angle;
+    }
+
     public virtual bool CanSee(Actor targetActor)
     {
         if (targetActor == null) return false;

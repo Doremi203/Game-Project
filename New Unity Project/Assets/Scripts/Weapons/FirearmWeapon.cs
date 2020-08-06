@@ -31,9 +31,6 @@ public class FirearmWeapon : WeaponBase
                 newBullet.Setup(this, owner.transform.forward + spreadOffset, bulletsSpeed, damage, damageType);
             }
         }
-
-        //test
-        SoundEventGenerator.GenerateSoundEvent(owner, owner.transform.position, 25f);
     }
 
 }

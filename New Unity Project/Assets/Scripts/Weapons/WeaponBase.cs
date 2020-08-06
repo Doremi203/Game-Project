@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -14,9 +15,11 @@ public abstract class WeaponBase : MonoBehaviour
     [SerializeField] private string displayName;
     [SerializeField] private float cooldown;
     [SerializeField] private bool isAutomatic;
+    [SerializeField] private float soundEventDistance;
 
     public UnityEvent OnUsingStartEvent;
     public UnityEvent OnShootEvent;
+    public UnityEvent OnUsingEndEvent;
 
     protected bool isUsing;
     protected Actor owner;
@@ -77,6 +80,7 @@ public abstract class WeaponBase : MonoBehaviour
 
     protected virtual void OnShoot() 
     {
+        SoundEventGenerator.GenerateSoundEvent(owner, owner.transform.position, soundEventDistance);
         OnShootEvent.Invoke();
     }
 
@@ -89,6 +93,14 @@ public abstract class WeaponBase : MonoBehaviour
         }
     }
 
-    protected virtual void OnUsingEnd() { }
+    protected virtual void OnUsingEnd() 
+    {
+        OnUsingEndEvent.Invoke();
+    }
+    protected virtual void OnDrawGizmos()
+    {
+        if (!owner) return;
+        Handles.DrawWireDisc(owner.transform.position, owner.transform.up, soundEventDistance);
+    }
 
 }
