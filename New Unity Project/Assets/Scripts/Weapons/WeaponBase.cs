@@ -45,18 +45,11 @@ public abstract class WeaponBase : MonoBehaviour
         */
         if (isUsing)
         {
-            if(b == false)
-            {
-                OnUsingEnd();
-            }
+            if(b == false) OnUsingEnd();
         }
         else
         {
-            if (b == true)
-            {
-                OnUsingStart();
-                OnUsingStartEvent.Invoke();
-            }
+            if (b == true) OnUsingStart();
         }
         isUsing = b;
     }
@@ -91,12 +84,14 @@ public abstract class WeaponBase : MonoBehaviour
             nextShootTime = Time.time + cooldown;
             OnShoot();
         }
+        OnUsingStartEvent.Invoke();
     }
 
     protected virtual void OnUsingEnd() 
     {
         OnUsingEndEvent.Invoke();
     }
+
     protected virtual void OnDrawGizmos()
     {
         if (!owner) return;
