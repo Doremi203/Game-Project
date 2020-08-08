@@ -25,6 +25,8 @@ public class Player : Actor
     [SerializeField] private Transform armBone;
     [SerializeField] private Transform spineBone;
 
+    [SerializeField] private Ability dash;
+
     [SerializeField] private LayerMask weaponsMask;
 
     public void TakeWeapon()
@@ -127,10 +129,12 @@ public class Player : Actor
         if (Input.GetKeyDown(KeyCode.Alpha1)) EquipWeapon(0);
         if (Input.GetKeyDown(KeyCode.Alpha2)) EquipWeapon(1);
         if (Input.GetKeyDown(KeyCode.E)) TakeWeapon();
+        if (Input.GetKeyDown(KeyCode.Space)) dash.Cast();
     }
 
     protected override void Death()
     {
+        UnityEngine.Application.LoadLevel(0);
         base.Death();
     }
 
