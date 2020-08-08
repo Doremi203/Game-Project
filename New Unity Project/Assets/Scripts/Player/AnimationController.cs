@@ -24,10 +24,10 @@ public class AnimationController : MonoBehaviour
 
     private void UpdateAnimator()
     {
-        Vector3 localMove = transform.TransformDirection(new Vector3(Input.GetAxisRaw("Horizontal"), 0, Input.GetAxisRaw("Vertical")));
-	    animator.SetFloat("Horizontal", localMove.x);
-	    animator.SetFloat("Vertical", localMove.z);
-        animator.SetFloat("Speed", 1);
+        Vector3 localMove = transform.TransformDirection(new Vector3(Input.GetAxisRaw("Vertical"), 0, Input.GetAxisRaw("Horizontal")));
+	    animator.SetFloat("Horizontal", localMove.z);
+	    animator.SetFloat("Vertical", localMove.x);
+        animator.SetFloat("Speed", 2f);
     }
     
     private void DoDashAnimation()

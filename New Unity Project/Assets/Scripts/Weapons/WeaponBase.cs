@@ -40,8 +40,9 @@ public abstract class WeaponBase : MonoBehaviour
 
     public void Drop()
     {
-        this.owner = null;
         rb.isKinematic = false;
+        rb.AddForce(owner.transform.forward * 150f);
+        this.owner = null;
         transform.parent = null;
         isUsing = false;
         IsDrop = true;

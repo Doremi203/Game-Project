@@ -7,12 +7,15 @@ public class BulletBase : MonoBehaviour, IDamageable
 {
 
     [SerializeField] private TrailRenderer trail;
+    [SerializeField] private float activationTime = 0.02f;
 
     protected Rigidbody rb;
     protected WeaponBase owner;
     protected float damage;
     protected DamageType damageType;
     protected Team team;
+
+    protected float spawnTime;
 
     public void ApplyDamage(Actor damageCauser, float damage, DamageType damageType)
     {
@@ -50,6 +53,17 @@ public class BulletBase : MonoBehaviour, IDamageable
         }
 
         Destroy(this.gameObject);
+    }
+
+    protected virtual void Awake()
+    {
+        spawnTime = Time.time;
+        trail.enabled = false;
+    }
+
+   protected virtual void Update()
+    {
+        if (!trail.enabled && Time.time >= spawnTime + activationTime) trail.enabled = true;
     }
 
 }
