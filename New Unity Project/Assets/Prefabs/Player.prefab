@@ -41,7 +41,6 @@ GameObject:
   m_Component:
   - component: {fileID: 8037512694796132850}
   - component: {fileID: 8037512694796132852}
-  - component: {fileID: 5168007232961328476}
   - component: {fileID: 3602111582893714108}
   - component: {fileID: 6851913591751166064}
   - component: {fileID: 644702065143471220}
@@ -89,22 +88,6 @@ CharacterController:
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &5168007232961328476
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8037512694796132851}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8f834aa07f19bf84b880bd496518508e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  OnAmmoChangedEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  infiniteAmmo: 0
 --- !u!114 &3602111582893714108
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -120,6 +103,7 @@ MonoBehaviour:
   OnWeaponChanged:
     m_PersistentCalls:
       m_Calls: []
+  infinityAmmo: 0
 --- !u!114 &6851913591751166064
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -175,6 +159,9 @@ MonoBehaviour:
     type: 3}
   armBone: {fileID: 6389388755547748696}
   spineBone: {fileID: 4781418437207329168}
+  weaponsMask:
+    serializedVersion: 2
+    m_Bits: 0
 --- !u!114 &358503627
 MonoBehaviour:
   m_ObjectHideFlags: 0

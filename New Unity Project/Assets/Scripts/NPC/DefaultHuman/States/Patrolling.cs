@@ -56,7 +56,7 @@ public class Patrolling : IState
         targetPosition.x = targetPoint.transform.position.x;
         targetPosition.y = targetPoint.transform.position.z;
 
-        if (Vector2.Distance(npcPosition, targetPosition) < 0.1f)
+        if (Vector2.Distance(npcPosition, targetPosition) < 0.5f)
         {
             FindNextPoint();
         }

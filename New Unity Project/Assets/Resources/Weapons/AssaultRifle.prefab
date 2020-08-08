@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 8507598319548712853}
   - component: {fileID: 5000820226171314915}
   - component: {fileID: 8076081560970568988}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Cube (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -90,7 +90,7 @@ GameObject:
   - component: {fileID: 382163902646149293}
   - component: {fileID: 2397341554212081269}
   - component: {fileID: 5223445067846336567}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -167,7 +167,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3082369326904689747}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Visuals
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -204,7 +204,7 @@ GameObject:
   - component: {fileID: 7131999762976315407}
   - component: {fileID: 8364006516981327673}
   - component: {fileID: 8246672812036284571}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Cube (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -283,8 +283,10 @@ GameObject:
   - component: {fileID: 8441526025296156509}
   - component: {fileID: 8441526025296156508}
   - component: {fileID: 8363864089779841205}
-  m_Layer: 0
-  m_Name: WeaponTest
+  - component: {fileID: 6390358961332711615}
+  - component: {fileID: 970181128307725726}
+  m_Layer: 12
+  m_Name: AssaultRifle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -317,10 +319,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e91e4b534f499a54ca53488a589454b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  displayName: AR
+  displayName: Assault Rifle
   cooldown: 0.2
   isAutomatic: 1
-  soundEventDistance: 30
+  soundEventDistance: 20
   OnUsingStartEvent:
     m_PersistentCalls:
       m_Calls: []
@@ -345,6 +347,7 @@ MonoBehaviour:
   bulletsCount: 1
   bulletsSpeed: 1500
   ammoType: {fileID: 11400000, guid: 6e1dae67b50998348b59c64ecc046261, type: 2}
+  startingAmmo: 20
   bulletPrefab: {fileID: 6444695937657245857, guid: a46be6a792e635446b920a87e1c6faec,
     type: 3}
   damage: 600
@@ -445,6 +448,35 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!54 &6390358961332711615
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8441526025296156498}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!65 &970181128307725726
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8441526025296156498}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.2, y: 0.35, z: 1.19}
+  m_Center: {x: 0, y: 0.02, z: 0.45}
 --- !u!1 &8490075149772370193
 GameObject:
   m_ObjectHideFlags: 0
@@ -456,7 +488,7 @@ GameObject:
   - component: {fileID: 4398737113744238519}
   - component: {fileID: 1643514168443982236}
   - component: {fileID: 6278528141074838936}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Cube (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -535,7 +567,7 @@ GameObject:
   - component: {fileID: 2241517010357826146}
   - component: {fileID: 1135615450935769691}
   - component: {fileID: 2781435095546908264}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Cube (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 5388648734838480162}
   - component: {fileID: 7776188326835612389}
   - component: {fileID: 5172573241363128547}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Cube (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -90,7 +90,7 @@ GameObject:
   - component: {fileID: 7465758076350314281}
   - component: {fileID: 331330445839372920}
   - component: {fileID: 5565867505898487280}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Cube (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -167,7 +167,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4088282501492312180}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Visuals
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -183,7 +183,7 @@ Transform:
   m_GameObject: {fileID: 4321841586016096855}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.81118, y: 0.81118, z: 0.81118}
   m_Children:
   - {fileID: 6963804704180493304}
   - {fileID: 7465758076350314281}
@@ -203,7 +203,7 @@ GameObject:
   - component: {fileID: 4167823648455043291}
   - component: {fileID: 8442408671309245198}
   - component: {fileID: 8064513649666912569}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Cube (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -282,7 +282,7 @@ GameObject:
   - component: {fileID: 6963804704180493304}
   - component: {fileID: 4908204850543626230}
   - component: {fileID: 5358357779543962666}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -361,8 +361,10 @@ GameObject:
   - component: {fileID: 8441526025296156509}
   - component: {fileID: 8441526025296156508}
   - component: {fileID: 7141934738785977745}
-  m_Layer: 0
-  m_Name: ShootgunTest
+  - component: {fileID: 7488411153954620646}
+  - component: {fileID: 6742688095687498139}
+  m_Layer: 12
+  m_Name: Shootgun
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -377,7 +379,7 @@ Transform:
   m_GameObject: {fileID: 8441526025296156498}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.7415575, y: 0.7415575, z: 0.7415575}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4088282501492312180}
   m_Father: {fileID: 0}
@@ -423,6 +425,7 @@ MonoBehaviour:
   bulletsCount: 10
   bulletsSpeed: 1000
   ammoType: {fileID: 11400000, guid: e1469884c35eb4f4fbaf97ebd325cf5b, type: 2}
+  startingAmmo: 6
   bulletPrefab: {fileID: 6444695937657245857, guid: a46be6a792e635446b920a87e1c6faec,
     type: 3}
   damage: 500
@@ -523,3 +526,32 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!54 &7488411153954620646
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8441526025296156498}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!65 &6742688095687498139
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8441526025296156498}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.2, y: 0.35, z: 1.19}
+  m_Center: {x: 0, y: 0.02, z: 0.45}

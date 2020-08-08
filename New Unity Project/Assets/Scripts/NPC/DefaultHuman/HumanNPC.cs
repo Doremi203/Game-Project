@@ -23,4 +23,10 @@ public class HumanNPC : BaseNPC
         weaponHolder.EquipWeapon(Instantiate(weaponPrefab, armBone));
     }
 
+    protected override void Death()
+    {
+        weaponHolder.currentWeapon.Drop();
+        base.Death();
+    }
+
 }

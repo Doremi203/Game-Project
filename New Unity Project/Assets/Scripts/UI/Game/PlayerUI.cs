@@ -20,7 +20,7 @@ public class PlayerUI : MonoBehaviour
     private void Awake()
     {
         player.weaponHolder.OnWeaponChanged.AddListener(WeaponChanged);
-        player.weaponHolder.ammoContainer.OnAmmoChangedEvent.AddListener(RefreshUI);
+        //layer.weaponHolder.ammoContainer.OnAmmoChangedEvent.AddListener(RefreshUI);
     }
 
     private void Start()
@@ -34,11 +34,11 @@ public class PlayerUI : MonoBehaviour
     private void WeaponChanged()
     {
         // Отписываемся от событий предыдущего оружия.
-        currentWeapon?.OnUsingStartEvent.RemoveListener(RefreshUI);
+        currentWeapon?.OnShootEvent.RemoveListener(RefreshUI);
         currentWeapon = player.weaponHolder.currentWeapon;
         weaponInfoText.text = currentWeapon.DisplayName;
         // Подписываемся на новое.
-        currentWeapon?.OnUsingStartEvent.AddListener(RefreshUI);
+        currentWeapon?.OnShootEvent.AddListener(RefreshUI);
         RefreshUI();
     }
 
@@ -48,7 +48,7 @@ public class PlayerUI : MonoBehaviour
         weaponInfo = currentWeapon.DisplayName;
         if (currentWeapon is FirearmWeapon)
         {
-            weaponInfo = weaponInfo + " | " + player.weaponHolder.ammoContainer.GetAmountOfAmmo((currentWeapon as FirearmWeapon)?.AmmoType).ToString();
+            weaponInfo = weaponInfo + " | " + (player.weaponHolder.currentWeapon as FirearmWeapon).CurrentAmmo.ToString();
         }
         weaponInfoText.text = weaponInfo;
         //weaponInfoText.text = $"{currentWeapon.DisplayName} | {ammoCount}";

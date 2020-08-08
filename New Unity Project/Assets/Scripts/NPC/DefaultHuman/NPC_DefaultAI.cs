@@ -20,13 +20,13 @@ public class NPC_DefaultAI : NPC_BaseAI
         weaponHolder = this.GetComponent<WeaponHolder>();
 
         // States
-        var roaming = new Roaming(npc as HumanNPC, agent, this);
+        var chilling = new Chilling(npc as HumanNPC, agent, this);
         var chasing = new Chasing(npc as HumanNPC, agent, this);
         var attacking = new Attacking(npc as HumanNPC, agent, weaponHolder, this);
         var investigating = new Investigating(npc as HumanNPC, agent, this);
 
         // Transitions
-        At(roaming, chasing, hasTarget());
+        At(chilling, chasing, hasTarget());
 
         At(chasing, attacking, canShootPlayer());
         At(chasing, investigating, cantSeeTarget());
@@ -36,11 +36,11 @@ public class NPC_DefaultAI : NPC_BaseAI
         At(attacking, investigating, cantSeeTarget());
         At(attacking, chasing, cantShootPlayer());
 
-        stateMachine.AddAnyTransition(roaming, hasNoTarget());
-        stateMachine.AddAnyTransition(roaming, isPlayerFarAway());
+        stateMachine.AddAnyTransition(chilling, hasNoTarget());
+        stateMachine.AddAnyTransition(chilling, isPlayerFarAway());
         stateMachine.AddAnyTransition(attacking, canShootPlayer());
 
-        stateMachine.SetState(roaming);
+        stateMachine.SetState(chilling);
 
         void At(IState from, IState to, Func<bool> condition) => stateMachine.AddTransition(from, to, condition);
 

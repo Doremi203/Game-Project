@@ -7,7 +7,7 @@ public static class SoundEventGenerator
 
     public static void GenerateSoundEvent(Actor causer, Vector3 eventPosition, float radius)
     {
-        Collider[] hits = Physics.OverlapSphere(eventPosition, radius); ;
+        Collider[] hits = Physics.OverlapSphere(eventPosition, radius);
 
         foreach (var item in hits)
         {

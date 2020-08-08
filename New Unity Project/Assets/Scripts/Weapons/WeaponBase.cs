@@ -4,13 +4,14 @@ using UnityEditor;
 using UnityEngine;
 using UnityEngine.Events;
 
+[RequireComponent(typeof(Rigidbody))]
 public abstract class WeaponBase : MonoBehaviour
 {
 
     // Основной класс оружия.
     public Actor Owner => owner;
-    public WeaponHolder WeaponHolder => weaponHolder;
     public string DisplayName => displayName;
+    public bool IsDrop { get; private set; } = true;
 
     [SerializeField] private string displayName;
     [SerializeField] private float cooldown;
@@ -23,29 +24,45 @@ public abstract class WeaponBase : MonoBehaviour
 
     protected bool isUsing;
     protected Actor owner;
-    protected WeaponHolder weaponHolder;
+
+    protected bool infinityAmmo;
 
     private float nextShootTime;
+    private Rigidbody rb;
 
-    public void SetOwner(WeaponHolder weaponHolder, Actor owner)
+    public void Pickup(Actor owner, bool infinityAmmo)
     {
         this.owner = owner;
-        this.weaponHolder = weaponHolder;
+        rb.isKinematic = true;
+        IsDrop = false;
+        this.infinityAmmo = infinityAmmo;
+    }
+
+    public void Drop()
+    {
+        this.owner = null;
+        rb.isKinematic = false;
+        transform.parent = null;
+        isUsing = false;
+        IsDrop = true;
     }
 
     public void Use(bool b)
     {
-        /*
+
         if (CanUse() == false)
         {
-            isUsing = false;
-            OnUsingEnd();
+            if (isUsing)
+            {
+                isUsing = false;
+                OnUsingEnd();
+            }
             return;
         }
-        */
+
         if (isUsing)
         {
-            if(b == false) OnUsingEnd();
+            if (b == false) OnUsingEnd();
         }
         else
         {
@@ -59,7 +76,18 @@ public abstract class WeaponBase : MonoBehaviour
         return Time.time > nextShootTime;
     }
 
-    private void Update()
+    // На будущее.
+    public virtual bool CanPickup()
+    {
+        return true;
+    }
+
+    protected virtual void Awake()
+    {
+        rb = GetComponent<Rigidbody>();
+    }
+
+    protected virtual void Update()
     {
         if (isAutomatic && isUsing)
         {
