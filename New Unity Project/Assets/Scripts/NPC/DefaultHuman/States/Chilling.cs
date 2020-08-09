@@ -26,6 +26,7 @@ public class Chilling : IState
     {
         agent.enabled = true;
         agent.SetDestination(startingPoint);
+        nextFindTargetTime = 0;
     }
 
     public void OnExit()

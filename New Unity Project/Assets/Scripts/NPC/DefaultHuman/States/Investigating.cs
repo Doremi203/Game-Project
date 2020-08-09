@@ -6,11 +6,12 @@ using UnityEngine.AI;
 public class Investigating : IState
 {
 
+    public float stuckTime;
+
     private HumanNPC npc;
     private NavMeshAgent agent;
     private NPC_BaseAI ai;
-
-    private float stuckTime;
+    private float nextFindTargetTime;
 
     public Investigating(HumanNPC newTestNPC, NavMeshAgent agent, NPC_BaseAI ai)
     {
@@ -23,6 +24,7 @@ public class Investigating : IState
     {
         agent.enabled = true;
         stuckTime = 0;
+        nextFindTargetTime = 0;
     }
 
     public void OnExit()
@@ -49,25 +51,22 @@ public class Investigating : IState
 
         agent.SetDestination(ai.TargetLastKnownPosition);
 
-        if (Vector2.Distance(npcPosition, targetPosition) < 0.1f)
+        if (agent.velocity.magnitude <= 0)
         {
-            ai.Target = null;
+            stuckTime += Time.deltaTime;
         }
         else
         {
-            if(agent.velocity.magnitude <= 0)
-            {
-                stuckTime += Time.deltaTime;
-            }
-            else
-            {
-                stuckTime = 0;
-            }
-            if(stuckTime > 1f)
-            {
-                ai.Target = null;
-            }
+            stuckTime = 0;
         }
+
+        if (Time.time >= nextFindTargetTime) TryFindTarget();
+    }
+
+    private void TryFindTarget()
+    {
+        if(ai.Target == null) ai.Target = ai.GetClosestEnemyActor();
+        nextFindTargetTime = Time.time + 0.5f;
     }
 
 }

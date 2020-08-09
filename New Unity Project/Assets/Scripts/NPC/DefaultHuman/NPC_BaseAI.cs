@@ -9,6 +9,8 @@ public abstract class NPC_BaseAI : MonoBehaviour, ISoundsListener
 
     [HideInInspector] public Actor Target;
     [HideInInspector] public Vector3 TargetLastKnownPosition;
+    [HideInInspector] public Vector3 LastSoundEventPosition;
+    [HideInInspector] public float LastSoundEventExpireTime;
 
     public float VisionAngle => visionAngle;
     public float AbsoluteVisionRange => absoluteVisionRange;
@@ -34,8 +36,9 @@ public abstract class NPC_BaseAI : MonoBehaviour, ISoundsListener
     {
         if (causer == this) return;
         if (causer.Team == npc.Team) return;
-        if (Target == null) Target = causer;
+        LastSoundEventPosition = eventPosition;
         TargetLastKnownPosition = eventPosition;
+        LastSoundEventExpireTime = Time.time + 2f;
     }
 
     protected virtual void Awake()

@@ -45,22 +45,14 @@ public class Actor : MonoBehaviour, IDamageable
 
     protected virtual void HealthChanged(float health)
     {
-        if (isDead)
-        {
-            return;
-        }
-        else
-        {
-            if (health <= 0)
-            {
-                Death();
-            }
-        }
+        if (isDead) return;
+        if (health <= 0) Death();
     }
 
     protected void OnDrawGizmos()
     {
-        Gizmos.DrawLine(eyesPosition, eyesPosition + transform.forward);
+        Gizmos.color = Color.red;
+        Gizmos.DrawLine(eyesPosition, eyesPosition + transform.forward * 2f);
     }
 
 }
