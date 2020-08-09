@@ -35,7 +35,16 @@ public abstract class NPC_BaseAI : MonoBehaviour, ISoundsListener
     public void Test(Actor causer, Vector3 eventPosition)
     {
         if (causer == this) return;
-        if (causer.Team == npc.Team) return;
+        if (causer.Team == npc.Team)
+        {
+            // Костыль, ну а хули поделаешь?
+            NPC_BaseAI causerAI = causer.GetComponent<NPC_BaseAI>();
+            if (causerAI == false) return;
+            if (causerAI.Target == false) return;
+            TargetLastKnownPosition = causerAI.Target.transform.position;
+            LastSoundEventExpireTime = Time.time + 2f;
+            return;
+        }
         LastSoundEventPosition = eventPosition;
         TargetLastKnownPosition = eventPosition;
         LastSoundEventExpireTime = Time.time + 2f;
