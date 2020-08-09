@@ -40,7 +40,7 @@ public class FirearmWeapon : WeaponBase
         for (int i = 0; i < bulletsCount; i++)
         {
             Vector3 spreadOffset = owner.transform.right * Random.Range(-bulletSpreadingMultiplier, bulletSpreadingMultiplier);
-            Vector3 bulletSpawnPosition = owner.eyesPosition + owner.transform.forward * 1f;
+            Vector3 bulletSpawnPosition = owner.eyesPosition;
             BulletBase newBullet = Instantiate(bulletPrefab, bulletSpawnPosition, transform.rotation);
             newBullet.Setup(this, owner.transform.forward + spreadOffset, bulletsSpeed, damage, damageType);
         }
