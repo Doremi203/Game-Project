@@ -425,7 +425,8 @@ MonoBehaviour:
   bulletsCount: 10
   bulletsSpeed: 1000
   ammoType: {fileID: 11400000, guid: e1469884c35eb4f4fbaf97ebd325cf5b, type: 2}
-  startingAmmo: 6
+  startingAmmoMin: 2
+  startingAmmoMax: 6
   bulletPrefab: {fileID: 6444695937657245857, guid: a46be6a792e635446b920a87e1c6faec,
     type: 3}
   damage: 500

@@ -1,0 +1,62 @@
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+[RequireComponent(typeof(PlayerController))]
+[RequireComponent(typeof(Dash))]
+[RequireComponent(typeof(WeaponHolder))]
+[RequireComponent(typeof(Player))]
+public class PlayerInput : MonoBehaviour
+{
+
+	[Header("Movement")]
+	[SerializeField] private InputBinding moveForwardInput;
+	[SerializeField] private InputBinding moveBackwardInput;
+	[SerializeField] private InputBinding moveRightInput;
+	[SerializeField] private InputBinding moveLeftInput;
+	[Header("Weapons")]
+	[SerializeField] private InputBinding shoot;
+	[SerializeField] private InputBinding pickupWeapon;
+	[SerializeField] private InputBinding equipKatana;
+	[SerializeField] private InputBinding equipWeapon;
+	[Header("Player")]
+	[SerializeField] private InputBinding dash;
+
+	private PlayerController playerController;
+	private Dash dashAbility;
+	private WeaponHolder weaponHolder;
+	private Player player;
+
+    private void Awake()
+    {
+		playerController = GetComponent<PlayerController>();
+		dashAbility = GetComponent<Dash>();
+		weaponHolder = GetComponent<WeaponHolder>();
+		player = GetComponent<Player>();
+	}
+
+	private void Update()
+	{
+		Vector3 inputVector = new Vector3();
+
+		if (Input.GetKey(moveForwardInput.GetKeyCode())) inputVector.z += 1;
+		if (Input.GetKey(moveBackwardInput.GetKeyCode())) inputVector.z -= 1;
+		if (Input.GetKey(moveRightInput.GetKeyCode())) inputVector.x += 1;
+		if (Input.GetKey(moveLeftInput.GetKeyCode())) inputVector.x -= 1;
+
+		inputVector = inputVector.normalized;
+
+		playerController.SetVelocity(inputVector);
+
+		if (Input.GetKeyDown(dash.GetKeyCode())) dashAbility.Cast();
+
+		weaponHolder.currentWeapon.Use(Input.GetKey(shoot.GetKeyCode()));
+
+		if (Input.GetKeyDown(pickupWeapon.GetKeyCode())) player.TakeWeapon();
+
+		if (Input.GetKeyDown(equipKatana.GetKeyCode())) player.EquipWeapon(0);
+		if (Input.GetKeyDown(equipWeapon.GetKeyCode())) player.EquipWeapon(1);
+
+	}
+
+}

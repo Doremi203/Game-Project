@@ -41,11 +41,11 @@ GameObject:
   m_Component:
   - component: {fileID: 8037512694796132850}
   - component: {fileID: 8037512694796132852}
-  - component: {fileID: 3602111582893714108}
   - component: {fileID: 6851913591751166064}
+  - component: {fileID: 8999760350718111902}
+  - component: {fileID: 3602111582893714108}
   - component: {fileID: 644702065143471220}
   - component: {fileID: 2499621001023819872}
-  - component: {fileID: 358503627}
   - component: {fileID: 358503628}
   - component: {fileID: 2590107146486875487}
   m_Layer: 10
@@ -88,6 +88,41 @@ CharacterController:
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &6851913591751166064
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8037512694796132851}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d08c7091b433a8749974d632bf2825cd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveSpeed: 8
+  gravity: 9.81
+--- !u!114 &8999760350718111902
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8037512694796132851}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8168f3162ebb7d04aa023b2c5b31d6d2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveForwardInput: {fileID: 11400000, guid: 53cde04eeb805f844a39e552e2de434f, type: 2}
+  moveBackwardInput: {fileID: 11400000, guid: f91fc1c3daf5dbf4499be047915e56f8, type: 2}
+  moveRightInput: {fileID: 11400000, guid: 8540b3673fab7a14382cba6a6d3bbd19, type: 2}
+  moveLeftInput: {fileID: 11400000, guid: ead7079c5d30c8c46bd326740c072c8d, type: 2}
+  shoot: {fileID: 11400000, guid: 370fe5de0acc96940b2ff4c89126ade4, type: 2}
+  pickupWeapon: {fileID: 11400000, guid: a3d922e1630cba142b26c10b8a4fd7f2, type: 2}
+  equipKatana: {fileID: 11400000, guid: 842843c2e51577f4d8b0a33f6fbce194, type: 2}
+  equipWeapon: {fileID: 11400000, guid: 7740bec651bce5e48a6c302ebf097df2, type: 2}
+  dash: {fileID: 11400000, guid: 0a196bc680281b2449d3999593f87a20, type: 2}
 --- !u!114 &3602111582893714108
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -104,21 +139,6 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   infinityAmmo: 0
---- !u!114 &6851913591751166064
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8037512694796132851}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d08c7091b433a8749974d632bf2825cd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  moveSpeed: 8
-  gravity: 9.81
-  player: {fileID: 2499621001023819872}
 --- !u!114 &644702065143471220
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -131,7 +151,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d4bc19bf69facbb40afac38af6116178, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startHealth: 1000
+  startHealth: 1
   OnHealthChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -155,29 +175,13 @@ MonoBehaviour:
   team: {fileID: 11400000, guid: d29a5ea4e91d4b54f866f89571407510, type: 2}
   prefabWeaponA: {fileID: -6386357407385631847, guid: ac6652c404eb06245b52da11ec5cdcac,
     type: 3}
-  prefabWeaponB: {fileID: 8441526025296156508, guid: 7dcde77e320f2a14fa57ca2a52a4d07b,
-    type: 3}
+  prefabWeaponB: {fileID: 0}
   armBone: {fileID: 6389388755547748696}
   spineBone: {fileID: 4781418437207329168}
+  dash: {fileID: 358503628}
   weaponsMask:
     serializedVersion: 2
-    m_Bits: 0
---- !u!114 &358503627
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8037512694796132851}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a7507caf4e6ede54caf3a107a1a28640, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  skillSprite: {fileID: 0}
-  Casted:
-    m_PersistentCalls:
-      m_Calls: []
+    m_Bits: 4096
 --- !u!114 &358503628
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -195,6 +199,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   dashForce: 5
+  cooldown: 2
 --- !u!114 &2590107146486875487
 MonoBehaviour:
   m_ObjectHideFlags: 0

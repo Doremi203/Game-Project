@@ -19,7 +19,7 @@ public class NPCAnimatorController : MonoBehaviour
     private void Update()
     {
         Vector3 moveDirection = agent.velocity;
-        moveDirection = transform.TransformDirection(moveDirection);
+        moveDirection = transform.InverseTransformDirection(moveDirection);
         animator.SetFloat("Horizontal", moveDirection.x);
         animator.SetFloat("Vertical", moveDirection.z);
         animator.SetFloat("Speed", agent.velocity.magnitude / 2f);
