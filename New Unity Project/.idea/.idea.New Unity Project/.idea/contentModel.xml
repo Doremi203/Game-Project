@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ContentModelStore">
+    <e p="C:\Users\maxim\AppData\Local\JetBrains\Rider2020.1\extResources" t="IncludeRecursive" />
+    <e p="C:\Users\maxim\AppData\Local\JetBrains\Rider2020.1\resharper-host\Local\Transient\ReSharperHost\v201\SolutionCaches\_New Unity Project.-106520544.00" t="ExcludeRecursive" />
+    <e p="C:\Users\maxim\OneDrive\Documents\GitHub\Game-Project\New Unity Project" t="IncludeRecursive">
+      <e p="Assembly-CSharp.csproj" t="IncludeRecursive" />
+      <e p="Assets" t="Include">
+        <e p="Scripts" t="Include">
+          <e p="Actor.cs" t="Include" />
+          <e p="HealthComponent.cs" t="Include" />
+          <e p="Input" t="Include">
+            <e p="InputManager.cs" t="Include" />
+          </e>
+          <e p="InteractableObjects" t="Include">
+            <e p="InteractableObject.cs" t="Include" />
+            <e p="WeaponPickup.cs" t="Include" />
+          </e>
+          <e p="Interfaces" t="Include">
+            <e p="IAction.cs" t="Include" />
+            <e p="IDamageable.cs" t="Include" />
+          </e>
+          <e p="NPC" t="Include">
+            <e p="DefaultHuman" t="Include">
+              <e p="BaseNPC.cs" t="Include" />
+              <e p="HumanNPC.cs" t="Include" />
+              <e p="NPC_BaseAI.cs" t="Include" />
+              <e p="NPC_DefaultAI.cs" t="Include" />
+              <e p="States" t="Include">
+                <e p="Attacking.cs" t="Include" />
+                <e p="Chasing.cs" t="Include" />
+                <e p="Roaming.cs" t="Include" />
+              </e>
+            </e>
+            <e p="Dummy.cs" t="Include" />
+            <e p="NPCAnimatorController.cs" t="Include" />
+            <e p="StateMachine.cs" t="Include" />
+          </e>
+          <e p="Pickups" t="Include">
+            <e p="AmmoPickup.cs" t="Include" />
+            <e p="PickupBase.cs" t="Include" />
+          </e>
+          <e p="Player" t="Include">
+            <e p="Ability.cs" t="Include" />
+            <e p="AnimationController.cs" t="Include" />
+            <e p="Dash.cs" t="Include" />
+            <e p="Katana.cs" t="Include" />
+            <e p="Player.cs" t="Include" />
+            <e p="PlayerController.cs" t="Include" />
+            <e p="PlayerControllerBetter.cs" t="Include" />
+          </e>
+          <e p="ScriptableObjects" t="Include">
+            <e p="AmmoType.cs" t="Include" />
+            <e p="DamageType.cs" t="Include" />
+            <e p="Team.cs" t="Include" />
+          </e>
+          <e p="UI" t="Include">
+            <e p="Game" t="Include">
+              <e p="AbilityUi.cs" t="Include" />
+              <e p="PlayerUI.cs" t="Include" />
+            </e>
+          </e>
+          <e p="Utils" t="Include">
+            <e p="Utils.cs" t="Include" />
+          </e>
+          <e p="Weapons" t="Include">
+            <e p="Bullets" t="Include">
+              <e p="BulletBase.cs" t="Include" />
+            </e>
+            <e p="CooldownWeapon.cs" t="Include" />
+            <e p="FirearmWeapon.cs" t="Include" />
+            <e p="WeaponBase.cs" t="Include" />
+            <e p="WeaponHolder" t="Include">
+              <e p="AmmoContainer.cs" t="Include" />
+              <e p="WeaponHolder.cs" t="Include" />
+            </e>
+          </e>
+        </e>
+        <e p="TextMesh Pro" t="Include">
+          <e p="Fonts" t="Include">
+            <e p="LiberationSans - OFL.txt" t="Include" />
+          </e>
+          <e p="Resources" t="Include">
+            <e p="LineBreaking Following Characters.txt" t="Include" />
+            <e p="LineBreaking Leading Characters.txt" t="Include" />
+            <e p="Shaders" t="Include">
+              <e p="TMP_Bitmap-Custom-Atlas.shader" t="Include" />
+              <e p="TMP_Bitmap-Mobile.shader" t="Include" />
+              <e p="TMP_Bitmap.shader" t="Include" />
+              <e p="TMP_SDF Overlay.shader" t="Include" />
+              <e p="TMP_SDF-Mobile Masking.shader" t="Include" />
+              <e p="TMP_SDF-Mobile Overlay.shader" t="Include" />
+              <e p="TMP_SDF-Mobile.shader" t="Include" />
+              <e p="TMP_SDF-Surface-Mobile.shader" t="Include" />
+              <e p="TMP_SDF-Surface.shader" t="Include" />
+              <e p="TMP_SDF.shader" t="Include" />
+              <e p="TMP_Sprite.shader" t="Include" />
+              <e p="TMPro.cginc" t="Include" />
+              <e p="TMPro_Properties.cginc" t="Include" />
+              <e p="TMPro_Surface.cginc" t="Include" />
+            </e>
+          </e>
+          <e p="Sprites" t="Include">
+            <e p="EmojiOne Attribution.txt" t="Include" />
+          </e>
+        </e>
+      </e>
+      <e p="New Unity Project.sln" t="IncludeFlat" />
+      <e p="obj" t="ExcludeRecursive" />
+      <e p="Packages" t="ExcludeRecursive" />
+      <e p="Temp\bin" t="ExcludeRecursive" />
+    </e>
+  </component>
+</project>

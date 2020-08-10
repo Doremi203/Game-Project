@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-[RequireComponent(typeof(AmmoContainer))]
 public class WeaponHolder : MonoBehaviour
 {
 
@@ -12,20 +11,21 @@ public class WeaponHolder : MonoBehaviour
     // игрок может, нпс могут.
 
     public UnityEvent OnWeaponChanged;
-    public AmmoContainer ammoContainer { get; private set; }
     public WeaponBase currentWeapon { get; private set; }
+
+    [SerializeField] private bool infinityAmmo;
 
     // Взять оружие в руки.
     public void EquipWeapon(WeaponBase weapon)
     {
         currentWeapon = weapon;
-        currentWeapon.SetOwner(this);
+        currentWeapon.Pickup(GetComponent<Actor>(), infinityAmmo);
         OnWeaponChanged.Invoke();
     }
 
     private void Awake()
-    {
-        ammoContainer = GetComponent<AmmoContainer>();
+    {       
+        if (GetComponent<Actor>() == null) Debug.LogError("There is no actor component on " + gameObject.name);
     }
 
 }
