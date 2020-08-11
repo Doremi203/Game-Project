@@ -48,6 +48,18 @@ public class PlayerInput : MonoBehaviour
 
 		playerController.SetVelocity(inputVector);
 
+		Ray cameraRay = Camera.main.ScreenPointToRay(Input.mousePosition);
+		Plane groundPlane = new Plane(Vector3.up, Vector3.zero);
+
+		if (groundPlane.Raycast(cameraRay, out var rayLenght))
+		{
+			Vector3 pointToLook = cameraRay.GetPoint(rayLenght);
+			Debug.DrawLine(cameraRay.origin, pointToLook, Color.blue);
+			//player.transform.LookAt(new Vector3(pointToLook.x, transform.position.y, pointToLook.z));
+			Vector3 direction = pointToLook - player.transform.position;
+			player.desiredRotation = Quaternion.LookRotation(new Vector3(direction.x, 0, direction.z));
+		}
+
 		if (Input.GetKeyDown(dash.GetKeyCode())) dashAbility.Cast();
 
 		weaponHolder.currentWeapon.Use(Input.GetKey(shoot.GetKeyCode()));

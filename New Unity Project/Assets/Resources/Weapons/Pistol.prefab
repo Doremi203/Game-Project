@@ -286,7 +286,7 @@ GameObject:
   - component: {fileID: 6390358961332711615}
   - component: {fileID: 970181128307725726}
   m_Layer: 12
-  m_Name: AssaultRifle
+  m_Name: Pistol
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -320,9 +320,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   displayName: Assault Rifle
-  cooldown: 0.2
-  isAutomatic: 1
-  soundEventDistance: 20
+  cooldown: 0.3
+  isAutomatic: 0
+  soundEventDistance: 15
   OnUsingStartEvent:
     m_PersistentCalls:
       m_Calls: []
@@ -343,12 +343,12 @@ MonoBehaviour:
   OnUsingEndEvent:
     m_PersistentCalls:
       m_Calls: []
-  bulletSpreadingMultiplier: 0.075
+  bulletSpreadingMultiplier: 0
   bulletsCount: 1
-  bulletsSpeed: 1500
+  bulletsSpeed: 1200
   ammoType: {fileID: 11400000, guid: 6e1dae67b50998348b59c64ecc046261, type: 2}
-  startingAmmoMin: 15
-  startingAmmoMax: 20
+  startingAmmoMin: 7
+  startingAmmoMax: 12
   bulletPrefab: {fileID: 6444695937657245857, guid: a46be6a792e635446b920a87e1c6faec,
     type: 3}
   damage: 1000

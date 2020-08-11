@@ -11,6 +11,11 @@ public class NPCAnimatorController : MonoBehaviour
 
     private NavMeshAgent agent;
 
+    public void Death()
+    {
+        animator.SetTrigger("Death");
+    }
+
     private void Awake()
     {
         agent = GetComponent<NavMeshAgent>();

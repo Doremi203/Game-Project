@@ -47,10 +47,8 @@ public class BulletBase : MonoBehaviour, IDamageable
         if (other.transform.GetComponent<Actor>()?.Team == team) return;
 
         IDamageable damageable = other.transform.GetComponent<IDamageable>();
-        if (damageable != null)
-        {
-            damageable.ApplyDamage(owner.Owner, damage, damageType);
-        }
+
+        if (damageable != null) damageable.ApplyDamage(owner.Owner, damage, damageType);
 
         Destroy(this.gameObject);
     }

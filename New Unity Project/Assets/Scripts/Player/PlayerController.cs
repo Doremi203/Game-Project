@@ -25,7 +25,7 @@ public class PlayerController : MonoBehaviour
 
 	private void Update()
 	{
-		CameraHandler();
+		//CameraHandler();
 		MovementHandler();
 	}
 
