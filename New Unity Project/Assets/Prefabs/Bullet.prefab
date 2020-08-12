@@ -63,7 +63,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   trail: {fileID: 8769354589516327384}
-  activationTime: 0.075
+  activationTime: 0.08
 --- !u!65 &6444695937657245884
 BoxCollider:
   m_ObjectHideFlags: 0
