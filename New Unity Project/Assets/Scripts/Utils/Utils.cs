@@ -25,4 +25,11 @@ public static class Utils
         return (ringPos + sPos);
     }
 
+    public static float GetDistance2D(Vector3 a, Vector3 b)
+    {
+        Vector2 a2 = new Vector2() { x = a.x, y = a.z };
+        Vector2 b2 = new Vector2() { x = b.x, y = b.z };
+        return Vector2.Distance(a2, b2);
+    }
+
 }
