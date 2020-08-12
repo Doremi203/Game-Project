@@ -30,7 +30,7 @@ public abstract class WeaponBase : MonoBehaviour
     private float nextShootTime;
     private Rigidbody rb;
 
-    public void Pickup(Actor owner, bool infinityAmmo)
+    public virtual void Pickup(Actor owner, bool infinityAmmo)
     {
         this.owner = owner;
         rb.isKinematic = true;
@@ -38,7 +38,7 @@ public abstract class WeaponBase : MonoBehaviour
         this.infinityAmmo = infinityAmmo;
     }
 
-    public void Drop()
+    public virtual void Drop()
     {
         rb.isKinematic = false;
         rb.AddForce(owner.transform.forward * 150f);

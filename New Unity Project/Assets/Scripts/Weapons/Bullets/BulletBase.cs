@@ -17,9 +17,9 @@ public class BulletBase : MonoBehaviour, IDamageable
 
     protected float spawnTime;
 
-    public void ApplyDamage(Actor damageCauser, float damage, DamageType damageType)
+    public virtual void ApplyDamage(Actor damageCauser, float damage, DamageType damageType)
     {
-        Destroy(this.gameObject);
+        //Destroy(this.gameObject);
     }
 
     public void Setup(WeaponBase owner, Vector3 pushDirection, float pushForce, float damage, DamageType damageType)
@@ -37,7 +37,17 @@ public class BulletBase : MonoBehaviour, IDamageable
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.transform.GetComponent<BulletBase>()) return;
+
+        // (other.transform.GetComponent<BulletBase>()) return;
+
+        BulletBase bulletBase = other.transform.GetComponent<BulletBase>();
+        if (bulletBase != null)
+        {
+            if (bulletBase.owner != null && bulletBase.owner.Owner != null)
+            {
+                if (team == bulletBase.owner.Owner.Team) return;
+            }
+        }
 
         if (owner != null && owner.Owner != null)
         {
@@ -50,6 +60,8 @@ public class BulletBase : MonoBehaviour, IDamageable
 
         if (damageable != null) damageable.ApplyDamage(owner.Owner, damage, damageType);
 
+        OnHit(other);
+
         Destroy(this.gameObject);
     }
 
@@ -59,9 +71,14 @@ public class BulletBase : MonoBehaviour, IDamageable
         trail.enabled = false;
     }
 
-   protected virtual void Update()
+    protected virtual void Update()
     {
         if (!trail.enabled && Time.time >= spawnTime + activationTime) trail.enabled = true;
+    }
+
+    protected virtual void OnHit(Collider other)
+    {
+
     }
 
 }

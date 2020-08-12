@@ -117,10 +117,4 @@ public class Player : Actor
         SetWeapons(prefabWeaponA, prefabWeaponB);
     }
 
-    protected override void Death()
-    {
-        UnityEngine.Application.LoadLevel(0);
-        base.Death();
-    }
-
 }

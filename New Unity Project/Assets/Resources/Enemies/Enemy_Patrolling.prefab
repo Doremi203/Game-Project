@@ -580,6 +580,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4d0952c8d8b7b3146881af073f770691, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Target: {fileID: 0}
+  desiredRotation: {x: 0, y: 0, z: 0, w: 0}
   OnDeath:
     m_PersistentCalls:
       m_Calls:
@@ -627,12 +629,11 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  rotationSpeed: 350
   eyesOffset: {x: 0, y: 0.75, z: 0}
+  shouldDestroy: 0
   destroyDelay: 999999
   team: {fileID: 11400000, guid: ae712937a776a6f4f811e4e8676d1419, type: 2}
-  Target: {fileID: 0}
-  desiredRotation: {x: 0, y: 0, z: 0, w: 0}
-  rotationSpeed: 350
   weaponPrefab: {fileID: 8441526025296156508, guid: 76492f7ad3cc55a4399b4e8327d5b69e,
     type: 3}
   armBone: {fileID: 8193919666000491600}
@@ -684,7 +685,7 @@ MonoBehaviour:
   detectionMask:
     serializedVersion: 2
     m_Bits: 3073
-  visionAngle: 70
+  visionAngle: 80
   visionRange: 25
   absoluteVisionRange: 3.5
   targetLostRange: 40

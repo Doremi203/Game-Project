@@ -37,6 +37,11 @@ public class PlayerInput : MonoBehaviour
 
 	private void Update()
 	{
+
+		if (Input.GetKeyDown(KeyCode.R)) UnityEngine.Application.LoadLevel(0);
+
+		if (player.IsDead) return;
+
 		Vector3 inputVector = new Vector3();
 
 		if (Input.GetKey(moveForwardInput.GetKeyCode())) inputVector.z += 1;

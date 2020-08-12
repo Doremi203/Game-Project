@@ -12,6 +12,11 @@ public class AnimationController : MonoBehaviour
     private CharacterController characterController;
     private Vector3 currentVelocity;
 
+    public void Death()
+    {
+        animator.SetTrigger("Death");
+    }
+
     private void Awake()
     {
         characterController = this.GetComponent<CharacterController>();
