@@ -12,6 +12,7 @@ public class Investigating : IState
     private NavMeshAgent agent;
     private NPC_BaseAI ai;
     private float nextFindTargetTime;
+    private float nextFindPositionTime;
 
     public Investigating(HumanNPC newTestNPC, NavMeshAgent agent, NPC_BaseAI ai)
     {
@@ -25,6 +26,7 @@ public class Investigating : IState
         agent.enabled = true;
         stuckTime = 0;
         nextFindTargetTime = 0;
+        FindPosition();
     }
 
     public void OnExit()
@@ -41,16 +43,6 @@ public class Investigating : IState
             npc.desiredRotation = Quaternion.LookRotation(relativePos, Vector3.up);
         }
 
-        Vector2 npcPosition = default;
-        npcPosition.x = npc.transform.position.x;
-        npcPosition.y = npc.transform.position.z;
-
-        Vector2 targetPosition = default;
-        targetPosition.x = ai.TargetLastKnownPosition.x;
-        targetPosition.y = ai.TargetLastKnownPosition.z;
-
-        agent.SetDestination(ai.TargetLastKnownPosition);
-
         if (agent.velocity.magnitude <= 0)
         {
             stuckTime += Time.deltaTime;
@@ -60,6 +52,11 @@ public class Investigating : IState
             stuckTime = 0;
         }
 
+        if (Utils.GetDistance2D(npc.transform.position, agent.destination) > 0.5f)
+        {
+            if (Time.time >= nextFindPositionTime) FindPosition();
+        }
+
         if (Time.time >= nextFindTargetTime) TryFindTarget();
     }
 
@@ -67,6 +64,15 @@ public class Investigating : IState
     {
         if(ai.Target == null) ai.Target = ai.GetClosestEnemyActor();
         nextFindTargetTime = Time.time + 0.5f;
+    }
+
+    private void FindPosition()
+    {
+        Vector3 target = new Vector3();
+        target.x = ai.TargetLastKnownPosition.x + Random.Range(-2f, 2f);
+        target.z = ai.TargetLastKnownPosition.z + Random.Range(-2f, 2f);
+        agent.SetDestination(target);
+        nextFindPositionTime = Time.time + 0.5f;
     }
 
 }

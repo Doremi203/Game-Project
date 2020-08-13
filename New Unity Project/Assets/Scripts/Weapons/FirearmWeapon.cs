@@ -15,7 +15,8 @@ public class FirearmWeapon : WeaponBase
     [SerializeField] private int bulletsCount = 1;
     [SerializeField] private float bulletsSpeed = 1000f;
     [SerializeField] private AmmoType ammoType;
-    [SerializeField] private int startingAmmo;
+    [SerializeField] private int startingAmmoMin;
+    [SerializeField] private int startingAmmoMax;
     [SerializeField] private BulletBase bulletPrefab;
     [SerializeField] private float damage;
     [SerializeField] private DamageType damageType;
@@ -25,7 +26,7 @@ public class FirearmWeapon : WeaponBase
     protected override void Awake()
     {
         base.Awake();
-        currentAmmo = startingAmmo;
+        currentAmmo = Random.Range(startingAmmoMin, startingAmmoMax + 1);
     }
 
     public override bool CanUse()

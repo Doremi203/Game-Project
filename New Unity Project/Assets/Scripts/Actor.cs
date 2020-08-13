@@ -8,6 +8,9 @@ using UnityEngine.Events;
 public class Actor : MonoBehaviour, IDamageable
 {
 
+    [HideInInspector] public Actor Target;
+    [HideInInspector] public Quaternion desiredRotation;
+
     public delegate void ActorDeath(Actor actor);
     public event ActorDeath OnActorDeath;
     public UnityEvent OnDeath;
@@ -15,9 +18,12 @@ public class Actor : MonoBehaviour, IDamageable
     public Vector3 eyesPosition => transform.position + eyesOffset;
     public Team Team => team;
     public bool IsDead => isDead;
+    public float RotationSpeed => rotationSpeed;
 
     [Header("Actor Settings")]
+    [SerializeField] private float rotationSpeed;
     [SerializeField] private Vector3 eyesOffset;
+    [SerializeField] private bool shouldDestroy;
     [SerializeField] private float destroyDelay = 1f;
     [SerializeField] private Team team;
 
@@ -35,12 +41,19 @@ public class Actor : MonoBehaviour, IDamageable
         healthComponent.OnHealthChanged.AddListener(HealthChanged);
     }
 
+    protected virtual void Update()
+    {
+        if (IsDead) return;
+        if (transform.rotation == desiredRotation) return;
+        this.transform.rotation = Quaternion.RotateTowards(this.transform.rotation, desiredRotation, rotationSpeed * Time.deltaTime);
+    }
+
     protected virtual void Death()
     {
         isDead = true;
         OnDeath.Invoke();
         if (OnActorDeath != null) OnActorDeath(this);
-        Destroy(this.gameObject, destroyDelay);
+        if(shouldDestroy) Destroy(this.gameObject, destroyDelay);
     }
 
     protected virtual void HealthChanged(float health)

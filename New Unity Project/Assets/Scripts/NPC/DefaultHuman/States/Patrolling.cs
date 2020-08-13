@@ -36,7 +36,6 @@ public class Patrolling : IState
 
     public void Tick()
     {
-
         if (Time.time >= nextFindTargetTime) TryFindTarget();
 
         if (targetPoint == null) return;
@@ -48,15 +47,7 @@ public class Patrolling : IState
             npc.desiredRotation = Quaternion.LookRotation(relativePos, Vector3.up);
         }
 
-        Vector2 npcPosition = default;
-        npcPosition.x = npc.transform.position.x;
-        npcPosition.y = npc.transform.position.z;
-
-        Vector2 targetPosition = default;
-        targetPosition.x = targetPoint.transform.position.x;
-        targetPosition.y = targetPoint.transform.position.z;
-
-        if (Vector2.Distance(npcPosition, targetPosition) < 0.5f)
+        if (Utils.GetDistance2D(npc.transform.position, targetPoint.transform.position) < 0.5f)
         {
             FindNextPoint();
         }

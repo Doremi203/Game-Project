@@ -28,7 +28,7 @@ public abstract class NPC_BaseAI : MonoBehaviour, ISoundsListener
     [SerializeField] private float attackRange;
 
     protected StateMachine stateMachine = new StateMachine();
-    protected BaseNPC npc;
+    protected Actor npc;
 
     private float positionRecordEndsTime;
 
@@ -52,7 +52,7 @@ public abstract class NPC_BaseAI : MonoBehaviour, ISoundsListener
 
     protected virtual void Awake()
     {
-        npc = this.GetComponent<BaseNPC>();
+        npc = this.GetComponent<Actor>();
     }
     
     protected virtual void Update()

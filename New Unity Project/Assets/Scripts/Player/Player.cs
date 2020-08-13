@@ -117,25 +117,4 @@ public class Player : Actor
         SetWeapons(prefabWeaponA, prefabWeaponB);
     }
 
-    private void Update()
-    {
-        PlayerInput();
-    }
-
-    // Я не уверен, что это должно быть тут, но пусть пока будет.
-    private void PlayerInput()
-    {
-        if (weaponHolder.currentWeapon != null) weaponHolder.currentWeapon.Use(Input.GetMouseButton(0));
-        if (Input.GetKeyDown(KeyCode.Alpha1)) EquipWeapon(0);
-        if (Input.GetKeyDown(KeyCode.Alpha2)) EquipWeapon(1);
-        if (Input.GetKeyDown(KeyCode.E)) TakeWeapon();
-        if (Input.GetKeyDown(KeyCode.Space)) dash.Cast();
-    }
-
-    protected override void Death()
-    {
-        UnityEngine.Application.LoadLevel(0);
-        base.Death();
-    }
-
 }

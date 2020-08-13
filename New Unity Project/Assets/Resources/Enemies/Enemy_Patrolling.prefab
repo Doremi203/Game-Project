@@ -580,15 +580,60 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4d0952c8d8b7b3146881af073f770691, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  OnDeath:
-    m_PersistentCalls:
-      m_Calls: []
-  eyesOffset: {x: 0, y: 0.75, z: 0}
-  destroyDelay: 0
-  team: {fileID: 11400000, guid: ae712937a776a6f4f811e4e8676d1419, type: 2}
   Target: {fileID: 0}
   desiredRotation: {x: 0, y: 0, z: 0, w: 0}
+  OnDeath:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 7422266150432313104}
+        m_MethodName: Death
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 6230710899401665796}
+        m_MethodName: set_enabled
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 6230710899401665794}
+        m_MethodName: set_enabled
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 6230710899401665797}
+        m_MethodName: set_enabled
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   rotationSpeed: 350
+  eyesOffset: {x: 0, y: 0.75, z: 0}
+  shouldDestroy: 0
+  destroyDelay: 999999
+  team: {fileID: 11400000, guid: ae712937a776a6f4f811e4e8676d1419, type: 2}
   weaponPrefab: {fileID: 8441526025296156508, guid: 76492f7ad3cc55a4399b4e8327d5b69e,
     type: 3}
   armBone: {fileID: 8193919666000491600}
@@ -635,10 +680,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Target: {fileID: 0}
   TargetLastKnownPosition: {x: 0, y: 0, z: 0}
+  LastSoundEventPosition: {x: 0, y: 0, z: 0}
+  LastSoundEventExpireTime: 0
   detectionMask:
     serializedVersion: 2
     m_Bits: 3073
-  visionAngle: 70
+  visionAngle: 80
   visionRange: 25
   absoluteVisionRange: 3.5
   targetLostRange: 40

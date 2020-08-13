@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.AI;
 
 [RequireComponent(typeof(NavMeshAgent))]
-public class HumanNPC : BaseNPC
+public class HumanNPC : Actor
 {
 
     [SerializeField] private WeaponBase weaponPrefab;
