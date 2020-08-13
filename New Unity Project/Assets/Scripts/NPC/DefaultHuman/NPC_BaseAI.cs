@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 
-[RequireComponent(typeof(BaseNPC))]
+[RequireComponent(typeof(Actor))]
 public abstract class NPC_BaseAI : MonoBehaviour, ISoundsListener
 {
 
