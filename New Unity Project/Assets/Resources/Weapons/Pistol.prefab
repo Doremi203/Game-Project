@@ -797,7 +797,7 @@ MonoBehaviour:
   displayName: Pistol
   cooldown: 0.3
   isAutomatic: 0
-  soundEventDistance: 15
+  soundEventDistance: 10
   npcAttackDistance: 20
   OnUsingStartEvent:
     m_PersistentCalls:

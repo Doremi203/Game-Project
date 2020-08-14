@@ -638,7 +638,7 @@ MonoBehaviour:
   displayName: Uzi
   cooldown: 0.075
   isAutomatic: 1
-  soundEventDistance: 15
+  soundEventDistance: 20
   npcAttackDistance: 20
   OnUsingStartEvent:
     m_PersistentCalls:

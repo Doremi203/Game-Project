@@ -956,7 +956,7 @@ MonoBehaviour:
   displayName: Rocket Launcher
   cooldown: 1
   isAutomatic: 0
-  soundEventDistance: 30
+  soundEventDistance: 20
   npcAttackDistance: 20
   OnUsingStartEvent:
     m_PersistentCalls:

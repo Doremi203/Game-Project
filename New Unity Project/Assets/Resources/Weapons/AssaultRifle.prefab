@@ -706,7 +706,7 @@ MonoBehaviour:
   displayName: Assault Rifle
   cooldown: 0.2
   isAutomatic: 1
-  soundEventDistance: 20
+  soundEventDistance: 15
   npcAttackDistance: 20
   OnUsingStartEvent:
     m_PersistentCalls:
