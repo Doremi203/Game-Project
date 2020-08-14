@@ -57,7 +57,7 @@ public class Attacking : IState
 
         Vector3 newPosition = new Vector3();
 
-        newPosition = ai.Target.transform.position + Utils.GetRandomPositionInTorus(4f, ai.AttackRange);
+        newPosition = ai.Target.transform.position + Utils.GetRandomPositionInTorus(4f, weaponHolder.currentWeapon.NpcAttackDistance);
         newPosition.y = 0;
 
         currentTargetPosition = newPosition;

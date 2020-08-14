@@ -40,8 +40,8 @@ public class NPC_PatrollingAI : NPC_BaseAI
 
         void At(IState from, IState to, Func<bool> condition) => stateMachine.AddTransition(from, to, condition);
 
-        Func<bool> canShootPlayer() => () => CanSee(Target) && DistanceToTarget() <= AttackRange;
-        Func<bool> cantShootPlayer() => () => !CanSee(Target) || DistanceToTarget() > AttackRange;
+        Func<bool> canShootPlayer() => () => CanSee(Target) && DistanceToTarget() <= weaponHolder.currentWeapon.NpcAttackDistance;
+        Func<bool> cantShootPlayer() => () => !CanSee(Target) || DistanceToTarget() > weaponHolder.currentWeapon.NpcAttackDistance;
 
         Func<bool> cantSeeTarget() => () => !CanSee(Target);
         Func<bool> canSeeTarget() => () => CanSee(Target);

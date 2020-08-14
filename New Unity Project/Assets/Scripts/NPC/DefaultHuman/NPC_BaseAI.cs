@@ -16,7 +16,7 @@ public abstract class NPC_BaseAI : MonoBehaviour, ISoundsListener
     public float AbsoluteVisionRange => absoluteVisionRange;
     public float VisionRange => visionRange;
     public float TargetLostRange => targetLostRange;
-    public float AttackRange => attackRange;
+    //public float AttackRange => attackRange;
 
     [Header("Vision Raycast")]
     [SerializeField] private LayerMask detectionMask;
@@ -25,7 +25,7 @@ public abstract class NPC_BaseAI : MonoBehaviour, ISoundsListener
     [SerializeField] private float visionRange;
     [SerializeField] private float absoluteVisionRange;
     [SerializeField] private float targetLostRange;
-    [SerializeField] private float attackRange;
+    //[SerializeField] private float attackRange;
 
     protected StateMachine stateMachine = new StateMachine();
     protected Actor npc;
@@ -163,7 +163,7 @@ public abstract class NPC_BaseAI : MonoBehaviour, ISoundsListener
         Handles.DrawWireCube(TargetLastKnownPosition, new Vector3(0.5f, 0.1f, 0.5f));
 
         Handles.color = Color.red;
-        Handles.DrawWireDisc(this.transform.position, this.transform.up, attackRange);
+        //Handles.DrawWireDisc(this.transform.position, this.transform.up, attackRange);
         Handles.color = Color.yellow;
         Handles.DrawWireDisc(this.transform.position, this.transform.up, visionRange);
         Handles.DrawWireDisc(this.transform.position, this.transform.up, absoluteVisionRange);

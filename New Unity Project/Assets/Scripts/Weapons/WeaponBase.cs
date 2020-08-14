@@ -12,11 +12,13 @@ public abstract class WeaponBase : MonoBehaviour
     public Actor Owner => owner;
     public string DisplayName => displayName;
     public bool IsDrop { get; private set; } = true;
+    public float NpcAttackDistance => npcAttackDistance;
 
     [SerializeField] private string displayName;
     [SerializeField] private float cooldown;
     [SerializeField] private bool isAutomatic;
     [SerializeField] private float soundEventDistance;
+    [SerializeField] private float npcAttackDistance;
 
     public UnityEvent OnUsingStartEvent;
     public UnityEvent OnShootEvent;

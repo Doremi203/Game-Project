@@ -564,7 +564,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d4bc19bf69facbb40afac38af6116178, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startHealth: 1
+  startHealth: 1000
   OnHealthChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -689,7 +689,6 @@ MonoBehaviour:
   visionRange: 25
   absoluteVisionRange: 3.5
   targetLostRange: 40
-  attackRange: 20
 --- !u!1 &6515473348713061144
 GameObject:
   m_ObjectHideFlags: 0

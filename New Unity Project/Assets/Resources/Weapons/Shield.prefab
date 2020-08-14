@@ -474,6 +474,7 @@ MonoBehaviour:
   cooldown: 0
   isAutomatic: 0
   soundEventDistance: 0
+  npcAttackDistance: 2
   OnUsingStartEvent:
     m_PersistentCalls:
       m_Calls: []

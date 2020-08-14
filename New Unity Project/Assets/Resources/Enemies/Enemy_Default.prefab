@@ -479,7 +479,6 @@ MonoBehaviour:
   visionRange: 25
   absoluteVisionRange: 3.5
   targetLostRange: 40
-  attackRange: 20
 --- !u!1 &173450805966690354
 GameObject:
   m_ObjectHideFlags: 0
