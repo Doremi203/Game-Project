@@ -8,8 +8,9 @@ public class AnimationController : MonoBehaviour
     [SerializeField] private Animator animator;
     [SerializeField] private PlayerController playerController;
     [SerializeField] private Player player;
+    [SerializeField] private CharacterController characterController;
 
-    private CharacterController characterController;
+    //private CharacterController characterController;
     private Vector3 currentVelocity;
 
     public void Death()
@@ -19,13 +20,12 @@ public class AnimationController : MonoBehaviour
 
     private void Awake()
     {
-        characterController = this.GetComponent<CharacterController>();
+       // characterController = this.GetComponent<CharacterController>();
     }
 
     private void Start()
     {
-	    //player.abilities[typeof(Dash)].Casted.AddListener(DoDashAnimation);
-	    //player.abilities[typeof(Katana)].Casted.AddListener(DoKatanaAnimation);
+        player.weaponHolder.OnWeaponChanged.AddListener(OnWeaponUpdated);
     }
 
     private void Update()
@@ -42,13 +42,11 @@ public class AnimationController : MonoBehaviour
         animator.SetFloat("Speed", 2f);
     }
     
-    private void DoDashAnimation()
+    private void OnWeaponUpdated()
     {
-	    animator.SetTrigger("Dash-Use");
+        animator.SetBool("armed", player.weaponHolder.currentWeapon);
+        if (player.weaponHolder.currentWeapon)
+            animator.SetInteger("weaponType", (int)player.weaponHolder.currentWeapon.AnimationType);
     }
-    
-    private void DoKatanaAnimation()
-        {
-	        animator.SetTrigger("Katana-Use");
-        }
+
 }

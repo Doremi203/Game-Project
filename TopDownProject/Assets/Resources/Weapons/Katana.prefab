@@ -352,6 +352,8 @@ MonoBehaviour:
   isAutomatic: 0
   soundEventDistance: 2
   npcAttackDistance: 2
+  twoHanded: 0
+  targetArm: 2
   OnUsingStartEvent:
     m_PersistentCalls:
       m_Calls: []

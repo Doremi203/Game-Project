@@ -30,6 +30,8 @@ public class MeleeWeapon : WeaponBase
         }
     }
 
+#if UNITY_EDITOR
+
     protected override void OnDrawGizmos()
     {
         base.OnDrawGizmos();
@@ -39,5 +41,7 @@ public class MeleeWeapon : WeaponBase
         Gizmos.DrawLine(owner.transform.position, owner.transform.position + Quaternion.AngleAxis(-attackAngle, Vector3.up) * owner.transform.forward * attackRadius);
         Gizmos.DrawLine(owner.transform.position, owner.transform.position + Quaternion.AngleAxis(attackAngle, Vector3.up) * owner.transform.forward * attackRadius);
     }
+
+#endif
 
 }

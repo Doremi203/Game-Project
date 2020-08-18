@@ -42,6 +42,8 @@ public class PatrollingPoint : MonoBehaviour
         }
     }
 
+#if UNITY_EDITOR
+
     private void OnDrawGizmos()
     {
         Handles.color = Color.red;
@@ -49,5 +51,7 @@ public class PatrollingPoint : MonoBehaviour
         Handles.color = Color.yellow;
         Handles.DrawWireDisc(this.transform.position, this.transform.up, detectionDistance / 2);
     }
+
+#endif
 
 }

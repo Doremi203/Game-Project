@@ -13,12 +13,16 @@ public abstract class WeaponBase : MonoBehaviour
     public string DisplayName => displayName;
     public bool IsDrop { get; private set; } = true;
     public float NpcAttackDistance => npcAttackDistance;
+    public bool TwoHanded => twoHanded;
+    public AnimationType AnimationType => animationType;
 
     [SerializeField] private string displayName;
     [SerializeField] private float cooldown;
     [SerializeField] private bool isAutomatic;
     [SerializeField] private float soundEventDistance;
     [SerializeField] private float npcAttackDistance;
+    [SerializeField] private bool twoHanded;
+    [SerializeField] private AnimationType animationType;
 
     public UnityEvent OnUsingStartEvent;
     public UnityEvent OnShootEvent;
@@ -123,10 +127,14 @@ public abstract class WeaponBase : MonoBehaviour
         OnUsingEndEvent.Invoke();
     }
 
+#if UNITY_EDITOR
+
     protected virtual void OnDrawGizmos()
     {
         if (!owner) return;
         Handles.DrawWireDisc(owner.transform.position, owner.transform.up, soundEventDistance);
     }
+
+#endif
 
 }

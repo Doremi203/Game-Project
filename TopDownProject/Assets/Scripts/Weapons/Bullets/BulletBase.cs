@@ -7,14 +7,16 @@ public class BulletBase : MonoBehaviour, IDamageable
 {
 
     [SerializeField] private TrailRenderer trail;
-    [SerializeField] private float activationTime = 0.02f;
+    [SerializeField] private float activationTimeMin = 0.02f;
+    [SerializeField] private float activationTimeMax = 0.02f;
+
+    private float activationTime;
 
     protected Rigidbody rb;
     protected WeaponBase owner;
     protected float damage;
     protected DamageType damageType;
     protected Team team;
-
     protected float spawnTime;
 
     public virtual void ApplyDamage(Actor damageCauser, float damage, DamageType damageType)
@@ -67,6 +69,7 @@ public class BulletBase : MonoBehaviour, IDamageable
 
     protected virtual void Awake()
     {
+        activationTime = Random.Range(activationTimeMin, activationTimeMax);
         spawnTime = Time.time;
         trail.enabled = false;
     }

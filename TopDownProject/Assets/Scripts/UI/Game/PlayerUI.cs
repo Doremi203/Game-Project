@@ -17,18 +17,10 @@ public class PlayerUI : MonoBehaviour
     
     private WeaponBase currentWeapon;
 
-    private void Awake()
-    {
-        player.weaponHolder.OnWeaponChanged.AddListener(WeaponChanged);
-        //layer.weaponHolder.ammoContainer.OnAmmoChangedEvent.AddListener(RefreshUI);
-    }
-
     private void Start()
     {
-        foreach (var ability in player.abilities)
-        {
-            Instantiate(abilityUi,abilityPanel).Setup(ability.Value);
-        }
+        player.weaponHolder.OnWeaponChanged.AddListener(WeaponChanged);
+        //Instantiate(abilityUi, abilityPanel).Setup(player.dash);
     }
 
     private void WeaponChanged()
@@ -36,7 +28,6 @@ public class PlayerUI : MonoBehaviour
         // Отписываемся от событий предыдущего оружия.
         currentWeapon?.OnShootEvent.RemoveListener(RefreshUI);
         currentWeapon = player.weaponHolder.currentWeapon;
-        weaponInfoText.text = currentWeapon.DisplayName;
         // Подписываемся на новое.
         currentWeapon?.OnShootEvent.AddListener(RefreshUI);
         RefreshUI();
@@ -44,6 +35,7 @@ public class PlayerUI : MonoBehaviour
 
     private void RefreshUI()
     {
+        if (currentWeapon == null) return;
         string weaponInfo = default;
         weaponInfo = currentWeapon.DisplayName;
         if (currentWeapon is FirearmWeapon)

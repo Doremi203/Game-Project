@@ -4,28 +4,27 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-[RequireComponent(typeof(NavMeshAgent))]
 public class HumanNPC : Actor
 {
 
     [SerializeField] private WeaponBase weaponPrefab;
-    [SerializeField] private Transform armBone;
+    [SerializeField] private WeaponBase weaponPrefabAlt;
 
-    private NavMeshAgent agent;
     protected WeaponHolder weaponHolder;
 
     protected override void Awake()
     {
         base.Awake();
-        agent = GetComponent<NavMeshAgent>();
         weaponHolder = GetComponent<WeaponHolder>();
 
-        weaponHolder.EquipWeapon(Instantiate(weaponPrefab, armBone));
+        if (weaponPrefab) weaponHolder.EquipWeapon(Instantiate(weaponPrefab));
+        if (weaponPrefabAlt) weaponHolder.EquipWeaponAlt(Instantiate(weaponPrefabAlt));
     }
 
     protected override void Death()
     {
-        weaponHolder.currentWeapon.Drop();
+        weaponHolder.Drop();
+        weaponHolder.DropAlt();
         base.Death();
     }
 

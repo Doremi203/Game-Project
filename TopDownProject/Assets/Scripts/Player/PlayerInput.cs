@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 [RequireComponent(typeof(PlayerController))]
 [RequireComponent(typeof(Dash))]
@@ -65,14 +66,13 @@ public class PlayerInput : MonoBehaviour
 			player.desiredRotation = Quaternion.LookRotation(new Vector3(direction.x, 0, direction.z));
 		}
 
-		if (Input.GetKeyDown(dash.GetKeyCode())) dashAbility.Cast();
+		//if (Input.GetKeyDown(dash.GetKeyCode())) dashAbility.Cast();
 
-		weaponHolder.currentWeapon.Use(Input.GetKey(shoot.GetKeyCode()));
+		if (player.weaponHolder.currentWeapon) player.weaponHolder.currentWeapon.Use(Input.GetKey(shoot.GetKeyCode()));
+		//if (player.CurrentWeaponSecond) player.CurrentWeaponSecond.Use(Input.GetKey(KeyCode.Mouse1));
 
 		if (Input.GetKeyDown(pickupWeapon.GetKeyCode())) player.TakeWeapon();
-
-		if (Input.GetKeyDown(equipKatana.GetKeyCode())) player.EquipWeapon(0);
-		if (Input.GetKeyDown(equipWeapon.GetKeyCode())) player.EquipWeapon(1);
+		if (Input.GetKeyDown(KeyCode.Q)) player.TakeWeaponLeftArm();
 
 	}
 

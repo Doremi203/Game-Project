@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.Events;
 
 [RequireComponent(typeof(WeaponHolder))]
 [RequireComponent(typeof(PlayerController))]
@@ -13,19 +14,23 @@ public class Player : Actor
 
     public WeaponHolder weaponHolder { get; private set; }
     public PlayerController controller { get; private set; }
-    public Dictionary<Type, Ability> abilities = new Dictionary<Type, Ability>();
 
     [SerializeField] private WeaponBase prefabWeaponA;
-    [SerializeField] private WeaponBase prefabWeaponB;
-    [SerializeField] private Transform armBone;
-    [SerializeField] private Transform spineBone;
     [SerializeField] private Ability dash;
     [SerializeField] private LayerMask weaponsMask;
 
-    private WeaponBase weaponA;
-    private WeaponBase weaponB;
-
     public void TakeWeapon()
+    {
+        WeaponBase closestWeapon = FindWeaponAround();
+        if (closestWeapon) weaponHolder.EquipWeapon(closestWeapon);
+    }
+
+    public void TakeWeaponLeftArm()
+    {
+
+    }
+
+    private WeaponBase FindWeaponAround()
     {
         Collider[] hits = Physics.OverlapSphere(this.transform.position, 4f, weaponsMask);
         WeaponBase closestWeapon = null;
@@ -45,65 +50,13 @@ public class Player : Actor
                 if (a > b) closestWeapon = target;
             }
         }
-
-        if (closestWeapon == null) return;
-
-        if (weaponB) weaponB.Drop();
-
-        weaponB = closestWeapon;
-
-        EquipWeapon(1);
-
-    }
-
-    public void SetWeapons(WeaponBase weaponA, WeaponBase weaponB)
-    {
-        this.weaponA = Instantiate(weaponA, this.transform);
-        //this.weaponB = Instantiate(weaponB, this.transform);
-        EquipWeapon(0);
-    }
-
-    // Test
-    public void EquipWeapon(int i)
-    {
-        if(i == 0)
-        {
-            EquipWeapon(weaponA);
-            if (weaponB) HideWeapon(weaponB);
-        }
-        else
-        {
-            if (weaponB)
-            {
-                EquipWeapon(weaponB);
-                HideWeapon(weaponA);
-            }
-        }
-    }
-
-    private void EquipWeapon(WeaponBase weapon)
-    {
-        weaponHolder.EquipWeapon(weapon);
-        weapon.transform.SetParent(armBone, false);
-        weapon.transform.position = armBone.position;
-        weapon.transform.localRotation = Quaternion.identity;
-    }
-
-    private void HideWeapon(WeaponBase weapon)
-    {
-        weapon.transform.SetParent(spineBone, false);
-        weapon.transform.position = spineBone.position;
-        weapon.transform.localRotation = Quaternion.identity;
+        return closestWeapon;
     }
 
     protected override void Awake()
     {
         base.Awake();
         Player.Instance = this;
-		foreach (var ability in GetComponents<Ability>())
-        {
-            abilities.Add(ability.GetType(),ability);
-        }
         weaponHolder = this.GetComponent<WeaponHolder>();
         controller = this.GetComponent<PlayerController>();
     }
@@ -111,13 +64,14 @@ public class Player : Actor
     private void Start()
     {
         // Это для теста. В реальной игре оружия будут появлятся из сохранений.
-        SetWeapons(prefabWeaponA, prefabWeaponB);
+        //EquipWeapon(Instantiate(prefabWeaponA, this.transform));
     }
 
-    protected override void Update()
+    protected override void Death()
     {
-        base.Update();
-
+        weaponHolder.Drop();
+        weaponHolder.DropAlt();
+        base.Death();
     }
 
 }

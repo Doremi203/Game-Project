@@ -16,7 +16,6 @@ public abstract class NPC_BaseAI : MonoBehaviour, ISoundsListener
     public float AbsoluteVisionRange => absoluteVisionRange;
     public float VisionRange => visionRange;
     public float TargetLostRange => targetLostRange;
-    //public float AttackRange => attackRange;
 
     [Header("Vision Raycast")]
     [SerializeField] private LayerMask detectionMask;
@@ -25,7 +24,6 @@ public abstract class NPC_BaseAI : MonoBehaviour, ISoundsListener
     [SerializeField] private float visionRange;
     [SerializeField] private float absoluteVisionRange;
     [SerializeField] private float targetLostRange;
-    //[SerializeField] private float attackRange;
 
     protected StateMachine stateMachine = new StateMachine();
     protected Actor npc;
@@ -138,6 +136,8 @@ public abstract class NPC_BaseAI : MonoBehaviour, ISoundsListener
         return false;
     }
 
+#if UNITY_EDITOR
+
     private void OnDrawGizmos()
     {
         if (!Application.isPlaying) return;
@@ -174,5 +174,7 @@ public abstract class NPC_BaseAI : MonoBehaviour, ISoundsListener
         Gizmos.DrawLine(npc.transform.position, npc.transform.position + Quaternion.AngleAxis(-visionAngle, Vector3.up) * npc.transform.forward * visionRange);
         Gizmos.DrawLine(npc.transform.position, npc.transform.position + Quaternion.AngleAxis(visionAngle, Vector3.up) * npc.transform.forward * visionRange);
     }
+
+#endif
 
 }
