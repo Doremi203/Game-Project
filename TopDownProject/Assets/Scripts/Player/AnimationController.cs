@@ -6,12 +6,12 @@ using UnityEngine;
 public class AnimationController : MonoBehaviour
 {
     [SerializeField] private Animator animator;
-    [SerializeField] private PlayerController playerController;
     [SerializeField] private Player player;
     [SerializeField] private CharacterController characterController;
 
     //private CharacterController characterController;
     private Vector3 currentVelocity;
+    private WeaponBase currentWeapon;
 
     public void Death()
     {
@@ -25,7 +25,7 @@ public class AnimationController : MonoBehaviour
 
     private void Start()
     {
-        player.weaponHolder.OnWeaponChanged.AddListener(OnWeaponUpdated);
+        //player.weaponHolder.OnWeaponChanged.AddListener(OnWeaponUpdated);
     }
 
     private void Update()
@@ -41,12 +41,23 @@ public class AnimationController : MonoBehaviour
 	    animator.SetFloat("Vertical", localMove.z);
         animator.SetFloat("Speed", 2f);
     }
-    
+
     private void OnWeaponUpdated()
     {
+        animator.ResetTrigger("attack");
+        if (currentWeapon) currentWeapon.OnShootEvent.RemoveListener(OnWeaponShoot);
         animator.SetBool("armed", player.weaponHolder.currentWeapon);
         if (player.weaponHolder.currentWeapon)
+        {
+            currentWeapon = player.weaponHolder.currentWeapon;
             animator.SetInteger("weaponType", (int)player.weaponHolder.currentWeapon.AnimationType);
+            player.weaponHolder.currentWeapon.OnShootEvent.AddListener(OnWeaponShoot);
+        }
+    }
+
+    private void OnWeaponShoot()
+    {
+        animator.SetTrigger("attack");
     }
 
 }

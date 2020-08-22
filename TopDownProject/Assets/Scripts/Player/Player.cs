@@ -21,6 +21,7 @@ public class Player : Actor
 
     public void TakeWeapon()
     {
+        //if (weaponHolder.currentWeapon) weaponHolder.Drop();
         WeaponBase closestWeapon = FindWeaponAround();
         if (closestWeapon) weaponHolder.EquipWeapon(closestWeapon);
     }
@@ -32,7 +33,7 @@ public class Player : Actor
 
     private WeaponBase FindWeaponAround()
     {
-        Collider[] hits = Physics.OverlapSphere(this.transform.position, 4f, weaponsMask);
+        Collider[] hits = Physics.OverlapSphere(this.transform.position, 2f, weaponsMask);
         WeaponBase closestWeapon = null;
         foreach (var item in hits)
         {
@@ -64,7 +65,7 @@ public class Player : Actor
     private void Start()
     {
         // Это для теста. В реальной игре оружия будут появлятся из сохранений.
-        //EquipWeapon(Instantiate(prefabWeaponA, this.transform));
+        weaponHolder.EquipWeapon(Instantiate(prefabWeaponA, this.transform));
     }
 
     protected override void Death()

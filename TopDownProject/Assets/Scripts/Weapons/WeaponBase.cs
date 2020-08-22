@@ -13,7 +13,7 @@ public abstract class WeaponBase : MonoBehaviour
     public string DisplayName => displayName;
     public bool IsDrop { get; private set; } = true;
     public float NpcAttackDistance => npcAttackDistance;
-    public bool TwoHanded => twoHanded;
+    public float NpcAttackAngle => npcAttackAngle;
     public AnimationType AnimationType => animationType;
 
     [SerializeField] private string displayName;
@@ -21,12 +21,14 @@ public abstract class WeaponBase : MonoBehaviour
     [SerializeField] private bool isAutomatic;
     [SerializeField] private float soundEventDistance;
     [SerializeField] private float npcAttackDistance;
-    [SerializeField] private bool twoHanded;
+    [SerializeField] private float npcAttackAngle;
     [SerializeField] private AnimationType animationType;
 
     public UnityEvent OnUsingStartEvent;
     public UnityEvent OnShootEvent;
     public UnityEvent OnUsingEndEvent;
+    public UnityEvent OnDropped;
+    public UnityEvent OnEquiped;
 
     protected bool isUsing;
     protected Actor owner;
@@ -42,16 +44,19 @@ public abstract class WeaponBase : MonoBehaviour
         rb.isKinematic = true;
         IsDrop = false;
         this.infinityAmmo = infinityAmmo;
+        OnEquiped.Invoke();
     }
 
     public virtual void Drop()
     {
         rb.isKinematic = false;
-        rb.AddForce(owner.transform.forward * 150f);
+        // Тут было 150f
+        rb.AddForce(owner.transform.forward * 1000f);
         this.owner = null;
         transform.parent = null;
         isUsing = false;
         IsDrop = true;
+        OnDropped.Invoke();
     }
 
     public void Use(bool b)
@@ -96,7 +101,7 @@ public abstract class WeaponBase : MonoBehaviour
 
     protected virtual void Update()
     {
-        if (isAutomatic && isUsing)
+        if (isAutomatic && isUsing && CanUse())
         {
             if (Time.time >= nextShootTime)
             {

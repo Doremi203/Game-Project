@@ -47,7 +47,7 @@ public class Attacking : IState
 
         if (Time.time >= nextPositionTime) FindNewLocation();
 
-        weaponHolder.currentWeapon.Use(weaponHolder.currentWeapon.CanUse() && ai.GetAngleToTarget() < 10f);
+        weaponHolder.currentWeapon.Use(weaponHolder.currentWeapon.CanUse() && ai.GetAngleToTarget() < weaponHolder.currentWeapon.NpcAttackAngle);
 
     }
 

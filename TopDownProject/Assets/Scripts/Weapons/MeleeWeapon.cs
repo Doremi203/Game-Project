@@ -9,9 +9,23 @@ public class MeleeWeapon : WeaponBase
     [SerializeField] private float attackRadius = 2f;
     [SerializeField] private float damage;
     [SerializeField] private DamageType damageType;
+    [SerializeField] private float attackDelay = 0.05f;
+
+    public override void Drop()
+    {
+        base.Drop();
+        this.StopAllCoroutines();
+    }
 
     protected override void OnShoot()
     {
+        base.OnShoot();
+        StartCoroutine(Attack());
+    }
+
+    private IEnumerator Attack()
+    {
+        yield return new WaitForSeconds(attackDelay);
         Collider[] hits = Physics.OverlapSphere(owner.transform.position, attackRadius);
         foreach (var item in hits)
         {

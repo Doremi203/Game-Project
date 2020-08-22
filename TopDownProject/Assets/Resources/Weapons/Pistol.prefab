@@ -173,7 +173,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &4157793707013485248
 Transform:
   m_ObjectHideFlags: 0
@@ -1229,9 +1229,9 @@ MonoBehaviour:
   displayName: Pistol
   cooldown: 0.3
   isAutomatic: 0
-  soundEventDistance: 10
+  soundEventDistance: 1
   npcAttackDistance: 20
-  twoHanded: 0
+  npcAttackAngle: 10
   animationType: 0
   OnUsingStartEvent:
     m_PersistentCalls:
@@ -1262,6 +1262,12 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
   OnUsingEndEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  OnDropped:
+    m_PersistentCalls:
+      m_Calls: []
+  OnEquiped:
     m_PersistentCalls:
       m_Calls: []
   bulletSpreadingMultiplier: 0
@@ -1385,7 +1391,7 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
 --- !u!65 &970181128307725726
 BoxCollider:
   m_ObjectHideFlags: 0

@@ -647,7 +647,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &8615484566336306305
 Transform:
   m_ObjectHideFlags: 0
@@ -1148,9 +1148,9 @@ MonoBehaviour:
   displayName: Shotgun
   cooldown: 0.6
   isAutomatic: 0
-  soundEventDistance: 20
+  soundEventDistance: 6
   npcAttackDistance: 15
-  twoHanded: 1
+  npcAttackAngle: 20
   animationType: 1
   OnUsingStartEvent:
     m_PersistentCalls:
@@ -1181,6 +1181,12 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
   OnUsingEndEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  OnDropped:
+    m_PersistentCalls:
+      m_Calls: []
+  OnEquiped:
     m_PersistentCalls:
       m_Calls: []
   bulletSpreadingMultiplier: 0.2
@@ -1304,7 +1310,7 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
 --- !u!65 &6742688095687498139
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1316,8 +1322,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.05, y: 0.13753149, z: 0.72660184}
-  m_Center: {x: 0, y: 0.073073104, z: 0.32772666}
+  m_Size: {x: 0.075, y: 0.1933597, z: 0.72660184}
+  m_Center: {x: 0, y: 0.045158997, z: 0.32772666}
 --- !u!114 &6226932525090208399
 MonoBehaviour:
   m_ObjectHideFlags: 0

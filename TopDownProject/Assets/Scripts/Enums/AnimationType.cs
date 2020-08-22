@@ -7,5 +7,6 @@ public enum AnimationType
 
     Light,
     Heavy,
+    Melee
 
 }

@@ -68,7 +68,11 @@ public class PlayerInput : MonoBehaviour
 
 		//if (Input.GetKeyDown(dash.GetKeyCode())) dashAbility.Cast();
 
-		if (player.weaponHolder.currentWeapon) player.weaponHolder.currentWeapon.Use(Input.GetKey(shoot.GetKeyCode()));
+		if (player.weaponHolder.currentWeapon)
+		{
+			if(Input.GetKeyDown(shoot.GetKeyCode())) player.weaponHolder.currentWeapon.Use(true);
+			if (Input.GetKeyUp(shoot.GetKeyCode())) player.weaponHolder.currentWeapon.Use(false);
+		}
 		//if (player.CurrentWeaponSecond) player.CurrentWeaponSecond.Use(Input.GetKey(KeyCode.Mouse1));
 
 		if (Input.GetKeyDown(pickupWeapon.GetKeyCode())) player.TakeWeapon();

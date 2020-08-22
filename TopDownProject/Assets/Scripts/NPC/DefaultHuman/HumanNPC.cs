@@ -16,7 +16,10 @@ public class HumanNPC : Actor
     {
         base.Awake();
         weaponHolder = GetComponent<WeaponHolder>();
+    }
 
+    private void Start()
+    {
         if (weaponPrefab) weaponHolder.EquipWeapon(Instantiate(weaponPrefab));
         if (weaponPrefabAlt) weaponHolder.EquipWeaponAlt(Instantiate(weaponPrefabAlt));
     }
