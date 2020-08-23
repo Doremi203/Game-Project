@@ -10,7 +10,7 @@ public class CharacterControllerAnimator : MonoBehaviour
 
     private void Update()
     {
-        Vector3 localMove = transform.InverseTransformDirection(characterController.velocity);
+        Vector3 localMove = transform.InverseTransformDirection(characterController.velocity).normalized;
         animator.SetFloat("Horizontal", localMove.x);
         animator.SetFloat("Vertical", localMove.z);
         animator.SetFloat("Speed", 2f);

@@ -32,7 +32,6 @@ public abstract class WeaponBase : MonoBehaviour
 
     protected bool isUsing;
     protected Actor owner;
-
     protected bool infinityAmmo;
 
     private float nextShootTime;
@@ -41,6 +40,7 @@ public abstract class WeaponBase : MonoBehaviour
     public virtual void Pickup(Actor owner, bool infinityAmmo)
     {
         this.owner = owner;
+        rb.detectCollisions = false;
         rb.isKinematic = true;
         IsDrop = false;
         this.infinityAmmo = infinityAmmo;
@@ -49,9 +49,9 @@ public abstract class WeaponBase : MonoBehaviour
 
     public virtual void Drop()
     {
+        rb.detectCollisions = true;
         rb.isKinematic = false;
-        // Тут было 150f
-        rb.AddForce(owner.transform.forward * 1000f);
+        //rb.AddForce(owner.transform.forward * 150f);
         this.owner = null;
         transform.parent = null;
         isUsing = false;
@@ -61,7 +61,6 @@ public abstract class WeaponBase : MonoBehaviour
 
     public void Use(bool b)
     {
-
         if (CanUse() == false)
         {
             if (isUsing)

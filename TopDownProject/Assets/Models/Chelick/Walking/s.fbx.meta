@@ -1,8 +1,14 @@
 fileFormatVersion: 2
-guid: a210b9e7c59213849b85521e4daf740d
+guid: 17352ffa9bccd6b449cfbb6c722cfa2b
 ModelImporter:
   serializedVersion: 19301
-  internalIDToNameTable: []
+  internalIDToNameTable:
+  - first:
+      74: -8352211188841784741
+    second: Kitaec|KitaecAction
+  - first:
+      74: 6070642482539234661
+    second: Kitaec|KitaecAction.001
   externalObjects: {}
   materials:
     materialImportMode: 1
@@ -23,7 +29,7 @@ ModelImporter:
     animationDoRetargetingWarnings: 0
     importAnimatedCustomProperties: 0
     importConstraints: 0
-    animationCompression: 3
+    animationCompression: 1
     animationRotationError: 0.5
     animationPositionError: 0.5
     animationScaleError: 0.5
@@ -84,13 +90,13 @@ ModelImporter:
     globalScale: 1
     rootMotionBoneName: 
     hasTranslationDoF: 0
-    hasExtraRoot: 1
+    hasExtraRoot: 0
     skeletonHasParents: 1
   lastHumanDescriptionAvatarSource: {instanceID: 0}
   autoGenerateAvatarMappingIfUnspecified: 1
-  animationType: 3
+  animationType: 2
   humanoidOversampling: 1
-  avatarSetup: 1
+  avatarSetup: 0
   additionalBone: 0
   userData: 
   assetBundleName: 
