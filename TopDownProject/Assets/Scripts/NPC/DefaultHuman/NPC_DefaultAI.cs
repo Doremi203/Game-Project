@@ -5,13 +5,11 @@ using UnityEditor;
 using UnityEngine;
 using UnityEngine.AI;
 
-//[RequireComponent(typeof(NavMeshAgent))]
 [RequireComponent(typeof(NavMeshAgent))]
 [RequireComponent(typeof(WeaponHolder))]
 public class NPC_DefaultAI : NPC_BaseAI
 {
 
-    //protected NavMeshAgent agent;
     protected NavMeshAgent agent;
     protected WeaponHolder weaponHolder;
 

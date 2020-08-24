@@ -68,9 +68,9 @@ public class Investigating : IState
 
     private void FindPosition()
     {
-        Vector3 target = new Vector3();
-        target.x = ai.TargetLastKnownPosition.x + Random.Range(-2f, 2f);
-        target.z = ai.TargetLastKnownPosition.z + Random.Range(-2f, 2f);
+        Vector3 target = ai.TargetLastKnownPosition;
+        //target.x = ai.TargetLastKnownPosition.x + Random.Range(-2f, 2f);
+        //target.z = ai.TargetLastKnownPosition.z + Random.Range(-2f, 2f);
         agent.SetDestination(target);
         nextFindPositionTime = Time.time + 0.5f;
     }
