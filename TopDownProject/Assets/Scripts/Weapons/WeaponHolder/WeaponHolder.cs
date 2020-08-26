@@ -24,7 +24,7 @@ public class WeaponHolder : MonoBehaviour
         if (currentWeapon) currentWeapon.Drop();
         currentWeapon = weapon;
         currentWeapon.Pickup(GetComponent<Actor>(), infinityAmmo);
-        weapon.transform.SetParent(armBone, false);
+        weapon.transform.SetParent(armBone, true);
         weapon.transform.position = armBone.position;
         weapon.transform.localRotation = Quaternion.identity;
         OnWeaponChanged.Invoke();
@@ -35,7 +35,7 @@ public class WeaponHolder : MonoBehaviour
         if(currentWeaponAlt) currentWeaponAlt.Drop();
         currentWeaponAlt = weapon;
         currentWeaponAlt.Pickup(GetComponent<Actor>(), infinityAmmo);
-        weapon.transform.SetParent(armBoneAlt, false);
+        weapon.transform.SetParent(armBoneAlt, true);
         weapon.transform.position = armBoneAlt.position;
         weapon.transform.localRotation = Quaternion.identity;
         OnWeaponChanged.Invoke();

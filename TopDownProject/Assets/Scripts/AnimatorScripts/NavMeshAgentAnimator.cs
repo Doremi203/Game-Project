@@ -11,11 +11,10 @@ public class NavMeshAgentAnimator : MonoBehaviour
 
     private void Update()
     {
-        Vector3 moveDirection = agent.velocity;
-        moveDirection = transform.InverseTransformDirection(moveDirection);
+        Vector3 moveDirection = transform.InverseTransformDirection(agent.velocity);
         animator.SetFloat("Horizontal", moveDirection.x);
         animator.SetFloat("Vertical", moveDirection.z);
-        animator.SetFloat("Speed", agent.velocity.magnitude / 2f);
+        animator.SetFloat("Speed", 2.5f);
     }
 
 }

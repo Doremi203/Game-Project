@@ -12,6 +12,7 @@ public class PlayerController : MonoBehaviour
 	[SerializeField] private float gravity = 9.81f;
 
 	private CharacterController playerController;
+	private Vector3 currentVelocity;
 	private Vector3 velocityVector;
 
 	public void SetVelocity(Vector3 velocityVector)
@@ -27,10 +28,11 @@ public class PlayerController : MonoBehaviour
 	private void Update()
 	{
 		MovementHandler();
+		currentVelocity = Vector3.Lerp(currentVelocity, velocityVector, 25f * Time.deltaTime);
 	}
 
     private void MovementHandler()
     {
-	    playerController.Move(velocityVector * moveSpeed * Time.deltaTime); 	    
+	    playerController.Move(currentVelocity * moveSpeed * Time.deltaTime); 	    
     }
 }

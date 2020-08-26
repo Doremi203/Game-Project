@@ -14,11 +14,16 @@ public class DestinationDebug : MonoBehaviour
         agent = GetComponent<NavMeshAgent>();
     }
 
+
+#if UNITY_EDITOR
+
     private void OnDrawGizmos()
     {
         if (agent == null) return;
         Gizmos.color = Color.red;
         Gizmos.DrawLine(agent.destination, agent.destination + Vector3.up * 5f);
     }
+
+#endif
 
 }
