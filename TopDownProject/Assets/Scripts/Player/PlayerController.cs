@@ -27,8 +27,8 @@ public class PlayerController : MonoBehaviour
 
 	private void Update()
 	{
-		MovementHandler();
 		currentVelocity = Vector3.Lerp(currentVelocity, velocityVector, 25f * Time.deltaTime);
+		MovementHandler();
 	}
 
     private void MovementHandler()

@@ -8,28 +8,28 @@ ModelImporter:
     second: Kitaec|Kitaec|Kitaec|Walking_Backward_Left|Kitaec|Walking_Backward_Lef
   - first:
       74: -3835546065834398705
-    second: Kitaec|Kitaec|Kitaec|Walking_Backward_Right|Kitaec|Walking_Backward_Ri
+    second: Walking_Backward_Right
   - first:
       74: 8690284698522517772
-    second: Kitaec|Kitaec|Kitaec|Walking_Backward|Kitaec|Walking_Backward
+    second: Walking_Backward
   - first:
       74: -5748281215037483950
-    second: Kitaec|Kitaec|Kitaec|Walking_Forward_Left|Kitaec|Walking_Forward_Left
+    second: Walking_Forward_Left
   - first:
       74: 8826852834321989745
-    second: Kitaec|Kitaec|Kitaec|Walking_Forward_Right|Kitaec|Walking_Forward_Righ
+    second: Walking_Forward_Right
   - first:
       74: 6840930629124390682
-    second: Kitaec|Kitaec|Kitaec|Walking_Forward|Kitaec|Walking_Forward
+    second: Walking_Forward
   - first:
       74: 4565911075066963915
-    second: Kitaec|Kitaec|Kitaec|Walking_Left|Kitaec|Walking_Left
+    second: Walking_Left
   - first:
       74: 1678761503377799739
-    second: Kitaec|Kitaec|Kitaec|Walking_Right|Kitaec|Walking_Right
+    second: Walking_Right
   - first:
       74: 2014208402698185925
-    second: taec|Kitaec|Walking_Backward_Left|Kitaec|Walking_Backward_Lefkward_Lef
+    second: Walking_Backward_Left
   externalObjects: {}
   materials:
     materialImportMode: 1
@@ -59,7 +59,7 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: taec|Kitaec|Walking_Backward_Left|Kitaec|Walking_Backward_Lefkward_Lef
+      name: Walking_Backward_Left
       takeName: Kitaec|Kitaec|Kitaec|Walking_Backward_Left|Kitaec|Walking_Backward_Lef
       internalID: 0
       firstFrame: 0
@@ -88,7 +88,7 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
-      name: Kitaec|Kitaec|Kitaec|Walking_Backward_Right|Kitaec|Walking_Backward_Ri
+      name: Walking_Backward_Right
       takeName: Kitaec|Kitaec|Kitaec|Walking_Backward_Right|Kitaec|Walking_Backward_Ri
       internalID: 0
       firstFrame: 0
@@ -117,7 +117,7 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
-      name: Kitaec|Kitaec|Kitaec|Walking_Backward|Kitaec|Walking_Backward
+      name: Walking_Backward
       takeName: Kitaec|Kitaec|Kitaec|Walking_Backward|Kitaec|Walking_Backward
       internalID: 0
       firstFrame: 0
@@ -146,7 +146,7 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
-      name: Kitaec|Kitaec|Kitaec|Walking_Forward_Left|Kitaec|Walking_Forward_Left
+      name: Walking_Forward_Left
       takeName: Kitaec|Kitaec|Kitaec|Walking_Forward_Left|Kitaec|Walking_Forward_Left
       internalID: 0
       firstFrame: 0
@@ -175,7 +175,7 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
-      name: Kitaec|Kitaec|Kitaec|Walking_Forward_Right|Kitaec|Walking_Forward_Righ
+      name: Walking_Forward_Right
       takeName: Kitaec|Kitaec|Kitaec|Walking_Forward_Right|Kitaec|Walking_Forward_Righ
       internalID: 0
       firstFrame: 0
@@ -204,7 +204,7 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
-      name: Kitaec|Kitaec|Kitaec|Walking_Forward|Kitaec|Walking_Forward
+      name: Walking_Forward
       takeName: Kitaec|Kitaec|Kitaec|Walking_Forward|Kitaec|Walking_Forward
       internalID: 0
       firstFrame: 0
@@ -233,7 +233,7 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
-      name: Kitaec|Kitaec|Kitaec|Walking_Left|Kitaec|Walking_Left
+      name: Walking_Left
       takeName: Kitaec|Kitaec|Kitaec|Walking_Left|Kitaec|Walking_Left
       internalID: 0
       firstFrame: 0
@@ -262,7 +262,7 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
-      name: Kitaec|Kitaec|Kitaec|Walking_Right|Kitaec|Walking_Right
+      name: Walking_Right
       takeName: Kitaec|Kitaec|Kitaec|Walking_Right|Kitaec|Walking_Right
       internalID: 0
       firstFrame: 0
