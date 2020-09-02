@@ -7,6 +7,7 @@ using UnityEngine.UI;
 
 public class AbilityUi : MonoBehaviour
 {
+    /*
     [SerializeField] private Image skillImage;
     [SerializeField] private TextMeshProUGUI coolDownText;
     private Ability ability;
@@ -37,4 +38,5 @@ public class AbilityUi : MonoBehaviour
             onCoolDown = false;
         }
     }
+    */
 }

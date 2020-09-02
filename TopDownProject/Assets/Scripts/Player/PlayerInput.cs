@@ -4,7 +4,6 @@ using UnityEngine;
 using UnityEngine.UIElements;
 
 [RequireComponent(typeof(PlayerController))]
-[RequireComponent(typeof(Dash))]
 [RequireComponent(typeof(WeaponHolder))]
 [RequireComponent(typeof(Player))]
 public class PlayerInput : MonoBehaviour
@@ -24,14 +23,12 @@ public class PlayerInput : MonoBehaviour
 	[SerializeField] private InputBinding dash;
 
 	private PlayerController playerController;
-	private Dash dashAbility;
 	private WeaponHolder weaponHolder;
 	private Player player;
 
     private void Awake()
     {
 		playerController = GetComponent<PlayerController>();
-		dashAbility = GetComponent<Dash>();
 		weaponHolder = GetComponent<WeaponHolder>();
 		player = GetComponent<Player>();
 	}

@@ -16,7 +16,6 @@ public class Player : Actor
     public PlayerController controller { get; private set; }
 
     [SerializeField] private WeaponBase prefabWeaponA;
-    [SerializeField] private Ability dash;
     [SerializeField] private LayerMask weaponsMask;
 
     public void TakeWeapon()
