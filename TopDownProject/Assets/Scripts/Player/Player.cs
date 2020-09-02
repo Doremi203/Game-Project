@@ -20,8 +20,10 @@ public class Player : Actor
 
     public void TakeWeapon()
     {
-        //if (weaponHolder.currentWeapon) weaponHolder.Drop();
         WeaponBase closestWeapon = FindWeaponAround();
+
+        if (weaponHolder.currentWeapon) weaponHolder.Drop();
+
         if (closestWeapon) weaponHolder.EquipWeapon(closestWeapon);
     }
 
@@ -38,7 +40,7 @@ public class Player : Actor
         {
             WeaponBase target = item.GetComponent<WeaponBase>();
             if (target == null) continue;
-            if (target.IsDrop == false) continue;
+            if (target.CanPickup() == false) continue;
             if (closestWeapon == null)
             {
                 closestWeapon = target;
@@ -70,7 +72,6 @@ public class Player : Actor
     protected override void Death()
     {
         weaponHolder.Drop();
-        weaponHolder.DropAlt();
         base.Death();
     }
 

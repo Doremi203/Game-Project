@@ -14,7 +14,7 @@ public static class SoundEventGenerator
             ISoundsListener target = item.GetComponent<ISoundsListener>();
             if (target != null)
             {
-                target.Test(causer, eventPosition);
+                target.ApplySoundEvent(causer, eventPosition);
             }
         }
     }

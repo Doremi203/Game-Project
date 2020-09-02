@@ -30,7 +30,7 @@ public abstract class NPC_BaseAI : MonoBehaviour, ISoundsListener
 
     private float positionRecordEndsTime;
 
-    public void Test(Actor causer, Vector3 eventPosition)
+    public void ApplySoundEvent(Actor causer, Vector3 eventPosition)
     {
         if (causer == this) return;
         if (causer.Team == npc.Team)

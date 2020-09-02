@@ -15,7 +15,6 @@ GameObject:
   - component: {fileID: 3602111582893714108}
   - component: {fileID: 644702065143471220}
   - component: {fileID: 2499621001023819872}
-  - component: {fileID: 358503628}
   m_Layer: 11
   m_Name: Player
   m_TagString: Untagged
@@ -171,28 +170,9 @@ MonoBehaviour:
   team: {fileID: 11400000, guid: d29a5ea4e91d4b54f866f89571407510, type: 2}
   prefabWeaponA: {fileID: -6386357407385631847, guid: ac6652c404eb06245b52da11ec5cdcac,
     type: 3}
-  dash: {fileID: 358503628}
   weaponsMask:
     serializedVersion: 2
     m_Bits: 4096
---- !u!114 &358503628
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8037512694796132851}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e328ea5c3a1e02d4197a40e0c8b9af85, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  skillSprite: {fileID: 0}
-  Casted:
-    m_PersistentCalls:
-      m_Calls: []
-  dashForce: 5
-  cooldown: 2
 --- !u!114 &2212075499628263284
 MonoBehaviour:
   m_ObjectHideFlags: 0

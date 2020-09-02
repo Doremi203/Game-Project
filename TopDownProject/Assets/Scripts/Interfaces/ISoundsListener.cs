@@ -5,6 +5,6 @@ using UnityEngine;
 public interface ISoundsListener 
 {
 
-    void Test(Actor causer, Vector3 eventPosition);
+    void ApplySoundEvent(Actor causer, Vector3 eventPosition);
    
 }

@@ -15,7 +15,11 @@ public class TileWizardWindow : EditorWindow
     private List<Tile> tiles = new List<Tile>();
     private Tile selectedTile;
 
-    private void Awake() => RefreshTiles();
+    private void Awake()
+    {
+        RefreshTiles();
+        if (tiles[0]) selectedTile = tiles[0]; 
+    }
 
     private void OnGUI()
     {

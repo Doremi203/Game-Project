@@ -8,7 +8,6 @@ public class HumanNPC : Actor
 {
 
     [SerializeField] private WeaponBase weaponPrefab;
-    [SerializeField] private WeaponBase weaponPrefabAlt;
 
     protected WeaponHolder weaponHolder;
 
@@ -21,13 +20,11 @@ public class HumanNPC : Actor
     private void Start()
     {
         if (weaponPrefab) weaponHolder.EquipWeapon(Instantiate(weaponPrefab));
-        if (weaponPrefabAlt) weaponHolder.EquipWeaponAlt(Instantiate(weaponPrefabAlt));
     }
 
     protected override void Death()
     {
         weaponHolder.Drop();
-        weaponHolder.DropAlt();
         base.Death();
     }
 

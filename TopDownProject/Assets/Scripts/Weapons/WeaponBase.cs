@@ -11,10 +11,10 @@ public abstract class WeaponBase : MonoBehaviour
     // Основной класс оружия.
     public Actor Owner => owner;
     public string DisplayName => displayName;
-    public bool IsDrop { get; private set; } = true;
     public float NpcAttackDistance => npcAttackDistance;
     public float NpcAttackAngle => npcAttackAngle;
     public AnimationType AnimationType => animationType;
+    public WeaponState State { get; private set; }
 
     [SerializeField] private string displayName;
     [SerializeField] private float cooldown;
@@ -24,6 +24,7 @@ public abstract class WeaponBase : MonoBehaviour
     [SerializeField] private float npcAttackAngle;
     [SerializeField] private AnimationType animationType;
 
+    // Может лучше переименовать и сделать просто ShootEvent.
     public UnityEvent OnUsingStartEvent;
     public UnityEvent OnShootEvent;
     public UnityEvent OnUsingEndEvent;
@@ -39,23 +40,24 @@ public abstract class WeaponBase : MonoBehaviour
 
     public virtual void Pickup(Actor owner, bool infinityAmmo)
     {
+        ChangeState(WeaponState.Equiped);
         this.owner = owner;
-        rb.detectCollisions = false;
-        rb.isKinematic = true;
-        IsDrop = false;
+
         this.infinityAmmo = infinityAmmo;
+
         OnEquiped.Invoke();
     }
 
     public virtual void Drop()
     {
-        rb.detectCollisions = true;
-        rb.isKinematic = false;
+        ChangeState(WeaponState.Drop);
         //rb.AddForce(owner.transform.forward * 150f);
+
         this.owner = null;
         transform.parent = null;
+
         isUsing = false;
-        IsDrop = true;
+
         OnDropped.Invoke();
     }
 
@@ -82,21 +84,11 @@ public abstract class WeaponBase : MonoBehaviour
         isUsing = b;
     }
 
-    public virtual bool CanUse()
-    {
-        return Time.time > nextShootTime;
-    }
+    public virtual bool CanUse() => Time.time > nextShootTime;
 
-    // На будущее.
-    public virtual bool CanPickup()
-    {
-        return true;
-    }
+    public virtual bool CanPickup() => State == WeaponState.Drop;
 
-    protected virtual void Awake()
-    {
-        rb = GetComponent<Rigidbody>();
-    }
+    protected virtual void Awake() => rb = GetComponent<Rigidbody>();
 
     protected virtual void Update()
     {
@@ -126,9 +118,27 @@ public abstract class WeaponBase : MonoBehaviour
         OnUsingStartEvent.Invoke();
     }
 
-    protected virtual void OnUsingEnd() 
+    protected virtual void OnUsingEnd() => OnUsingEndEvent.Invoke();
+
+    private void ChangeState(WeaponState state)
     {
-        OnUsingEndEvent.Invoke();
+        this.State = state;
+        switch (state)
+        {   
+            case WeaponState.Drop:
+
+                rb.isKinematic = false;
+                break;
+
+            case WeaponState.Equiped:
+
+                rb.isKinematic = true;
+                break;
+
+            default:
+
+                break;
+        }
     }
 
 #if UNITY_EDITOR

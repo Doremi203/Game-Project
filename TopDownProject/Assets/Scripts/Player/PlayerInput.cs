@@ -17,10 +17,6 @@ public class PlayerInput : MonoBehaviour
 	[Header("Weapons")]
 	[SerializeField] private InputBinding shoot;
 	[SerializeField] private InputBinding pickupWeapon;
-	[SerializeField] private InputBinding equipKatana;
-	[SerializeField] private InputBinding equipWeapon;
-	[Header("Player")]
-	[SerializeField] private InputBinding dash;
 
 	private PlayerController playerController;
 	private WeaponHolder weaponHolder;
@@ -35,7 +31,6 @@ public class PlayerInput : MonoBehaviour
 
 	private void Update()
 	{
-
 		if (Input.GetKeyDown(KeyCode.R)) UnityEngine.Application.LoadLevel(0);
 
 		if (player.IsDead) return;
@@ -63,14 +58,11 @@ public class PlayerInput : MonoBehaviour
 			player.desiredRotation = Quaternion.LookRotation(new Vector3(direction.x, 0, direction.z));
 		}
 
-		//if (Input.GetKeyDown(dash.GetKeyCode())) dashAbility.Cast();
-
 		if (player.weaponHolder.currentWeapon)
 		{
-			if(Input.GetKeyDown(shoot.GetKeyCode())) player.weaponHolder.currentWeapon.Use(true);
-			if (Input.GetKeyUp(shoot.GetKeyCode())) player.weaponHolder.currentWeapon.Use(false);
+			if (Input.GetKeyDown(shoot.GetKeyCode())) weaponHolder.currentWeapon.Use(true);
+			if (Input.GetKeyUp(shoot.GetKeyCode())) weaponHolder.currentWeapon.Use(false);
 		}
-		//if (player.CurrentWeaponSecond) player.CurrentWeaponSecond.Use(Input.GetKey(KeyCode.Mouse1));
 
 		if (Input.GetKeyDown(pickupWeapon.GetKeyCode())) player.TakeWeapon();
 		if (Input.GetKeyDown(KeyCode.Q)) player.TakeWeaponLeftArm();
