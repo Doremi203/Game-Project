@@ -19,10 +19,10 @@ public class NPC_PatrollingAI : NPC_BaseAI
         weaponHolder = this.GetComponent<WeaponHolder>();
 
         // States
-        var patrolling = new Patrolling(npc as HumanNPC, agent, this);
-        var chasing = new Chasing(npc as HumanNPC, agent, this);
-        var attacking = new Attacking(npc as HumanNPC, agent, weaponHolder, this);
-        var investigating = new Investigating(npc as HumanNPC, agent, this);
+        var patrolling = new Patrolling(npc, agent, this);
+        var chasing = new Chasing(npc, agent, this);
+        var attacking = new Attacking(npc, agent, weaponHolder, this);
+        var investigating = new Investigating(npc, agent, this);
 
         // Transitions
         At(patrolling, chasing, canSeeTarget());

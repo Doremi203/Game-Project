@@ -947,7 +947,7 @@ MonoBehaviour:
   displayName: Assault Rifle
   cooldown: 0.2
   isAutomatic: 1
-  soundEventDistance: 5
+  soundEventDistance: 6
   npcAttackDistance: 20
   npcAttackAngle: 10
   animationType: 1

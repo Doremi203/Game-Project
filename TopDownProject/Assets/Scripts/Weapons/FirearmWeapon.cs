@@ -17,7 +17,7 @@ public class FirearmWeapon : WeaponBase
     [SerializeField] private AmmoType ammoType;
     [SerializeField] private int startingAmmoMin;
     [SerializeField] private int startingAmmoMax;
-    [SerializeField] private BulletBase bulletPrefab;
+    [SerializeField] private ProjectileBase bulletPrefab;
     [SerializeField] private float damage;
     [SerializeField] private DamageType damageType;
 
@@ -42,8 +42,8 @@ public class FirearmWeapon : WeaponBase
         {
             Vector3 spreadOffset = owner.transform.right * Random.Range(-bulletSpreadingMultiplier, bulletSpreadingMultiplier);
             Vector3 bulletSpawnPosition = owner.eyesPosition;
-            BulletBase newBullet = Instantiate(bulletPrefab, bulletSpawnPosition, transform.rotation);
-            newBullet.Setup(this, owner.transform.forward + spreadOffset, bulletsSpeed, damage, damageType);
+            ProjectileBase newBullet = Instantiate(bulletPrefab, bulletSpawnPosition, transform.rotation);
+            newBullet.Setup(owner, owner.transform.forward + spreadOffset, bulletsSpeed, damage, damageType);
         }
 
         base.OnShoot();

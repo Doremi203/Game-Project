@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class Rocket : BulletBase
+public class Rocket : ProjectileBase
 {
 
     public UnityEvent OnExplosion;
@@ -36,7 +36,7 @@ public class Rocket : BulletBase
         {
             Actor actor = item.GetComponent<Actor>();
             if (!actor) continue;
-            actor.ApplyDamage(owner.Owner, damage, damageType);
+            actor.ApplyDamage(owner, damage, damageType);
         }
 
         OnExplosion.Invoke();

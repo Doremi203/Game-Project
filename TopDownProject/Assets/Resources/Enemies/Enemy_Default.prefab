@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 7750810099474233590}
   - component: {fileID: 7750810099474233593}
   - component: {fileID: 7750810099474233592}
-  - component: {fileID: 7750810099474233595}
+  - component: {fileID: 5698660024320438996}
   - component: {fileID: 7750810099474233594}
   - component: {fileID: 7750810099474233597}
   m_Layer: 11
@@ -88,7 +88,7 @@ MonoBehaviour:
   OnHealthChanged:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &7750810099474233595
+--- !u!114 &5698660024320438996
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -97,7 +97,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 7750810099474233598}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4d0952c8d8b7b3146881af073f770691, type: 3}
+  m_Script: {fileID: 11500000, guid: 3970a0991b8f98648880ee72cbda468a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   Target: {fileID: 0}
@@ -138,14 +138,22 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  rotationSpeed: 220
+      - m_Target: {fileID: 7750810099474233594}
+        m_MethodName: Drop
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  rotationSpeed: 260
   eyesOffset: {x: 0, y: 0.75, z: 0}
   shouldDestroy: 0
   destroyDelay: 0
   team: {fileID: 11400000, guid: ae712937a776a6f4f811e4e8676d1419, type: 2}
-  weaponPrefab: {fileID: -6386357407385631847, guid: ac6652c404eb06245b52da11ec5cdcac,
-    type: 3}
-  weaponPrefabAlt: {fileID: 0}
 --- !u!114 &7750810099474233594
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -163,7 +171,8 @@ MonoBehaviour:
       m_Calls: []
   infinityAmmo: 1
   armBone: {fileID: 2026815956877220564}
-  armBoneAlt: {fileID: 2247503708149307035}
+  weaponPrefab: {fileID: -6386357407385631847, guid: ac6652c404eb06245b52da11ec5cdcac,
+    type: 3}
 --- !u!114 &7750810099474233597
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -212,7 +221,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 2332155301275440479}
-  actor: {fileID: 7750810099474233595}
+  actor: {fileID: 5698660024320438996}
   ragdollDelay: 0.02
 --- !u!114 &4084273249356357601
 MonoBehaviour:
@@ -597,12 +606,6 @@ Animator:
 --- !u!4 &2026815956877220564 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 960756059076408866, guid: f2cc12ec8c6270341ab1b840c75ae786,
-    type: 3}
-  m_PrefabInstance: {fileID: 1258185262212525302}
-  m_PrefabAsset: {fileID: 0}
---- !u!4 &2247503708149307035 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 1028303280110041709, guid: f2cc12ec8c6270341ab1b840c75ae786,
     type: 3}
   m_PrefabInstance: {fileID: 1258185262212525302}
   m_PrefabAsset: {fileID: 0}

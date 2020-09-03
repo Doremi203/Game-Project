@@ -7,16 +7,16 @@ using UnityEngine.AI;
 public class Attacking : IState
 {
 
-    private HumanNPC npc;
+    private Actor npc;
     private NavMeshAgent agent;
     private WeaponHolder weaponHolder;
     private NPC_BaseAI ai;
     private float nextPositionTime;
     private Vector3 currentTargetPosition;
 
-    public Attacking(HumanNPC newTestNPC, NavMeshAgent agent, WeaponHolder weaponHolder, NPC_BaseAI ai)
+    public Attacking(Actor npc, NavMeshAgent agent, WeaponHolder weaponHolder, NPC_BaseAI ai)
     {
-        this.npc = newTestNPC;
+        this.npc = npc;
         this.agent = agent;
         this.weaponHolder = weaponHolder;
         this.ai = ai;

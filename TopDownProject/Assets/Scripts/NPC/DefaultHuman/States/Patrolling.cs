@@ -6,7 +6,7 @@ using UnityEngine.AI;
 public class Patrolling : IState
 {
 
-    private HumanNPC npc;
+    private Actor npc;
     private NavMeshAgent agent;
     private NPC_BaseAI ai;
 
@@ -15,9 +15,9 @@ public class Patrolling : IState
     private PatrollingPoint lastPoint;
     private PatrollingPoint targetPoint;
 
-    public Patrolling(HumanNPC newTestNPC, NavMeshAgent agent, NPC_BaseAI ai)
+    public Patrolling(Actor npc, NavMeshAgent agent, NPC_BaseAI ai)
     {
-        this.npc = newTestNPC;
+        this.npc = npc;
         this.agent = agent;
         this.ai = ai;
     }

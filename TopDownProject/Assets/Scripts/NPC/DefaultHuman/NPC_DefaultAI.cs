@@ -20,10 +20,10 @@ public class NPC_DefaultAI : NPC_BaseAI
         weaponHolder = this.GetComponent<WeaponHolder>();
 
         // States
-        var chilling = new Chilling(npc as HumanNPC, agent, this);
-        var chasing = new Chasing(npc as HumanNPC, agent, this);
-        var attacking = new Attacking(npc as HumanNPC, agent, weaponHolder, this);
-        var investigating = new Investigating(npc as HumanNPC, agent, this);
+        var chilling = new Chilling(npc, agent, this);
+        var chasing = new Chasing(npc, agent, this);
+        var attacking = new Attacking(npc, agent, weaponHolder, this);
+        var investigating = new Investigating(npc, agent, this);
 
         // Transitions
         At(chilling, chasing, canSeeTarget());

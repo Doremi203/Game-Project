@@ -13,23 +13,16 @@ public class Player : Actor
     public static Player Instance;
 
     public WeaponHolder weaponHolder { get; private set; }
-    public PlayerController controller { get; private set; }
 
-    [SerializeField] private WeaponBase prefabWeaponA;
     [SerializeField] private LayerMask weaponsMask;
 
     public void TakeWeapon()
     {
         WeaponBase closestWeapon = FindWeaponAround();
 
-        if (weaponHolder.currentWeapon) weaponHolder.Drop();
+        if (closestWeapon == null) return;
 
-        if (closestWeapon) weaponHolder.EquipWeapon(closestWeapon);
-    }
-
-    public void TakeWeaponLeftArm()
-    {
-
+        weaponHolder.EquipWeapon(closestWeapon);
     }
 
     private WeaponBase FindWeaponAround()
@@ -60,19 +53,6 @@ public class Player : Actor
         base.Awake();
         Player.Instance = this;
         weaponHolder = this.GetComponent<WeaponHolder>();
-        controller = this.GetComponent<PlayerController>();
-    }
-
-    private void Start()
-    {
-        // Это для теста. В реальной игре оружия будут появлятся из сохранений.
-        weaponHolder.EquipWeapon(Instantiate(prefabWeaponA, this.transform));
-    }
-
-    protected override void Death()
-    {
-        weaponHolder.Drop();
-        base.Death();
     }
 
 }

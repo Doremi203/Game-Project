@@ -7,16 +7,16 @@ using UnityEngine.AI;
 public class Roaming : IState
 {
 
-    private HumanNPC npc;
+    private Actor npc;
     private NavMeshAgent agent;
     private NPC_BaseAI ai;
     private float nextChangeTime;
     private float nextFindTargetTime;
     private Vector3? startingPoint;
 
-    public Roaming(HumanNPC newTestNPC, NavMeshAgent agent, NPC_BaseAI ai)
+    public Roaming(Actor npc, NavMeshAgent agent, NPC_BaseAI ai)
     {
-        this.npc = newTestNPC;
+        this.npc = npc;
         this.agent = agent;
         this.ai = ai;
     }

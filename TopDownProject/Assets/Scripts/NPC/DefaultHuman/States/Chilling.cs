@@ -6,16 +6,16 @@ using UnityEngine.AI;
 public class Chilling : IState
 {
 
-    private HumanNPC npc;
+    private Actor npc;
     private NavMeshAgent agent;
     private NPC_BaseAI ai;
     private Vector3 startingPoint;
     private Quaternion startingRotation;
     private float nextFindTargetTime;
 
-    public Chilling(HumanNPC newTestNPC, NavMeshAgent agent, NPC_BaseAI ai)
+    public Chilling(Actor npc, NavMeshAgent agent, NPC_BaseAI ai)
     {
-        this.npc = newTestNPC;
+        this.npc = npc;
         this.agent = agent;
         this.ai = ai;
         startingPoint = npc.transform.position;

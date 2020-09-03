@@ -21,12 +21,14 @@ public class PlayerInput : MonoBehaviour
 	private PlayerController playerController;
 	private WeaponHolder weaponHolder;
 	private Player player;
+	private AbilityShurikens shuriken;
 
     private void Awake()
     {
 		playerController = GetComponent<PlayerController>();
 		weaponHolder = GetComponent<WeaponHolder>();
 		player = GetComponent<Player>();
+		shuriken = GetComponent<AbilityShurikens>();
 	}
 
 	private void Update()
@@ -65,7 +67,8 @@ public class PlayerInput : MonoBehaviour
 		}
 
 		if (Input.GetKeyDown(pickupWeapon.GetKeyCode())) player.TakeWeapon();
-		if (Input.GetKeyDown(KeyCode.Q)) player.TakeWeaponLeftArm();
+
+		if (Input.GetKeyDown(KeyCode.Mouse1)) shuriken.Use();
 
 	}
 

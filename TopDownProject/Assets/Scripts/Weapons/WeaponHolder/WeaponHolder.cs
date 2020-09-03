@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
+[RequireComponent(typeof(Actor))]
 public class WeaponHolder : MonoBehaviour
 {
 
@@ -15,6 +16,9 @@ public class WeaponHolder : MonoBehaviour
 
     [SerializeField] private bool infinityAmmo;
     [SerializeField] private Transform armBone;
+    [SerializeField] private WeaponBase weaponPrefab;
+
+    private Actor owner;
 
     // Взять оружие в руки.
     public void EquipWeapon(WeaponBase weapon)
@@ -31,13 +35,16 @@ public class WeaponHolder : MonoBehaviour
     public void Drop()
     {
         if (currentWeapon == null) return;
+        currentWeapon.Drop();
         currentWeapon = null;
         OnWeaponChanged.Invoke();
     }
 
-    private void Awake()
-    {       
-        if (GetComponent<Actor>() == null) Debug.LogError("There is no actor component on " + gameObject.name);
+    private void Awake() => owner = this.GetComponent<Actor>();
+
+    private void Start()
+    {
+        if (weaponPrefab) EquipWeapon(Instantiate(weaponPrefab));
     }
 
 }

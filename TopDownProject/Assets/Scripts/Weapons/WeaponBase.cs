@@ -122,7 +122,7 @@ public abstract class WeaponBase : MonoBehaviour
 
     private void ChangeState(WeaponState state)
     {
-        this.State = state;
+        State = state;
         switch (state)
         {   
             case WeaponState.Drop:
