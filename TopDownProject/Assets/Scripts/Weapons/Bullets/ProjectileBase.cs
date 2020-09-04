@@ -35,12 +35,19 @@ public class ProjectileBase : MonoBehaviour
         if (other.transform.GetComponent<ProjectileBase>()) return;
 
         Actor _otherActor = other.transform.GetComponent<Actor>();
+        //if (_otherActor == owner) return;
         if (_otherActor?.Team == team) return;
 
         IDamageable damageable = other.transform.GetComponent<IDamageable>();
         damageable?.ApplyDamage(owner, damage, damageType);
 
         OnHit(other);
+
+        /*
+        GameObject _gameObject = GameObject.CreatePrimitive(PrimitiveType.Cube);
+        _gameObject.transform.position = this.transform.position;
+        _gameObject.transform.localScale = new Vector3(0.1f, 0.1f, 0.1f);
+        */
 
         Destroy(this.gameObject);
     }
