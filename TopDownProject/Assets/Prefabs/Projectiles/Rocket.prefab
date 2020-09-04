@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 593847970260091822}
   - component: {fileID: 2068617519163997788}
   - component: {fileID: 1413017687601188919}
-  m_Layer: 10
+  m_Layer: 9
   m_Name: Cube (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -90,7 +90,7 @@ GameObject:
   - component: {fileID: 6923227436615316675}
   - component: {fileID: 661639948240644883}
   - component: {fileID: 5023717435083548602}
-  m_Layer: 10
+  m_Layer: 9
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -171,7 +171,7 @@ GameObject:
   - component: {fileID: 6444695937657245884}
   - component: {fileID: -2721991286131664508}
   - component: {fileID: 2077514080896696660}
-  m_Layer: 10
+  m_Layer: 9
   m_Name: Rocket
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -204,11 +204,11 @@ Rigidbody:
   m_Mass: 1
   m_Drag: 0
   m_AngularDrag: 0.05
-  m_UseGravity: 1
+  m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 2
   m_Constraints: 0
-  m_CollisionDetection: 2
+  m_CollisionDetection: 3
 --- !u!65 &6444695937657245884
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -217,7 +217,7 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6444695937657245856}
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 0.22, y: 0.22, z: 1}
@@ -277,7 +277,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6444695937703864783}
   - component: {fileID: 8769354589516327384}
-  m_Layer: 10
+  m_Layer: 9
   m_Name: Visuals
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -418,7 +418,7 @@ GameObject:
   - component: {fileID: 2036146473201203533}
   - component: {fileID: 5806269794384528295}
   - component: {fileID: 7408139848036973172}
-  m_Layer: 10
+  m_Layer: 9
   m_Name: Cube (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}

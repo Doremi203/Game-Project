@@ -3,8 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody))]
+[RequireComponent(typeof(Collider))]
 public class ProjectileBase : MonoBehaviour
 {
+
+    public Collider Hitbox { get; private set; }
 
     [SerializeField] private GameObject visuals;
     [SerializeField] private float enableVisualsDelayMin = 0.02f;
@@ -25,34 +28,41 @@ public class ProjectileBase : MonoBehaviour
         this.damageType = damageType;
         this.team = owner.Team;
         this.owner = owner;
+
+        Physics.IgnoreCollision(Hitbox, owner.Hitbox);
+
         rb = GetComponent<Rigidbody>();
         rb.AddForce(pushDirection * pushForce);
         Destroy(this.gameObject, 2f);
     }
 
-    private void OnTriggerEnter(Collider other)
+    private void OnCollisionEnter(Collision collision)
     {
-        if (other.transform.GetComponent<ProjectileBase>()) return;
+        Actor _actor = collision.transform.GetComponent<Actor>();
+        if (_actor)
+        {
+            if (_actor.Team != team) _actor.ApplyDamage(owner, damage, damageType);
+        }
+        else
+        {
+            IDamageable damageable = collision.transform.GetComponent<IDamageable>();
+            damageable?.ApplyDamage(owner, damage, damageType);
+        }
 
-        Actor _otherActor = other.transform.GetComponent<Actor>();
-        //if (_otherActor == owner) return;
-        if (_otherActor?.Team == team) return;
-
-        IDamageable damageable = other.transform.GetComponent<IDamageable>();
-        damageable?.ApplyDamage(owner, damage, damageType);
-
-        OnHit(other);
-
-        /*
+        //OnHit(collision.transform);
+        
         GameObject _gameObject = GameObject.CreatePrimitive(PrimitiveType.Cube);
-        _gameObject.transform.position = this.transform.position;
+        _gameObject.GetComponent<Collider>().enabled = false;
+        _gameObject.transform.position = collision.GetContact(0).point;
         _gameObject.transform.localScale = new Vector3(0.1f, 0.1f, 0.1f);
-        */
+        Destroy(_gameObject, 2f);
 
         Destroy(this.gameObject);
     }
 
-    protected virtual void Awake()
+    protected virtual void Awake() => Hitbox = GetComponent<Collider>();
+
+    protected virtual void Start()
     {
         activationTime = Random.Range(enableVisualsDelayMin, enableVisualsDelayMax);
         spawnTime = Time.time;

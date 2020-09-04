@@ -9,7 +9,7 @@ public class TilePresenter : MonoBehaviour
     public Tile TargetTile;
     public int CurrentVariantIndex;
 
-    private GameObject currentVariation;
+    public GameObject currentVariation;
 
     public void Setup(Tile target)
     {

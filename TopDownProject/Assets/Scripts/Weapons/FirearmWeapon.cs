@@ -9,7 +9,7 @@ public class FirearmWeapon : WeaponBase
     // Основной класс всех огнестрельных оружий.
 
     public AmmoType AmmoType => ammoType;
-    public int CurrentAmmo => currentAmmo;
+    public int CurrentAmmo { get; private set; }
 
     [SerializeField] private float bulletSpreadingMultiplier;
     [SerializeField] private int bulletsCount = 1;
@@ -21,29 +21,24 @@ public class FirearmWeapon : WeaponBase
     [SerializeField] private float damage;
     [SerializeField] private DamageType damageType;
 
-    private int currentAmmo;
-
     protected override void Awake()
     {
         base.Awake();
-        currentAmmo = Random.Range(startingAmmoMin, startingAmmoMax + 1);
+        CurrentAmmo = Random.Range(startingAmmoMin, startingAmmoMax + 1);
     }
 
-    public override bool CanUse()
-    {
-        return base.CanUse() && currentAmmo > 0;
-    }
+    public override bool CanUse() => base.CanUse() && CurrentAmmo > 0;
 
     protected override void OnShoot()
     {
-        if(!infinityAmmo) currentAmmo--;
+        if (!infinityAmmo) CurrentAmmo--;
 
         for (int i = 0; i < bulletsCount; i++)
         {
-            Vector3 spreadOffset = owner.transform.right * Random.Range(-bulletSpreadingMultiplier, bulletSpreadingMultiplier);
-            Vector3 bulletSpawnPosition = owner.eyesPosition;
-            ProjectileBase newBullet = Instantiate(bulletPrefab, bulletSpawnPosition, transform.rotation);
-            newBullet.Setup(owner, owner.transform.forward + spreadOffset, bulletsSpeed, damage, damageType);
+            Vector3 _spreadOffset = owner.transform.right * Random.Range(-bulletSpreadingMultiplier, bulletSpreadingMultiplier);
+
+            ProjectileBase _newBullet = Instantiate(bulletPrefab, owner.eyesPosition, Quaternion.identity);
+            _newBullet.Setup(owner, owner.transform.forward + _spreadOffset, bulletsSpeed, damage, damageType);
         }
 
         base.OnShoot();

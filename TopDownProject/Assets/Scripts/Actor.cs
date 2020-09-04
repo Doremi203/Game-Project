@@ -5,20 +5,19 @@ using UnityEngine;
 using UnityEngine.Events;
 
 [RequireComponent(typeof(HealthComponent))]
+[RequireComponent(typeof(Collider))]
 public class Actor : MonoBehaviour, IDamageable
 {
 
-    [HideInInspector] public Actor Target;
     [HideInInspector] public Quaternion desiredRotation;
 
-    public delegate void ActorDeath(Actor actor);
-    public event ActorDeath OnActorDeath;
     public UnityEvent OnDeath;
 
     public Vector3 eyesPosition => transform.position + eyesOffset;
     public Team Team => team;
-    public bool IsDead => isDead;
     public float RotationSpeed => rotationSpeed;
+    public bool IsDead { get; private set; }
+    public Collider Hitbox { get; private set; }
 
     [Header("Actor Settings")]
     [SerializeField] private float rotationSpeed;
@@ -28,7 +27,6 @@ public class Actor : MonoBehaviour, IDamageable
     [SerializeField] private Team team;
 
     private HealthComponent healthComponent;
-    private bool isDead;
 
     public virtual void ApplyDamage(Actor damageCauser, float damage, DamageType damageType)
     {
@@ -39,6 +37,7 @@ public class Actor : MonoBehaviour, IDamageable
     {
         healthComponent = GetComponent<HealthComponent>();
         healthComponent.OnHealthChanged.AddListener(HealthChanged);
+        Hitbox = GetComponent<Collider>();
     }
 
     protected virtual void Update()
@@ -50,15 +49,14 @@ public class Actor : MonoBehaviour, IDamageable
 
     protected virtual void Death()
     {
-        isDead = true;
+        IsDead = true;
         OnDeath.Invoke();
-        if (OnActorDeath != null) OnActorDeath(this);
         if(shouldDestroy) Destroy(this.gameObject, destroyDelay);
     }
 
     protected virtual void HealthChanged(float health)
     {
-        if (isDead) return;
+        if (IsDead) return;
         if (health <= 0) Death();
     }
 
