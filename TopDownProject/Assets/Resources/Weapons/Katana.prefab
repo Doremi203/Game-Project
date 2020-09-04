@@ -213,6 +213,9 @@ MonoBehaviour:
   damage: 1000
   damageType: {fileID: 11400000, guid: c5ca7e9201afad441b8efca35b93cc1a, type: 2}
   attackDelay: 0.06
+  layerMask:
+    serializedVersion: 2
+    m_Bits: 1
 --- !u!54 &1707895415305524216
 Rigidbody:
   m_ObjectHideFlags: 0

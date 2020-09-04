@@ -11,23 +11,12 @@ public class Rocket : ProjectileBase
     [SerializeField] private float rocketConstantForce = 1200f;
     [SerializeField] private float explosionRadius = 3.5f;
 
-    public override void ApplyDamage(Actor damageCauser, float damage, DamageType damageType)
-    {
-        base.ApplyDamage(damageCauser, damage, damageType);
-        Explosion();
-        Destroy(this.gameObject);
-    }
-
     private void FixedUpdate()
     {
         rb.AddForce(transform.forward * rocketConstantForce * Time.fixedDeltaTime);
     }
 
-    protected override void OnHit(Collider other)
-    {
-        base.OnHit(other);
-        Explosion();
-    }
+    protected override void OnHit(Collider other) => Explosion();
 
     private void Explosion()
     {
@@ -38,7 +27,6 @@ public class Rocket : ProjectileBase
             if (!actor) continue;
             actor.ApplyDamage(owner, damage, damageType);
         }
-
         OnExplosion.Invoke();
     }
 

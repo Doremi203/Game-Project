@@ -10,6 +10,7 @@ public class MeleeWeapon : WeaponBase
     [SerializeField] private float damage;
     [SerializeField] private DamageType damageType;
     [SerializeField] private float attackDelay = 0.05f;
+    [SerializeField] private LayerMask layerMask;
 
     public override void Drop()
     {
@@ -29,18 +30,24 @@ public class MeleeWeapon : WeaponBase
         Collider[] hits = Physics.OverlapSphere(owner.transform.position, attackRadius);
         foreach (var item in hits)
         {
-            Actor actor = item.GetComponent<Actor>();
-            if (!actor) continue;
+            Actor _targetActor = item.GetComponent<Actor>();
+            if (!_targetActor) continue;
 
-            if (actor == owner) continue;
-            if (actor.Team == owner.Team) continue;
+            if (_targetActor == owner) continue;
+            if (_targetActor.Team == owner.Team) continue;
 
-            Vector3 targetDir = actor.transform.position - owner.transform.position;
+            RaycastHit _hit;
+            if (Physics.Linecast(owner.eyesPosition, _targetActor.eyesPosition, out _hit, layerMask))
+            {
+                if (_hit.transform != _targetActor.transform) continue;
+            }
+
+            Vector3 targetDir = _targetActor.transform.position - owner.transform.position;
             float angle = Vector3.Angle(targetDir, owner.transform.forward);
 
             if (angle > attackAngle) continue;
 
-            actor.ApplyDamage(owner, damage, damageType);
+            _targetActor.ApplyDamage(owner, damage, damageType);
         }
     }
 

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody))]
-public class ProjectileBase : MonoBehaviour, IDamageable
+public class ProjectileBase : MonoBehaviour
 {
 
     [SerializeField] private GameObject visuals;
@@ -19,11 +19,6 @@ public class ProjectileBase : MonoBehaviour, IDamageable
     protected float spawnTime;
     protected Actor owner;
 
-    public virtual void ApplyDamage(Actor damageCauser, float damage, DamageType damageType)
-    {
-        //Destroy(this.gameObject);
-    }
-
     public void Setup(Actor owner ,Vector3 pushDirection, float pushForce, float damage, DamageType damageType)
     {
         this.damage = damage;
@@ -37,11 +32,7 @@ public class ProjectileBase : MonoBehaviour, IDamageable
 
     private void OnTriggerEnter(Collider other)
     {
-
-        //(other.transform.GetComponent<BulletBase>()) return;
-
-        ProjectileBase _otherBullet = other.transform.GetComponent<ProjectileBase>();
-        if (team == _otherBullet?.team) return;
+        if (other.transform.GetComponent<ProjectileBase>()) return;
 
         Actor _otherActor = other.transform.GetComponent<Actor>();
         if (_otherActor?.Team == team) return;

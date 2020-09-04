@@ -127,7 +127,6 @@ public abstract class NPC_BaseAI : MonoBehaviour, ISoundsListener
         Ray ray = new Ray(npc.eyesPosition, (targetActor.transform.position - npc.eyesPosition).normalized * distanceToPlayer);
 
         RaycastHit hit;
-
         if (Physics.Linecast(transform.position, targetActor.transform.position, out hit, detectionMask))
         {
             if (hit.transform == targetActor.transform) return true;

@@ -1,5 +1,50 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1596817922881332124
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7935467812705440160}
+  - component: {fileID: 6405924629209055041}
+  m_Layer: 0
+  m_Name: BloodParticles
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7935467812705440160
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1596817922881332124}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.348, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 8037512694796132850}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6405924629209055041
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1596817922881332124}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 09b262e8bf07ce445a4b67730f629bfb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  prefab: {fileID: 296659533157377495, guid: 805c70331bcad474ca0e00cbb26e2a25, type: 3}
+  destroyDelay: 1.5
 --- !u!1 &8037512694796132851
 GameObject:
   m_ObjectHideFlags: 0
@@ -35,6 +80,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4360687953558218390}
+  - {fileID: 7935467812705440160}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -122,7 +168,18 @@ MonoBehaviour:
   startHealth: 1000
   OnHealthChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 6405924629209055041}
+        m_MethodName: Spawn
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &2499621001023819872
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -193,9 +250,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1a05e0378e089694bac334f4347bf8e2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cooldown: 1
+  cooldown: 0.5
   startShurikensAmount: 3
-  throwPower: 700
+  throwPower: 800
   shurikenPrefab: {fileID: 6444695937657245857, guid: 5c4c717e0086d134da71a07877d53749,
     type: 3}
 --- !u!114 &2212075499628263284
@@ -263,37 +320,37 @@ PrefabInstance:
     - target: {fileID: 694427535305574479, guid: f2cc12ec8c6270341ab1b840c75ae786,
         type: 3}
       propertyPath: m_ConnectedAnchor.x
-      value: 0.0000000069144495
+      value: 0.0000000069144614
       objectReference: {fileID: 0}
     - target: {fileID: 1153691784801894023, guid: f2cc12ec8c6270341ab1b840c75ae786,
         type: 3}
       propertyPath: m_ConnectedAnchor.x
-      value: 0.097903244
+      value: 0.09790329
       objectReference: {fileID: 0}
     - target: {fileID: 1153691784801894023, guid: f2cc12ec8c6270341ab1b840c75ae786,
         type: 3}
       propertyPath: m_ConnectedAnchor.y
-      value: -0.028862601
+      value: -0.028862592
       objectReference: {fileID: 0}
     - target: {fileID: 1153691784801894023, guid: f2cc12ec8c6270341ab1b840c75ae786,
         type: 3}
       propertyPath: m_ConnectedAnchor.z
-      value: 0.01789679
+      value: 0.01789685
       objectReference: {fileID: 0}
     - target: {fileID: 2247670723510509813, guid: f2cc12ec8c6270341ab1b840c75ae786,
         type: 3}
       propertyPath: m_ConnectedAnchor.x
-      value: 0.000000018626455
+      value: -0.000000022351747
       objectReference: {fileID: 0}
     - target: {fileID: 2247670723510509813, guid: f2cc12ec8c6270341ab1b840c75ae786,
         type: 3}
       propertyPath: m_ConnectedAnchor.z
-      value: -0.000000074505834
+      value: -0.000000014901167
       objectReference: {fileID: 0}
     - target: {fileID: 2787171056024484957, guid: f2cc12ec8c6270341ab1b840c75ae786,
         type: 3}
       propertyPath: m_ConnectedAnchor.x
-      value: -0.19631052
+      value: -0.19631055
       objectReference: {fileID: 0}
     - target: {fileID: 4043482094466189263, guid: f2cc12ec8c6270341ab1b840c75ae786,
         type: 3}
@@ -353,42 +410,42 @@ PrefabInstance:
     - target: {fileID: 4376411708642691693, guid: f2cc12ec8c6270341ab1b840c75ae786,
         type: 3}
       propertyPath: m_ConnectedAnchor.x
-      value: -0.000000067055225
+      value: -0.00000009685755
       objectReference: {fileID: 0}
     - target: {fileID: 4376411708642691693, guid: f2cc12ec8c6270341ab1b840c75ae786,
         type: 3}
       propertyPath: m_ConnectedAnchor.y
-      value: 0.2597632
+      value: 0.25976315
       objectReference: {fileID: 0}
     - target: {fileID: 4376411708642691693, guid: f2cc12ec8c6270341ab1b840c75ae786,
         type: 3}
       propertyPath: m_ConnectedAnchor.z
-      value: -0.000000033527616
+      value: -0.000000029802326
       objectReference: {fileID: 0}
     - target: {fileID: 4953371382797908986, guid: f2cc12ec8c6270341ab1b840c75ae786,
         type: 3}
       propertyPath: m_ConnectedAnchor.x
-      value: -0.09790326
+      value: -0.097903304
       objectReference: {fileID: 0}
     - target: {fileID: 4953371382797908986, guid: f2cc12ec8c6270341ab1b840c75ae786,
         type: 3}
       propertyPath: m_ConnectedAnchor.y
-      value: -0.028862718
+      value: -0.02886271
       objectReference: {fileID: 0}
     - target: {fileID: 4953371382797908986, guid: f2cc12ec8c6270341ab1b840c75ae786,
         type: 3}
       propertyPath: m_ConnectedAnchor.z
-      value: 0.017896764
+      value: 0.017896824
       objectReference: {fileID: 0}
     - target: {fileID: 5909938597754670974, guid: f2cc12ec8c6270341ab1b840c75ae786,
         type: 3}
       propertyPath: m_ConnectedAnchor.x
-      value: 0.000000029802326
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8380180843422282350, guid: f2cc12ec8c6270341ab1b840c75ae786,
         type: 3}
       propertyPath: m_ConnectedAnchor.x
-      value: -0.00000001497856
+      value: -0.000000014978564
       objectReference: {fileID: 0}
     - target: {fileID: 9177204633565079868, guid: f2cc12ec8c6270341ab1b840c75ae786,
         type: 3}
