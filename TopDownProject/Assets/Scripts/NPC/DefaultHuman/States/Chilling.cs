@@ -25,6 +25,7 @@ public class Chilling : IState
     public void OnEnter()
     {
         agent.enabled = true;
+        //if (Utils.GetDistance2D(npc.transform.position, startingPoint) > 0.2f)
         agent.SetDestination(startingPoint);
         nextFindTargetTime = 0;
     }
