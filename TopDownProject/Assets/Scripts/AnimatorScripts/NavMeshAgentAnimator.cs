@@ -8,6 +8,7 @@ public class NavMeshAgentAnimator : MonoBehaviour
 
     [SerializeField] private Animator animator;
     [SerializeField] private NavMeshAgent agent;
+    [SerializeField] private float animationSpeedMultiplier = 2f;
 
     private void Update()
     {

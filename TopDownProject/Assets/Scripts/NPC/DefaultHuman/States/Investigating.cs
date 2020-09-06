@@ -31,7 +31,7 @@ public class Investigating : IState
 
     public void OnExit()
     {
-        agent.enabled = false;
+        //agent.enabled = false;
     }
 
     public void Tick()

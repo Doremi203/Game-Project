@@ -192,7 +192,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bcc865ae86130304582f345c9cc89a0b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Target: {fileID: 0}
   desiredRotation: {x: 0, y: 0, z: 0, w: 0}
   OnDeath:
     m_PersistentCalls:
@@ -330,22 +329,22 @@ PrefabInstance:
     - target: {fileID: 1153691784801894023, guid: f2cc12ec8c6270341ab1b840c75ae786,
         type: 3}
       propertyPath: m_ConnectedAnchor.y
-      value: -0.028862592
+      value: -0.028862601
       objectReference: {fileID: 0}
     - target: {fileID: 1153691784801894023, guid: f2cc12ec8c6270341ab1b840c75ae786,
         type: 3}
       propertyPath: m_ConnectedAnchor.z
-      value: 0.01789685
+      value: 0.01789679
       objectReference: {fileID: 0}
     - target: {fileID: 2247670723510509813, guid: f2cc12ec8c6270341ab1b840c75ae786,
         type: 3}
       propertyPath: m_ConnectedAnchor.x
-      value: -0.000000022351747
+      value: -0.00000002607704
       objectReference: {fileID: 0}
     - target: {fileID: 2247670723510509813, guid: f2cc12ec8c6270341ab1b840c75ae786,
         type: 3}
       propertyPath: m_ConnectedAnchor.z
-      value: -0.000000014901167
+      value: -0.000000074505834
       objectReference: {fileID: 0}
     - target: {fileID: 2787171056024484957, guid: f2cc12ec8c6270341ab1b840c75ae786,
         type: 3}
@@ -430,12 +429,12 @@ PrefabInstance:
     - target: {fileID: 4953371382797908986, guid: f2cc12ec8c6270341ab1b840c75ae786,
         type: 3}
       propertyPath: m_ConnectedAnchor.y
-      value: -0.02886271
+      value: -0.028862718
       objectReference: {fileID: 0}
     - target: {fileID: 4953371382797908986, guid: f2cc12ec8c6270341ab1b840c75ae786,
         type: 3}
       propertyPath: m_ConnectedAnchor.z
-      value: 0.017896824
+      value: 0.017896764
       objectReference: {fileID: 0}
     - target: {fileID: 5909938597754670974, guid: f2cc12ec8c6270341ab1b840c75ae786,
         type: 3}

@@ -7,6 +7,7 @@ public class MeleeWeapon : WeaponBase
 
     [SerializeField] private float attackAngle = 90f;
     [SerializeField] private float attackRadius = 2f;
+    [SerializeField] private float absoluteRadius = 0.5f;
     [SerializeField] private float damage;
     [SerializeField] private DamageType damageType;
     [SerializeField] private float attackDelay = 0.05f;
@@ -42,10 +43,14 @@ public class MeleeWeapon : WeaponBase
                 if (_hit.transform != _targetActor.transform) continue;
             }
 
-            Vector3 targetDir = _targetActor.transform.position - owner.transform.position;
-            float angle = Vector3.Angle(targetDir, owner.transform.forward);
+            float _distance = Utils.GetDistance2D(owner.transform.position, _targetActor.transform.position);
 
-            if (angle > attackAngle) continue;
+            if (_distance > absoluteRadius)
+            {
+                Vector3 targetDir = _targetActor.transform.position - owner.transform.position;
+                float angle = Vector3.Angle(targetDir, owner.transform.forward);
+                if (angle > attackAngle) continue;
+            }
 
             _targetActor.ApplyDamage(owner, damage, damageType);
         }
@@ -58,6 +63,7 @@ public class MeleeWeapon : WeaponBase
         base.OnDrawGizmos();
         if (!owner) return;
         Gizmos.DrawWireSphere(owner.transform.position, attackRadius);
+        Gizmos.DrawWireSphere(owner.transform.position, absoluteRadius);
         Gizmos.color = Color.red;
         Gizmos.DrawLine(owner.transform.position, owner.transform.position + Quaternion.AngleAxis(-attackAngle, Vector3.up) * owner.transform.forward * attackRadius);
         Gizmos.DrawLine(owner.transform.position, owner.transform.position + Quaternion.AngleAxis(attackAngle, Vector3.up) * owner.transform.forward * attackRadius);

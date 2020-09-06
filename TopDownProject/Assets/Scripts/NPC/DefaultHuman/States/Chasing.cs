@@ -10,7 +10,6 @@ public class Chasing : IState
     private NavMeshAgent agent;
     private NPC_BaseAI ai;
     private float nextPositionUpdate;
-    private float nextFindTargetTime;
 
     public Chasing(Actor npc, NavMeshAgent agent, NPC_BaseAI ai)
     {
@@ -23,12 +22,11 @@ public class Chasing : IState
     {
         agent.enabled = true;
         nextPositionUpdate = 0;
-        nextFindTargetTime = 0;
     }
 
     public void OnExit()
     {
-        agent.enabled = false;
+        //agent.enabled = false;
     }
 
     public void Tick()
@@ -41,20 +39,13 @@ public class Chasing : IState
         }
 
         if (Time.time >= nextPositionUpdate) UpdateTargetPosition();
-        //if (Time.time >= nextFindTargetTime) TryFindTarget();
-    }
-
-    private void TryFindTarget()
-    {
-        ai.Target = ai.GetClosestEnemyActor();
-        nextFindTargetTime = Time.time + 2f;
     }
 
     private void UpdateTargetPosition()
     {
         Vector3 targetPosition = ai.TargetLastKnownPosition;
         agent.SetDestination(targetPosition);
-        nextPositionUpdate = Time.time + 0.5f;
+        nextPositionUpdate = Time.time + 0f;
     }
 
 }

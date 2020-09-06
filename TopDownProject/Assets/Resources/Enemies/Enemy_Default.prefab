@@ -45,6 +45,127 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   prefab: {fileID: 296659533157377495, guid: 805c70331bcad474ca0e00cbb26e2a25, type: 3}
   destroyDelay: 1.5
+--- !u!1 &6035455977985950549
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8676998516402257591}
+  - component: {fileID: 5532262587959033765}
+  - component: {fileID: 1738388268289913241}
+  - component: {fileID: 3589011611301820730}
+  - component: {fileID: 6923835031363251771}
+  m_Layer: 0
+  m_Name: New Text
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!4 &8676998516402257591
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6035455977985950549}
+  m_LocalRotation: {x: 0.00000018204462, y: -0.86602545, z: 0.5, w: 0.00000031531061}
+  m_LocalPosition: {x: 0.52799994, y: 1.0638311, z: -0.11114291}
+  m_LocalScale: {x: 0.17673, y: 0.17673, z: 0.17673}
+  m_Children: []
+  m_Father: {fileID: 7750810099474233591}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 60.000004, y: -180.00002, z: 0}
+--- !u!23 &5532262587959033765
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6035455977985950549}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 10100, guid: 0000000000000000e000000000000000, type: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+--- !u!102 &1738388268289913241
+TextMesh:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6035455977985950549}
+  m_Text: Hello World
+  m_OffsetZ: 0
+  m_CharacterSize: 1
+  m_LineSpacing: 1
+  m_Anchor: 0
+  m_Alignment: 0
+  m_TabSize: 4
+  m_FontSize: 0
+  m_FontStyle: 0
+  m_RichText: 1
+  m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+  m_Color:
+    serializedVersion: 2
+    rgba: 4278190335
+--- !u!114 &3589011611301820730
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6035455977985950549}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f3b33fda8ee9f1e4d8704e0279c2fb49, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ai: {fileID: 7750810099474233597}
+--- !u!114 &6923835031363251771
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6035455977985950549}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1f82e0a5d95cc6243992ba681914e4ad, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ai: {fileID: 7750810099474233590}
 --- !u!1 &7750810099474233598
 GameObject:
   m_ObjectHideFlags: 0
@@ -80,6 +201,7 @@ Transform:
   m_Children:
   - {fileID: 2983825375718566713}
   - {fileID: 8830642133921096397}
+  - {fileID: 8676998516402257591}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 180.00002, z: 0}
@@ -94,10 +216,10 @@ NavMeshAgent:
   m_AgentTypeID: 0
   m_Radius: 0.2
   m_Speed: 4.5
-  m_Acceleration: 60
+  m_Acceleration: 30
   avoidancePriority: 50
   m_AngularSpeed: 0
-  m_StoppingDistance: 0
+  m_StoppingDistance: 0.2
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 1
   m_AutoRepath: 1
@@ -157,7 +279,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3970a0991b8f98648880ee72cbda468a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Target: {fileID: 0}
   desiredRotation: {x: 0, y: 0, z: 0, w: 0}
   OnDeath:
     m_PersistentCalls:
@@ -249,7 +370,7 @@ MonoBehaviour:
   detectionMask:
     serializedVersion: 2
     m_Bits: 3073
-  visionAngle: 80
+  visionAngle: 90
   visionRange: 25
   absoluteVisionRange: 3.5
   targetLostRange: 40
@@ -308,6 +429,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animator: {fileID: 2332155301275440479}
   agent: {fileID: 7750810099474233590}
+  animationSpeedMultiplier: 2
 --- !u!1001 &1258185262212525302
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -370,6 +492,16 @@ PrefabInstance:
       propertyPath: m_ConnectedAnchor.x
       value: 0.000000007450582
       objectReference: {fileID: 0}
+    - target: {fileID: 2247670723510509813, guid: f2cc12ec8c6270341ab1b840c75ae786,
+        type: 3}
+      propertyPath: m_ConnectedAnchor.y
+      value: 0.36814815
+      objectReference: {fileID: 0}
+    - target: {fileID: 2247670723510509813, guid: f2cc12ec8c6270341ab1b840c75ae786,
+        type: 3}
+      propertyPath: m_ConnectedAnchor.z
+      value: -0.000000014901167
+      objectReference: {fileID: 0}
     - target: {fileID: 2648438973193501560, guid: f2cc12ec8c6270341ab1b840c75ae786,
         type: 3}
       propertyPath: m_ConnectedAnchor.y
@@ -379,6 +511,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_ConnectedAnchor.z
       value: 0.0037838686
+      objectReference: {fileID: 0}
+    - target: {fileID: 2648438973193501560, guid: f2cc12ec8c6270341ab1b840c75ae786,
+        type: 3}
+      propertyPath: m_ConnectedAnchor.x
+      value: 0.19631052
       objectReference: {fileID: 0}
     - target: {fileID: 2787171056024484957, guid: f2cc12ec8c6270341ab1b840c75ae786,
         type: 3}

@@ -210,6 +210,7 @@ MonoBehaviour:
       m_Calls: []
   attackAngle: 70
   attackRadius: 1.3
+  absoluteRadius: 0.5
   damage: 1000
   damageType: {fileID: 11400000, guid: c5ca7e9201afad441b8efca35b93cc1a, type: 2}
   attackDelay: 0.06

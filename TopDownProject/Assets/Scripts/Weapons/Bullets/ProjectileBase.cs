@@ -50,12 +50,6 @@ public class ProjectileBase : MonoBehaviour
         }
 
         //OnHit(collision.transform);
-        
-        GameObject _gameObject = GameObject.CreatePrimitive(PrimitiveType.Cube);
-        _gameObject.GetComponent<Collider>().enabled = false;
-        _gameObject.transform.position = collision.GetContact(0).point;
-        _gameObject.transform.localScale = new Vector3(0.1f, 0.1f, 0.1f);
-        Destroy(_gameObject, 2f);
 
         Destroy(this.gameObject);
     }

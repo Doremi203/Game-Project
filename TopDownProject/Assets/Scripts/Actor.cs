@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
+[SelectionBase]
 [RequireComponent(typeof(HealthComponent))]
 [RequireComponent(typeof(Collider))]
 public class Actor : MonoBehaviour, IDamageable

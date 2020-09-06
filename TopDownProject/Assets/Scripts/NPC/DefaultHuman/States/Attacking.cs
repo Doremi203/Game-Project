@@ -28,11 +28,7 @@ public class Attacking : IState
         nextPositionTime = 0;
     }
 
-    public void OnExit()
-    {
-        weaponHolder.currentWeapon.Use(false);
-        agent.enabled = false;
-    }
+    public void OnExit() => weaponHolder.currentWeapon.Use(false);
 
     public void Tick()
     {
@@ -43,7 +39,7 @@ public class Attacking : IState
             npc.desiredRotation = Quaternion.LookRotation(relativePos, Vector3.up);
         }
 
-        Debug.DrawLine(currentTargetPosition, currentTargetPosition + Vector3.up * 100f);
+        //Debug.DrawLine(currentTargetPosition, currentTargetPosition + Vector3.up * 100f);
 
         if (Time.time >= nextPositionTime) FindNewLocation();
 

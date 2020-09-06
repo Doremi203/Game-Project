@@ -31,12 +31,12 @@ public class Chilling : IState
 
     public void OnExit()
     {
-        agent.enabled = false;
+        //agent.enabled = false;
     }
 
     public void Tick()
     {
-        if (Vector3.Distance(npc.transform.position, startingPoint) > 0.2f)
+        if (Utils.GetDistance2D(npc.transform.position, startingPoint) > 1f)
         {
             Vector3 relativePos = agent.steeringTarget - npc.transform.position;
             relativePos.y = 0;

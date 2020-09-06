@@ -88,6 +88,7 @@ public class TileWizardWindow : EditorWindow
 
     private void DrawTilesSelector()
     {
+        if (GUILayout.Button("Reinstantiate Tiles", GUILayout.MinHeight(30f))) ReinstantiateTiles();
 
         if (GUILayout.Button("Create Tile", GUILayout.MinHeight(30f)))
         {
@@ -120,6 +121,15 @@ public class TileWizardWindow : EditorWindow
         }
     }
 
+    private void ReinstantiateTiles()
+    {
+        if (EditorUtility.DisplayDialog("Reinstantiate Tiles", "Are you sure?", "Yes", "No"))
+        {
+            foreach (var item in FindObjectsOfType<TilePresenter>())
+                item.ResetTile();
+        }
+    }
+
     private void RemoveTile(Tile tile)
     {
         if (EditorUtility.DisplayDialog("Remove Tile", "Are you sure?", "Yes", "No"))
@@ -139,9 +149,10 @@ public class TileWizardWindow : EditorWindow
 
     private void CreateNewTile()
     {
-        Tile _tile = new Tile();
+        Tile _tile = (Tile)ScriptableObject.CreateInstance(typeof(Tile));
         _tile.name = "new tile";
         AssetDatabase.CreateAsset(_tile, SavePath + "newTile" + ".asset");
+        selectedTile = _tile;
     }
 
     private void RefreshTiles()

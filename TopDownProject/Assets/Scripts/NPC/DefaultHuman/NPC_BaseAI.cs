@@ -16,6 +16,7 @@ public abstract class NPC_BaseAI : MonoBehaviour, ISoundsListener
     public float AbsoluteVisionRange => absoluteVisionRange;
     public float VisionRange => visionRange;
     public float TargetLostRange => targetLostRange;
+    public StateMachine StateMachine => stateMachine;
 
     [Header("Vision Raycast")]
     [SerializeField] private LayerMask detectionMask;
@@ -127,7 +128,7 @@ public abstract class NPC_BaseAI : MonoBehaviour, ISoundsListener
         Ray ray = new Ray(npc.eyesPosition, (targetActor.transform.position - npc.eyesPosition).normalized * distanceToPlayer);
 
         RaycastHit hit;
-        if (Physics.Linecast(transform.position, targetActor.transform.position, out hit, detectionMask))
+        if (Physics.Linecast(npc.eyesPosition, targetActor.eyesPosition, out hit, detectionMask))
         {
             if (hit.transform == targetActor.transform) return true;
         }
