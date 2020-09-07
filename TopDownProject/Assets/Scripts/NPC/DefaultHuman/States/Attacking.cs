@@ -24,11 +24,15 @@ public class Attacking : IState
 
     public void OnEnter()
     {
-        agent.enabled = true;
+        //agent.enabled = true;
         nextPositionTime = 0;
     }
 
-    public void OnExit() => weaponHolder.currentWeapon.Use(false);
+    public void OnExit()
+    {
+        //agent.enabled = false;
+        weaponHolder.currentWeapon.Use(false);
+    }
 
     public void Tick()
     {
@@ -53,7 +57,7 @@ public class Attacking : IState
 
         Vector3 newPosition = new Vector3();
 
-        newPosition = ai.Target.transform.position + Utils.GetRandomPositionInTorus(4f, weaponHolder.currentWeapon.NpcAttackDistance);
+        newPosition = ai.Target.transform.position + Utils.GetRandomPositionInTorus(1f, weaponHolder.currentWeapon.NpcAttackDistance);
         newPosition.y = 0;
 
         currentTargetPosition = newPosition;

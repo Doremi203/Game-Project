@@ -20,13 +20,13 @@ public class Chasing : IState
 
     public void OnEnter()
     {
-        agent.enabled = true;
+        //agent.enabled = true;
         nextPositionUpdate = 0;
     }
 
     public void OnExit()
     {
-        agent.enabled = false;
+        //agent.enabled = false;
     }
 
     public void Tick()
@@ -45,7 +45,7 @@ public class Chasing : IState
     {
         Vector3 targetPosition = ai.TargetLastKnownPosition;
         agent.SetDestination(targetPosition);
-        nextPositionUpdate = Time.time + 0.25f;
+        nextPositionUpdate = Time.time + 0.0f;
     }
 
 }

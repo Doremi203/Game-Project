@@ -24,14 +24,14 @@ public class Patrolling : IState
 
     public void OnEnter()
     {
-        agent.enabled = true;
+        //agent.enabled = true;
         FindNextPoint();
         nextFindTargetTime = 0;
     }
 
     public void OnExit()
     {
-        agent.enabled = false;
+        //agent.enabled = false;
     }
 
     public void Tick()

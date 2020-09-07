@@ -143,7 +143,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &8676998516402257591
 Transform:
   m_ObjectHideFlags: 0
@@ -226,7 +226,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6035455977985950549}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f3b33fda8ee9f1e4d8704e0279c2fb49, type: 3}
   m_Name: 
@@ -239,7 +239,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6035455977985950549}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1f82e0a5d95cc6243992ba681914e4ad, type: 3}
   m_Name: 
@@ -260,6 +260,7 @@ GameObject:
   - component: {fileID: 5698660024320438996}
   - component: {fileID: 7750810099474233594}
   - component: {fileID: 7750810099474233597}
+  - component: {fileID: 753827167117094387}
   m_Layer: 11
   m_Name: Enemy_Default
   m_TagString: Untagged
@@ -296,10 +297,10 @@ NavMeshAgent:
   m_AgentTypeID: 0
   m_Radius: 0.5
   m_Speed: 4.5
-  m_Acceleration: 60
+  m_Acceleration: 30
   avoidancePriority: 50
   m_AngularSpeed: 0
-  m_StoppingDistance: 0
+  m_StoppingDistance: 0.1
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 1
   m_AutoRepath: 1
@@ -333,6 +334,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   startHealth: 1000
+  debugInvicibility: 0
   OnHealthChanged:
     m_PersistentCalls:
       m_Calls:
@@ -454,6 +456,18 @@ MonoBehaviour:
   visionRange: 25
   absoluteVisionRange: 3.5
   targetLostRange: 40
+--- !u!114 &753827167117094387
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7750810099474233598}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8629533ac218bb544ab13f0be638ce4a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &1073585298177967271
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -509,7 +523,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animator: {fileID: 2332155301275440479}
   agent: {fileID: 7750810099474233590}
-  animationSpeedMultiplier: 2
+  animationSpeedMultiplier: 0.5
 --- !u!1001 &1258185262212525302
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -9,8 +9,8 @@ public class IntEvent : UnityEvent<float> { }
 public class HealthComponent : MonoBehaviour
 {
 
-    [SerializeField]
-    private int startHealth = 1;
+    [SerializeField] private int startHealth = 1;
+    [SerializeField] private bool debugInvicibility;
 
     private float health;
 
@@ -18,7 +18,7 @@ public class HealthComponent : MonoBehaviour
 
     public void ApplyDamage(float damage)
     {
-        health -= damage;
+        if(debugInvicibility == false) health -= damage;
         OnHealthChanged.Invoke(health);
     }
 
@@ -28,9 +28,6 @@ public class HealthComponent : MonoBehaviour
         OnHealthChanged.Invoke(health);
     }
 
-    private void Awake()
-    {
-        health = startHealth;
-    }
+    private void Awake() => health = startHealth;
 
 }

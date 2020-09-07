@@ -23,7 +23,7 @@ public class Investigating : IState
 
     public void OnEnter()
     {
-        agent.enabled = true;
+        //agent.enabled = true;
         stuckTime = 0;
         nextFindTargetTime = 0;
         FindPosition();
@@ -33,7 +33,7 @@ public class Investigating : IState
 
     public void OnExit()
     {
-        agent.enabled = false;
+        //agent.enabled = false;
     }
 
     public void Tick()

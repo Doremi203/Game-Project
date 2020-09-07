@@ -24,14 +24,13 @@ public class Chilling : IState
 
     public void OnEnter()
     {
-        agent.enabled = true;
-        agent.SetDestination(startingPoint);
+        //agent.enabled = true;
         nextFindTargetTime = 0;
     }
 
     public void OnExit()
     {
-        agent.enabled = false;
+        //agent.enabled = false;
     }
 
     public void Tick()

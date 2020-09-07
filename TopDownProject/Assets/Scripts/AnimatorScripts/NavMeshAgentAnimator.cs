@@ -8,14 +8,14 @@ public class NavMeshAgentAnimator : MonoBehaviour
 
     [SerializeField] private Animator animator;
     [SerializeField] private NavMeshAgent agent;
-    [SerializeField] private float animationSpeedMultiplier = 2f;
+    [SerializeField] private float animationSpeedMultiplier = 0.5f;
 
     private void Update()
     {
         Vector3 moveDirection = transform.InverseTransformDirection(agent.velocity);
         animator.SetFloat("Horizontal", moveDirection.x);
         animator.SetFloat("Vertical", moveDirection.z);
-        animator.SetFloat("Speed", 2.5f);
+        animator.SetFloat("Speed", agent.velocity.magnitude * animationSpeedMultiplier);
     }
 
 }

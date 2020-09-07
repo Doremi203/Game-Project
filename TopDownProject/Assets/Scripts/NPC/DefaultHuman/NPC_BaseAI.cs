@@ -40,23 +40,24 @@ public abstract class NPC_BaseAI : MonoBehaviour, ISoundsListener
             NPC_BaseAI causerAI = causer.GetComponent<NPC_BaseAI>();
             if (causerAI == false) return;
             if (causerAI.Target == false) return;
-            TargetLastKnownPosition = causerAI.Target.transform.position;
-            LastSoundEventExpireTime = Time.time + 2f;
+            //TargetLastKnownPosition = causerAI.Target.transform.position;
+            //LastSoundEventExpireTime = Time.time + 2f;
             return;
         }
-        LastSoundEventPosition = eventPosition;
-        TargetLastKnownPosition = eventPosition;
-        LastSoundEventExpireTime = Time.time + 2f;
+        else
+        {
+            LastSoundEventPosition = eventPosition;
+            TargetLastKnownPosition = eventPosition;
+            LastSoundEventExpireTime = Time.time + 2f;
+        }
     }
 
-    protected virtual void Awake()
+    protected virtual void Awake() => npc = this.GetComponent<Actor>();
+
+    protected virtual void Update() => stateMachine.Tick();
+
+    protected virtual void FixedUpdate()
     {
-        npc = this.GetComponent<Actor>();
-    }
-    
-    protected virtual void Update()
-    {
-        stateMachine.Tick();
         if (CanSee(Target)) positionRecordEndsTime = Time.time + 2f;
         if (Target != null && Time.time <= positionRecordEndsTime)
         {
@@ -128,7 +129,8 @@ public abstract class NPC_BaseAI : MonoBehaviour, ISoundsListener
         Ray ray = new Ray(npc.eyesPosition, (targetActor.transform.position - npc.eyesPosition).normalized * distanceToPlayer);
 
         RaycastHit hit;
-        if (Physics.Linecast(npc.eyesPosition, targetActor.eyesPosition, out hit, detectionMask))
+
+        if (Physics.Linecast(transform.position, targetActor.transform.position, out hit, detectionMask))
         {
             if (hit.transform == targetActor.transform) return true;
         }

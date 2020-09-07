@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 
+#if UNITY_EDITOR
+
 [SelectionBase]
 public class TilePresenter : MonoBehaviour
 {
@@ -56,3 +58,5 @@ public class TilePresenter : MonoBehaviour
     }
 
 }
+
+#endif

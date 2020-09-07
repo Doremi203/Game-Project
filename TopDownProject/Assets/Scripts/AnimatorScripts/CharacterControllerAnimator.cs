@@ -7,13 +7,14 @@ public class CharacterControllerAnimator : MonoBehaviour
 
     [SerializeField] private Animator animator;
     [SerializeField] private CharacterController characterController;
+    [SerializeField] private float animationSpeedMultiplier = 0.5f;
 
     private void Update()
     {
         Vector3 localMove = transform.InverseTransformDirection(characterController.velocity);
         animator.SetFloat("Horizontal", localMove.x);
         animator.SetFloat("Vertical", localMove.z);
-        animator.SetFloat("Speed", 2.5f);
+        animator.SetFloat("Speed", characterController.velocity.magnitude * animationSpeedMultiplier);
     }
 
 }

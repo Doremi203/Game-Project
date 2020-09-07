@@ -2341,7 +2341,7 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.1
+  m_Radius: 0.07
   m_Height: 0.5407381
   m_Direction: 1
   m_Center: {x: 0, y: 0.27036905, z: 0}
@@ -3322,7 +3322,6 @@ GameObject:
   - component: {fileID: 8877560751137157720}
   - component: {fileID: 9004308680079665957}
   - component: {fileID: 4953371382797908986}
-  - component: {fileID: 5174726122136843060}
   m_Layer: 14
   m_Name: Hip.L
   m_TagString: Untagged
@@ -3355,10 +3354,10 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.11044435
-  m_Height: 0.36814782
+  m_Radius: 0.08
+  m_Height: 0.36814815
   m_Direction: 1
-  m_Center: {x: 0, y: 0.18407391, z: 0}
+  m_Center: {x: 0, y: 0.18407407, z: 0}
 --- !u!54 &9004308680079665957
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -3420,20 +3419,6 @@ CharacterJoint:
   m_EnablePreprocessing: 0
   m_MassScale: 1
   m_ConnectedMassScale: 1
---- !u!136 &5174726122136843060
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5485855437679887805}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.1
-  m_Height: 0.36814815
-  m_Direction: 1
-  m_Center: {x: 0, y: 0.18407407, z: 0}
 --- !u!1 &5532359273085361922
 GameObject:
   m_ObjectHideFlags: 0
@@ -5032,7 +5017,7 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.1
+  m_Radius: 0.08
   m_Height: 0.36814815
   m_Direction: 1
   m_Center: {x: 0, y: 0.18407407, z: 0}
@@ -5173,7 +5158,7 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.1
+  m_Radius: 0.07
   m_Height: 0.5407381
   m_Direction: 1
   m_Center: {x: 0, y: 0.27036905, z: 0}

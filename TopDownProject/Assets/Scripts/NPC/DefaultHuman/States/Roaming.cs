@@ -23,7 +23,7 @@ public class Roaming : IState
 
     public void OnEnter()
     {
-        agent.enabled = true;
+        //agent.enabled = true;
         nextChangeTime = 0;
         nextFindTargetTime = 0;
         if (startingPoint == null) startingPoint = npc.transform.position; 
@@ -31,7 +31,7 @@ public class Roaming : IState
 
     public void OnExit()
     {
-        agent.enabled = false;
+        //agent.enabled = false;
     }
 
     public void Tick()
