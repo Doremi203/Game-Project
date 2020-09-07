@@ -8,28 +8,24 @@ public class Chasing : IState
 
     private Actor npc;
     private NavMeshAgent agent;
-    private NPC_BaseAI ai;
-    private float nextPositionUpdate;
 
-    public Chasing(Actor npc, NavMeshAgent agent, NPC_BaseAI ai)
+    public Chasing(Actor npc, NavMeshAgent agent)
     {
         this.npc = npc;
         this.agent = agent;
-        this.ai = ai;
     }
 
-    public void OnEnter()
-    {
-        //agent.enabled = true;
-        nextPositionUpdate = 0;
-    }
+    public void OnEnter() { }
 
-    public void OnExit()
-    {
-        //agent.enabled = false;
-    }
+    public void OnExit() { }
 
     public void Tick()
+    {
+        UpdateRotation();
+        SetDestianation();
+    }
+
+    private void UpdateRotation()
     {
         Vector3 relativePos = agent.steeringTarget - npc.transform.position;
         relativePos.y = 0;
@@ -37,15 +33,12 @@ public class Chasing : IState
         {
             npc.desiredRotation = Quaternion.LookRotation(relativePos, Vector3.up);
         }
-
-        if (Time.time >= nextPositionUpdate) UpdateTargetPosition();
     }
 
-    private void UpdateTargetPosition()
+    private void SetDestianation()
     {
-        Vector3 targetPosition = ai.TargetLastKnownPosition;
-        agent.SetDestination(targetPosition);
-        nextPositionUpdate = Time.time + 0.0f;
+        Player _player = Player.Instance;
+        agent.SetDestination(_player.transform.position);
     }
 
 }

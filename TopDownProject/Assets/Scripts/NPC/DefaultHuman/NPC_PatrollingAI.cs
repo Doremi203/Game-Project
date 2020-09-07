@@ -8,7 +8,7 @@ using UnityEngine.AI;
 [RequireComponent(typeof(WeaponHolder))]
 public class NPC_PatrollingAI : NPC_BaseAI
 {
-
+    /*
     protected NavMeshAgent agent;
     protected WeaponHolder weaponHolder;
 
@@ -50,6 +50,6 @@ public class NPC_PatrollingAI : NPC_BaseAI
         Func<bool> shouldReturn() => () => investigating.stuckTime > 2f && !CanSee(Target);
 
     }
-
+    */
 }
 

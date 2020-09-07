@@ -24,31 +24,44 @@ public class Attacking : IState
 
     public void OnEnter()
     {
-        //agent.enabled = true;
+        // Возможно стоит записывать stoppingDistance
+        agent.stoppingDistance = weaponHolder.currentWeapon.NpcAttackDistance;
         nextPositionTime = 0;
     }
 
     public void OnExit()
     {
-        //agent.enabled = false;
+        agent.stoppingDistance = 0;
         weaponHolder.currentWeapon.Use(false);
     }
 
     public void Tick()
     {
-        Vector3 relativePos = ai.Target.transform.position - npc.transform.position;
+        UpdateRotation();
+        TryShoot();
+
+        //Debug.DrawLine(currentTargetPosition, currentTargetPosition + Vector3.up * 100f);
+
+        //if (Time.time >= nextPositionTime) FindNewLocation();
+
+    }
+
+    private void TryShoot()
+    {
+        float _weaponAttackAngle = weaponHolder.currentWeapon.NpcAttackAngle;
+        bool _shouldShoot = weaponHolder.currentWeapon.CanUse() && ai.AngleToPlayer() <= _weaponAttackAngle;
+        weaponHolder.currentWeapon.Use(_shouldShoot);
+    }
+
+    private void UpdateRotation()
+    {
+        Player _player = Player.Instance;
+        Vector3 relativePos = _player.transform.position - npc.transform.position;
         relativePos.y = 0;
         if (relativePos != Vector3.zero)
         {
             npc.desiredRotation = Quaternion.LookRotation(relativePos, Vector3.up);
         }
-
-        //Debug.DrawLine(currentTargetPosition, currentTargetPosition + Vector3.up * 100f);
-
-        if (Time.time >= nextPositionTime) FindNewLocation();
-
-        weaponHolder.currentWeapon.Use(weaponHolder.currentWeapon.CanUse() && ai.GetAngleToTarget() < weaponHolder.currentWeapon.NpcAttackAngle);
-
     }
 
     private void FindNewLocation()
@@ -57,7 +70,7 @@ public class Attacking : IState
 
         Vector3 newPosition = new Vector3();
 
-        newPosition = ai.Target.transform.position + Utils.GetRandomPositionInTorus(1f, weaponHolder.currentWeapon.NpcAttackDistance);
+        //newPosition = ai.Target.transform.position + GameUtilities.GetRandomPositionInTorus(1f, weaponHolder.currentWeapon.NpcAttackDistance);
         newPosition.y = 0;
 
         currentTargetPosition = newPosition;

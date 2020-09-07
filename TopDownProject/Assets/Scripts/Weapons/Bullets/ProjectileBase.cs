@@ -38,6 +38,8 @@ public class ProjectileBase : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
+        Debug.Log(collision.collider.name);
+
         Actor _actor = collision.transform.GetComponent<Actor>();
         if (_actor)
         {

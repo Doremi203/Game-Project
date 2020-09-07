@@ -7,8 +7,6 @@ using UnityEngine;
 public abstract class NPC_BaseAI : MonoBehaviour, ISoundsListener
 {
 
-    [HideInInspector] public Actor Target;
-    [HideInInspector] public Vector3 TargetLastKnownPosition;
     [HideInInspector] public Vector3 LastSoundEventPosition;
     [HideInInspector] public float LastSoundEventExpireTime;
 
@@ -29,111 +27,46 @@ public abstract class NPC_BaseAI : MonoBehaviour, ISoundsListener
     protected StateMachine stateMachine = new StateMachine();
     protected Actor npc;
 
-    private float positionRecordEndsTime;
-
     public void ApplySoundEvent(Actor causer, Vector3 eventPosition)
     {
         if (causer == this) return;
-        if (causer.Team == npc.Team)
-        {
-            // Костыль, ну а хули поделаешь?
-            NPC_BaseAI causerAI = causer.GetComponent<NPC_BaseAI>();
-            if (causerAI == false) return;
-            if (causerAI.Target == false) return;
-            //TargetLastKnownPosition = causerAI.Target.transform.position;
-            //LastSoundEventExpireTime = Time.time + 2f;
-            return;
-        }
-        else
-        {
-            LastSoundEventPosition = eventPosition;
-            TargetLastKnownPosition = eventPosition;
-            LastSoundEventExpireTime = Time.time + 2f;
-        }
+        if (causer.Team == npc.Team) return;
+        LastSoundEventPosition = eventPosition;
+        LastSoundEventExpireTime = Time.time + 2f;
     }
 
     protected virtual void Awake() => npc = this.GetComponent<Actor>();
 
     protected virtual void Update() => stateMachine.Tick();
 
-    protected virtual void FixedUpdate()
+    public float DistanceToPlayer()
     {
-        if (CanSee(Target)) positionRecordEndsTime = Time.time + 2f;
-        if (Target != null && Time.time <= positionRecordEndsTime)
+        Player _player = Player.Instance;
+        return GameUtilities.GetDistance2D(npc.transform.position, _player.transform.position);
+    }
+
+    public float AngleToPlayer()
+    {
+        Player _player = Player.Instance;
+        Vector3 _targetDirection = _player.transform.position - npc.transform.position;
+        return Vector3.Angle(_targetDirection, npc.transform.forward);
+    }
+
+    public bool CanSeePlayer()
+    {
+        Player _player = Player.Instance;
+        float _playerDistance = DistanceToPlayer();
+
+        if (_playerDistance > visionRange) return false;
+
+        if (_playerDistance > absoluteVisionRange)
         {
-            TargetLastKnownPosition = Target.transform.position;
+            if (AngleToPlayer() > visionAngle) return false;
         }
-    }
-
-    public virtual Actor GetClosestEnemyActor()
-    {
-        Collider[] hits = Physics.OverlapSphere(transform.position, visionRange);
-
-        Actor closestActor = null;
-
-        foreach (var item in hits)
-        {
-            Actor actor = item.GetComponent<Actor>();
-            if (actor)
-            {
-                if (actor.Team != npc.Team && !actor.IsDead)
-                {
-
-                    if (CanSee(actor) == false) continue;
-
-                    if (closestActor == null)
-                    {
-                        closestActor = actor;
-                    }
-                    else
-                    {
-                        float a = Vector3.Distance(transform.position, actor.transform.position);
-                        float b = Vector3.Distance(transform.position, closestActor.transform.position);
-                        if (a < b) closestActor = actor;
-                    }
-                }
-            }
-        }
-
-        return closestActor;
-    }
-
-    public virtual float DistanceToTarget()
-    {
-        return Vector3.Distance(transform.position, Target.transform.position);
-    }
-
-    public float GetAngleToTarget()
-    {
-        Vector3 targetDir = Target.transform.position - npc.transform.position;
-        float angle = Vector3.Angle(targetDir, npc.transform.forward);
-        return angle;
-    }
-
-    public virtual bool CanSee(Actor targetActor)
-    {
-        if (targetActor == null) return false;
-        if (targetActor.IsDead) return false;
-
-        float distanceToPlayer = Vector3.Distance(transform.position, targetActor.transform.position);
-
-        if (distanceToPlayer > absoluteVisionRange)
-        {
-            // Сравниваем углы.
-            Vector3 targetDir = targetActor.transform.position - npc.transform.position;
-            float angle = Vector3.Angle(targetDir, npc.transform.forward);
-
-            if (angle > visionAngle) return false;
-        }
-
-        Ray ray = new Ray(npc.eyesPosition, (targetActor.transform.position - npc.eyesPosition).normalized * distanceToPlayer);
 
         RaycastHit hit;
-
-        if (Physics.Linecast(transform.position, targetActor.transform.position, out hit, detectionMask))
-        {
-            if (hit.transform == targetActor.transform) return true;
-        }
+        if (Physics.Linecast(npc.eyesPosition, _player.eyesPosition, out hit, detectionMask))
+            if (hit.transform == _player.transform) return true;
 
         return false;
     }
@@ -153,17 +86,11 @@ public abstract class NPC_BaseAI : MonoBehaviour, ISoundsListener
         style.normal.textColor = Color.red;
         style.fontSize = 25;
 
-        string targetText = default;
-        if (Target != null) targetText = Target.ToString();
-
-        Handles.Label(transform.position, currentState.ToString() + "\n" + targetText, style);
+        Handles.Label(transform.position, currentState.ToString(), style);
     }
 
     private void OnDrawGizmosSelected()
     {
-
-        Handles.DrawWireCube(TargetLastKnownPosition, new Vector3(0.5f, 0.1f, 0.5f));
-
         Handles.color = Color.red;
         //Handles.DrawWireDisc(this.transform.position, this.transform.up, attackRange);
         Handles.color = Color.yellow;

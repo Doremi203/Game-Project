@@ -6,55 +6,12 @@ using UnityEngine.AI;
 public class Chilling : IState
 {
 
-    private Actor npc;
     private NavMeshAgent agent;
-    private NPC_BaseAI ai;
-    private Vector3 startingPoint;
-    private Quaternion startingRotation;
-    private float nextFindTargetTime;
 
-    public Chilling(Actor npc, NavMeshAgent agent, NPC_BaseAI ai)
-    {
-        this.npc = npc;
-        this.agent = agent;
-        this.ai = ai;
-        startingPoint = npc.transform.position;
-        startingRotation = npc.transform.rotation;
-    }
+    public Chilling(NavMeshAgent agent) => this.agent = agent;
 
-    public void OnEnter()
-    {
-        //agent.enabled = true;
-        nextFindTargetTime = 0;
-    }
-
-    public void OnExit()
-    {
-        //agent.enabled = false;
-    }
-
-    public void Tick()
-    {
-        if (Utils.GetDistance2D(npc.transform.position, startingPoint) > 1f)
-        {
-            Vector3 relativePos = agent.steeringTarget - npc.transform.position;
-            relativePos.y = 0;
-            if (relativePos != Vector3.zero)
-            {
-                npc.desiredRotation = Quaternion.LookRotation(relativePos, Vector3.up);
-            }
-        }
-        else
-        {
-            npc.desiredRotation = startingRotation;
-        }
-        if (Time.time >= nextFindTargetTime) TryFindTarget();
-    }
-
-    private void TryFindTarget()
-    {
-        ai.Target = ai.GetClosestEnemyActor();
-        nextFindTargetTime = Time.time + 0.5f;
-    }
+    public void OnEnter() => agent.isStopped = true;
+    public void OnExit() => agent.isStopped = false;
+    public void Tick() { }
 
 }

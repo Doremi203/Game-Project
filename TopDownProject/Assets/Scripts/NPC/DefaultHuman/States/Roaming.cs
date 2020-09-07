@@ -9,30 +9,22 @@ public class Roaming : IState
 
     private Actor npc;
     private NavMeshAgent agent;
-    private NPC_BaseAI ai;
     private float nextChangeTime;
-    private float nextFindTargetTime;
     private Vector3? startingPoint;
 
-    public Roaming(Actor npc, NavMeshAgent agent, NPC_BaseAI ai)
+    public Roaming(Actor npc, NavMeshAgent agent)
     {
         this.npc = npc;
         this.agent = agent;
-        this.ai = ai;
     }
 
     public void OnEnter()
     {
-        //agent.enabled = true;
         nextChangeTime = 0;
-        nextFindTargetTime = 0;
-        if (startingPoint == null) startingPoint = npc.transform.position; 
+        if (startingPoint == null) startingPoint = npc.transform.position; ;
     }
 
-    public void OnExit()
-    {
-        //agent.enabled = false;
-    }
+    public void OnExit() { }
 
     public void Tick()
     {
@@ -44,13 +36,6 @@ public class Roaming : IState
         }
 
         if (Time.time >= nextChangeTime) SelectNewPosition();
-        if (Time.time >= nextFindTargetTime) TryFindTarget();
-    }
-
-    private void TryFindTarget()
-    {
-        ai.Target = ai.GetClosestEnemyActor();
-        nextFindTargetTime = Time.time + 0.5f;
     }
 
     private void SelectNewPosition()

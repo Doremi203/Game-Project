@@ -52,7 +52,7 @@ public class TEST : MonoBehaviour
         if (Time.time >= nextRecalculate) CalculatePath();
         if(currentPath.corners.Length > targetCorner)
         {         
-            if(Utils.GetDistance2D(transform.position, currentPath.corners[targetCorner]) > 0.4f)
+            if(GameUtilities.GetDistance2D(transform.position, currentPath.corners[targetCorner]) > 0.4f)
             {
                 controller.SetVelocity((currentPath.corners[targetCorner] - transform.position).normalized);
                 Debug.Log((currentPath.corners[targetCorner] - transform.position).normalized);

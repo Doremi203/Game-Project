@@ -43,7 +43,7 @@ public class MeleeWeapon : WeaponBase
                 if (_hit.transform != _targetActor.transform) continue;
             }
 
-            float _distance = Utils.GetDistance2D(owner.transform.position, _targetActor.transform.position);
+            float _distance = GameUtilities.GetDistance2D(owner.transform.position, _targetActor.transform.position);
 
             if (_distance > absoluteRadius)
             {

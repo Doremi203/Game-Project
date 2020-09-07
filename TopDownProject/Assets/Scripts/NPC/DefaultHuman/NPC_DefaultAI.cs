@@ -10,6 +10,8 @@ using UnityEngine.AI;
 public class NPC_DefaultAI : NPC_BaseAI
 {
 
+    [SerializeField] private AIType AIType;
+
     protected NavMeshAgent agent;
     protected WeaponHolder weaponHolder;
 
@@ -19,41 +21,63 @@ public class NPC_DefaultAI : NPC_BaseAI
         agent = this.GetComponent<NavMeshAgent>();
         weaponHolder = this.GetComponent<WeaponHolder>();
 
+        agent.updateRotation = false;
+
         // States
-        var chilling = new Chilling(npc, agent, this);
-        var chasing = new Chasing(npc, agent, this);
+        IState defaultState;
+        switch (AIType)
+        {
+            case AIType.Default:
+                defaultState = new Chilling(agent);
+                break;
+            case AIType.Patrolling:
+                defaultState = new Chilling(agent);
+                break;
+            default:
+                defaultState = new Chilling(agent);
+                break;
+        }
+
+        var chilling = new Chilling(agent);
+        var chasing = new Chasing(npc, agent);
         var attacking = new Attacking(npc, agent, weaponHolder, this);
-        var investigating = new Investigating(npc, agent, this);
+        var investigating = new Investigating(npc, agent);
+        var soundInvestigating = new SoundInvestigating(npc, agent, this);
 
         // Transitions
-        At(chilling, chasing, canSeeTarget());
-        At(chilling, investigating, shouldInvistigateSound());
+        stateMachine.AddTransition(chilling, chasing, CanSeePlayer);
+        stateMachine.AddTransition(chilling, soundInvestigating, ShouldInvistigateSound);
 
-        At(chasing, attacking, canShootPlayer());
-        At(attacking, chasing, cantShootPlayer());
+        stateMachine.AddTransition(chasing, attacking, CanShootPlayer);
+        stateMachine.AddTransition(attacking, chasing, CantShootPlayer);
 
-        At(chasing, investigating, cantSeeTarget());
+        stateMachine.AddTransition(chasing, investigating, CantSeePlayer);
 
-        At(investigating, chilling, shouldReturn());
-        At(investigating, chasing, canSeeTarget());
+        stateMachine.AddTransition(investigating, chasing, CanSeePlayer);
+        stateMachine.AddTransition(investigating, soundInvestigating, ShouldInvistigateSound);
+        stateMachine.AddTransition(investigating, chilling, () => investigating.isInvestigatingOver);
 
-        //stateMachine.AddAnyTransition(chilling, isTargetDead());
+        stateMachine.AddTransition(soundInvestigating, chasing, CanSeePlayer);
+        stateMachine.AddTransition(soundInvestigating, chilling, () => soundInvestigating.isInvestigatingOver);
 
+        stateMachine.AddAnyTransition(chilling, IsPlayerDead);
+
+        // Default State
         stateMachine.SetState(chilling);
-
-        void At(IState from, IState to, Func<bool> condition) => stateMachine.AddTransition(from, to, condition);
-
-        Func<bool> canShootPlayer() => () => CanSee(Target) && DistanceToTarget() <= weaponHolder.currentWeapon.NpcAttackDistance;
-        Func<bool> cantShootPlayer() => () => !CanSee(Target) || DistanceToTarget() > weaponHolder.currentWeapon.NpcAttackDistance;
-
-        Func<bool> cantSeeTarget() => () => !CanSee(Target);
-        Func<bool> canSeeTarget() => () => CanSee(Target);
-
-        Func<bool> shouldInvistigateSound() => () => Time.time < LastSoundEventExpireTime;
-        Func<bool> shouldReturn() => () => investigating.stuckTime > 2f && !CanSee(Target);
-
-        //Func<bool> isTargetDead() => () => !Target || Target.IsDead;
-
     }
+
+    private bool CantSeePlayer() => !CanSeePlayer();
+
+    private bool CanShootPlayer()
+    {
+        float _weaponReachDistance = weaponHolder.currentWeapon.NpcAttackDistance;
+        return CanSeePlayer() && DistanceToPlayer() <= _weaponReachDistance;
+    }
+
+    private bool CantShootPlayer() => !CanShootPlayer();
+
+    private bool ShouldInvistigateSound() => Time.time < LastSoundEventExpireTime;
+
+    private bool IsPlayerDead() => !Player.Instance || Player.Instance.IsDead;
 
 }

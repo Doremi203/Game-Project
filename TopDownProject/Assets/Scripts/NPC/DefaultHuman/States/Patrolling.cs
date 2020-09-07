@@ -8,48 +8,37 @@ public class Patrolling : IState
 
     private Actor npc;
     private NavMeshAgent agent;
-    private NPC_BaseAI ai;
-
-    private float nextFindTargetTime;
 
     private PatrollingPoint lastPoint;
     private PatrollingPoint targetPoint;
 
-    public Patrolling(Actor npc, NavMeshAgent agent, NPC_BaseAI ai)
+    public Patrolling(Actor npc, NavMeshAgent agent)
     {
         this.npc = npc;
         this.agent = agent;
-        this.ai = ai;
     }
 
-    public void OnEnter()
-    {
-        //agent.enabled = true;
-        FindNextPoint();
-        nextFindTargetTime = 0;
-    }
+    public void OnEnter() => FindNextPoint();
 
-    public void OnExit()
-    {
-        //agent.enabled = false;
-    }
+    public void OnExit() { }
 
     public void Tick()
     {
-        if (Time.time >= nextFindTargetTime) TryFindTarget();
+        RotationUpdate();
 
         if (targetPoint == null) return;
 
+        if (GameUtilities.GetDistance2D(npc.transform.position, targetPoint.transform.position) < 0.5f)
+            FindNextPoint();
+    }
+
+    private void RotationUpdate()
+    {
         Vector3 relativePos = agent.steeringTarget - npc.transform.position;
         relativePos.y = 0;
         if (relativePos != Vector3.zero)
         {
             npc.desiredRotation = Quaternion.LookRotation(relativePos, Vector3.up);
-        }
-
-        if (Utils.GetDistance2D(npc.transform.position, targetPoint.transform.position) < 0.5f)
-        {
-            FindNextPoint();
         }
     }
 
@@ -84,12 +73,6 @@ public class Patrolling : IState
         }
 
         if(targetPoint != null) agent.SetDestination(targetPoint.transform.position);
-    }
-
-    private void TryFindTarget()
-    {
-        ai.Target = ai.GetClosestEnemyActor();
-        nextFindTargetTime = Time.time + 0.5f;
     }
 
 }

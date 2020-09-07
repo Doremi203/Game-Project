@@ -3,28 +3,26 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class Investigating : IState
+public class SoundInvestigating : IState
 {
-
-    public float stuckTime;
-
     public bool isInvestigatingOver;
 
     private Actor npc;
     private NavMeshAgent agent;
+    private NPC_BaseAI ai;
 
-    public Investigating(Actor npc, NavMeshAgent agent)
+    public SoundInvestigating(Actor npc, NavMeshAgent agent, NPC_BaseAI ai)
     {
         this.npc = npc;
         this.agent = agent;
+        this.ai = ai;
     }
 
     public void OnEnter()
     {
         agent.stoppingDistance = Random.Range(0.25f, 1f);
         isInvestigatingOver = false;
-        Player _player = Player.Instance;
-        agent.SetDestination(_player.transform.position);
+        agent.SetDestination(ai.LastSoundEventPosition);
     }
 
     public void OnExit() => agent.stoppingDistance = 0;

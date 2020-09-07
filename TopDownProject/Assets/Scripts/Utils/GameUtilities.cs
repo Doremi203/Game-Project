@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public static class Utils
+public static class GameUtilities
 {
     public static Vector3 GetRandomPositionInTorus(float ringRadius, float wallRadius)
     {

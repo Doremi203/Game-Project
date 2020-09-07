@@ -143,7 +143,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &8676998516402257591
 Transform:
   m_ObjectHideFlags: 0
@@ -295,9 +295,9 @@ NavMeshAgent:
   m_GameObject: {fileID: 7750810099474233598}
   m_Enabled: 1
   m_AgentTypeID: 0
-  m_Radius: 0.5
+  m_Radius: 0.2
   m_Speed: 4.5
-  m_Acceleration: 30
+  m_Acceleration: 60
   avoidancePriority: 50
   m_AngularSpeed: 0
   m_StoppingDistance: 0.1
@@ -451,11 +451,12 @@ MonoBehaviour:
   LastSoundEventExpireTime: 0
   detectionMask:
     serializedVersion: 2
-    m_Bits: 3073
+    m_Bits: 2049
   visionAngle: 90
   visionRange: 25
   absoluteVisionRange: 3.5
   targetLostRange: 40
+  AIType: 0
 --- !u!114 &753827167117094387
 MonoBehaviour:
   m_ObjectHideFlags: 0
