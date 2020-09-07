@@ -37,7 +37,7 @@ public class NPC_DefaultAI : NPC_BaseAI
         At(investigating, chilling, shouldReturn());
         At(investigating, chasing, canSeeTarget());
 
-        stateMachine.AddAnyTransition(chilling, isTargetDead());
+        //stateMachine.AddAnyTransition(chilling, isTargetDead());
 
         stateMachine.SetState(chilling);
 
@@ -52,7 +52,7 @@ public class NPC_DefaultAI : NPC_BaseAI
         Func<bool> shouldInvistigateSound() => () => Time.time < LastSoundEventExpireTime;
         Func<bool> shouldReturn() => () => investigating.stuckTime > 2f && !CanSee(Target);
 
-        Func<bool> isTargetDead() => () => !Target || Target.IsDead;
+        //Func<bool> isTargetDead() => () => !Target || Target.IsDead;
 
     }
 

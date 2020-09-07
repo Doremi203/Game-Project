@@ -26,7 +26,7 @@ public class Chasing : IState
 
     public void OnExit()
     {
-        //agent.enabled = false;
+        agent.enabled = false;
     }
 
     public void Tick()
@@ -45,7 +45,7 @@ public class Chasing : IState
     {
         Vector3 targetPosition = ai.TargetLastKnownPosition;
         agent.SetDestination(targetPosition);
-        nextPositionUpdate = Time.time + 0f;
+        nextPositionUpdate = Time.time + 0.25f;
     }
 
 }

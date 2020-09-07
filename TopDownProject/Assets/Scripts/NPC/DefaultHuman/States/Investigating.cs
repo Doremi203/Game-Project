@@ -27,11 +27,13 @@ public class Investigating : IState
         stuckTime = 0;
         nextFindTargetTime = 0;
         FindPosition();
+
+        agent.SetDestination(ai.TargetLastKnownPosition);
     }
 
     public void OnExit()
     {
-        //agent.enabled = false;
+        agent.enabled = false;
     }
 
     public void Tick()
