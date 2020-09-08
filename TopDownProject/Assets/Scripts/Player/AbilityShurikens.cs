@@ -20,8 +20,10 @@ public class AbilityShurikens : AbilityBase
     protected override void OnUse()
     {
         currentShurikensAmount--;
+        Vector3 _force = owner.transform.forward * throwPower;
         ProjectileBase _bullet = Instantiate(shurikenPrefab, owner.eyesPosition, Quaternion.identity);
-        _bullet.Setup(owner, owner.transform.forward, throwPower, 10000f, null);
+        _bullet.Setup(owner, 10000f, null);
+        _bullet.Rigidbody.AddForce(_force);
     }
 
     protected override bool CanUse()

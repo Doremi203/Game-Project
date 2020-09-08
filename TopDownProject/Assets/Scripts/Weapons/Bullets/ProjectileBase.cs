@@ -7,7 +7,14 @@ using UnityEngine;
 public class ProjectileBase : MonoBehaviour
 {
 
+    // Может и нахуй надо. 
+    public static ProjectileBase SpawnProjectile(ProjectileBase projectilePrefab)
+    {
+        return default;
+    }
+
     public Collider Hitbox { get; private set; }
+    public Rigidbody Rigidbody { get; private set; }
 
     [SerializeField] private GameObject visuals;
     [SerializeField] private float enableVisualsDelayMin = 0.02f;
@@ -15,24 +22,21 @@ public class ProjectileBase : MonoBehaviour
 
     private float activationTime;
 
-    protected Rigidbody rb;
     protected float damage;
     protected DamageType damageType;
     protected Team team;
     protected float spawnTime;
     protected Actor owner;
 
-    public void Setup(Actor owner, Vector3 pushDirection, float pushForce, float damage, DamageType damageType)
+    public void Setup(Actor owner, float damage, DamageType damageType)
     {
+        this.owner = owner;
+        this.team = owner.Team;
         this.damage = damage;
         this.damageType = damageType;
-        this.team = owner.Team;
-        this.owner = owner;
 
         Physics.IgnoreCollision(Hitbox, owner.Hitbox);
 
-        rb = GetComponent<Rigidbody>();
-        rb.AddForce(pushDirection * pushForce);
         Destroy(this.gameObject, 2f);
     }
 
@@ -52,7 +56,11 @@ public class ProjectileBase : MonoBehaviour
         Destroy(this.gameObject);
     }
 
-    protected virtual void Awake() => Hitbox = GetComponent<Collider>();
+    protected virtual void Awake()
+    {
+        Rigidbody = GetComponent<Rigidbody>();
+        Hitbox = GetComponent<Collider>();
+    }
 
     protected virtual void Start()
     {

@@ -36,9 +36,11 @@ public class FirearmWeapon : WeaponBase
         for (int i = 0; i < bulletsCount; i++)
         {
             Vector3 _spreadOffset = owner.transform.right * Random.Range(-bulletSpreadingMultiplier, bulletSpreadingMultiplier);
+            Vector3 _force = (owner.transform.forward + _spreadOffset) * bulletsSpeed;
 
             ProjectileBase _newBullet = Instantiate(bulletPrefab, owner.eyesPosition, Quaternion.identity);
-            _newBullet.Setup(owner, owner.transform.forward + _spreadOffset, bulletsSpeed, damage, damageType);
+            _newBullet.Setup(owner, damage, damageType);
+            _newBullet.Rigidbody.AddForce(_force);
         }
 
         base.OnShoot();
