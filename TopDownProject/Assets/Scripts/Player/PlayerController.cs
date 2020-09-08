@@ -6,13 +6,12 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
 
-	public CharacterController CharacterController => playerController;
+    public CharacterController CharacterController { get; private set; }
 
-	[SerializeField] private float moveSpeed = 7.0f;
+    [SerializeField] private float moveSpeed = 7.0f;
 	[SerializeField] private float gravity = 9.81f;
 
-	private CharacterController playerController;
-	private Vector3 currentVelocity;
+    private Vector3 currentVelocity;
 	private Vector3 velocityVector;
 
 	public void SetVelocity(Vector3 velocityVector)
@@ -22,17 +21,18 @@ public class PlayerController : MonoBehaviour
 
 	private void Awake()
     {
-        playerController = gameObject.GetComponent<CharacterController>();
+        CharacterController = gameObject.GetComponent<CharacterController>();
     }
 
 	private void Update()
 	{
 		currentVelocity = Vector3.Lerp(currentVelocity, velocityVector, 25f * Time.deltaTime);
+		currentVelocity.y = -1f;
 		MovementHandler();
 	}
 
     private void MovementHandler()
     {
-	    playerController.Move(currentVelocity * moveSpeed * Time.deltaTime); 	    
+	    CharacterController.Move(currentVelocity * moveSpeed * Time.deltaTime); 	    
     }
 }

@@ -22,7 +22,7 @@ public class ProjectileBase : MonoBehaviour
     protected float spawnTime;
     protected Actor owner;
 
-    public void Setup(Actor owner ,Vector3 pushDirection, float pushForce, float damage, DamageType damageType)
+    public void Setup(Actor owner, Vector3 pushDirection, float pushForce, float damage, DamageType damageType)
     {
         this.damage = damage;
         this.damageType = damageType;
@@ -38,8 +38,6 @@ public class ProjectileBase : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        Debug.Log(collision.collider.name);
-
         Actor _actor = collision.transform.GetComponent<Actor>();
         if (_actor)
         {
@@ -50,8 +48,6 @@ public class ProjectileBase : MonoBehaviour
             IDamageable damageable = collision.transform.GetComponent<IDamageable>();
             damageable?.ApplyDamage(owner, damage, damageType);
         }
-
-        //OnHit(collision.transform);
 
         Destroy(this.gameObject);
     }
@@ -69,7 +65,5 @@ public class ProjectileBase : MonoBehaviour
     {
         if (!visuals.activeSelf && Time.time >= spawnTime + activationTime) visuals.SetActive(true);
     }
-
-    protected virtual void OnHit(Collider other) { }
 
 }

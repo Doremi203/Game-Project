@@ -13,16 +13,16 @@ public abstract class WeaponBase : MonoBehaviour
     public string DisplayName => displayName;
     public float NpcAttackDistance => npcAttackDistance;
     public float NpcAttackAngle => npcAttackAngle;
-    public AnimationType AnimationType => animationType;
+    public WeaponAnimationType AnimationType => animationType;
     public WeaponState State { get; private set; }
 
     [SerializeField] private string displayName;
     [SerializeField] private float cooldown;
-    [SerializeField] private bool isAutomatic;
+    [SerializeField] private WeaponType weaponType;
     [SerializeField] private float soundEventDistance;
     [SerializeField] private float npcAttackDistance;
     [SerializeField] private float npcAttackAngle;
-    [SerializeField] private AnimationType animationType;
+    [SerializeField] private WeaponAnimationType animationType;
 
     // Может лучше переименовать и сделать просто ShootEvent.
     public UnityEvent OnUsingStartEvent;
@@ -51,7 +51,6 @@ public abstract class WeaponBase : MonoBehaviour
     public virtual void Drop()
     {
         ChangeState(WeaponState.Drop);
-        //rb.AddForce(owner.transform.forward * 150f);
 
         this.owner = null;
         transform.parent = null;
@@ -92,7 +91,7 @@ public abstract class WeaponBase : MonoBehaviour
 
     protected virtual void Update()
     {
-        if (isAutomatic && isUsing && CanUse())
+        if (weaponType == WeaponType.Automatic && isUsing && CanUse())
         {
             if (Time.time >= nextShootTime)
             {

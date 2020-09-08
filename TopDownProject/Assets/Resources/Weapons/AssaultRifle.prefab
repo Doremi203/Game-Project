@@ -946,7 +946,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   displayName: Assault Rifle
   cooldown: 0.2
-  isAutomatic: 1
+  weaponType: 1
   soundEventDistance: 6
   npcAttackDistance: 20
   npcAttackAngle: 10

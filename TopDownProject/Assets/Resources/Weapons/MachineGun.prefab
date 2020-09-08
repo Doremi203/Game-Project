@@ -1584,7 +1584,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   displayName: Machine Gun
   cooldown: 0.08
-  isAutomatic: 1
+  weaponType: 1
   soundEventDistance: 5
   npcAttackDistance: 20
   npcAttackAngle: 10

@@ -1628,7 +1628,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   displayName: Uzi
   cooldown: 0.075
-  isAutomatic: 1
+  weaponType: 1
   soundEventDistance: 5
   npcAttackDistance: 20
   npcAttackAngle: 10

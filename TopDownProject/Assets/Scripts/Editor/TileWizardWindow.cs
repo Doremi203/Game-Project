@@ -66,7 +66,12 @@ public class TileWizardWindow : EditorWindow
         {
             EditorGUILayout.BeginHorizontal();
 
-            selectedTile.Variations[i] = (GameObject)EditorGUILayout.ObjectField(selectedTile.Variations[i], typeof(GameObject), false);
+            GameObject _gameObject = (GameObject)EditorGUILayout.ObjectField(selectedTile.Variations[i], typeof(GameObject), false);
+            if(_gameObject != selectedTile.Variations[i])
+            {
+                selectedTile.Variations[i] = _gameObject;
+                EditorUtility.SetDirty(selectedTile);
+            }
             if (GUILayout.Button("Remove")) selectedTile.Variations.Remove(selectedTile.Variations[i]);
 
             EditorGUILayout.EndHorizontal();

@@ -177,7 +177,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   displayName: Katana
   cooldown: 0.4
-  isAutomatic: 1
+  weaponType: 0
   soundEventDistance: 0
   npcAttackDistance: 1.35
   npcAttackAngle: 70
