@@ -60,10 +60,10 @@ public class PlayerInput : MonoBehaviour
 			player.desiredRotation = Quaternion.LookRotation(new Vector3(direction.x, 0, direction.z));
 		}
 
-		if (player.weaponHolder.currentWeapon)
+		if (player.weaponHolder.CurrentWeapon)
 		{
-			if (Input.GetKeyDown(shoot.GetKeyCode())) weaponHolder.currentWeapon.Use(true);
-			if (Input.GetKeyUp(shoot.GetKeyCode())) weaponHolder.currentWeapon.Use(false);
+			if (Input.GetKeyDown(shoot.GetKeyCode())) weaponHolder.CurrentWeapon.Use(true);
+			if (Input.GetKeyUp(shoot.GetKeyCode())) weaponHolder.CurrentWeapon.Use(false);
 		}
 
 		if (Input.GetKeyDown(pickupWeapon.GetKeyCode())) player.TakeWeapon();

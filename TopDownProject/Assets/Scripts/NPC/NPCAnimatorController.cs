@@ -10,7 +10,7 @@ public class NPCAnimatorController : MonoBehaviour
     [SerializeField] private NavMeshAgent agent;
     [SerializeField] private WeaponHolder weaponHolder;
 
-    private WeaponBase currentWeapon;
+    private Weapon currentWeapon;
 
     public void Death()
     {
@@ -39,13 +39,13 @@ public class NPCAnimatorController : MonoBehaviour
 
     private void OnWeaponUpdated()
     {
-        animator.SetBool("armed", weaponHolder.currentWeapon);
-        if (weaponHolder.currentWeapon)
+        animator.SetBool("armed", weaponHolder.CurrentWeapon);
+        if (weaponHolder.CurrentWeapon)
         {
             if (currentWeapon) currentWeapon.OnShootEvent.RemoveListener(OnWeaponShoot);
-            currentWeapon = weaponHolder.currentWeapon;
-            animator.SetInteger("weaponType", (int)weaponHolder.currentWeapon.AnimationType);
-            weaponHolder.currentWeapon.OnShootEvent.AddListener(OnWeaponShoot);
+            currentWeapon = weaponHolder.CurrentWeapon;
+            animator.SetInteger("weaponType", (int)weaponHolder.CurrentWeapon.AnimationType);
+            weaponHolder.CurrentWeapon.OnShootEvent.AddListener(OnWeaponShoot);
         }
     }
 

@@ -151,7 +151,7 @@ MonoBehaviour:
       m_Calls: []
   infinityAmmo: 0
   armBone: {fileID: 706037742528321403}
-  weaponPrefab: {fileID: -6386357407385631847, guid: ac6652c404eb06245b52da11ec5cdcac,
+  weaponPrefab: {fileID: 5522486085103851796, guid: ac6652c404eb06245b52da11ec5cdcac,
     type: 3}
 --- !u!114 &644702065143471220
 MonoBehaviour:
@@ -166,6 +166,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   startHealth: 1000
+  debugInvicibility: 0
   OnHealthChanged:
     m_PersistentCalls:
       m_Calls:
@@ -283,6 +284,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animator: {fileID: 3869033165036771568}
   characterController: {fileID: 8037512694796132852}
+  animationSpeedMultiplier: 0.5
 --- !u!114 &5826487383366516829
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -329,22 +331,22 @@ PrefabInstance:
     - target: {fileID: 1153691784801894023, guid: f2cc12ec8c6270341ab1b840c75ae786,
         type: 3}
       propertyPath: m_ConnectedAnchor.y
-      value: -0.028862601
+      value: -0.028862592
       objectReference: {fileID: 0}
     - target: {fileID: 1153691784801894023, guid: f2cc12ec8c6270341ab1b840c75ae786,
         type: 3}
       propertyPath: m_ConnectedAnchor.z
-      value: 0.01789679
+      value: 0.01789685
       objectReference: {fileID: 0}
     - target: {fileID: 2247670723510509813, guid: f2cc12ec8c6270341ab1b840c75ae786,
         type: 3}
       propertyPath: m_ConnectedAnchor.x
-      value: -0.00000002607704
+      value: -0.000000022351747
       objectReference: {fileID: 0}
     - target: {fileID: 2247670723510509813, guid: f2cc12ec8c6270341ab1b840c75ae786,
         type: 3}
       propertyPath: m_ConnectedAnchor.z
-      value: -0.000000074505834
+      value: -0.000000014901167
       objectReference: {fileID: 0}
     - target: {fileID: 2787171056024484957, guid: f2cc12ec8c6270341ab1b840c75ae786,
         type: 3}
@@ -429,12 +431,12 @@ PrefabInstance:
     - target: {fileID: 4953371382797908986, guid: f2cc12ec8c6270341ab1b840c75ae786,
         type: 3}
       propertyPath: m_ConnectedAnchor.y
-      value: -0.028862718
+      value: -0.02886271
       objectReference: {fileID: 0}
     - target: {fileID: 4953371382797908986, guid: f2cc12ec8c6270341ab1b840c75ae786,
         type: 3}
       propertyPath: m_ConnectedAnchor.z
-      value: 0.017896764
+      value: 0.017896824
       objectReference: {fileID: 0}
     - target: {fileID: 5909938597754670974, guid: f2cc12ec8c6270341ab1b840c75ae786,
         type: 3}

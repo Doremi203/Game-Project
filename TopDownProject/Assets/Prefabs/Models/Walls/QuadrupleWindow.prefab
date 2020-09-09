@@ -106,6 +106,7 @@ GameObject:
   - component: {fileID: 1077047208630810998}
   - component: {fileID: 4624993590859067978}
   - component: {fileID: 4910915474720915317}
+  - component: {fileID: 156459004233659311}
   m_Layer: 0
   m_Name: QuadrupleWindow
   m_TagString: Untagged
@@ -191,3 +192,17 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 3568267494315130179, guid: 129ef515a15e7e84ab076d484b6ce4ca, type: 3}
+--- !u!114 &156459004233659311
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5369533650966342868}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 735d63907f3a31e4da82c83ac0894014, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bulletHitEffect: {fileID: 8797454408400876960, guid: e81d38b017db97c47aae96ed6c628e97,
+    type: 3}

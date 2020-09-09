@@ -1105,7 +1105,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8441526025296156509}
-  - component: {fileID: 8441526025296156508}
+  - component: {fileID: 3856083788959992253}
+  - component: {fileID: 930934720740453897}
+  - component: {fileID: 6261875302357427692}
+  - component: {fileID: 1356035330278172205}
   - component: {fileID: 7141934738785977745}
   - component: {fileID: 7488411153954620646}
   - component: {fileID: 6742688095687498139}
@@ -1133,7 +1136,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &8441526025296156508
+--- !u!114 &3856083788959992253
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1142,19 +1145,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 8441526025296156498}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e91e4b534f499a54ca53488a589454b8, type: 3}
+  m_Script: {fileID: 11500000, guid: 4e7ea0901c27d14429e228ac60a0dee9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   displayName: Shotgun
   cooldown: 0.6
-  isAutomatic: 0
-  soundEventDistance: 6
+  weaponType: 0
   npcAttackDistance: 15
   npcAttackAngle: 20
-  animationType: 1
-  OnUsingStartEvent:
-    m_PersistentCalls:
-      m_Calls: []
+  animationType: 0
   OnShootEvent:
     m_PersistentCalls:
       m_Calls:
@@ -1180,25 +1179,58 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  OnUsingEndEvent:
-    m_PersistentCalls:
-      m_Calls: []
   OnDropped:
     m_PersistentCalls:
       m_Calls: []
   OnEquiped:
     m_PersistentCalls:
       m_Calls: []
-  bulletSpreadingMultiplier: 0.2
-  bulletsCount: 10
-  bulletsSpeed: 1000
-  ammoType: {fileID: 11400000, guid: e1469884c35eb4f4fbaf97ebd325cf5b, type: 2}
+--- !u!114 &930934720740453897
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8441526025296156498}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e63e8ff682f41bb49b9000db48693ba7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
   startingAmmoMin: 2
   startingAmmoMax: 6
+--- !u!114 &6261875302357427692
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8441526025296156498}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dd0709bbd56472745998d1fb382a87e0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bulletSpreadingMultiplier: 0.25
+  bulletsCount: 6
+  bulletsSpeed: 1000
   bulletPrefab: {fileID: 6444695937657245857, guid: a46be6a792e635446b920a87e1c6faec,
     type: 3}
   damage: 1000
   damageType: {fileID: 11400000, guid: c5ca7e9201afad441b8efca35b93cc1a, type: 2}
+--- !u!114 &1356035330278172205
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8441526025296156498}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d1482d877a36038459b3311c0fcadc64, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  soundEventDistance: 6
 --- !u!82 &7141934738785977745
 AudioSource:
   m_ObjectHideFlags: 0

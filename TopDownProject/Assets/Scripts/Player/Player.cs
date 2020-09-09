@@ -18,20 +18,20 @@ public class Player : Actor
 
     public void TakeWeapon()
     {
-        WeaponBase closestWeapon = FindWeaponAround();
+        Weapon closestWeapon = FindWeaponAround();
 
         if (closestWeapon == null) return;
 
         weaponHolder.EquipWeapon(closestWeapon);
     }
 
-    private WeaponBase FindWeaponAround()
+    private Weapon FindWeaponAround()
     {
         Collider[] hits = Physics.OverlapSphere(this.transform.position, 2f, weaponsMask);
-        WeaponBase closestWeapon = null;
+        Weapon closestWeapon = null;
         foreach (var item in hits)
         {
-            WeaponBase target = item.GetComponent<WeaponBase>();
+            Weapon target = item.GetComponent<Weapon>();
             if (target == null) continue;
             if (target.CanPickup() == false) continue;
             if (closestWeapon == null)

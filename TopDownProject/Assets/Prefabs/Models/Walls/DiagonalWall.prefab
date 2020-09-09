@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 5381176474365946381}
   - component: {fileID: 2223930288807073411}
   - component: {fileID: 6250988478037645822}
+  - component: {fileID: 3523888854650004157}
   m_Layer: 0
   m_Name: DiagonalWall
   m_TagString: Untagged
@@ -96,3 +97,17 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 1784048601399977252, guid: 129ef515a15e7e84ab076d484b6ce4ca, type: 3}
+--- !u!114 &3523888854650004157
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9092868714599672479}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 735d63907f3a31e4da82c83ac0894014, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bulletHitEffect: {fileID: 8797454408400876960, guid: e81d38b017db97c47aae96ed6c628e97,
+    type: 3}

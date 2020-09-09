@@ -350,7 +350,7 @@ MonoBehaviour:
       m_Calls: []
   infinityAmmo: 1
   armBone: {fileID: 2026815956877220564}
-  weaponPrefab: {fileID: -6386357407385631847, guid: ac6652c404eb06245b52da11ec5cdcac,
+  weaponPrefab: {fileID: 5522486085103851796, guid: ac6652c404eb06245b52da11ec5cdcac,
     type: 3}
 --- !u!114 &7750810099474233597
 MonoBehaviour:

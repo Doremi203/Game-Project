@@ -25,14 +25,14 @@ public class Attacking : IState
     public void OnEnter()
     {
         // Возможно стоит записывать stoppingDistance
-        agent.stoppingDistance = weaponHolder.currentWeapon.NpcAttackDistance;
+        agent.stoppingDistance = weaponHolder.CurrentWeapon.NpcAttackDistance;
         nextPositionTime = 0;
     }
 
     public void OnExit()
     {
         agent.stoppingDistance = 0;
-        weaponHolder.currentWeapon.Use(false);
+        weaponHolder.CurrentWeapon.Use(false);
     }
 
     public void Tick()
@@ -48,9 +48,9 @@ public class Attacking : IState
 
     private void TryShoot()
     {
-        float _weaponAttackAngle = weaponHolder.currentWeapon.NpcAttackAngle;
-        bool _shouldShoot = weaponHolder.currentWeapon.CanUse() && ai.AngleToPlayer() <= _weaponAttackAngle;
-        weaponHolder.currentWeapon.Use(_shouldShoot);
+        float _weaponAttackAngle = weaponHolder.CurrentWeapon.NpcAttackAngle;
+        bool _shouldShoot = weaponHolder.CurrentWeapon.CanUse() && ai.AngleToPlayer() <= _weaponAttackAngle;
+        weaponHolder.CurrentWeapon.Use(_shouldShoot);
     }
 
     private void UpdateRotation()

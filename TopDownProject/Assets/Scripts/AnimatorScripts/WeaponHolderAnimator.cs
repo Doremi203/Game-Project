@@ -9,7 +9,7 @@ public class WeaponHolderAnimator : MonoBehaviour
     [SerializeField] private Animator animator;
     [SerializeField] private WeaponHolder weaponHolder;
 
-    private WeaponBase currentWeapon;
+    private Weapon currentWeapon;
 
     private void Awake()
     {
@@ -20,12 +20,12 @@ public class WeaponHolderAnimator : MonoBehaviour
     {
         animator.ResetTrigger("attack");
         if (currentWeapon) currentWeapon.OnShootEvent.RemoveListener(OnWeaponShoot);
-        animator.SetBool("armed", weaponHolder.currentWeapon);
-        if (weaponHolder.currentWeapon)
+        animator.SetBool("armed", weaponHolder.CurrentWeapon);
+        if (weaponHolder.CurrentWeapon)
         {
-            currentWeapon = weaponHolder.currentWeapon;
-            animator.SetInteger("weaponType", (int)weaponHolder.currentWeapon.AnimationType);
-            weaponHolder.currentWeapon.OnShootEvent.AddListener(OnWeaponShoot);
+            currentWeapon = weaponHolder.CurrentWeapon;
+            animator.SetInteger("weaponType", (int)weaponHolder.CurrentWeapon.AnimationType);
+            weaponHolder.CurrentWeapon.OnShootEvent.AddListener(OnWeaponShoot);
         }
     }
 

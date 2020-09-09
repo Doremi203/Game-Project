@@ -12,20 +12,20 @@ public class WeaponHolder : MonoBehaviour
     // игрок может, нпс могут.
 
     public UnityEvent OnWeaponChanged;
-    public WeaponBase currentWeapon { get; private set; }
+    public Weapon CurrentWeapon { get; private set; }
+    public Actor Owner { get; private set; }
+    public bool InfinityAmmo => infinityAmmo;
 
     [SerializeField] private bool infinityAmmo;
     [SerializeField] private Transform armBone;
-    [SerializeField] private WeaponBase weaponPrefab;
-
-    private Actor owner;
+    [SerializeField] private Weapon weaponPrefab;
 
     // Взять оружие в руки.
-    public void EquipWeapon(WeaponBase weapon)
+    public void EquipWeapon(Weapon weapon)
     {
-        if (currentWeapon) currentWeapon.Drop();
-        currentWeapon = weapon;
-        currentWeapon.Pickup(GetComponent<Actor>(), infinityAmmo);
+        Drop();
+        CurrentWeapon = weapon;
+        CurrentWeapon.Pickup(this);
         weapon.transform.SetParent(armBone, true);
         weapon.transform.position = armBone.position;
         weapon.transform.localRotation = Quaternion.identity;
@@ -34,13 +34,14 @@ public class WeaponHolder : MonoBehaviour
 
     public void Drop()
     {
-        if (currentWeapon == null) return;
-        currentWeapon.Drop();
-        currentWeapon = null;
+        if (CurrentWeapon == null) return;
+        CurrentWeapon.transform.SetParent(null);
+        CurrentWeapon.Drop();
+        CurrentWeapon = null;
         OnWeaponChanged.Invoke();
     }
 
-    private void Awake() => owner = this.GetComponent<Actor>();
+    private void Awake() => Owner = this.GetComponent<Actor>();
 
     private void Start()
     {

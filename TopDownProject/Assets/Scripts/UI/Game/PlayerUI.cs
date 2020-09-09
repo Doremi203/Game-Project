@@ -15,7 +15,7 @@ public class PlayerUI : MonoBehaviour
     [SerializeField] private AbilityUi abilityUi;
     [SerializeField] private Transform abilityPanel;
     
-    private WeaponBase currentWeapon;
+    private Weapon currentWeapon;
 
     private void Start()
     {
@@ -27,7 +27,7 @@ public class PlayerUI : MonoBehaviour
     {
         // Отписываемся от событий предыдущего оружия.
         currentWeapon?.OnShootEvent.RemoveListener(RefreshUI);
-        currentWeapon = player.weaponHolder.currentWeapon;
+        currentWeapon = player.weaponHolder.CurrentWeapon;
         // Подписываемся на новое.
         currentWeapon?.OnShootEvent.AddListener(RefreshUI);
         RefreshUI();
@@ -36,11 +36,14 @@ public class PlayerUI : MonoBehaviour
     private void RefreshUI()
     {
         if (currentWeapon == null) return;
-        string weaponInfo = default;
-        weaponInfo = currentWeapon.DisplayName;
-        if (currentWeapon is FirearmWeapon)
+
+        string weaponInfo = currentWeapon.DisplayName;
+
+        WeaponAmmoContainer _weaponAmmoContainer = currentWeapon.GetComponent<WeaponAmmoContainer>();
+
+        if (_weaponAmmoContainer)
         {
-            weaponInfo = weaponInfo + " | " + (player.weaponHolder.currentWeapon as FirearmWeapon).CurrentAmmo.ToString();
+            weaponInfo = weaponInfo + " | " + _weaponAmmoContainer.CurrentAmmo.ToString();
         }
         weaponInfoText.text = weaponInfo;
         //weaponInfoText.text = $"{currentWeapon.DisplayName} | {ammoCount}";

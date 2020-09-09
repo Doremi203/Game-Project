@@ -137,7 +137,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7324575928268513253}
-  - component: {fileID: -6386357407385631847}
+  - component: {fileID: 5522486085103851796}
+  - component: {fileID: -7785049871338195605}
   - component: {fileID: 1707895415305524216}
   - component: {fileID: 9140354665612466534}
   - component: {fileID: 8421387168049794393}
@@ -163,7 +164,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &-6386357407385631847
+--- !u!114 &5522486085103851796
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -172,7 +173,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 7618725439625728130}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f673d88e42fa18b4aab6250694c4bf97, type: 3}
+  m_Script: {fileID: 11500000, guid: 4e7ea0901c27d14429e228ac60a0dee9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   displayName: Katana
@@ -182,9 +183,6 @@ MonoBehaviour:
   npcAttackDistance: 1.35
   npcAttackAngle: 70
   animationType: 2
-  OnUsingStartEvent:
-    m_PersistentCalls:
-      m_Calls: []
   OnShootEvent:
     m_PersistentCalls:
       m_Calls:
@@ -199,15 +197,24 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  OnUsingEndEvent:
-    m_PersistentCalls:
-      m_Calls: []
   OnDropped:
     m_PersistentCalls:
       m_Calls: []
   OnEquiped:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &-7785049871338195605
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7618725439625728130}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 66adc9b29db62914c917d015dc696137, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
   attackAngle: 70
   attackRadius: 1.3
   absoluteRadius: 0.5

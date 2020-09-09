@@ -7,12 +7,6 @@ using UnityEngine;
 public class ProjectileBase : MonoBehaviour
 {
 
-    // Может и нахуй надо. 
-    public static ProjectileBase SpawnProjectile(ProjectileBase projectilePrefab)
-    {
-        return default;
-    }
-
     public Collider Hitbox { get; private set; }
     public Rigidbody Rigidbody { get; private set; }
 
@@ -51,6 +45,17 @@ public class ProjectileBase : MonoBehaviour
         {
             IDamageable damageable = collision.transform.GetComponent<IDamageable>();
             damageable?.ApplyDamage(owner, damage, damageType);
+        }
+
+        SurfaceMaterial _surfaceMaterial = collision.transform.GetComponent<SurfaceMaterial>();
+        if(_surfaceMaterial)
+        {
+            Vector3 _hitPosition = collision.GetContact(0).point;
+
+            Quaternion _rotation = Quaternion.LookRotation(-transform.forward, Vector3.up);
+
+            ParticleSystem _effect = Instantiate(_surfaceMaterial.BulletHitEffect, _hitPosition, _rotation);
+            Destroy(_effect.gameObject, 1f);
         }
 
         Destroy(this.gameObject);

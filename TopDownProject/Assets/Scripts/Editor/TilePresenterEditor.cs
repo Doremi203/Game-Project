@@ -9,7 +9,7 @@ public class TilePresenterEditor : Editor
 
     public override void OnInspectorGUI()
     {
-        TilePresenter _target = (TilePresenter)target;
+        TilePresenter _target = target as TilePresenter;
 
         GUILayout.Label("Variations");
 
@@ -26,7 +26,6 @@ public class TilePresenterEditor : Editor
         GUILayout.Label("Rotations");
 
         if (GUILayout.Button("FlipX")) _target.FlipX();
-        //if (GUILayout.Button("FlipZ")) _target.FlipZ();
 
         if (GUILayout.Button("Rotate +90")) _target.Rotate90();
         if (GUILayout.Button("Rotate -90")) _target.RotateMinus90();
