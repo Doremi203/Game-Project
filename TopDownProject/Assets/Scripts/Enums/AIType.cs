@@ -2,6 +2,7 @@
 {
 
     Default,
-    Patrolling
+    Patrolling,
+    Roaming
     
 }

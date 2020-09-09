@@ -31,22 +31,24 @@ public class NPC_DefaultAI : NPC_BaseAI
                 defaultState = new Chilling(agent);
                 break;
             case AIType.Patrolling:
-                defaultState = new Chilling(agent);
+                defaultState = new Patrolling(npc, agent);
+                break;
+            case AIType.Roaming:
+                defaultState = new Roaming(npc, agent);
                 break;
             default:
                 defaultState = new Chilling(agent);
                 break;
         }
 
-        var chilling = new Chilling(agent);
         var chasing = new Chasing(npc, agent);
         var attacking = new Attacking(npc, agent, weaponHolder, this);
         var investigating = new Investigating(npc, agent);
         var soundInvestigating = new SoundInvestigating(npc, agent, this);
 
         // Transitions
-        stateMachine.AddTransition(chilling, chasing, CanSeePlayer);
-        stateMachine.AddTransition(chilling, soundInvestigating, ShouldInvistigateSound);
+        stateMachine.AddTransition(defaultState, chasing, CanSeePlayer);
+        stateMachine.AddTransition(defaultState, soundInvestigating, ShouldInvistigateSound);
 
         stateMachine.AddTransition(chasing, attacking, CanShootPlayer);
         stateMachine.AddTransition(attacking, chasing, CantShootPlayer);
@@ -55,15 +57,15 @@ public class NPC_DefaultAI : NPC_BaseAI
 
         stateMachine.AddTransition(investigating, chasing, CanSeePlayer);
         stateMachine.AddTransition(investigating, soundInvestigating, ShouldInvistigateSound);
-        stateMachine.AddTransition(investigating, chilling, () => investigating.isInvestigatingOver);
+        stateMachine.AddTransition(investigating, defaultState, () => investigating.isInvestigatingOver);
 
         stateMachine.AddTransition(soundInvestigating, chasing, CanSeePlayer);
-        stateMachine.AddTransition(soundInvestigating, chilling, () => soundInvestigating.isInvestigatingOver);
+        stateMachine.AddTransition(soundInvestigating, defaultState, () => soundInvestigating.isInvestigatingOver);
 
-        stateMachine.AddAnyTransition(chilling, IsPlayerDead);
+        stateMachine.AddAnyTransition(defaultState, IsPlayerDead);
 
         // Default State
-        stateMachine.SetState(chilling);
+        stateMachine.SetState(defaultState);
     }
 
     private bool CantSeePlayer() => !CanSeePlayer();

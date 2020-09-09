@@ -26,9 +26,6 @@ public class AbilityShurikens : AbilityBase
         _bullet.Rigidbody.AddForce(_force);
     }
 
-    protected override bool CanUse()
-    {
-        return base.CanUse() && currentShurikensAmount > 0;
-    }
+    protected override bool CanUse() => base.CanUse() && currentShurikensAmount > 0;
 
 }

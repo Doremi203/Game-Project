@@ -98,10 +98,10 @@ public abstract class NPC_BaseAI : MonoBehaviour, ISoundsListener
         Handles.DrawWireDisc(this.transform.position, this.transform.up, absoluteVisionRange);
         Handles.color = Color.green;
         Handles.DrawWireDisc(this.transform.position, this.transform.up, targetLostRange);
-        if (npc == null) return;
+        Actor _npc = this.GetComponent<Actor>();
         Gizmos.color = Color.yellow;
-        Gizmos.DrawLine(npc.transform.position, npc.transform.position + Quaternion.AngleAxis(-visionAngle, Vector3.up) * npc.transform.forward * visionRange);
-        Gizmos.DrawLine(npc.transform.position, npc.transform.position + Quaternion.AngleAxis(visionAngle, Vector3.up) * npc.transform.forward * visionRange);
+        Gizmos.DrawLine(_npc.transform.position, _npc.transform.position + Quaternion.AngleAxis(-visionAngle, Vector3.up) * _npc.transform.forward * visionRange);
+        Gizmos.DrawLine(_npc.transform.position, _npc.transform.position + Quaternion.AngleAxis(visionAngle, Vector3.up) * _npc.transform.forward * visionRange);
     }
 
 #endif
