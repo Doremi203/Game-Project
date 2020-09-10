@@ -97,11 +97,11 @@ CharacterController:
   serializedVersion: 2
   m_Height: 2
   m_Radius: 0.25
-  m_SlopeLimit: 45
-  m_StepOffset: 0.3
+  m_SlopeLimit: 100
+  m_StepOffset: 0
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Center: {x: 0, y: 0.16, z: 0}
 --- !u!114 &6851913591751166064
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -128,12 +128,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8168f3162ebb7d04aa023b2c5b31d6d2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveForwardInput: {fileID: 11400000, guid: 53cde04eeb805f844a39e552e2de434f, type: 2}
-  moveBackwardInput: {fileID: 11400000, guid: f91fc1c3daf5dbf4499be047915e56f8, type: 2}
-  moveRightInput: {fileID: 11400000, guid: 8540b3673fab7a14382cba6a6d3bbd19, type: 2}
-  moveLeftInput: {fileID: 11400000, guid: ead7079c5d30c8c46bd326740c072c8d, type: 2}
-  shoot: {fileID: 11400000, guid: 370fe5de0acc96940b2ff4c89126ade4, type: 2}
-  pickupWeapon: {fileID: 11400000, guid: a3d922e1630cba142b26c10b8a4fd7f2, type: 2}
+  moveForwardInput: {fileID: 11400000, guid: 5902d8b25356386429dadff8afbbc912, type: 2}
+  moveBackwardInput: {fileID: 11400000, guid: f662ba75da86eea42b835599de440277, type: 2}
+  moveRightInput: {fileID: 11400000, guid: daff864dd3a96a2449190a538c694f37, type: 2}
+  moveLeftInput: {fileID: 11400000, guid: 416417421334cf64e800fecf9a44f26c, type: 2}
+  shoot: {fileID: 11400000, guid: b6c0e78625491b74c84d3639be1b233b, type: 2}
+  throwShuriken: {fileID: 11400000, guid: cd204ebb0e4f90f4c8f8e2d87c5db88b, type: 2}
+  pickupWeapon: {fileID: 11400000, guid: 7210a069296381c418e5b212884c0f45, type: 2}
 --- !u!114 &3602111582893714108
 MonoBehaviour:
   m_ObjectHideFlags: 0

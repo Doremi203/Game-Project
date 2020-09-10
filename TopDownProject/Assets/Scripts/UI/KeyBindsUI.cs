@@ -5,14 +5,14 @@ using UnityEngine;
 
 public class KeyBindsUI : MonoBehaviour
 {
-
+    
     [SerializeField] private InputBindingUI prefab_bindingUI;
     [SerializeField] private Transform parent;
 
     private bool isListening;
-    private InputBinding targetInputBinding;
+    private SettingsKeyCodeVariable targetInputBinding;
 
-    public void Press(InputBinding target)
+    public void Press(SettingsKeyCodeVariable target)
     {
         isListening = true;
         targetInputBinding = target;
@@ -20,7 +20,7 @@ public class KeyBindsUI : MonoBehaviour
 
     private void Awake()
     {
-        Refresh();
+        //Refresh();
     }
 
     private void Update()
@@ -31,24 +31,24 @@ public class KeyBindsUI : MonoBehaviour
             {
                 foreach (KeyCode kcode in Enum.GetValues(typeof(KeyCode)))
                 {
-                    if (Input.GetKey(kcode)) targetInputBinding.SetKeyCode(kcode);
+                    //if (Input.GetKey(kcode)) targetInputBinding.SetKeyCode(kcode);
                 }
                 isListening = false;
-                Refresh();
+                //Refresh();
             }
         }
     }
-
+    /*
     private void Refresh()
     {
         foreach (Transform item in transform)
         {
             Destroy(item.gameObject);
         }
-        foreach (var item in InputBinding.GetInputBindings())
+        foreach (var item in SettingsKeyCodeVariable.GetInputBindings())
         {
             Instantiate(prefab_bindingUI, parent).Setup(item, this);
         }
     }
-
+    */
 }

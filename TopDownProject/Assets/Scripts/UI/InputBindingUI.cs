@@ -9,15 +9,15 @@ public class InputBindingUI : MonoBehaviour
     [SerializeField] private TextMeshProUGUI textName;
     [SerializeField] private TextMeshProUGUI textValue;
 
-    private InputBinding targetBinding;
+    private SettingsKeyCodeVariable targetBinding;
     private KeyBindsUI parent;
 
-    public void Setup(InputBinding targetBinding, KeyBindsUI parent)
+    public void Setup(SettingsKeyCodeVariable targetBinding, KeyBindsUI parent)
     {
         this.targetBinding = targetBinding;
         this.parent = parent;
-        textName.text = targetBinding.name;
-        textValue.text = targetBinding.GetKeyCode().ToString();
+        textName.text = targetBinding.DisplayName;
+        textValue.text = targetBinding.GetValue().ToString();
     }
 
     public void Press()
