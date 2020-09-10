@@ -7,15 +7,15 @@ public abstract class SettingsVariableBase : ScriptableObject
 {
 
     public static Action OnSettingsChanged;
+    public string DisplayName => displayName;
+
+    [SerializeField] private string displayName;
 
 }
 
 public abstract class SettingsVariable<T> : SettingsVariableBase
 {
 
-    public string DisplayName => displayName;
-
-    [SerializeField] private string displayName;
     [SerializeField] private T defaultValue;
 
     private T cashedValue;
