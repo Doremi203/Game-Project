@@ -8,7 +8,7 @@ using UnityEngine.Rendering.HighDefinition;
 public class DynamicLight : MonoBehaviour
 {
 
-    [SerializeField] private SettingsBoolVariable shadowsSetting;
+    [SerializeField] private BoolParameter shadowsSetting;
 
     private new Light light;
     private HDAdditionalLightData lightData;
@@ -21,9 +21,9 @@ public class DynamicLight : MonoBehaviour
 
     private void Start() => UpdateSettings();
 
-    private void OnEnable() => SettingsVariableBase.OnSettingsChanged += UpdateSettings;
+    private void OnEnable() => BaseParameter.OnSettingsChanged += UpdateSettings;
 
-    private void OnDisable() => SettingsVariableBase.OnSettingsChanged -= UpdateSettings;
+    private void OnDisable() => BaseParameter.OnSettingsChanged -= UpdateSettings;
 
     private void UpdateSettings()
     {

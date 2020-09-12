@@ -9,7 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 254a968142ae2dc4e942e58346530fa4, type: 3}
+  m_Script: {fileID: 11500000, guid: 8991fdc18760ac048bf52987c344ece2, type: 3}
   m_Name: DynamicShadows
   m_EditorClassIdentifier: 
   displayName: Dynamic Shadows

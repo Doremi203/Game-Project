@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SettingsEnumVariable<T> : SettingsVariable<T> where T : System.Enum
+public abstract class EnumParameter<T> : Parameter<T> where T : System.Enum
 {
 
     protected override T LoadValue()

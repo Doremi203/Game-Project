@@ -9,9 +9,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6efbdc6f4d120a540befe61b2fffa89c, type: 3}
+  m_Script: {fileID: 11500000, guid: 3aef449059cfff44d91084a7dab1e80b, type: 3}
   m_Name: Graphics
   m_EditorClassIdentifier: 
   displayName: Graphics
-  settingsVariables:
+  parameters:
   - {fileID: 11400000, guid: a9574a1e9c6b71443840bc9cab7ffc4f, type: 2}
+  - {fileID: 11400000, guid: 375d4eac960ca994f9f3ceae55ab42c3, type: 2}

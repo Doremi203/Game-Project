@@ -9,11 +9,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6efbdc6f4d120a540befe61b2fffa89c, type: 3}
+  m_Script: {fileID: 11500000, guid: 3aef449059cfff44d91084a7dab1e80b, type: 3}
   m_Name: Keybinds
   m_EditorClassIdentifier: 
   displayName: Keybinds
-  settingsVariables:
+  parameters:
   - {fileID: 11400000, guid: 5902d8b25356386429dadff8afbbc912, type: 2}
   - {fileID: 11400000, guid: f662ba75da86eea42b835599de440277, type: 2}
   - {fileID: 11400000, guid: daff864dd3a96a2449190a538c694f37, type: 2}

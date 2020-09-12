@@ -274,9 +274,9 @@ GameObject:
   - component: {fileID: 1882416459333590565}
   - component: {fileID: 1882416459333590587}
   - component: {fileID: 1882416459333590586}
-  - component: {fileID: 1882416459333590584}
+  - component: {fileID: 8921823550067414031}
   m_Layer: 5
-  m_Name: SettingBoolVariableUI
+  m_Name: SettingOptionsVariableUI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -340,7 +340,7 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &1882416459333590584
+--- !u!114 &8921823550067414031
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -349,7 +349,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1882416459333590564}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3d414c3361ebf554dab8672931337d46, type: 3}
+  m_Script: {fileID: 11500000, guid: 1c22de83955f5b042b6baf8cd2432dfd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   variableNameText: {fileID: 1882416458551470215}

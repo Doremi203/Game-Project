@@ -9,10 +9,10 @@ public class SettingsGroupButtonUI : MonoBehaviour
 
     [SerializeField] private TextMeshProUGUI groupNameText;
 
-    private SettingsGroup settingsGroup;
+    private ParametersGroup settingsGroup;
     private SettingsUI settingsUI;
 
-    public void Setup(SettingsUI settingsUI, SettingsGroup settingsGroup)
+    public void Setup(SettingsUI settingsUI, ParametersGroup settingsGroup)
     {
         this.settingsUI = settingsUI;
         this.settingsGroup = settingsGroup;

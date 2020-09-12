@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class SettingsVariableBase : ScriptableObject
+public abstract class BaseParameter : ScriptableObject
 {
 
     public static Action OnSettingsChanged;
@@ -13,7 +13,7 @@ public abstract class SettingsVariableBase : ScriptableObject
 
 }
 
-public abstract class SettingsVariable<T> : SettingsVariableBase
+public abstract class Parameter<T> : BaseParameter
 {
 
     [SerializeField] private T defaultValue;

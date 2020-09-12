@@ -3,24 +3,24 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using System;
+using UnityEngine.UI;
 
-public class SettingsKeyCodeVariablePresenter : SettingsVariablePresenter<SettingsKeyCodeVariable>
+public class KeyCodeParameterPresenter : ParameterPresenter<KeyCodeParameter>
 {
 
     [SerializeField] private TextMeshProUGUI keyCodeText;
+    [SerializeField] private Button inputButton;
 
     private bool isListening;
 
-    protected override void Present(SettingsKeyCodeVariable settingsVariable)
+    protected override void Present(KeyCodeParameter settingsVariable)
     {
         keyCodeText.text = settingsVariable.GetValue().ToString();
     }
 
-    public void StartListeningForInput()
-    {
-        isListening = true;
-        keyCodeText.text = "Press any key";
-    }
+    private void OnEnable() => inputButton.onClick.AddListener(StartListeningForInput);
+
+    private void OnDisable() => inputButton.onClick.RemoveListener(StartListeningForInput);
 
     private void Update()
     {
@@ -45,6 +45,12 @@ public class SettingsKeyCodeVariablePresenter : SettingsVariablePresenter<Settin
                 }
             }
         }
+    }
+
+    private void StartListeningForInput()
+    {
+        isListening = true;
+        keyCodeText.text = "Press any key";
     }
 
     public void EndListeningForInput()

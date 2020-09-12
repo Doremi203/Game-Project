@@ -5,7 +5,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public abstract class SettingsVariablePresenter<T> : SettingsBaseVariablePresenter where T : SettingsVariableBase
+public abstract class ParameterPresenter<T> : BaseParameterPresenter where T : BaseParameter
 {
 
     [SerializeField] private TextMeshProUGUI variableNameText;
@@ -14,7 +14,7 @@ public abstract class SettingsVariablePresenter<T> : SettingsBaseVariablePresent
 
     public override Type TargetType() => typeof(T);
 
-    public override void Setup(SettingsVariableBase settingsVariable)
+    public override void Setup(BaseParameter settingsVariable)
     {
         this.settingsVariable = settingsVariable as T;
         variableNameText.text = settingsVariable.DisplayName;

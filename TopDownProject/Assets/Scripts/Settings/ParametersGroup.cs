@@ -3,17 +3,17 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "New Settings Group", menuName = "Settings/Group")]
-public class SettingsGroup : ScriptableObject
+public class ParametersGroup : ScriptableObject
 {
 
     private const string Path = "Settings/Groups";
 
-    public static SettingsGroup[] GetSettingsGroups() => Resources.LoadAll<SettingsGroup>(Path);
+    public static ParametersGroup[] GetSettingsGroups() => Resources.LoadAll<ParametersGroup>(Path);
 
     public string DisplayName => displayName;
-    public List<SettingsVariableBase> SettingsVariables => settingsVariables;
+    public List<BaseParameter> Parameters => parameters;
 
     [SerializeField] private string displayName;
-    [SerializeField] public List<SettingsVariableBase> settingsVariables;
+    [SerializeField] public List<BaseParameter> parameters;
 
 }

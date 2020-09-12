@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "New Bool Variable", menuName = "Settings/Variables/Bool")]
-public class SettingsBoolVariable : SettingsVariable<bool>
+public class BoolParameter : Parameter<bool>
 {
 
     protected override bool LoadValue()

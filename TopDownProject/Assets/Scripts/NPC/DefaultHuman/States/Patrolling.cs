@@ -18,9 +18,13 @@ public class Patrolling : IState
         this.agent = agent;
     }
 
-    public void OnEnter() => FindNextPoint();
+    public void OnEnter()
+    {
+        agent.autoBraking = false;
+        FindNextPoint();
+    }
 
-    public void OnExit() { }
+    public void OnExit() => agent.autoBraking = true;
 
     public void Tick()
     {

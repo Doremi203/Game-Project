@@ -11,14 +11,14 @@ public class PlayerInput : MonoBehaviour
 {
 
 	[Header("Movement")]
-	[SerializeField] private SettingsKeyCodeVariable moveForwardInput;
-	[SerializeField] private SettingsKeyCodeVariable moveBackwardInput;
-	[SerializeField] private SettingsKeyCodeVariable moveRightInput;
-	[SerializeField] private SettingsKeyCodeVariable moveLeftInput;
+	[SerializeField] private KeyCodeParameter moveForwardInput;
+	[SerializeField] private KeyCodeParameter moveBackwardInput;
+	[SerializeField] private KeyCodeParameter moveRightInput;
+	[SerializeField] private KeyCodeParameter moveLeftInput;
 	[Header("Weapons")]
-	[SerializeField] private SettingsKeyCodeVariable shoot;
-	[SerializeField] private SettingsKeyCodeVariable throwShuriken;
-	[SerializeField] private SettingsKeyCodeVariable pickupWeapon;
+	[SerializeField] private KeyCodeParameter shoot;
+	[SerializeField] private KeyCodeParameter throwShuriken;
+	[SerializeField] private KeyCodeParameter pickupWeapon;
 
 	private PlayerController playerController;
 	private WeaponHolder weaponHolder;
