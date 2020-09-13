@@ -1232,7 +1232,6 @@ MonoBehaviour:
   displayName: Pistol
   cooldown: 0.3
   weaponType: 0
-  soundEventDistance: 5
   npcAttackDistance: 20
   npcAttackAngle: 10
   animationType: 0
@@ -1281,7 +1280,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bulletSpreadingMultiplier: 0
   bulletsCount: 1
-  bulletsSpeed: 1200
+  bulletsSpeed: 2500
   bulletPrefab: {fileID: 6444695937657245857, guid: a46be6a792e635446b920a87e1c6faec,
     type: 3}
   damage: 1000

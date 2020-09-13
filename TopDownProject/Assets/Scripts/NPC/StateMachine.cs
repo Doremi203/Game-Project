@@ -14,10 +14,7 @@ public class StateMachine
 
     private static List<Transition> emptyTransitions = new List<Transition>();
 
-    public IState GetCurrentState()
-    {
-        return currentState;
-    }
+    public IState GetCurrentState() => currentState;
 
     public void Tick()
     {
