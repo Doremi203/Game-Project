@@ -6,7 +6,6 @@ using UnityEngine;
 public class Level : ScriptableObject
 {
 
-    public string levelName;
-    public string[] scenes;
+    public string Scene;
 
 }

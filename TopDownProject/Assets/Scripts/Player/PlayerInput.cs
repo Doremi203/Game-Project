@@ -35,7 +35,7 @@ public class PlayerInput : MonoBehaviour
 
 	private void Update()
 	{
-		if (Input.GetKeyDown(KeyCode.R)) UnityEngine.Application.LoadLevel(0);
+		if (Input.GetKeyDown(KeyCode.T)) UnityEngine.Application.LoadLevel(0);
 
 		if (player.IsDead) return;
 

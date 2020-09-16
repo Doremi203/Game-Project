@@ -46,8 +46,8 @@ public class PatrollingPoint : MonoBehaviour
 
     private void OnDrawGizmos()
     {
-        Handles.color = Color.red;
-        Handles.DrawWireDisc(this.transform.position, this.transform.up, 1f);
+        Gizmos.color = Color.red;
+        Gizmos.DrawSphere(transform.position, 0.5f);
         Handles.color = Color.yellow;
         Handles.DrawWireDisc(this.transform.position, this.transform.up, detectionDistance / 2);
     }

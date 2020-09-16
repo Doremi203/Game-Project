@@ -15,4 +15,3 @@ MonoBehaviour:
   displayName: Graphics
   parameters:
   - {fileID: 11400000, guid: a9574a1e9c6b71443840bc9cab7ffc4f, type: 2}
-  - {fileID: 11400000, guid: 375d4eac960ca994f9f3ceae55ab42c3, type: 2}

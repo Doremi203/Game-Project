@@ -17,11 +17,9 @@ public class PlayerUI : MonoBehaviour
     
     private Weapon currentWeapon;
 
-    private void Start()
-    {
-        player.weaponHolder.OnWeaponChanged.AddListener(WeaponChanged);
-        //Instantiate(abilityUi, abilityPanel).Setup(player.dash);
-    }
+    private void OnEnable() => player.weaponHolder.OnWeaponChanged.AddListener(WeaponChanged);
+
+    private void OnDisable() => player.weaponHolder.OnWeaponChanged.RemoveListener(WeaponChanged);
 
     private void WeaponChanged()
     {

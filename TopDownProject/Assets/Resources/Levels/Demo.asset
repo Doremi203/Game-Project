@@ -12,5 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da628a5f28b2ad1498dec5f6c478f257, type: 3}
   m_Name: Demo
   m_EditorClassIdentifier: 
-  levelName: Demo
-  scenePath: Assets/Scenes 1/TestLevel/TestLevel.unity
+  Scene: SampleScene
