@@ -9,10 +9,9 @@ using UnityEngine;
 public class TilePresenter : MonoBehaviour
 {
 
-    public Tile TargetTile;
     public int CurrentVariantIndex;
-
-    public GameObject currentVariation;
+    public GameObject CurrentVariation;
+    public Tile TargetTile;
 
     public void Setup(Tile target)
     {
@@ -26,42 +25,29 @@ public class TilePresenter : MonoBehaviour
     {
         CurrentVariantIndex = index;
 
-        GameObject _lastVariation = currentVariation;
+        GameObject _lastVariation = CurrentVariation;
 
-        //currentVariation = Instantiate(TargetTile.Variations[index], this.transform);
-        currentVariation = (GameObject)PrefabUtility.InstantiatePrefab(TargetTile.Variations[index]);
+        CurrentVariation = Instantiate(TargetTile.Variations[index], this.transform);
 
-        currentVariation.transform.parent = this.transform;
-        currentVariation.transform.position = transform.position;
+        CurrentVariation.transform.parent = this.transform;
+        CurrentVariation.transform.position = transform.position;
 
         if (_lastVariation)
         {
-            currentVariation.transform.localScale = _lastVariation.transform.localScale;
-            currentVariation.transform.rotation = _lastVariation.transform.rotation;
+            CurrentVariation.transform.localScale = _lastVariation.transform.localScale;
+            CurrentVariation.transform.rotation = _lastVariation.transform.rotation;
             DestroyImmediate(_lastVariation);
         }
     }
 
     public void FlipX()
     {
-        currentVariation.transform.localScale = new Vector3(currentVariation.transform.localScale.x * -1, 1, 1);
+        CurrentVariation.transform.localScale = new Vector3(CurrentVariation.transform.localScale.x * -1, 1, 1);
     }
 
-    public void Rotate90()
-    {
-        currentVariation.transform.Rotate(Vector3.up, 90f);
-    }
+    public void Rotate90() => CurrentVariation.transform.Rotate(Vector3.up, 90f);
 
-    public void RotateMinus90()
-    {
-        currentVariation.transform.Rotate(Vector3.up, -90f);
-    }
-
-    private void OnDrawGizmos()
-    {
-        Gizmos.color = Color.yellow;
-        Gizmos.DrawSphere(transform.position, 0.25f);
-    }
+    public void RotateMinus90() => CurrentVariation.transform.Rotate(Vector3.up, -90f);
 
 }
 

@@ -12,9 +12,13 @@ public class Player : Actor
 
     public static Player Instance;
 
+    public Action<Weapon> OnClosestWeaponUpdated;
+
     public WeaponHolder weaponHolder { get; private set; }
 
     [SerializeField] private LayerMask weaponsMask;
+
+    private Weapon closestWeapon;
 
     public void TakeWeapon()
     {
@@ -27,7 +31,7 @@ public class Player : Actor
 
     private Weapon FindWeaponAround()
     {
-        Collider[] hits = Physics.OverlapSphere(this.transform.position, 2f, weaponsMask);
+        Collider[] hits = Physics.OverlapSphere(this.transform.position, 1.5f, weaponsMask);
         Weapon closestWeapon = null;
         foreach (var item in hits)
         {
@@ -53,6 +57,17 @@ public class Player : Actor
         base.Awake();
         Player.Instance = this;
         weaponHolder = this.GetComponent<WeaponHolder>();
+    }
+
+    protected override void Update()
+    {
+        base.Update();
+        Weapon _weapon = FindWeaponAround();
+        if (closestWeapon != _weapon)
+        {
+            closestWeapon = _weapon;
+            OnClosestWeaponUpdated?.Invoke(closestWeapon);
+        }
     }
 
 }

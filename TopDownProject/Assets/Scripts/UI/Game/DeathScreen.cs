@@ -9,10 +9,9 @@ public class DeathScreen : MonoBehaviour
     [SerializeField] private GameObject go;
     [SerializeField] private KeyCodeParameter restartBinding;
 
-    private void OnDisable()
-    {
-        Player.Instance.OnDeath.RemoveListener(PlayerDied);
-    }
+    private bool playerDied;
+
+    private void OnDisable() => Player.Instance.OnDeath.RemoveListener(PlayerDied);
 
     private void Start()
     {
@@ -22,17 +21,16 @@ public class DeathScreen : MonoBehaviour
 
     private void Update()
     {
+        if (!playerDied) return;
         if (Input.GetKeyDown(restartBinding.GetValue())) RestartLevel();
     }
 
-    private void RestartLevel()
-    {
-        LevelManager.RestartLevel();
-    }
+    private void RestartLevel() => LevelManager.RestartLevel();
 
     private void PlayerDied()
     {
         go.SetActive(true);
+        playerDied = true;
     }
 
 }
