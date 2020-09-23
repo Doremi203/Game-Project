@@ -36,6 +36,11 @@ public class TilePresenter : MonoBehaviour
         {
             CurrentVariation.transform.localScale = _lastVariation.transform.localScale;
             CurrentVariation.transform.rotation = _lastVariation.transform.rotation;
+
+            MeshRenderer _meshRenderCurrent = CurrentVariation.GetComponent<MeshRenderer>();
+            MeshRenderer _meshRenderLast = _lastVariation.GetComponent<MeshRenderer>();
+            _meshRenderCurrent.sharedMaterials = _meshRenderLast.sharedMaterials;
+
             DestroyImmediate(_lastVariation);
         }
     }

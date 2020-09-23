@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using System;
 
 public class WeaponPickupInfo : MonoBehaviour
 {
@@ -12,7 +13,7 @@ public class WeaponPickupInfo : MonoBehaviour
     [SerializeField] private TextMeshProUGUI weaponNameText;
     [SerializeField] private GameObject weaponAmmoPanel;
     [SerializeField] private TextMeshProUGUI weaponAmmoText;
-    [SerializeField] private KeyCodeParameter pickupBinding;
+    [SerializeField] private BoolParameter showPickupInfo;
 
     private Weapon closestWeapon;
 
@@ -21,18 +22,25 @@ public class WeaponPickupInfo : MonoBehaviour
         weaponPickupPanel.SetActive(false);
         weaponAmmoPanel.SetActive(false);
         Player.Instance.OnClosestWeaponUpdated += ClosestWeaponUpdated;
+        BaseParameter.OnSettingsChanged += SettingsUpdated;
     }
 
-    private void OnDisable() => Player.Instance.OnClosestWeaponUpdated -= ClosestWeaponUpdated;
+    private void OnDestroy()
+    {
+        Player.Instance.OnClosestWeaponUpdated -= ClosestWeaponUpdated;
+        BaseParameter.OnSettingsChanged -= SettingsUpdated;
+    }
 
     private void Update()
     {
+        if (!showPickupInfo.GetValue()) return;
         if (closestWeapon == null) return;
         parent.position = Camera.main.WorldToScreenPoint(closestWeapon.transform.position);
     }
 
     private void ClosestWeaponUpdated(Weapon closestWeapon)
     {
+        if (!showPickupInfo.GetValue()) return;
         this.closestWeapon = closestWeapon;
         weaponPickupPanel.SetActive(closestWeapon != null);
         weaponAmmoPanel.SetActive(closestWeapon != null);
@@ -42,6 +50,11 @@ public class WeaponPickupInfo : MonoBehaviour
         weaponAmmoPanel.SetActive(_ammoContainer != null);
         if (_ammoContainer == null) return;      
         weaponAmmoText.text = "Ammo: " + _ammoContainer.CurrentAmmo.ToString();
+    }
+
+    private void SettingsUpdated()
+    {
+        parent.gameObject.SetActive(showPickupInfo.GetValue());
     }
 
 }
