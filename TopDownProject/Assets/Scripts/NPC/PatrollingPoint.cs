@@ -26,10 +26,11 @@ public class PatrollingPoint : MonoBehaviour
         return _closestPoint;
     }
 
-    [HideInInspector]
-    public List<PatrollingPoint> patrollingPoints = new List<PatrollingPoint>();
+   
+    public List<PatrollingPoint> PatrollingPoints = new List<PatrollingPoint>();
 
-    private float detectionDistance = 10f;
+    [Range(1f, 10f)]
+    public float detectionDistance = 10f;
 
     private void Awake()
     {
@@ -37,8 +38,8 @@ public class PatrollingPoint : MonoBehaviour
         {
             if (item.gameObject == this.gameObject) continue;
             float distance = Vector3.Distance(transform.position, item.transform.position);
-            if (distance > detectionDistance) continue;
-            patrollingPoints.Add(item);
+            if (distance > this.detectionDistance + item.detectionDistance) continue;
+            PatrollingPoints.Add(item);
         }
     }
 
@@ -49,7 +50,7 @@ public class PatrollingPoint : MonoBehaviour
         Gizmos.color = Color.red;
         Gizmos.DrawSphere(transform.position, 0.5f);
         Handles.color = Color.yellow;
-        Handles.DrawWireDisc(this.transform.position, this.transform.up, detectionDistance / 2);
+        Handles.DrawWireDisc(this.transform.position, this.transform.up, detectionDistance);
     }
 
 #endif

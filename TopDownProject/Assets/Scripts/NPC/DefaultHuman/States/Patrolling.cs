@@ -56,7 +56,7 @@ public class Patrolling : IState
         {
             List<PatrollingPoint> potentialPoints = new List<PatrollingPoint>();
 
-            foreach (var item in targetPoint.patrollingPoints)
+            foreach (var item in targetPoint.PatrollingPoints)
             {
                 if (item == targetPoint) continue;
                 if (item == lastPoint) continue;
