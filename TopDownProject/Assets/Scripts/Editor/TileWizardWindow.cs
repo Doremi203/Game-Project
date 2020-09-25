@@ -131,7 +131,10 @@ public class TileWizardWindow : EditorWindow
         if (EditorUtility.DisplayDialog("Reinstantiate Tiles", "Are you sure?", "Yes", "No"))
         {
             foreach (var item in FindObjectsOfType<TilePresenter>())
-                item.ResetTile();
+            {
+                if (item.TargetTile == selectedTile)
+                    item.ResetTile();
+            }
         }
     }
 
@@ -149,6 +152,7 @@ public class TileWizardWindow : EditorWindow
         GameObject _gameObject = new GameObject();
         _gameObject.name = tile.name;
         _gameObject.AddComponent<TilePresenter>().Setup(tile);
+        Selection.activeGameObject = _gameObject;
     }
 
 

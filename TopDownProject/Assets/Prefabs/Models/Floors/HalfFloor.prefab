@@ -12,12 +12,14 @@ GameObject:
   - component: {fileID: 4159376383532473060}
   - component: {fileID: 2188157338224619054}
   - component: {fileID: 2772148017005151394}
+  - component: {fileID: -7415686690529628955}
+  - component: {fileID: -3499743405489046965}
   m_Layer: 0
   m_Name: HalfFloor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &1015220170871084353
 Transform:
@@ -94,3 +96,31 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -629719859055844128, guid: f164436328d226748b5c9fab167e5bd4, type: 3}
+--- !u!114 &-7415686690529628955
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 386493667229388795}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 735d63907f3a31e4da82c83ac0894014, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  BulletHitEffect: {fileID: 8797454408400876960, guid: e81d38b017db97c47aae96ed6c628e97,
+    type: 3}
+--- !u!114 &-3499743405489046965
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 386493667229388795}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8c6d002e0208a6740be1cf2f551724a8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CurrentWallMaterial: {fileID: 11400000, guid: e9fbe248b59562046841e2d1a799d5b9,
+    type: 2}

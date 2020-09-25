@@ -14,4 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Variations:
   - {fileID: 7174413607410073241, guid: a1efed257a6c0ed428cbf7466421968e, type: 3}
+  - {fileID: 8285611832111956267, guid: 36a45c8a88919414ebd4deddd53ebc01, type: 3}
   - {fileID: 386493667229388795, guid: 1cf631f9f1206b74a8ed34f1d068340e, type: 3}
