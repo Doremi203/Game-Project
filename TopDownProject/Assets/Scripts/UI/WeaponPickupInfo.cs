@@ -46,6 +46,9 @@ public class WeaponPickupInfo : MonoBehaviour
         weaponAmmoPanel.SetActive(closestWeapon != null);
         if (closestWeapon == null) return;
         weaponNameText.text = closestWeapon.DisplayName;
+
+        parent.position = Camera.main.WorldToScreenPoint(closestWeapon.transform.position);
+
         WeaponAmmoContainer _ammoContainer = closestWeapon.GetComponent<WeaponAmmoContainer>();
         weaponAmmoPanel.SetActive(_ammoContainer != null);
         if (_ammoContainer == null) return;      

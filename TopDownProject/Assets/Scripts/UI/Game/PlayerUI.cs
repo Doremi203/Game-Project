@@ -10,22 +10,23 @@ using UnityEngine.UI;
 public class PlayerUI : MonoBehaviour
 {
 
-    [SerializeField] private Player player;
     [SerializeField] private TextMeshProUGUI weaponInfoText;
-    [SerializeField] private AbilityUi abilityUi;
-    [SerializeField] private Transform abilityPanel;
     
     private Weapon currentWeapon;
 
-    private void OnEnable() => player.weaponHolder.OnWeaponChanged.AddListener(WeaponChanged);
+    private void Start()
+    {
+        Player.Instance.weaponHolder.OnWeaponChanged.AddListener(WeaponChanged);
+        RefreshUI();    
+    }
 
-    private void OnDisable() => player.weaponHolder.OnWeaponChanged.RemoveListener(WeaponChanged);
+    private void OnDestroy() => Player.Instance.weaponHolder.OnWeaponChanged.RemoveListener(WeaponChanged);
 
     private void WeaponChanged()
     {
         // Отписываемся от событий предыдущего оружия.
         currentWeapon?.OnShootEvent.RemoveListener(RefreshUI);
-        currentWeapon = player.weaponHolder.CurrentWeapon;
+        currentWeapon = Player.Instance.weaponHolder.CurrentWeapon;
         // Подписываемся на новое.
         currentWeapon?.OnShootEvent.AddListener(RefreshUI);
         RefreshUI();

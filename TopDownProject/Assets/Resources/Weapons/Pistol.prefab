@@ -1278,7 +1278,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dd0709bbd56472745998d1fb382a87e0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bulletSpreadingMultiplier: 0
+  bulletSpreadingMultiplier: 0.01
   bulletsCount: 1
   bulletsSpeed: 2500
   bulletPrefab: {fileID: 6444695937657245857, guid: a46be6a792e635446b920a87e1c6faec,
@@ -1311,7 +1311,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1482d877a36038459b3311c0fcadc64, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  soundEventDistance: 5
+  soundEventDistance: 7
 --- !u!82 &8363864089779841205
 AudioSource:
   m_ObjectHideFlags: 0

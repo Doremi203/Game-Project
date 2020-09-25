@@ -369,7 +369,7 @@ MonoBehaviour:
   detectionMask:
     serializedVersion: 2
     m_Bits: 1
-  visionAngle: 60
+  visionAngle: 80
   visionRange: 25
   absoluteVisionRange: 2
   targetLostRange: 40
