@@ -16,8 +16,8 @@ public class PlayerUI : MonoBehaviour
 
     private void Start()
     {
+        WeaponChanged();
         Player.Instance.weaponHolder.OnWeaponChanged.AddListener(WeaponChanged);
-        RefreshUI();    
     }
 
     private void OnDestroy() => Player.Instance.weaponHolder.OnWeaponChanged.RemoveListener(WeaponChanged);

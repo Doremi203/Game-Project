@@ -19,6 +19,9 @@ public class PlayerInput : MonoBehaviour
 	[SerializeField] private KeyCodeParameter shoot;
 	[SerializeField] private KeyCodeParameter throwShuriken;
 	[SerializeField] private KeyCodeParameter pickupWeapon;
+	[Header("Camera")]
+	[SerializeField] private KeyCodeParameter lookAround;
+	[SerializeField] private CinemachineCameraOffset cameraOffset;
 
 	private PlayerController playerController;
 	private WeaponHolder weaponHolder;
@@ -36,6 +39,18 @@ public class PlayerInput : MonoBehaviour
 	private void Update()
 	{
 		if (Input.GetKeyDown(KeyCode.T)) UnityEngine.Application.LoadLevel(0);
+
+		float _targetOffsetX = 0;
+		float _targetOffsetY = 0;
+
+		if (Input.GetKey(lookAround.GetValue()))
+        {
+			_targetOffsetX = (Input.mousePosition.x / Screen.width - 0.5f) * 2 * 5;
+			_targetOffsetY = (Input.mousePosition.y / Screen.height - 0.5f) * 2 * 5;
+        }
+
+		cameraOffset.m_Offset.x = Mathf.Lerp(cameraOffset.m_Offset.x, _targetOffsetX, 15f * Time.deltaTime);
+		cameraOffset.m_Offset.y = Mathf.Lerp(cameraOffset.m_Offset.y, _targetOffsetY, 15f * Time.deltaTime);
 
 		if (player.IsDead) return;
 

@@ -41,7 +41,10 @@ public class WeaponHolder : MonoBehaviour
         OnWeaponChanged.Invoke();
     }
 
-    private void Awake() => Owner = this.GetComponent<Actor>();
+    private void Awake()
+    {
+        Owner = this.GetComponent<Actor>();
+    }
 
     private void Start()
     {

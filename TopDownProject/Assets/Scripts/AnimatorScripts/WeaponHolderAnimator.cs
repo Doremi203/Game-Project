@@ -11,10 +11,9 @@ public class WeaponHolderAnimator : MonoBehaviour
 
     private Weapon currentWeapon;
 
-    private void Awake()
-    {
-        weaponHolder.OnWeaponChanged.AddListener(OnWeaponUpdated);
-    }
+    private void Awake() => weaponHolder.OnWeaponChanged.AddListener(OnWeaponUpdated);
+
+    private void Start() => OnWeaponUpdated();
 
     private void OnWeaponUpdated()
     {

@@ -134,11 +134,13 @@ public class Weapon : MonoBehaviour
             case WeaponState.Drop:
 
                 rb.isKinematic = false;
+                rb.collisionDetectionMode = CollisionDetectionMode.ContinuousDynamic;
                 break;
 
             case WeaponState.Equiped:
 
                 rb.isKinematic = true;
+                rb.collisionDetectionMode = CollisionDetectionMode.Discrete;
                 break;
 
             default:

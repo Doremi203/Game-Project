@@ -5,15 +5,9 @@ using UnityEngine;
 public class RagdollController : MonoBehaviour
 {
 
-    private void Awake()
-    {
-        EnableRagdoll(false);
-    }
+    private void Awake() => EnableRagdoll(false);
 
-    public void StartRagdolling()
-    {
-        EnableRagdoll(true);
-    }
+    public void StartRagdolling() => EnableRagdoll(true);
 
     private void EnableRagdoll(bool enable)
     {
