@@ -11,8 +11,10 @@ public class Attacking : IState
     private NavMeshAgent agent;
     private WeaponHolder weaponHolder;
     private NPC_BaseAI ai;
-    private float nextPositionTime;
-    private Vector3 currentTargetPosition;
+
+    private Vector3 interceptionPoint;
+
+    private Vector3 currentPrediction;
 
     public Attacking(Actor npc, NavMeshAgent agent, WeaponHolder weaponHolder, NPC_BaseAI ai)
     {
@@ -25,38 +27,72 @@ public class Attacking : IState
     public void OnEnter()
     {
         // Возможно стоит записывать stoppingDistance
-        agent.stoppingDistance = weaponHolder.CurrentWeapon.NpcAttackDistance;
-        nextPositionTime = 0;
+        agent.stoppingDistance = weaponHolder.CurrentWeapon.NPCSettings.AttackDistance;
+        agent.isStopped = true;
     }
 
     public void OnExit()
     {
         agent.stoppingDistance = 0;
         weaponHolder.CurrentWeapon.Use(false);
+        agent.isStopped = false;
     }
 
     public void Tick()
     {
+        CalculatePrediction();
         UpdateRotation();
         TryShoot();
+    }
 
-        //Debug.DrawLine(currentTargetPosition, currentTargetPosition + Vector3.up * 100f);
+    private void CalculatePrediction()
+    {
+        Player _player = Player.Instance;
+        currentPrediction = _player.transform.position;
 
-        //if (Time.time >= nextPositionTime) FindNewLocation();
+        bool usePredictions = true;
 
+        WeaponProjectilesLauncher _projectilesLauncher = weaponHolder.CurrentWeapon.GetComponent<WeaponProjectilesLauncher>();
+        if (_projectilesLauncher && usePredictions)
+        {
+
+            Vector3 _playerPosition = _player.transform.position;
+            float _bulletSpeed = _projectilesLauncher.BulletSpeed / 4f;
+
+            Vector3 IC = CalculateInterceptCourse(_playerPosition, _player.GetComponent<PlayerController>().CurrentVelocity, npc.transform.position, _bulletSpeed);
+            if (IC != Vector3.zero)
+            {
+                IC.Normalize();
+                float interceptionTime1 = FindClosestPointOfApproach(_playerPosition, _player.GetComponent<PlayerController>().CurrentVelocity, npc.transform.position, IC * _bulletSpeed);
+                interceptionPoint = _playerPosition + _player.GetComponent<PlayerController>().CurrentVelocity * interceptionTime1;
+            }
+
+            currentPrediction = interceptionPoint;
+
+        }
+
+        Debug.DrawLine(currentPrediction, currentPrediction + Vector3.up * 10f, Color.green);
     }
 
     private void TryShoot()
     {
-        float _weaponAttackAngle = weaponHolder.CurrentWeapon.NpcAttackAngle;
-        bool _shouldShoot = weaponHolder.CurrentWeapon.CanUse() && ai.AngleToPlayer() <= _weaponAttackAngle;
+        float _weaponAttackAngle = weaponHolder.CurrentWeapon.NPCSettings.AttackAngle;
+
+        Vector3 _targetDirection = currentPrediction - npc.transform.position;
+        _targetDirection.y = 0;
+
+        float _angleToPrediction = Vector3.Angle(_targetDirection, npc.transform.forward);
+
+        bool _shouldShoot = weaponHolder.CurrentWeapon.CanUse() && _angleToPrediction <= _weaponAttackAngle;
+
+        Debug.Log(_angleToPrediction);
+
         weaponHolder.CurrentWeapon.Use(_shouldShoot);
     }
 
     private void UpdateRotation()
     {
-        Player _player = Player.Instance;
-        Vector3 relativePos = _player.transform.position - npc.transform.position;
+        Vector3 relativePos = currentPrediction - npc.transform.position;
         relativePos.y = 0;
         if (relativePos != Vector3.zero)
         {
@@ -64,18 +100,45 @@ public class Attacking : IState
         }
     }
 
-    private void FindNewLocation()
+    public static Vector3 CalculateInterceptCourse(Vector3 aTargetPos, Vector3 aTargetSpeed, Vector3 aInterceptorPos, float aInterceptorSpeed)
     {
-        nextPositionTime = Time.time + 4f;
+        Vector3 targetDir = aTargetPos - aInterceptorPos;
+        float iSpeed2 = aInterceptorSpeed * aInterceptorSpeed;
+        float tSpeed2 = aTargetSpeed.sqrMagnitude;
+        float fDot1 = Vector3.Dot(targetDir, aTargetSpeed);
+        float targetDist2 = targetDir.sqrMagnitude;
+        float d = (fDot1 * fDot1) - targetDist2 * (tSpeed2 - iSpeed2);
+        if (d < 0.1f)  // negative == no possible course because the interceptor isn't fast enough
+            return Vector3.zero;
+        float sqrt = Mathf.Sqrt(d);
+        float S1 = (-fDot1 - sqrt) / targetDist2;
+        float S2 = (-fDot1 + sqrt) / targetDist2;
+        if (S1 < 0.0001f)
+        {
+            if (S2 < 0.0001f)
+                return Vector3.zero;
+            else
+                return (S2) * targetDir + aTargetSpeed;
+        }
+        else if (S2 < 0.0001f)
+            return (S1) * targetDir + aTargetSpeed;
+        else if (S1 < S2)
+            return (S2) * targetDir + aTargetSpeed;
+        else
+            return (S1) * targetDir + aTargetSpeed;
+    }
 
-        Vector3 newPosition = new Vector3();
-
-        //newPosition = ai.Target.transform.position + GameUtilities.GetRandomPositionInTorus(1f, weaponHolder.currentWeapon.NpcAttackDistance);
-        newPosition.y = 0;
-
-        currentTargetPosition = newPosition;
-        agent.enabled = true;
-        agent.SetDestination(newPosition);
+    public static float FindClosestPointOfApproach(Vector3 aPos1, Vector3 aSpeed1, Vector3 aPos2, Vector3 aSpeed2)
+    {
+        Vector3 PVec = aPos1 - aPos2;
+        Vector3 SVec = aSpeed1 - aSpeed2;
+        float d = SVec.sqrMagnitude;
+        // if d is 0 then the distance between Pos1 and Pos2 is never changing
+        // so there is no point of closest approach... return 0
+        // 0 means the closest approach is now!
+        if (d >= -0.0001f && d <= 0.0002f)
+            return 0.0f;
+        return (-Vector3.Dot(PVec, SVec) / d);
     }
 
 }

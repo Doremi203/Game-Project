@@ -7,11 +7,12 @@ public class PlayerController : MonoBehaviour
 {
 
     public CharacterController CharacterController { get; private set; }
+	public Vector3 CurrentVelocity => currentVelocity;
 
-    [SerializeField] private float moveSpeed = 7.0f;
+	[SerializeField] private float moveSpeed = 7.0f;
 	[SerializeField] private float gravity = 9.81f;
 
-    private Vector3 currentVelocity;
+	private Vector3 currentVelocity;
 	private Vector3 velocityVector;
 
 	public void SetVelocity(Vector3 velocityVector)

@@ -8,7 +8,7 @@ using UnityEngine;
 public class MeshCombainer : MonoBehaviour
 {
 
-    public void CombineMeshes()
+    public void CombineMeshesAdvanced()
     {
         MeshFilter[] _meshFilters = GetComponentsInChildren<MeshFilter>();
 
@@ -72,7 +72,7 @@ public class MeshCombainer : MonoBehaviour
             item.gameObject.SetActive(false);
     }
 
-    public void CombineMeshesLegacy()
+    public void CombineMeshes()
     {
         MeshFilter[] _meshFilters = GetComponentsInChildren<MeshFilter>();
 

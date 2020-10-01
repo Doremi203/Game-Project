@@ -47,7 +47,9 @@ public class PlayerInput : MonoBehaviour
         {
 			_targetOffsetX = (Input.mousePosition.x / Screen.width - 0.5f) * 2 * 5;
 			_targetOffsetY = (Input.mousePosition.y / Screen.height - 0.5f) * 2 * 5;
-        }
+			//_targetOffsetX = Mathf.Clamp(((Input.mousePosition.x / Screen.width - 0.5f) * 4f), -1, 1) * 5f;
+			//_targetOffsetY = Mathf.Clamp(((Input.mousePosition.y / Screen.height - 0.5f) * 4f), -1, 1) * 5f;
+		}
 
 		cameraOffset.m_Offset.x = Mathf.Lerp(cameraOffset.m_Offset.x, _targetOffsetX, 15f * Time.deltaTime);
 		cameraOffset.m_Offset.y = Mathf.Lerp(cameraOffset.m_Offset.y, _targetOffsetY, 15f * Time.deltaTime);

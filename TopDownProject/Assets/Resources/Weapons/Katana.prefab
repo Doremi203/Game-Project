@@ -179,10 +179,12 @@ MonoBehaviour:
   displayName: Katana
   cooldown: 0.4
   weaponType: 0
-  soundEventDistance: 0
   npcAttackDistance: 1.35
   npcAttackAngle: 70
   animationType: 2
+  npcSettings:
+    AttackDistance: 1.35
+    AttackAngle: 70
   OnShootEvent:
     m_PersistentCalls:
       m_Calls:

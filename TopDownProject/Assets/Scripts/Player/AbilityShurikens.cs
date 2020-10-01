@@ -5,27 +5,27 @@ using UnityEngine;
 public class AbilityShurikens : AbilityBase
 {
 
+    public int CurrentShurikensAmount { get; private set; }
+
     [SerializeField] private int startShurikensAmount;
     [SerializeField] private float throwPower = 700f;
     [SerializeField] private ProjectileBase shurikenPrefab;
 
-    private int currentShurikensAmount;
-
     protected override void Awake()
     {
         base.Awake();
-        currentShurikensAmount = startShurikensAmount;
+        CurrentShurikensAmount = startShurikensAmount;
     }
 
     protected override void OnUse()
     {
-        currentShurikensAmount--;
+        CurrentShurikensAmount--;
         Vector3 _force = owner.transform.forward * throwPower;
         ProjectileBase _bullet = Instantiate(shurikenPrefab, owner.eyesPosition, owner.transform.rotation);
         _bullet.Setup(owner, 10000f, null);
         _bullet.Rigidbody.AddForce(_force);
     }
 
-    protected override bool CanUse() => base.CanUse() && currentShurikensAmount > 0;
+    protected override bool CanUse() => base.CanUse() && CurrentShurikensAmount > 0;
 
 }

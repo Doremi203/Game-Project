@@ -11,17 +11,17 @@ public class Weapon : MonoBehaviour
     public Actor Owner => owner;
     public WeaponHolder WeaponHolder => weaponHolder;
     public string DisplayName => displayName;
-    public float NpcAttackDistance => npcAttackDistance;
-    public float NpcAttackAngle => npcAttackAngle;
+    public float Cooldown => cooldown;
     public WeaponAnimationType AnimationType => animationType;
+    public WeaponNPCSettings NPCSettings => npcSettings;
+
     public WeaponState State { get; private set; }
 
     [SerializeField] private string displayName;
     [SerializeField] private float cooldown;
     [SerializeField] private WeaponType weaponType;
-    [SerializeField] private float npcAttackDistance;
-    [SerializeField] private float npcAttackAngle;
     [SerializeField] private WeaponAnimationType animationType;
+    [SerializeField] private WeaponNPCSettings npcSettings;
 
     public UnityEvent OnShootEvent;
     public UnityEvent OnDropped;
@@ -158,5 +158,14 @@ public class Weapon : MonoBehaviour
     }
 
 #endif
+
+}
+
+[System.Serializable]
+public struct WeaponNPCSettings
+{
+
+    public float AttackDistance;
+    public float AttackAngle;
 
 }

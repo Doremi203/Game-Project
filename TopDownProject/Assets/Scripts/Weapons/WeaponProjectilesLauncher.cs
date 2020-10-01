@@ -5,6 +5,8 @@ using UnityEngine;
 public class WeaponProjectilesLauncher : MonoBehaviour, IWeaponComponent
 {
 
+    public float BulletSpeed => bulletsSpeed;
+
     [SerializeField] private float bulletSpreadingMultiplier;
     [SerializeField] private int bulletsCount = 1;
     [SerializeField] private float bulletsSpeed = 1000f;
@@ -22,7 +24,8 @@ public class WeaponProjectilesLauncher : MonoBehaviour, IWeaponComponent
 
             ProjectileBase _newBullet = Instantiate(bulletPrefab, _owner.eyesPosition, _owner.transform.rotation);
             _newBullet.Setup(_owner, damage, damageType);
-            _newBullet.Rigidbody.AddForce(_force);
+
+            _newBullet.Rigidbody.AddForce(_force, ForceMode.VelocityChange);
         }
     }
 

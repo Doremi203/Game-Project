@@ -953,6 +953,9 @@ MonoBehaviour:
   npcAttackDistance: 20
   npcAttackAngle: 10
   animationType: 0
+  npcSettings:
+    AttackDistance: 20
+    AttackAngle: 10
   OnShootEvent:
     m_PersistentCalls:
       m_Calls:

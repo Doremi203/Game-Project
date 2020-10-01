@@ -72,7 +72,7 @@ public class NPC_DefaultAI : NPC_BaseAI
 
     private bool CanShootPlayer()
     {
-        float _weaponReachDistance = weaponHolder.CurrentWeapon.NpcAttackDistance;
+        float _weaponReachDistance = weaponHolder.CurrentWeapon.NPCSettings.AttackDistance;
         return CanSeePlayer() && DistanceToPlayer() <= _weaponReachDistance;
     }
 

@@ -21,6 +21,7 @@ public class Actor : MonoBehaviour, IDamageable
     public Collider Hitbox { get; private set; }
 
     [Header("Actor Settings")]
+    [SerializeField] private bool noDelayRotation;
     [SerializeField] private float rotationSpeed;
     [SerializeField] private Vector3 eyesOffset;
     [SerializeField] private bool shouldDestroy;
@@ -45,7 +46,10 @@ public class Actor : MonoBehaviour, IDamageable
     {
         if (IsDead) return;
         if (transform.rotation == desiredRotation) return;
-        this.transform.rotation = Quaternion.RotateTowards(this.transform.rotation, desiredRotation, rotationSpeed * Time.deltaTime);
+        if (noDelayRotation)
+            this.transform.rotation = desiredRotation;
+        else
+            this.transform.rotation = Quaternion.RotateTowards(this.transform.rotation, desiredRotation, rotationSpeed * Time.deltaTime);
     }
 
     protected virtual void Death()

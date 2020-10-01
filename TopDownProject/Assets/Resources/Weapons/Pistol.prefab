@@ -319,7 +319,7 @@ Light:
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10
   m_Shadows:
-    m_Type: 0
+    m_Type: 1
     m_Resolution: -1
     m_CustomResolution: -1
     m_Strength: 1
@@ -437,7 +437,7 @@ MonoBehaviour:
   m_MaxDepthBias: 0.001
   m_ShadowResolution:
     m_Override: 512
-    m_UseOverride: 1
+    m_UseOverride: 0
     m_Level: 0
   m_ShadowDimmer: 1
   m_VolumetricShadowDimmer: 1
@@ -1187,8 +1187,8 @@ GameObject:
   m_Component:
   - component: {fileID: 8441526025296156509}
   - component: {fileID: 8299240830712825413}
-  - component: {fileID: 7615494594930129360}
   - component: {fileID: -1849602567258959232}
+  - component: {fileID: 7615494594930129360}
   - component: {fileID: -6627395272276492181}
   - component: {fileID: 8363864089779841205}
   - component: {fileID: 6390358961332711615}
@@ -1232,9 +1232,10 @@ MonoBehaviour:
   displayName: Pistol
   cooldown: 0.3
   weaponType: 0
-  npcAttackDistance: 20
-  npcAttackAngle: 10
   animationType: 0
+  npcSettings:
+    AttackDistance: 20
+    AttackAngle: 5
   OnShootEvent:
     m_PersistentCalls:
       m_Calls:
@@ -1266,25 +1267,6 @@ MonoBehaviour:
   OnEquiped:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &7615494594930129360
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8441526025296156498}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dd0709bbd56472745998d1fb382a87e0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  bulletSpreadingMultiplier: 0.01
-  bulletsCount: 1
-  bulletsSpeed: 2500
-  bulletPrefab: {fileID: 6444695937657245857, guid: a46be6a792e635446b920a87e1c6faec,
-    type: 3}
-  damage: 1000
-  damageType: {fileID: 11400000, guid: c5ca7e9201afad441b8efca35b93cc1a, type: 2}
 --- !u!114 &-1849602567258959232
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1299,6 +1281,25 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startingAmmoMin: 7
   startingAmmoMax: 12
+--- !u!114 &7615494594930129360
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8441526025296156498}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dd0709bbd56472745998d1fb382a87e0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bulletSpreadingMultiplier: 0.02
+  bulletsCount: 1
+  bulletsSpeed: 35
+  bulletPrefab: {fileID: 6444695937657245857, guid: a46be6a792e635446b920a87e1c6faec,
+    type: 3}
+  damage: 1000
+  damageType: {fileID: 11400000, guid: c5ca7e9201afad441b8efca35b93cc1a, type: 2}
 --- !u!114 &-6627395272276492181
 MonoBehaviour:
   m_ObjectHideFlags: 0
