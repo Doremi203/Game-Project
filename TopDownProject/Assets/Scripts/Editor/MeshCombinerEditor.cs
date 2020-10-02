@@ -37,7 +37,7 @@ public class MeshCombinerEditor : Editor
             {
                 List<Wall> _newList = new List<Wall>();
                 _newList.Add(item);
-                _walls.Add(item.CurrentWallMaterial, _newList);
+                _walls.Add(item.CurrentWallMaterial, _newList);             
             }
         }
 
@@ -62,7 +62,8 @@ public class MeshCombinerEditor : Editor
 
             _newGameObject.AddComponent<MeshFilter>().sharedMesh = _finalMesh;
             _newGameObject.AddComponent<MeshRenderer>().sharedMaterial = key.Material;
-            
+            _newGameObject.AddComponent<SurfaceMaterial>().BulletHitEffect = key.HitParticles;
+            _newGameObject.AddComponent<MeshCollider>();
         }
 
     }

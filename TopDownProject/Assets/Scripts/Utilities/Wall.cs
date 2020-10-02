@@ -4,6 +4,7 @@ using UnityEngine;
 
 [RequireComponent(typeof(SurfaceMaterial))]
 [RequireComponent(typeof(MeshRenderer))]
+[RequireComponent(typeof(MeshCollider))]
 public class Wall : MonoBehaviour
 {
 
