@@ -1230,7 +1230,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   displayName: Pistol
-  cooldown: 0.3
+  cooldown: 0.25
   weaponType: 0
   animationType: 0
   npcSettings:

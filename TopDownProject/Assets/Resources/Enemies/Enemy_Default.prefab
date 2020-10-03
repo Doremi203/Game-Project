@@ -45,127 +45,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   prefab: {fileID: 296659533157377495, guid: 805c70331bcad474ca0e00cbb26e2a25, type: 3}
   destroyDelay: 1.5
---- !u!1 &6035455977985950549
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 8676998516402257591}
-  - component: {fileID: 5532262587959033765}
-  - component: {fileID: 1738388268289913241}
-  - component: {fileID: 3589011611301820730}
-  - component: {fileID: 6923835031363251771}
-  m_Layer: 0
-  m_Name: New Text
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!4 &8676998516402257591
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6035455977985950549}
-  m_LocalRotation: {x: 0.00000018204462, y: -0.86602545, z: 0.5, w: 0.00000031531061}
-  m_LocalPosition: {x: 0.52799994, y: 1.0638311, z: -0.11114291}
-  m_LocalScale: {x: 0.17673, y: 0.17673, z: 0.17673}
-  m_Children: []
-  m_Father: {fileID: 7750810099474233591}
-  m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 60.000004, y: -180.00002, z: 0}
---- !u!23 &5532262587959033765
-MeshRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6035455977985950549}
-  m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 2
-  m_RenderingLayerMask: 1
-  m_RendererPriority: 0
-  m_Materials:
-  - {fileID: 10100, guid: 0000000000000000e000000000000000, type: 0}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 1
-  m_SelectedEditorRenderState: 3
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
---- !u!102 &1738388268289913241
-TextMesh:
-  serializedVersion: 3
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6035455977985950549}
-  m_Text: Hello World
-  m_OffsetZ: 0
-  m_CharacterSize: 1
-  m_LineSpacing: 1
-  m_Anchor: 0
-  m_Alignment: 0
-  m_TabSize: 4
-  m_FontSize: 0
-  m_FontStyle: 0
-  m_RichText: 1
-  m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-  m_Color:
-    serializedVersion: 2
-    rgba: 4278190335
---- !u!114 &3589011611301820730
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6035455977985950549}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f3b33fda8ee9f1e4d8704e0279c2fb49, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ai: {fileID: 7750810099474233597}
---- !u!114 &6923835031363251771
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6035455977985950549}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1f82e0a5d95cc6243992ba681914e4ad, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ai: {fileID: 7750810099474233590}
 --- !u!1 &7750810099474233598
 GameObject:
   m_ObjectHideFlags: 0
@@ -181,6 +60,9 @@ GameObject:
   - component: {fileID: 5698660024320438996}
   - component: {fileID: 7750810099474233594}
   - component: {fileID: 7750810099474233597}
+  - component: {fileID: 1338462332507150253}
+  - component: {fileID: 6128230765568894497}
+  - component: {fileID: 1179782429065987534}
   m_Layer: 11
   m_Name: Enemy_Default
   m_TagString: Untagged
@@ -201,7 +83,6 @@ Transform:
   m_Children:
   - {fileID: 2983825375718566713}
   - {fileID: 8830642133921096397}
-  - {fileID: 8676998516402257591}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 180.00002, z: 0}
@@ -259,6 +140,17 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 3075792857099338491}
         m_MethodName: Spawn
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 6128230765568894497}
+        m_MethodName: SpawnBlood
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -328,6 +220,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 6128230765568894497}
+        m_MethodName: SpawnBloodPuddle
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  noDelayRotation: 0
   rotationSpeed: 450
   eyesOffset: {x: 0, y: 0.75, z: 0}
   shouldDestroy: 0
@@ -374,6 +278,62 @@ MonoBehaviour:
   absoluteVisionRange: 2
   targetLostRange: 40
   AIType: 0
+--- !u!114 &1338462332507150253
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7750810099474233598}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6b791bf9949a16b47ab22da844f826e3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SurfaceType: {fileID: 11400000, guid: b262275fdf7a9ad4892e1e81b3d5865b, type: 2}
+--- !u!114 &6128230765568894497
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7750810099474233598}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f9b0f95c2ce22be45bcd29e80b658ab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bloodDecalPrefab: {fileID: 1235974688665517754, guid: 62f0fad9eec5df74f9d23ec6f78d2f31,
+    type: 3}
+  bloodPuddlePrefab: {fileID: 2386481143815605914, guid: fb22046e71e5e994eaafc5ead9134de8,
+    type: 3}
+  layerMask:
+    serializedVersion: 2
+    m_Bits: 1
+  range: 2
+  minScale: {x: 2.5, y: 2.5, z: 2.5}
+  maxScale: {x: 4, y: 4, z: 4}
+  puddleParent: {fileID: 5430108628247769647}
+  minPuddleDelay: 1.5
+  maxPpuddleDelay: 3
+--- !u!114 &1179782429065987534
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7750810099474233598}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4b0ca454072e0694e94524bf364745c1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  footprintDecalPrefab: {fileID: 8445009859107256326, guid: 923bf870520002743a231dd212ebd3e3,
+    type: 3}
+  cooldown: 0.225
+  layerMask:
+    serializedVersion: 2
+    m_Bits: 1
 --- !u!114 &1073585298177967271
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -430,6 +390,29 @@ MonoBehaviour:
   animator: {fileID: 2332155301275440479}
   agent: {fileID: 7750810099474233590}
   animationSpeedMultiplier: 0.5
+--- !u!114 &7150155012861899711
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7939285571060893130}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f9b0f95c2ce22be45bcd29e80b658ab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bloodDecalPrefab: {fileID: 0}
+  bloodPuddlePrefab: {fileID: 0}
+  layerMask:
+    serializedVersion: 2
+    m_Bits: 0
+  range: 0
+  minScale: {x: 0, y: 0, z: 0}
+  maxScale: {x: 0, y: 0, z: 0}
+  puddleParent: {fileID: 0}
+  minPuddleDelay: 0
+  maxPpuddleDelay: 0
 --- !u!1001 &1258185262212525302
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -794,6 +777,12 @@ Transform:
 --- !u!95 &2332155301275440479 stripped
 Animator:
   m_CorrespondingSourceObject: {fileID: 3542224281983138217, guid: f2cc12ec8c6270341ab1b840c75ae786,
+    type: 3}
+  m_PrefabInstance: {fileID: 1258185262212525302}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &5430108628247769647 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6498245470051294937, guid: f2cc12ec8c6270341ab1b840c75ae786,
     type: 3}
   m_PrefabInstance: {fileID: 1258185262212525302}
   m_PrefabAsset: {fileID: 0}

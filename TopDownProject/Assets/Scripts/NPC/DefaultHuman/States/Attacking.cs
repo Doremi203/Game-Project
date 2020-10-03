@@ -85,8 +85,6 @@ public class Attacking : IState
 
         bool _shouldShoot = weaponHolder.CurrentWeapon.CanUse() && _angleToPrediction <= _weaponAttackAngle;
 
-        Debug.Log(_angleToPrediction);
-
         weaponHolder.CurrentWeapon.Use(_shouldShoot);
     }
 

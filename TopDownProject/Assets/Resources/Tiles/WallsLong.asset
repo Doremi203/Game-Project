@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e13080d3590baad4bb11e4c7ce0bf7ce, type: 3}
+  m_Name: WallsLong
+  m_EditorClassIdentifier: 
+  Variations:
+  - {fileID: 9047324197381624827, guid: eee1a5882c5dbc74fa7895ce6918cb43, type: 3}
+  - {fileID: 5488581345146361744, guid: 8f9776d59711aff4c8d7f86833a78cc2, type: 3}
+  - {fileID: 8092902842451531764, guid: f8769ddbd0879ca44ab78187ef3cbb18, type: 3}
+  - {fileID: 6661391889735356654, guid: 3221a2562caab2d409608665e2f31948, type: 3}
+  - {fileID: 8516352539431397371, guid: 190a4acffd93f8147b9c22aea4d0da79, type: 3}
+  - {fileID: 2494148307143014824, guid: 06cb10d7de32c054da5bc736933ccdf8, type: 3}
+  - {fileID: 1230501585784081476, guid: 509d45e275197ec4bb8c503dc0170fb0, type: 3}
+  - {fileID: 1592840784478116187, guid: dae325957af7d4b4fb2aefee840eadf8, type: 3}
+  - {fileID: 7866179854053122514, guid: 97b2f83cc615e754eb3431183b9bbac4, type: 3}

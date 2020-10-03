@@ -13,6 +13,7 @@ public class ProjectileBase : MonoBehaviour
     [SerializeField] private GameObject visuals;
     [SerializeField] private float enableVisualsDelayMin = 0.02f;
     [SerializeField] private float enableVisualsDelayMax = 0.02f;
+    [SerializeField] private SurfaceType defaultSurfaceType;
 
     private float activationTime;
 
@@ -47,15 +48,25 @@ public class ProjectileBase : MonoBehaviour
             damageable?.ApplyDamage(owner, damage, damageType);
         }
 
-        SurfaceMaterial _surfaceMaterial = collision.transform.GetComponent<SurfaceMaterial>();
-        if(_surfaceMaterial)
+        Vector3 _hitPosition = collision.GetContact(0).point;
+        Quaternion _effectRotation = Quaternion.LookRotation(-transform.forward, Vector3.up);
+        Quaternion _decalRotation = Quaternion.LookRotation(-collision.GetContact(0).normal);
+
+        SurfaceType _surfaceType = defaultSurfaceType;
+
+        Surface _surface = collision.transform.GetComponent<Surface>();
+        if (_surface) _surfaceType = _surface.SurfaceType;
+
+        ParticleSystem _effect;
+        GameObject _decalProjector;
+
+        _effect = Instantiate(_surfaceType.HitEffect, _hitPosition, _effectRotation);
+        Destroy(_effect.gameObject, 1f);
+
+        if (_surfaceType.HitDecalProjector)
         {
-            Vector3 _hitPosition = collision.GetContact(0).point;
-
-            Quaternion _rotation = Quaternion.LookRotation(-transform.forward, Vector3.up);
-
-            ParticleSystem _effect = Instantiate(_surfaceMaterial.BulletHitEffect, _hitPosition, _rotation);
-            Destroy(_effect.gameObject, 1f);
+            _decalProjector = Instantiate(_surfaceType.HitDecalProjector.gameObject, _hitPosition, _decalRotation);
+            Destroy(_decalProjector.gameObject, 60f);
         }
 
         Destroy(this.gameObject);

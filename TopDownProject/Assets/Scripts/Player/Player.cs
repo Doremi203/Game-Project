@@ -17,6 +17,7 @@ public class Player : Actor
     public WeaponHolder weaponHolder { get; private set; }
 
     [SerializeField] private LayerMask weaponsMask;
+    [SerializeField] private BoolParameter invincibility;
 
     private Weapon closestWeapon;
 
@@ -68,6 +69,12 @@ public class Player : Actor
             closestWeapon = _weapon;
             OnClosestWeaponUpdated?.Invoke(closestWeapon);
         }
+    }
+
+    protected override void HealthChanged(float health)
+    {
+        if (invincibility.GetValue()) return;
+        base.HealthChanged(health);
     }
 
 }
