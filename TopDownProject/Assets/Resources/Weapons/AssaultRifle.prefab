@@ -950,12 +950,11 @@ MonoBehaviour:
   displayName: Assault Rifle
   cooldown: 0.2
   weaponType: 1
-  npcAttackDistance: 20
-  npcAttackAngle: 10
   animationType: 0
   npcSettings:
     AttackDistance: 20
     AttackAngle: 10
+    FirstAttackDelay: 0.2
   OnShootEvent:
     m_PersistentCalls:
       m_Calls:

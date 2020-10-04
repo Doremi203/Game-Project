@@ -7,7 +7,7 @@ public class BloodSpawner : MonoBehaviour
 {
 
     [SerializeField] private DecalProjector bloodDecalPrefab;
-    [SerializeField] private DecalProjector bloodPuddlePrefab;
+    [SerializeField] private DecalProjector[] bloodPuddlePrefabs;
     [SerializeField] private LayerMask layerMask;
     [SerializeField] private float range;
     [SerializeField] private Vector3 minScale;
@@ -36,7 +36,8 @@ public class BloodSpawner : MonoBehaviour
     private IEnumerator SpawnPuddleWithDelay()
     {
         yield return new WaitForSeconds(Random.Range(minPuddleDelay, maxPpuddleDelay));
-        SpawnDecal(bloodPuddlePrefab, puddleParent.transform.position, Vector3.up * -1f, false);
+        int i = Random.Range(0, bloodPuddlePrefabs.Length);
+        SpawnDecal(bloodPuddlePrefabs[i], puddleParent.transform.position, Vector3.up * -1f, false);
     }
 
     private void SpawnDecal(DecalProjector decal, Vector3 origin, Vector3 direction, bool setSize)
@@ -47,8 +48,9 @@ public class BloodSpawner : MonoBehaviour
         {
             Quaternion _rotation = Quaternion.LookRotation(-_hit.normal);
             Vector3 _scale = new Vector3(Random.Range(minScale.x, maxScale.x), Random.Range(minScale.y, maxScale.y), 0.2f);
-            DecalProjector decalProjector =  Instantiate(decal, _hit.point, _rotation);
-            if(setSize) decalProjector.size = _scale;
+            DecalProjector _decalProjector =  Instantiate(decal, _hit.point, _rotation);
+            if(setSize) _decalProjector.size = _scale;
+            _decalProjector.transform.eulerAngles = new Vector3(_decalProjector.transform.eulerAngles.x, _decalProjector.transform.eulerAngles.y, Random.Range(0, 360));
         }
     }
 

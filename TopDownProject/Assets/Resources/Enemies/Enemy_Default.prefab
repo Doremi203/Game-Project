@@ -305,15 +305,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bloodDecalPrefab: {fileID: 1235974688665517754, guid: 62f0fad9eec5df74f9d23ec6f78d2f31,
     type: 3}
-  bloodPuddlePrefab: {fileID: 2386481143815605914, guid: fb22046e71e5e994eaafc5ead9134de8,
-    type: 3}
+  bloodPuddlePrefabs:
+  - {fileID: 7265504507480374327, guid: a19e46e2434e3c64199cb8e9cd8a83db, type: 3}
+  - {fileID: 4719954118144010236, guid: 39785e63fc6e1ce4ca94354a1ba57d7e, type: 3}
+  - {fileID: 6730211169123264455, guid: 041c88d2e8c09d444bcd21cb96d865da, type: 3}
+  - {fileID: 627200202554468492, guid: 07b7d813205eff1428151b5c6ebb62b1, type: 3}
   layerMask:
     serializedVersion: 2
     m_Bits: 1
-  range: 3
+  range: 2.25
   minScale: {x: 2.5, y: 2.5, z: 2.5}
   maxScale: {x: 4, y: 4, z: 4}
-  minSplashDelay: 0.075
+  minSplashDelay: 0.05
   maxSplashDelay: 0.1
   puddleParent: {fileID: 5430108628247769647}
   minPuddleDelay: 1.5
@@ -406,7 +409,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bloodDecalPrefab: {fileID: 0}
-  bloodPuddlePrefab: {fileID: 0}
+  bloodPuddlePrefabs: []
   layerMask:
     serializedVersion: 2
     m_Bits: 0

@@ -28,6 +28,8 @@ public class Ki4ki : MonoBehaviour
         targetSize = Random.Range(minTargetSize, maxTargetSize);
         speed = Random.Range(minSpeed, maxSpeed);
         sphereCollider.radius = 0f;
+        decalProjector.size = new Vector3(0, 0, decalProjector.size.z);
+        this.transform.rotation = Quaternion.Euler(this.transform.eulerAngles.x, Random.Range(0, 360), this.transform.eulerAngles.z);
     }
 
     private void Update()

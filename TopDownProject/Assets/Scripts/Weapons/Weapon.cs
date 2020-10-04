@@ -167,5 +167,5 @@ public struct WeaponNPCSettings
 
     public float AttackDistance;
     public float AttackAngle;
-
+    public float FirstAttackDelay;
 }

@@ -1236,6 +1236,7 @@ MonoBehaviour:
   npcSettings:
     AttackDistance: 20
     AttackAngle: 5
+    FirstAttackDelay: 0.2
   OnShootEvent:
     m_PersistentCalls:
       m_Calls:

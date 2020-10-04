@@ -5154,7 +5154,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   startHealth: 1000
-  debugInvicibility: 1
+  debugInvicibility: 0
   OnHealthChanged:
     m_PersistentCalls:
       m_Calls:
@@ -5227,6 +5227,7 @@ MonoBehaviour:
   weaponsMask:
     serializedVersion: 2
     m_Bits: 4096
+  invincibility: {fileID: 11400000, guid: b8af542f32a757447a96f2c30443875f, type: 2}
 --- !u!114 &1232055180
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5279,9 +5280,11 @@ MonoBehaviour:
   layerMask:
     serializedVersion: 2
     m_Bits: 1
-  range: 2
+  range: 3
   minScale: {x: 2.5, y: 2.5, z: 2.5}
   maxScale: {x: 4, y: 4, z: 4}
+  minSplashDelay: 0.05
+  maxSplashDelay: 0.1
   puddleParent: {fileID: 0}
   minPuddleDelay: 0
   maxPpuddleDelay: 0
@@ -5303,6 +5306,7 @@ MonoBehaviour:
   layerMask:
     serializedVersion: 2
     m_Bits: 1
+  bloodyTime: 4
 --- !u!1 &8238429891425510870
 GameObject:
   m_ObjectHideFlags: 0

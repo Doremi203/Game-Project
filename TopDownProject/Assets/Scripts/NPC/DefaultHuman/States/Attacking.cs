@@ -11,10 +11,9 @@ public class Attacking : IState
     private NavMeshAgent agent;
     private WeaponHolder weaponHolder;
     private NPC_BaseAI ai;
-
     private Vector3 interceptionPoint;
-
     private Vector3 currentPrediction;
+    private float ableToAttackTime;
 
     public Attacking(Actor npc, NavMeshAgent agent, WeaponHolder weaponHolder, NPC_BaseAI ai)
     {
@@ -29,6 +28,7 @@ public class Attacking : IState
         // Возможно стоит записывать stoppingDistance
         agent.stoppingDistance = weaponHolder.CurrentWeapon.NPCSettings.AttackDistance;
         agent.isStopped = true;
+        ableToAttackTime = Time.time + weaponHolder.CurrentWeapon.NPCSettings.FirstAttackDelay;
     }
 
     public void OnExit()
@@ -42,7 +42,7 @@ public class Attacking : IState
     {
         CalculatePrediction();
         UpdateRotation();
-        TryShoot();
+        if(Time.time >= ableToAttackTime) TryShoot();
     }
 
     private void CalculatePrediction()

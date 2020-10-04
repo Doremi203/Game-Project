@@ -47,8 +47,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Version: 2
-  m_Material: {fileID: 2100000, guid: 1f193eb10d8044243b3c64c4864fe15b, type: 2}
-  m_DrawDistance: 1000
+  m_Material: {fileID: 2100000, guid: ee81e8a858ec91c469c24e559f8b850e, type: 2}
+  m_DrawDistance: 30
   m_FadeScale: 0.9
   m_UVScale: {x: 1, y: 1}
   m_UVBias: {x: 0, y: 0}
@@ -71,8 +71,7 @@ MonoBehaviour:
   minSpeed: 0.075
   maxSpeed: 0.225
   minTargetSize: 1.25
-  maxTargetSize: 2.5
-  bloodyFootprintsTime: 4
+  maxTargetSize: 2
 --- !u!135 &2815400093177555717
 SphereCollider:
   m_ObjectHideFlags: 0
