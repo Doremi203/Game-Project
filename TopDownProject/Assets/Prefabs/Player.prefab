@@ -5137,7 +5137,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  infinityAmmo: 1
+  infinityAmmo: 0
   armBone: {fileID: 706037742528321403}
   weaponPrefab: {fileID: 5522486085103851796, guid: ac6652c404eb06245b52da11ec5cdcac,
     type: 3}
@@ -5275,8 +5275,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bloodDecalPrefab: {fileID: 1235974688665517754, guid: 62f0fad9eec5df74f9d23ec6f78d2f31,
     type: 3}
-  bloodPuddlePrefab: {fileID: 2386481143815605914, guid: fb22046e71e5e994eaafc5ead9134de8,
-    type: 3}
+  bloodPuddlePrefabs: []
   layerMask:
     serializedVersion: 2
     m_Bits: 1

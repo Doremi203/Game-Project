@@ -11,8 +11,6 @@ GameObject:
   - component: {fileID: 8126841819136410510}
   - component: {fileID: 7135938675627659399}
   - component: {fileID: 4484873744003579788}
-  - component: {fileID: 2746302744253771478}
-  - component: {fileID: 7720784726826309675}
   - component: {fileID: 3000088204764291999}
   m_Layer: 0
   m_Name: HalfWall_v2.002
@@ -82,34 +80,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!114 &2746302744253771478
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 993079152374397934}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 735d63907f3a31e4da82c83ac0894014, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  BulletHitEffect: {fileID: 8797454408400876960, guid: e81d38b017db97c47aae96ed6c628e97,
-    type: 3}
---- !u!114 &7720784726826309675
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 993079152374397934}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8c6d002e0208a6740be1cf2f551724a8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  CurrentWallMaterial: {fileID: 11400000, guid: e8257598d72267349a2d70333cc31a5f,
-    type: 2}
 --- !u!64 &3000088204764291999
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -135,8 +105,6 @@ GameObject:
   - component: {fileID: 7761569680071031630}
   - component: {fileID: 4347180203385857962}
   - component: {fileID: 5667025743793174071}
-  - component: {fileID: 3311465972704789244}
-  - component: {fileID: 2326952226643643518}
   - component: {fileID: 3168818727299698552}
   m_Layer: 0
   m_Name: HalfWall_v2.001
@@ -206,34 +174,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!114 &3311465972704789244
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4687256455911817432}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 735d63907f3a31e4da82c83ac0894014, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  BulletHitEffect: {fileID: 8797454408400876960, guid: e81d38b017db97c47aae96ed6c628e97,
-    type: 3}
---- !u!114 &2326952226643643518
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4687256455911817432}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8c6d002e0208a6740be1cf2f551724a8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  CurrentWallMaterial: {fileID: 11400000, guid: e8257598d72267349a2d70333cc31a5f,
-    type: 2}
 --- !u!64 &3168818727299698552
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -259,9 +199,7 @@ GameObject:
   - component: {fileID: 2517396066660523814}
   - component: {fileID: 5951830588148042087}
   - component: {fileID: 260312414992499119}
-  - component: {fileID: 4316876878857074741}
   - component: {fileID: 2634681535436081756}
-  - component: {fileID: 5287685096504292957}
   m_Layer: 0
   m_Name: HalfWallFrame_v2
   m_TagString: Untagged
@@ -332,20 +270,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!114 &4316876878857074741
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6233425583797738051}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 735d63907f3a31e4da82c83ac0894014, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  BulletHitEffect: {fileID: 8797454408400876960, guid: e81d38b017db97c47aae96ed6c628e97,
-    type: 3}
 --- !u!64 &2634681535436081756
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -360,17 +284,3 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -4690035583481480418, guid: 6f46693432ed18f4b9608742ac93c93b, type: 3}
---- !u!114 &5287685096504292957
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6233425583797738051}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8c6d002e0208a6740be1cf2f551724a8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  CurrentWallMaterial: {fileID: 11400000, guid: e8257598d72267349a2d70333cc31a5f,
-    type: 2}

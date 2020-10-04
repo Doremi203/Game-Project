@@ -3,28 +3,23 @@ using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 
-public class WeaponSoundsEventGenerator : MonoBehaviour, IWeaponComponent
+public class WeaponSoundsEventGenerator : WeaponComponent
 {
 
     [SerializeField] private float soundEventDistance;
 
-    public void OnShoot(Weapon weapon)
+    public override void OnShoot()
     {
         Actor _owner = weapon.Owner;
         SoundEventGenerator.GenerateSoundEvent(_owner, _owner.transform.position, soundEventDistance);
     }
 
-    public bool IsReadyToShoot(Weapon weapon) => true;
-
-    public void OnDroped(Weapon weapon) { }
-
-
-    public void DrawDebug(Weapon weapon) 
+    private void OnDrawGizmos() 
     {
-        #if UNITY_EDITOR
+        if (weapon == null) return;
         Actor _owner = weapon.Owner;
-        Handles.DrawWireDisc(_owner.transform.position, _owner.transform.up, soundEventDistance);
-        #endif
+        if (_owner == null) return;
+        Gizmos.DrawSphere(_owner.transform.position, soundEventDistance / 2);
     }
 
 }

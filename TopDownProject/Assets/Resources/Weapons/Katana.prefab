@@ -138,10 +138,11 @@ GameObject:
   m_Component:
   - component: {fileID: 7324575928268513253}
   - component: {fileID: 5522486085103851796}
+  - component: {fileID: -2561220865688827608}
   - component: {fileID: -7785049871338195605}
+  - component: {fileID: 8421387168049794393}
   - component: {fileID: 1707895415305524216}
   - component: {fileID: 9140354665612466534}
-  - component: {fileID: 8421387168049794393}
   m_Layer: 12
   m_Name: Katana
   m_TagString: Untagged
@@ -177,7 +178,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   displayName: Katana
-  cooldown: 0.4
   weaponType: 0
   animationType: 2
   npcSettings:
@@ -186,24 +186,26 @@ MonoBehaviour:
     FirstAttackDelay: 0
   OnShootEvent:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 8421387168049794393}
-        m_MethodName: Show
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
   OnDropped:
     m_PersistentCalls:
       m_Calls: []
   OnEquiped:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &-2561220865688827608
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7618725439625728130}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bb042a16cd655dc46bbf4add97d0c099, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cooldown: 0.4
 --- !u!114 &-7785049871338195605
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -225,6 +227,20 @@ MonoBehaviour:
   layerMask:
     serializedVersion: 2
     m_Bits: 1
+--- !u!114 &8421387168049794393
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7618725439625728130}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aca5dd00611f8744f8b3903abd445c8b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  muzzleFlash: {fileID: 6129686999181272905}
+  liveTime: 0.1
 --- !u!54 &1707895415305524216
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -254,20 +270,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.1, y: 1.4811829, z: 0.2}
   m_Center: {x: 0, y: 0.6108719, z: 0}
---- !u!114 &8421387168049794393
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7618725439625728130}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: aca5dd00611f8744f8b3903abd445c8b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  muzzleFlash: {fileID: 6129686999181272905}
-  liveTime: 0.1
 --- !u!1 &7981481344579090669
 GameObject:
   m_ObjectHideFlags: 0

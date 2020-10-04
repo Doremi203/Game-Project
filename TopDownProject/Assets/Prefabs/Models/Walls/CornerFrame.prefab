@@ -13,7 +13,6 @@ GameObject:
   - component: {fileID: 5454999015989057619}
   - component: {fileID: 3545509570856554359}
   - component: {fileID: 351280680739755322}
-  - component: {fileID: 430549167515979246}
   m_Layer: 0
   m_Name: CornerFrame
   m_TagString: Untagged
@@ -113,20 +112,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   BulletHitEffect: {fileID: 8797454408400876960, guid: e81d38b017db97c47aae96ed6c628e97,
     type: 3}
---- !u!114 &430549167515979246
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 562984437856408683}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8c6d002e0208a6740be1cf2f551724a8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  CurrentWallMaterial: {fileID: 11400000, guid: e8257598d72267349a2d70333cc31a5f,
-    type: 2}
 --- !u!1 &5049891271616382675
 GameObject:
   m_ObjectHideFlags: 0
@@ -138,9 +123,7 @@ GameObject:
   - component: {fileID: 280063705035807173}
   - component: {fileID: 5418377273642365965}
   - component: {fileID: 1940073576191342126}
-  - component: {fileID: 3295543380096814943}
-  - component: {fileID: 1253496327044155167}
-  - component: {fileID: 1249475730944380857}
+  - component: {fileID: 3386220119287045405}
   m_Layer: 0
   m_Name: CornerWall.002
   m_TagString: Untagged
@@ -209,35 +192,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!114 &3295543380096814943
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5049891271616382675}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 735d63907f3a31e4da82c83ac0894014, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  BulletHitEffect: {fileID: 8797454408400876960, guid: e81d38b017db97c47aae96ed6c628e97,
-    type: 3}
---- !u!114 &1253496327044155167
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5049891271616382675}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8c6d002e0208a6740be1cf2f551724a8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  CurrentWallMaterial: {fileID: 11400000, guid: e8257598d72267349a2d70333cc31a5f,
-    type: 2}
---- !u!64 &1249475730944380857
+--- !u!64 &3386220119287045405
 MeshCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -263,8 +218,7 @@ GameObject:
   - component: {fileID: 6516747956749114778}
   - component: {fileID: 4336039807266007190}
   - component: {fileID: 5445115511800770713}
-  - component: {fileID: 1510096468283965075}
-  - component: {fileID: 7306065692472594242}
+  - component: {fileID: 1272246839069327648}
   m_Layer: 0
   m_Name: CornerWall
   m_TagString: Untagged
@@ -347,21 +301,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   BulletHitEffect: {fileID: 8797454408400876960, guid: e81d38b017db97c47aae96ed6c628e97,
     type: 3}
---- !u!114 &1510096468283965075
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5108597375225773328}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8c6d002e0208a6740be1cf2f551724a8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  CurrentWallMaterial: {fileID: 11400000, guid: e8257598d72267349a2d70333cc31a5f,
-    type: 2}
---- !u!64 &7306065692472594242
+--- !u!64 &1272246839069327648
 MeshCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -387,8 +327,7 @@ GameObject:
   - component: {fileID: 5117609611619298254}
   - component: {fileID: 2631402628715385714}
   - component: {fileID: 2286011127613125016}
-  - component: {fileID: 1607878124614396188}
-  - component: {fileID: 5482569986517273921}
+  - component: {fileID: 7531875036832958977}
   m_Layer: 0
   m_Name: CornerWall.001
   m_TagString: Untagged
@@ -471,21 +410,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   BulletHitEffect: {fileID: 8797454408400876960, guid: e81d38b017db97c47aae96ed6c628e97,
     type: 3}
---- !u!114 &1607878124614396188
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5825716981922005848}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8c6d002e0208a6740be1cf2f551724a8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  CurrentWallMaterial: {fileID: 11400000, guid: e8257598d72267349a2d70333cc31a5f,
-    type: 2}
---- !u!64 &5482569986517273921
+--- !u!64 &7531875036832958977
 MeshCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

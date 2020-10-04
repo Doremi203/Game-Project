@@ -11,9 +11,7 @@ GameObject:
   - component: {fileID: 3605035889228971503}
   - component: {fileID: 1919374976586786775}
   - component: {fileID: 4345361993740022199}
-  - component: {fileID: 3055014043291925205}
-  - component: {fileID: 6479857442664253715}
-  - component: {fileID: 3420332215663892782}
+  - component: {fileID: 8668776762529689348}
   m_Layer: 0
   m_Name: HalfWallFrame
   m_TagString: Untagged
@@ -84,21 +82,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!114 &3055014043291925205
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1975936754470271157}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 735d63907f3a31e4da82c83ac0894014, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  BulletHitEffect: {fileID: 8797454408400876960, guid: e81d38b017db97c47aae96ed6c628e97,
-    type: 3}
---- !u!64 &6479857442664253715
+--- !u!64 &8668776762529689348
 MeshCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -112,20 +96,6 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 2027129675099791591, guid: 6f46693432ed18f4b9608742ac93c93b, type: 3}
---- !u!114 &3420332215663892782
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1975936754470271157}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8c6d002e0208a6740be1cf2f551724a8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  CurrentWallMaterial: {fileID: 11400000, guid: e8257598d72267349a2d70333cc31a5f,
-    type: 2}
 --- !u!1 &2837620871126783777
 GameObject:
   m_ObjectHideFlags: 0
@@ -137,9 +107,7 @@ GameObject:
   - component: {fileID: 7101250757570663533}
   - component: {fileID: 3432277809337410920}
   - component: {fileID: 1204564923554534441}
-  - component: {fileID: 8689191944698315596}
-  - component: {fileID: 8838893903626841706}
-  - component: {fileID: 2102998557023414597}
+  - component: {fileID: 3787613435013696558}
   m_Layer: 0
   m_Name: HalfWall.001
   m_TagString: Untagged
@@ -208,7 +176,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!64 &8689191944698315596
+--- !u!64 &3787613435013696558
 MeshCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -222,34 +190,6 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 8452755669176569027, guid: 6f46693432ed18f4b9608742ac93c93b, type: 3}
---- !u!114 &8838893903626841706
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2837620871126783777}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 735d63907f3a31e4da82c83ac0894014, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  BulletHitEffect: {fileID: 8797454408400876960, guid: e81d38b017db97c47aae96ed6c628e97,
-    type: 3}
---- !u!114 &2102998557023414597
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2837620871126783777}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8c6d002e0208a6740be1cf2f551724a8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  CurrentWallMaterial: {fileID: 11400000, guid: e8257598d72267349a2d70333cc31a5f,
-    type: 2}
 --- !u!1 &7316784035654160522
 GameObject:
   m_ObjectHideFlags: 0
@@ -261,9 +201,7 @@ GameObject:
   - component: {fileID: 8356976197986539475}
   - component: {fileID: 1902243129618689545}
   - component: {fileID: 3705535847151984757}
-  - component: {fileID: 4194168129797020588}
-  - component: {fileID: 608972585632765517}
-  - component: {fileID: 8326990603887621859}
+  - component: {fileID: 7625100832868468991}
   m_Layer: 0
   m_Name: HalfWall.002
   m_TagString: Untagged
@@ -332,7 +270,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!64 &4194168129797020588
+--- !u!64 &7625100832868468991
 MeshCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -346,31 +284,3 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 2497983653005761219, guid: 6f46693432ed18f4b9608742ac93c93b, type: 3}
---- !u!114 &608972585632765517
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7316784035654160522}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 735d63907f3a31e4da82c83ac0894014, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  BulletHitEffect: {fileID: 8797454408400876960, guid: e81d38b017db97c47aae96ed6c628e97,
-    type: 3}
---- !u!114 &8326990603887621859
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7316784035654160522}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8c6d002e0208a6740be1cf2f551724a8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  CurrentWallMaterial: {fileID: 11400000, guid: e8257598d72267349a2d70333cc31a5f,
-    type: 2}

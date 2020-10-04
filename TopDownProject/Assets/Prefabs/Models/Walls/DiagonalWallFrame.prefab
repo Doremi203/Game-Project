@@ -11,8 +11,6 @@ GameObject:
   - component: {fileID: 2738031751446573970}
   - component: {fileID: 5109623022223496386}
   - component: {fileID: 8499725722503660179}
-  - component: {fileID: 5690128263875049551}
-  - component: {fileID: 7806680428900893607}
   - component: {fileID: 1221810960797652535}
   m_Layer: 0
   m_Name: DiagonalWall
@@ -82,34 +80,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!114 &5690128263875049551
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 252767445188730330}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 735d63907f3a31e4da82c83ac0894014, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  BulletHitEffect: {fileID: 8797454408400876960, guid: e81d38b017db97c47aae96ed6c628e97,
-    type: 3}
---- !u!114 &7806680428900893607
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 252767445188730330}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8c6d002e0208a6740be1cf2f551724a8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  CurrentWallMaterial: {fileID: 11400000, guid: e8257598d72267349a2d70333cc31a5f,
-    type: 2}
 --- !u!64 &1221810960797652535
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -135,8 +105,6 @@ GameObject:
   - component: {fileID: 2714249502024934214}
   - component: {fileID: 30187826933141397}
   - component: {fileID: 4942289687642827631}
-  - component: {fileID: 454640388265400279}
-  - component: {fileID: 244550834293324588}
   - component: {fileID: 7542126835851100535}
   m_Layer: 0
   m_Name: DiagonalWall.003
@@ -206,34 +174,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!114 &454640388265400279
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4314752215292232542}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 735d63907f3a31e4da82c83ac0894014, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  BulletHitEffect: {fileID: 8797454408400876960, guid: e81d38b017db97c47aae96ed6c628e97,
-    type: 3}
---- !u!114 &244550834293324588
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4314752215292232542}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8c6d002e0208a6740be1cf2f551724a8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  CurrentWallMaterial: {fileID: 11400000, guid: e8257598d72267349a2d70333cc31a5f,
-    type: 2}
 --- !u!64 &7542126835851100535
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -259,8 +199,6 @@ GameObject:
   - component: {fileID: 7574016495837234555}
   - component: {fileID: 8303392377662880984}
   - component: {fileID: 5101114141648913422}
-  - component: {fileID: 8831396848774209402}
-  - component: {fileID: 8218683663893915682}
   - component: {fileID: 8348880551173373617}
   m_Layer: 0
   m_Name: DiagonalWall.001
@@ -330,34 +268,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!114 &8831396848774209402
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5325478735488769508}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 735d63907f3a31e4da82c83ac0894014, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  BulletHitEffect: {fileID: 8797454408400876960, guid: e81d38b017db97c47aae96ed6c628e97,
-    type: 3}
---- !u!114 &8218683663893915682
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5325478735488769508}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8c6d002e0208a6740be1cf2f551724a8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  CurrentWallMaterial: {fileID: 11400000, guid: e8257598d72267349a2d70333cc31a5f,
-    type: 2}
 --- !u!64 &8348880551173373617
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -383,9 +293,7 @@ GameObject:
   - component: {fileID: 1105167717744547135}
   - component: {fileID: 785720797260875277}
   - component: {fileID: 8260833136861760582}
-  - component: {fileID: 8083961781325668842}
   - component: {fileID: 5794119221411905587}
-  - component: {fileID: 5352075483051316120}
   m_Layer: 0
   m_Name: DiagonalWallFrame
   m_TagString: Untagged
@@ -458,20 +366,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!114 &8083961781325668842
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6700212310647735771}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 735d63907f3a31e4da82c83ac0894014, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  BulletHitEffect: {fileID: 8797454408400876960, guid: e81d38b017db97c47aae96ed6c628e97,
-    type: 3}
 --- !u!64 &5794119221411905587
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -486,20 +380,6 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 68458595991147805, guid: 6f46693432ed18f4b9608742ac93c93b, type: 3}
---- !u!114 &5352075483051316120
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6700212310647735771}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8c6d002e0208a6740be1cf2f551724a8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  CurrentWallMaterial: {fileID: 11400000, guid: e8257598d72267349a2d70333cc31a5f,
-    type: 2}
 --- !u!1 &7942583349482909961
 GameObject:
   m_ObjectHideFlags: 0
@@ -511,8 +391,6 @@ GameObject:
   - component: {fileID: 2338922452180486752}
   - component: {fileID: 8954109579587206528}
   - component: {fileID: 3793675801162367544}
-  - component: {fileID: 8275435495211408018}
-  - component: {fileID: 6538205501319171790}
   - component: {fileID: 3597901993480920232}
   m_Layer: 0
   m_Name: DiagonalWall.002
@@ -582,34 +460,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!114 &8275435495211408018
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7942583349482909961}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 735d63907f3a31e4da82c83ac0894014, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  BulletHitEffect: {fileID: 8797454408400876960, guid: e81d38b017db97c47aae96ed6c628e97,
-    type: 3}
---- !u!114 &6538205501319171790
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7942583349482909961}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8c6d002e0208a6740be1cf2f551724a8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  CurrentWallMaterial: {fileID: 11400000, guid: e8257598d72267349a2d70333cc31a5f,
-    type: 2}
 --- !u!64 &3597901993480920232
 MeshCollider:
   m_ObjectHideFlags: 0

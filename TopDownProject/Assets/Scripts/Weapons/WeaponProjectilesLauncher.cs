@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class WeaponProjectilesLauncher : MonoBehaviour, IWeaponComponent
+public class WeaponProjectilesLauncher : WeaponComponent
 {
 
     public float BulletSpeed => bulletsSpeed;
@@ -14,7 +14,7 @@ public class WeaponProjectilesLauncher : MonoBehaviour, IWeaponComponent
     [SerializeField] private float damage;
     [SerializeField] private DamageType damageType;
 
-    public void OnShoot(Weapon weapon)
+    public override void OnShoot()
     {
         Actor _owner = weapon.Owner;
         for (int i = 0; i < bulletsCount; i++)
@@ -29,11 +29,5 @@ public class WeaponProjectilesLauncher : MonoBehaviour, IWeaponComponent
             _newBullet.Rigidbody.AddForce(_force, ForceMode.VelocityChange);
         }
     }
-
-    public bool IsReadyToShoot(Weapon weapon) => true;
-
-    public void OnDroped(Weapon weapon) { }
-
-    public void DrawDebug(Weapon weapon) { }
 
 }

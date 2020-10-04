@@ -905,13 +905,14 @@ GameObject:
   m_Component:
   - component: {fileID: 8441526025296156509}
   - component: {fileID: -6432717612096884155}
+  - component: {fileID: 6026490257512119051}
   - component: {fileID: 5921607229485811733}
   - component: {fileID: 851924516917823905}
   - component: {fileID: -5912516359302260384}
+  - component: {fileID: 3132832422611503641}
   - component: {fileID: 8363864089779841205}
   - component: {fileID: 6390358961332711615}
   - component: {fileID: 970181128307725726}
-  - component: {fileID: 3132832422611503641}
   m_Layer: 12
   m_Name: AssaultRifle
   m_TagString: Untagged
@@ -948,7 +949,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   displayName: Assault Rifle
-  cooldown: 0.2
   weaponType: 1
   animationType: 0
   npcSettings:
@@ -969,23 +969,25 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 3132832422611503641}
-        m_MethodName: Show
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
   OnDropped:
     m_PersistentCalls:
       m_Calls: []
   OnEquiped:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &6026490257512119051
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8441526025296156498}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bb042a16cd655dc46bbf4add97d0c099, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cooldown: 0.2
 --- !u!114 &5921607229485811733
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1000,7 +1002,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bulletSpreadingMultiplier: 0.05
   bulletsCount: 1
-  bulletsSpeed: 1400
+  bulletsSpeed: 35
   bulletPrefab: {fileID: 6444695937657245857, guid: a46be6a792e635446b920a87e1c6faec,
     type: 3}
   damage: 1000
@@ -1032,6 +1034,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   soundEventDistance: 6
+--- !u!114 &3132832422611503641
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8441526025296156498}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aca5dd00611f8744f8b3903abd445c8b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  muzzleFlash: {fileID: 618893635381498191}
+  liveTime: 0.05
 --- !u!82 &8363864089779841205
 AudioSource:
   m_ObjectHideFlags: 0
@@ -1157,20 +1173,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.2, y: 0.23087558, z: 0.9450437}
   m_Center: {x: 0, y: 0.0795622, z: 0.17835647}
---- !u!114 &3132832422611503641
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8441526025296156498}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: aca5dd00611f8744f8b3903abd445c8b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  muzzleFlash: {fileID: 618893635381498191}
-  liveTime: 0.05
 --- !u!1 &8777698666748847169
 GameObject:
   m_ObjectHideFlags: 0
@@ -1261,6 +1263,7 @@ GameObject:
   - component: {fileID: 3939413149946287774}
   - component: {fileID: 4063481746230435220}
   - component: {fileID: 6809551018641110810}
+  - component: {fileID: 3720475214311385465}
   m_Layer: 0
   m_Name: Point Light
   m_TagString: Untagged
@@ -1453,6 +1456,21 @@ MonoBehaviour:
   showAdditionalSettings: 0
   m_AreaLightEmissiveMeshShadowCastingMode: 0
   m_AreaLightEmissiveMeshMotionVectorGenerationMode: 0
+--- !u!114 &3720475214311385465
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8800618876934821721}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cc5619dfa15a39541b6df0309887c332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shadowsSetting: {fileID: 11400000, guid: a9574a1e9c6b71443840bc9cab7ffc4f, type: 2}
+  contactShadowsSetting: {fileID: 11400000, guid: d7db9b0f2f156db4580e6d3df961e90b,
+    type: 2}
 --- !u!1 &8815151997237598581
 GameObject:
   m_ObjectHideFlags: 0

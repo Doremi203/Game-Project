@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class WeaponAmmoContainer : MonoBehaviour, IWeaponComponent
+public class WeaponAmmoContainer : WeaponComponent
 {
 
     public int CurrentAmmo { get; private set; }
@@ -10,16 +10,13 @@ public class WeaponAmmoContainer : MonoBehaviour, IWeaponComponent
     [SerializeField] private int startingAmmoMin;
     [SerializeField] private int startingAmmoMax;
 
-    public bool IsReadyToShoot(Weapon weapon) => CurrentAmmo > 0;
+    public override bool CanShoot() => CurrentAmmo > 0;
 
-    public void OnDroped(Weapon weapon) { }
-
-    public void OnShoot(Weapon weapon)
+    public override void OnShoot()
     {
         if (!weapon.WeaponHolder.InfinityAmmo) CurrentAmmo--;
     }
-    public void DrawDebug(Weapon weapon) { }
 
-    private void Awake() => CurrentAmmo = Random.Range(startingAmmoMin, startingAmmoMax + 1);
+    private void Start() => CurrentAmmo = Random.Range(startingAmmoMin, startingAmmoMax + 1);
 
 }

@@ -280,6 +280,7 @@ GameObject:
   - component: {fileID: 7180329234805606043}
   - component: {fileID: 4307058096721633568}
   - component: {fileID: 836089492498107326}
+  - component: {fileID: 1566041886080272818}
   m_Layer: 0
   m_Name: Point Light
   m_TagString: Untagged
@@ -472,6 +473,21 @@ MonoBehaviour:
   showAdditionalSettings: 0
   m_AreaLightEmissiveMeshShadowCastingMode: 0
   m_AreaLightEmissiveMeshMotionVectorGenerationMode: 0
+--- !u!114 &1566041886080272818
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3453927048767511616}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cc5619dfa15a39541b6df0309887c332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shadowsSetting: {fileID: 11400000, guid: a9574a1e9c6b71443840bc9cab7ffc4f, type: 2}
+  contactShadowsSetting: {fileID: 11400000, guid: d7db9b0f2f156db4580e6d3df961e90b,
+    type: 2}
 --- !u!1 &3858562803492670269
 GameObject:
   m_ObjectHideFlags: 0
@@ -1187,13 +1203,14 @@ GameObject:
   m_Component:
   - component: {fileID: 8441526025296156509}
   - component: {fileID: 8299240830712825413}
+  - component: {fileID: 529083750922902274}
   - component: {fileID: -1849602567258959232}
   - component: {fileID: 7615494594930129360}
   - component: {fileID: -6627395272276492181}
+  - component: {fileID: 5093798873797453428}
   - component: {fileID: 8363864089779841205}
   - component: {fileID: 6390358961332711615}
   - component: {fileID: 970181128307725726}
-  - component: {fileID: 5093798873797453428}
   m_Layer: 12
   m_Name: Pistol
   m_TagString: Untagged
@@ -1230,7 +1247,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   displayName: Pistol
-  cooldown: 0.25
   weaponType: 0
   animationType: 0
   npcSettings:
@@ -1251,23 +1267,25 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 5093798873797453428}
-        m_MethodName: Show
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
   OnDropped:
     m_PersistentCalls:
       m_Calls: []
   OnEquiped:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &529083750922902274
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8441526025296156498}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bb042a16cd655dc46bbf4add97d0c099, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cooldown: 0.25
 --- !u!114 &-1849602567258959232
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1314,6 +1332,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   soundEventDistance: 7
+--- !u!114 &5093798873797453428
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8441526025296156498}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aca5dd00611f8744f8b3903abd445c8b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  muzzleFlash: {fileID: 3004783235307555401}
+  liveTime: 0.05
 --- !u!82 &8363864089779841205
 AudioSource:
   m_ObjectHideFlags: 0
@@ -1439,20 +1471,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.05, y: 0.1593149, z: 0.44712508}
   m_Center: {x: 0, y: 0.03130035, z: 0.14584666}
---- !u!114 &5093798873797453428
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8441526025296156498}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: aca5dd00611f8744f8b3903abd445c8b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  muzzleFlash: {fileID: 3004783235307555401}
-  liveTime: 0.05
 --- !u!1 &8531374307628860845
 GameObject:
   m_ObjectHideFlags: 0

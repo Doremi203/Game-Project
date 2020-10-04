@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class WeaponMeleeAttack : MonoBehaviour, IWeaponComponent
+public class WeaponMeleeAttack : WeaponComponent
 {
 
     [SerializeField] private float attackAngle = 90f;
@@ -13,13 +13,11 @@ public class WeaponMeleeAttack : MonoBehaviour, IWeaponComponent
     [SerializeField] private float attackDelay = 0.05f;
     [SerializeField] private LayerMask layerMask;
 
-    public bool IsReadyToShoot(Weapon weapon) => true;
+    public override void OnShoot() => StartCoroutine(Attack());
 
-    public void OnDroped(Weapon weapon) => StopAllCoroutines();
+    public override void OnDropped() => StopAllCoroutines();
 
-    public void OnShoot(Weapon weapon) => StartCoroutine(Attack(weapon));
-
-    private IEnumerator Attack(Weapon weapon)
+    private IEnumerator Attack()
     {
         Actor _owner = weapon.Owner;
         yield return new WaitForSeconds(attackDelay);
@@ -51,9 +49,11 @@ public class WeaponMeleeAttack : MonoBehaviour, IWeaponComponent
         }
     }
 
-    public void DrawDebug(Weapon weapon)
+    public void DrawDebug()
     {
+        if (weapon == null) return;
         Actor _owner = weapon.Owner;
+        if (weapon.Owner == null) return;
         Gizmos.DrawWireSphere(_owner.transform.position, attackRadius);
         Gizmos.DrawWireSphere(_owner.transform.position, absoluteRadius);
         Gizmos.color = Color.red;

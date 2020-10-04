@@ -11,14 +11,12 @@ public class Weapon : MonoBehaviour
     public Actor Owner => owner;
     public WeaponHolder WeaponHolder => weaponHolder;
     public string DisplayName => displayName;
-    public float Cooldown => cooldown;
     public WeaponAnimationType AnimationType => animationType;
     public WeaponNPCSettings NPCSettings => npcSettings;
 
     public WeaponState State { get; private set; }
 
     [SerializeField] private string displayName;
-    [SerializeField] private float cooldown;
     [SerializeField] private WeaponType weaponType;
     [SerializeField] private WeaponAnimationType animationType;
     [SerializeField] private WeaponNPCSettings npcSettings;
@@ -33,14 +31,16 @@ public class Weapon : MonoBehaviour
 
     private float nextShootTime;
     private Rigidbody rb;
-    private IWeaponComponent[] weaponComponents;
+    private WeaponComponent[] weaponComponents;
 
     public virtual void Pickup(WeaponHolder weaponHolder)
     {
         ChangeState(WeaponState.Equiped);
 
         this.weaponHolder = weaponHolder;
-        this.owner = weaponHolder.Owner; 
+        this.owner = weaponHolder.Owner;
+
+        foreach (var item in weaponComponents) item.OnPickedUp();
 
         OnEquiped.Invoke();
     }
@@ -54,7 +54,7 @@ public class Weapon : MonoBehaviour
 
         isUsing = false;
 
-        foreach (var item in weaponComponents) item.OnDroped(this);
+        foreach (var item in weaponComponents) item.OnDropped();
 
         OnDropped.Invoke();
     }
@@ -84,45 +84,36 @@ public class Weapon : MonoBehaviour
 
     public virtual bool CanUse()
     {
-        foreach (var item in weaponComponents)
-            if (item.IsReadyToShoot(this) == false) return false;
-        return Time.time > nextShootTime;
+        foreach (WeaponComponent item in weaponComponents)
+            if (item.CanShoot() == false) return false;
+        return true;
     }
 
-    public virtual bool CanPickup() => State == WeaponState.Drop;
+    public virtual bool CanPickup()
+    {
+        foreach (WeaponComponent item in weaponComponents)
+            if (item.CanPickup() == false) return false;
+        return State == WeaponState.Drop;
+    }
 
     protected virtual void Awake()
     {
         rb = GetComponent<Rigidbody>();
-        weaponComponents = GetComponents<IWeaponComponent>();
+        weaponComponents = GetComponents<WeaponComponent>();
     }
 
     protected virtual void Update()
     {
-        if (weaponType == WeaponType.Automatic && isUsing && CanUse())
-        {
-            if (Time.time >= nextShootTime)
-            {
-                nextShootTime = Time.time + cooldown;
-                OnShoot();
-            }
-        }
+        if (weaponType == WeaponType.Automatic && isUsing && CanUse()) OnShoot();
     }
 
     protected virtual void OnShoot() 
     {
-        foreach (var item in weaponComponents) item.OnShoot(this);
+        foreach (var item in weaponComponents) item.OnShoot();
         OnShootEvent.Invoke();
     }
 
-    protected virtual void OnUsingStart()
-    {
-        if (Time.time > nextShootTime)
-        {
-            nextShootTime = Time.time + cooldown;
-            OnShoot();
-        }
-    }
+    protected virtual void OnUsingStart() => OnShoot();
 
     protected virtual void OnUsingEnd() { }
 
@@ -148,16 +139,6 @@ public class Weapon : MonoBehaviour
                 break;
         }
     }
-
-#if UNITY_EDITOR
-
-    protected virtual void OnDrawGizmos()
-    {
-        if (!owner) return;
-        foreach (var item in weaponComponents) item.DrawDebug(this);
-    }
-
-#endif
 
 }
 

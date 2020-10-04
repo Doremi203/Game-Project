@@ -62,6 +62,7 @@ public class TilePresenterEditor : Editor
     private void OnSceneGUI()
     {
         TilePresenter _target = target as TilePresenter;
+
         if (Handles.Button(_target.transform.position, Quaternion.identity, 0.5f, 0.5f, Handles.RectangleHandleCap))
         {
             int _i = _target.CurrentVariantIndex;
@@ -69,6 +70,15 @@ public class TilePresenterEditor : Editor
                 _i = 0;
             else
                 _i = _i + 1;
+            _target.SelectVariation(_i);
+        }
+        if (Handles.Button(_target.transform.position + _target.transform.up * -1f, Quaternion.identity, 0.5f, 0.5f, Handles.RectangleHandleCap))
+        {
+            int _i = _target.CurrentVariantIndex;
+            if (_i - 1 < 0)
+                _i = _target.TargetTile.Variations.Count - 1;
+            else
+                _i = _i - 1;
             _target.SelectVariation(_i);
         }
     }

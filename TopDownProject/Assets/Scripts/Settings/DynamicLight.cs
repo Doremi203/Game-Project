@@ -9,6 +9,7 @@ public class DynamicLight : MonoBehaviour
 {
 
     [SerializeField] private BoolParameter shadowsSetting;
+    [SerializeField] private BoolParameter contactShadowsSetting;
 
     private new Light light;
     private HDAdditionalLightData lightData;
@@ -28,6 +29,7 @@ public class DynamicLight : MonoBehaviour
     private void UpdateSettings()
     {
         lightData.EnableShadows(shadowsSetting.GetValue());
+        lightData.useContactShadow.useOverride = shadowsSetting.GetValue() && contactShadowsSetting.GetValue();
     }
 
 }
