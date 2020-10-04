@@ -12,20 +12,26 @@ public class BloodSpawner : MonoBehaviour
     [SerializeField] private float range;
     [SerializeField] private Vector3 minScale;
     [SerializeField] private Vector3 maxScale;
+    [SerializeField] private float minSplashDelay;
+    [SerializeField] private float maxSplashDelay;
+    [Header("Blood Puddle")]
     [SerializeField] private Transform puddleParent;
     [SerializeField] private float minPuddleDelay;
     [SerializeField] private float maxPpuddleDelay;
 
-    public void SpawnBlood()
+    public void SpawnBlood() => StartCoroutine(SpawnBloodWithDelay());
+
+    public void SpawnBloodPuddle() => StartCoroutine(SpawnPuddleWithDelay());
+
+    private IEnumerator SpawnBloodWithDelay()
     {
+        yield return new WaitForSeconds(Random.Range(minSplashDelay, maxSplashDelay));
         SpawnDecal(bloodDecalPrefab, transform.position, Vector3.up * -1f, true);
         SpawnDecal(bloodDecalPrefab, transform.position, Vector3.right, true);
         SpawnDecal(bloodDecalPrefab, transform.position, Vector3.right * -1f, true);
         SpawnDecal(bloodDecalPrefab, transform.position, Vector3.forward, true);
         SpawnDecal(bloodDecalPrefab, transform.position, Vector3.forward * -1f, true);
     }
-
-    public void SpawnBloodPuddle() => StartCoroutine(SpawnPuddleWithDelay());
 
     private IEnumerator SpawnPuddleWithDelay()
     {

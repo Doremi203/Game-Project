@@ -310,9 +310,11 @@ MonoBehaviour:
   layerMask:
     serializedVersion: 2
     m_Bits: 1
-  range: 2
+  range: 3
   minScale: {x: 2.5, y: 2.5, z: 2.5}
   maxScale: {x: 4, y: 4, z: 4}
+  minSplashDelay: 0.075
+  maxSplashDelay: 0.1
   puddleParent: {fileID: 5430108628247769647}
   minPuddleDelay: 1.5
   maxPpuddleDelay: 3
@@ -334,6 +336,7 @@ MonoBehaviour:
   layerMask:
     serializedVersion: 2
     m_Bits: 1
+  bloodyTime: 4
 --- !u!114 &1073585298177967271
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -410,6 +413,8 @@ MonoBehaviour:
   range: 0
   minScale: {x: 0, y: 0, z: 0}
   maxScale: {x: 0, y: 0, z: 0}
+  minSplashDelay: 0
+  maxSplashDelay: 0
   puddleParent: {fileID: 0}
   minPuddleDelay: 0
   maxPpuddleDelay: 0

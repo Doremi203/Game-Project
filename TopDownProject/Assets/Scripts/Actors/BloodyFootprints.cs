@@ -10,6 +10,7 @@ public class BloodyFootprints : MonoBehaviour
     [SerializeField] private DecalProjector footprintDecalPrefab;
     [SerializeField] private float cooldown;
     [SerializeField] private LayerMask layerMask;
+    [SerializeField] private float bloodyTime = 4f;
 
     private NavMeshAgent agent;
     private CharacterController characterController;
@@ -17,7 +18,7 @@ public class BloodyFootprints : MonoBehaviour
     private int currentFootprint;
     private float bloodAmount;
 
-    public void SetBloodAmount(float blood) => bloodAmount = blood;
+    public void SetBloodAmount() => bloodAmount = bloodyTime;
 
     private void Awake()
     {
@@ -63,6 +64,7 @@ public class BloodyFootprints : MonoBehaviour
             {
                 _footprint.transform.position = _footprint.transform.position + _footprint.transform.right * -0.175f;
             }
+            _footprint.fadeFactor = bloodAmount / bloodyTime;
         }
     }
 

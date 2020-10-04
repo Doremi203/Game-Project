@@ -66,7 +66,7 @@ public class ProjectileBase : MonoBehaviour
         if (_surfaceType.HitDecalProjector)
         {
             _decalProjector = Instantiate(_surfaceType.HitDecalProjector.gameObject, _hitPosition, _decalRotation);
-            Destroy(_decalProjector.gameObject, 60f);
+            Destroy(_decalProjector.gameObject, 300f);
         }
 
         Destroy(this.gameObject);

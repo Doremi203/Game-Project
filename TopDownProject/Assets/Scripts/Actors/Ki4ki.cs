@@ -11,7 +11,6 @@ public class Ki4ki : MonoBehaviour
     [SerializeField] private float maxSpeed;
     [SerializeField] private float minTargetSize;
     [SerializeField] private float maxTargetSize;
-    [SerializeField] private float bloodyFootprintsTime = 4f;
 
     private DecalProjector decalProjector;
     private float targetSize;
@@ -40,10 +39,10 @@ public class Ki4ki : MonoBehaviour
         }
     }
 
-    private void OnTriggerStay(Collider other)
+    private void OnTriggerExit(Collider other)
     {
         BloodyFootprints _bloodyFootprints = other.GetComponent<BloodyFootprints>();
-        if (_bloodyFootprints) _bloodyFootprints.SetBloodAmount(bloodyFootprintsTime);
+        if (_bloodyFootprints) _bloodyFootprints.SetBloodAmount();
     }
 
 }
