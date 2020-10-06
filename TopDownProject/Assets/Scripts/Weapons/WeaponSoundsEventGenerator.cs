@@ -16,6 +16,7 @@ public class WeaponSoundsEventGenerator : WeaponComponent
 
     private void OnDrawGizmos() 
     {
+        return;
         if (weapon == null) return;
         Actor _owner = weapon.Owner;
         if (_owner == null) return;

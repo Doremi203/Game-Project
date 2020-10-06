@@ -14,6 +14,7 @@ public class TileWizardWindow : EditorWindow
 
     private List<Tile> tiles = new List<Tile>();
     private Tile selectedTile;
+    private MaterialPresenter selectedMaterial;
 
     private void Awake()
     {
@@ -89,6 +90,8 @@ public class TileWizardWindow : EditorWindow
             GUILayout.Label("Every tile should have at least 1 variation.");
             GUI.contentColor = Color.white;
         }
+
+       selectedMaterial = (MaterialPresenter)EditorGUILayout.ObjectField(selectedMaterial, typeof(MaterialPresenter), false);
     }
 
     private void DrawTilesSelector()
@@ -128,7 +131,7 @@ public class TileWizardWindow : EditorWindow
 
     private void ReinstantiateTiles()
     {
-        if (EditorUtility.DisplayDialog("Reinstantiate Tiles", "Are you sure?", "Yes", "No"))
+        if (EditorUtility.DisplayDialog("Reinstantiate Tiles", "Are you sure? Materials will be lost!", "Yes", "No"))
         {
             foreach (var item in FindObjectsOfType<TilePresenter>())
             {
@@ -153,6 +156,13 @@ public class TileWizardWindow : EditorWindow
         _gameObject.name = tile.name;
         _gameObject.AddComponent<TilePresenter>().Setup(tile);
         Selection.activeGameObject = _gameObject;
+
+        if (!selectedMaterial) return;
+
+        foreach (var item in _gameObject.GetComponentsInChildren<MeshRenderer>())
+        {
+            item.sharedMaterial = selectedMaterial.Material;
+        }
     }
 
 

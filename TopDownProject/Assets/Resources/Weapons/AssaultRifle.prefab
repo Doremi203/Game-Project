@@ -987,7 +987,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb042a16cd655dc46bbf4add97d0c099, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cooldown: 0.2
+  cooldown: 0.1
 --- !u!114 &5921607229485811733
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1019,8 +1019,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e63e8ff682f41bb49b9000db48693ba7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startingAmmoMin: 15
-  startingAmmoMax: 20
+  startingAmmoMin: 20
+  startingAmmoMax: 25
 --- !u!114 &-5912516359302260384
 MonoBehaviour:
   m_ObjectHideFlags: 0

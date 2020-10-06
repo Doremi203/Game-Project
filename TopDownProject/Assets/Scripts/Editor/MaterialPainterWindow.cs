@@ -10,22 +10,28 @@ public class MaterialPainterWindow : EditorWindow
     [MenuItem("Window/Painter")]
     public static void ShowWindow() => GetWindow<MaterialPainterWindow>("Painter");
 
-    private Material selectedMaterial;
-    private bool isPainting;
+    private MaterialPresenter selectedMaterial;
+    private MaterialPresenter[] materialPresenters;
+    private GUIContent guiContent;
+    private GameObject lastPaintedObject;
 
     private void OnFocus()
     {
         SceneView.duringSceneGui -= this.OnSceneGUI;
         SceneView.duringSceneGui += this.OnSceneGUI;
-        isPainting = true;
+        RefreshMaterials();
     }
 
     private void OnDestroy() => SceneView.duringSceneGui -= this.OnSceneGUI;
 
+    private void RefreshMaterials()
+    {
+        materialPresenters = MaterialPresenter.GetMaterialPresenters();
+    }
+
     private void OnSceneGUI(SceneView sceneView)
     {
         if (selectedMaterial == null) return;
-        if (isPainting == false) return;
 
         HandleUtility.AddDefaultControl(GUIUtility.GetControlID(FocusType.Passive));
 
@@ -43,18 +49,48 @@ public class MaterialPainterWindow : EditorWindow
 
                 Undo.RecordObject(_meshRenderer, "idk");
 
-                _meshRenderer.sharedMaterial = selectedMaterial;
+                _meshRenderer.sharedMaterial = selectedMaterial.Material;
+
+                lastPaintedObject = _meshRenderer.gameObject;
 
                 Event.current.Use();
             }
         }
     }
 
+    private Vector2 scrollPosition;
+
     private void OnGUI()
     {
-        isPainting = GUILayout.Toggle(isPainting, "Paint");
-        Material _material = (Material)EditorGUILayout.ObjectField(selectedMaterial, typeof(Material), false, GUILayout.Height(50));
-        if (_material != selectedMaterial) selectedMaterial = _material;
+        if (GUILayout.Button("Stop Painting", GUILayout.Height(50))) selectedMaterial = null;
+
+        GUILayout.Space(5f);
+
+        if (lastPaintedObject != null) GUILayout.Label("Last painted object: " + lastPaintedObject.name);
+
+        GUILayout.Space(5f);
+
+        scrollPosition = GUILayout.BeginScrollView(scrollPosition, GUILayout.Width(position.width), GUILayout.Height(position.height));
+
+        foreach (var item in materialPresenters)
+        {
+            if (selectedMaterial == item)
+            {
+                Color _oldColor = GUI.contentColor;
+                GUI.contentColor = Color.green;
+                GUILayout.Label(item.name + " (Selected)");
+                GUI.contentColor = _oldColor;
+            }
+            else
+                GUILayout.Label(item.name);
+
+            guiContent = new GUIContent(item.PreviewImage);
+            if (GUILayout.Button(guiContent)) selectedMaterial = item;
+
+            GUILayout.Space(5f);
+        }
+
+        GUILayout.EndScrollView();
     }
 
 }

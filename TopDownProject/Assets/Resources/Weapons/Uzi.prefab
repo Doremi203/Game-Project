@@ -1703,7 +1703,7 @@ MonoBehaviour:
   bulletsSpeed: 35
   bulletPrefab: {fileID: 6444695937657245857, guid: a46be6a792e635446b920a87e1c6faec,
     type: 3}
-  damage: 1000
+  damage: 700
   damageType: {fileID: 11400000, guid: c5ca7e9201afad441b8efca35b93cc1a, type: 2}
 --- !u!114 &8932518890179753463
 MonoBehaviour:

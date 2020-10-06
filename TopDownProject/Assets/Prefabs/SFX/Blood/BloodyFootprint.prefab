@@ -51,5 +51,5 @@ MonoBehaviour:
   m_UVBias: {x: 0, y: 0}
   m_AffectsTransparency: 0
   m_Offset: {x: 0, y: 0, z: 0.055410136}
-  m_Size: {x: 1, y: 1, z: 0.2}
+  m_Size: {x: 0.4, y: 0.4, z: 0.2}
   m_FadeFactor: 1

@@ -51,6 +51,7 @@ public class WeaponMeleeAttack : WeaponComponent
 
     public void DrawDebug()
     {
+        return;
         if (weapon == null) return;
         Actor _owner = weapon.Owner;
         if (weapon.Owner == null) return;
