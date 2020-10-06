@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 6442805421182426633}
   - component: {fileID: 3717201519673574428}
   - component: {fileID: 5914354277933893123}
-  - component: {fileID: 2481135165534349486}
+  - component: {fileID: 4568531778898645896}
   m_Layer: 0
   m_Name: Pot2_low
   m_TagString: Untagged
@@ -26,14 +26,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2465984863544627794}
-  m_LocalRotation: {x: -0.7071068, y: -0, z: -0, w: 0.7071067}
+  m_LocalRotation: {x: -0.7069834, y: 0, z: 0, w: 0.7072302}
   m_LocalPosition: {x: -1.0037956, y: 0, z: 3.6872168}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1014534433855541220}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: -89.98, y: 0, z: 0}
 --- !u!33 &3717201519673574428
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -81,8 +81,8 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!135 &2481135165534349486
-SphereCollider:
+--- !u!65 &4568531778898645896
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -92,7 +92,7 @@ SphereCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.40103793
+  m_Size: {x: 0.80207586, y: 0.80207586, z: 0.55713266}
   m_Center: {x: 0, y: 0.000000014901159, z: 0.27856627}
 --- !u!1 &3819968258454945066
 GameObject:
@@ -110,7 +110,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &1014534433855541220
 Transform:

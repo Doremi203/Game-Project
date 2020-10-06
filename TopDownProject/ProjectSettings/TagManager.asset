@@ -15,12 +15,12 @@ TagManager:
   - 
   - PostProcessing
   - Bullet
-  - 
+  - PhysicalProp
   - Actor
   - WeaponDrop
   - Shield
   - Ragdoll
-  - 
+  - Glass
   - 
   - 
   - 

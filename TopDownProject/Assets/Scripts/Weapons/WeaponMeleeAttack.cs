@@ -10,6 +10,7 @@ public class WeaponMeleeAttack : WeaponComponent
     [SerializeField] private float absoluteRadius = 0.5f;
     [SerializeField] private float damage;
     [SerializeField] private DamageType damageType;
+    [SerializeField] private float rigidbodyPushForse = 100f;
     [SerializeField] private float attackDelay = 0.05f;
     [SerializeField] private LayerMask layerMask;
 
@@ -24,6 +25,9 @@ public class WeaponMeleeAttack : WeaponComponent
         Collider[] hits = Physics.OverlapSphere(_owner.transform.position, attackRadius);
         foreach (var item in hits)
         {
+            Rigidbody _targetRigidbody = item.GetComponent<Rigidbody>();
+            if (_targetRigidbody) _targetRigidbody.AddForce(_owner.transform.forward * rigidbodyPushForse);
+
             Actor _targetActor = item.GetComponent<Actor>();
             if (!_targetActor) continue;
 

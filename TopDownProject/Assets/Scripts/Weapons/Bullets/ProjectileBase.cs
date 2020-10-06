@@ -60,8 +60,11 @@ public class ProjectileBase : MonoBehaviour
         ParticleSystem _effect;
         GameObject _decalProjector;
 
-        _effect = Instantiate(_surfaceType.HitEffect, _hitPosition, _effectRotation);
-        Destroy(_effect.gameObject, 1f);
+        if (_surfaceType.HitEffect)
+        {
+            _effect = Instantiate(_surfaceType.HitEffect, _hitPosition, _effectRotation);
+            Destroy(_effect.gameObject, 1f);
+        }
 
         if (_surfaceType.HitDecalProjector)
         {
