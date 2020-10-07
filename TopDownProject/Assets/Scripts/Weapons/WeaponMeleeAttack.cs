@@ -49,7 +49,7 @@ public class WeaponMeleeAttack : WeaponComponent
                 if (angle > attackAngle) continue;
             }
 
-            _targetActor.ApplyDamage(_owner, damage, damageType);
+            _targetActor.ApplyDamage(_owner, damage, damageType, _owner.transform.forward);
         }
     }
 

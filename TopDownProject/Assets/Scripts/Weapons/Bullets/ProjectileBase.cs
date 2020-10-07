@@ -33,6 +33,7 @@ public class ProjectileBase : MonoBehaviour
         Physics.IgnoreCollision(Hitbox, owner.Hitbox);
 
         Destroy(this.gameObject, 2f);
+
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -40,12 +41,12 @@ public class ProjectileBase : MonoBehaviour
         Actor _actor = collision.transform.GetComponent<Actor>();
         if (_actor)
         {
-            if (_actor.Team != team) _actor.ApplyDamage(owner, damage, damageType);
+            if (_actor.Team != team) _actor.ApplyDamage(owner, damage, damageType, transform.forward);
         }
         else
         {
             IDamageable damageable = collision.transform.GetComponent<IDamageable>();
-            damageable?.ApplyDamage(owner, damage, damageType);
+            damageable?.ApplyDamage(owner, damage, damageType, transform.forward);
         }
 
         Vector3 _hitPosition = collision.GetContact(0).point;

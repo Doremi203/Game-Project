@@ -1,50 +1,5 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &5628671349497734412
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 8830642133921096397}
-  - component: {fileID: 3075792857099338491}
-  m_Layer: 0
-  m_Name: BloodParticles
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &8830642133921096397
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5628671349497734412}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.286, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 7750810099474233591}
-  m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &3075792857099338491
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5628671349497734412}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 09b262e8bf07ce445a4b67730f629bfb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  prefab: {fileID: 296659533157377495, guid: 805c70331bcad474ca0e00cbb26e2a25, type: 3}
-  destroyDelay: 1.5
 --- !u!1 &7750810099474233598
 GameObject:
   m_ObjectHideFlags: 0
@@ -82,7 +37,6 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 2983825375718566713}
-  - {fileID: 8830642133921096397}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 180.00002, z: 0}
@@ -137,29 +91,7 @@ MonoBehaviour:
   debugInvicibility: 0
   OnHealthChanged:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 3075792857099338491}
-        m_MethodName: Spawn
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 6128230765568894497}
-        m_MethodName: SpawnBlood
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &5698660024320438996
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -211,17 +143,6 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 7750810099474233594}
         m_MethodName: Drop
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 6128230765568894497}
-        m_MethodName: SpawnBloodPuddle
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -308,22 +229,17 @@ MonoBehaviour:
   - {fileID: 7218260354778939665, guid: f390dd80d214fef47af679196fcafca9, type: 3}
   - {fileID: 2191830000356606254, guid: 4d18b62e0f0449e43b1027574bc823c2, type: 3}
   - {fileID: 5490478621177472442, guid: e9c4919ed55163247999a6e78f3565d6, type: 3}
-  bloodPuddlePrefabs:
-  - {fileID: 7265504507480374327, guid: a19e46e2434e3c64199cb8e9cd8a83db, type: 3}
-  - {fileID: 4719954118144010236, guid: 39785e63fc6e1ce4ca94354a1ba57d7e, type: 3}
-  - {fileID: 6730211169123264455, guid: 041c88d2e8c09d444bcd21cb96d865da, type: 3}
-  - {fileID: 627200202554468492, guid: 07b7d813205eff1428151b5c6ebb62b1, type: 3}
+  bloodEffectPrefab: {fileID: 3284163157165049137, guid: 332dbe3823375234ab7f15edf58ab2a1,
+    type: 3}
   layerMask:
     serializedVersion: 2
     m_Bits: 1
   range: 3
   minScale: {x: 0.75, y: 0.75, z: 0.75}
   maxScale: {x: 2, y: 2, z: 2}
-  minSplashDelay: 0.075
-  maxSplashDelay: 0.1
-  puddleParent: {fileID: 5430108628247769647}
-  minPuddleDelay: 1.5
-  maxPpuddleDelay: 3
+  minSplashDelay: 0.1
+  maxSplashDelay: 0.2
+  bloodAmount: 10
 --- !u!114 &1179782429065987534
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -370,6 +286,29 @@ MonoBehaviour:
   animator: {fileID: 2332155301275440479}
   actor: {fileID: 5698660024320438996}
   ragdollDelay: 0.05
+--- !u!114 &3049972066378908244
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7939285571060893130}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6ecbb7147053dbb45adb9df68c9d2268, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  actor: {fileID: 5698660024320438996}
+  targetBone: {fileID: 5930869063433297221}
+  bloodPuddlePrefabs:
+  - {fileID: 7265504507480374327, guid: a19e46e2434e3c64199cb8e9cd8a83db, type: 3}
+  - {fileID: 4719954118144010236, guid: 39785e63fc6e1ce4ca94354a1ba57d7e, type: 3}
+  - {fileID: 6730211169123264455, guid: 041c88d2e8c09d444bcd21cb96d865da, type: 3}
+  - {fileID: 627200202554468492, guid: 07b7d813205eff1428151b5c6ebb62b1, type: 3}
+  timeWithoutMovingToSpawnPuddle: 0.25
+  layerMask:
+    serializedVersion: 2
+    m_Bits: 1
 --- !u!114 &4084273249356357601
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -399,31 +338,6 @@ MonoBehaviour:
   animator: {fileID: 2332155301275440479}
   agent: {fileID: 7750810099474233590}
   animationSpeedMultiplier: 0.5
---- !u!114 &7150155012861899711
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7939285571060893130}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f9b0f95c2ce22be45bcd29e80b658ab1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  bloodDecalPrefabs: []
-  bloodPuddlePrefabs: []
-  layerMask:
-    serializedVersion: 2
-    m_Bits: 0
-  range: 0
-  minScale: {x: 0, y: 0, z: 0}
-  maxScale: {x: 0, y: 0, z: 0}
-  minSplashDelay: 0
-  maxSplashDelay: 0
-  puddleParent: {fileID: 0}
-  minPuddleDelay: 0
-  maxPpuddleDelay: 0
 --- !u!1001 &1258185262212525302
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -791,9 +705,9 @@ Animator:
     type: 3}
   m_PrefabInstance: {fileID: 1258185262212525302}
   m_PrefabAsset: {fileID: 0}
---- !u!4 &5430108628247769647 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 6498245470051294937, guid: f2cc12ec8c6270341ab1b840c75ae786,
+--- !u!54 &5930869063433297221 stripped
+Rigidbody:
+  m_CorrespondingSourceObject: {fileID: 4844559459160469939, guid: f2cc12ec8c6270341ab1b840c75ae786,
     type: 3}
   m_PrefabInstance: {fileID: 1258185262212525302}
   m_PrefabAsset: {fileID: 0}

@@ -79,5 +79,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Enemy_Default_pistol
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 7150155012861899711, guid: aab0d215732b8f14cb8186df67be66ee, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: aab0d215732b8f14cb8186df67be66ee, type: 3}

@@ -29,9 +29,9 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 49439024823347063}
-  m_LocalRotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071067}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 0.034522947, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 8204481280187043278}
   m_RootOrder: 0
@@ -94,8 +94,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 3.6937883, y: 1.9999995, z: 2.6937878}
-  m_Center: {x: 0.00000035762787, y: -0.000014334913, z: 1.4999996}
+  m_Size: {x: 3.75, y: 3, z: 0.1}
+  m_Center: {x: 0, y: 1.5, z: 0}
 --- !u!208 &8527167029802270788
 NavMeshObstacle:
   m_ObjectHideFlags: 0
@@ -106,11 +106,11 @@ NavMeshObstacle:
   m_Enabled: 1
   serializedVersion: 3
   m_Shape: 1
-  m_Extents: {x: 1.8470001, y: 1, z: 1.3470001}
+  m_Extents: {x: 1.875, y: 1.5, z: 0.05}
   m_MoveThreshold: 0.1
   m_Carve: 1
   m_CarveOnlyStationary: 1
-  m_Center: {x: 0, y: 0, z: 1.5000001}
+  m_Center: {x: 0, y: 1.5, z: 0}
   m_TimeToStationary: 0.5
 --- !u!114 &8527167029802270786
 MonoBehaviour:
@@ -124,7 +124,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d0ff024fc3b5969469a7147b29edeb54, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  brokenMaterial: {fileID: 2100000, guid: dd2eb0074b27bce41a1a7ed801e4faa8, type: 2}
+  brokenMaterial: {fileID: 2100000, guid: 4a99bd18bfc590040ac7d2e74428955e, type: 2}
+  particleSystemPrefab: {fileID: 2301387629384125951, guid: 37295fb4f5ae13742b8aa03eb1d6f6a9,
+    type: 3}
 --- !u!114 &4544418395013718861
 MonoBehaviour:
   m_ObjectHideFlags: 0

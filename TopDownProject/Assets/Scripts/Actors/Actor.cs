@@ -12,6 +12,7 @@ public class Actor : MonoBehaviour, IDamageable
 
     [HideInInspector] public Quaternion desiredRotation;
 
+    public Action<Actor, float, DamageType, Vector3> OnDamageTaken;
     public UnityEvent OnDeath;
 
     public Vector3 eyesPosition => transform.position + eyesOffset;
@@ -30,9 +31,10 @@ public class Actor : MonoBehaviour, IDamageable
 
     private HealthComponent healthComponent;
 
-    public virtual void ApplyDamage(Actor damageCauser, float damage, DamageType damageType)
+    public virtual void ApplyDamage(Actor damageCauser, float damage, DamageType damageType, Vector3 damageDirection)
     {
         healthComponent.ApplyDamage(damage);
+        OnDamageTaken?.Invoke(damageCauser, damage, damageType, damageDirection);
     }
 
     protected virtual void Awake()
