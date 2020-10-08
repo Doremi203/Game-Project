@@ -38,6 +38,8 @@ public class Glass : MonoBehaviour, IDamageable
         Instantiate(particleSystemPrefab, transform.position, Quaternion.Euler(_rotation));
     }
 
+#if UNITY_EDITOR
+
     private void OnDrawGizmos()
     {
         Player _player = Player.Instance;
@@ -55,5 +57,7 @@ public class Glass : MonoBehaviour, IDamageable
         style.fontSize = 25;
         Handles.Label(transform.position, f.ToString(), style);
     }
+
+#endif
 
 }

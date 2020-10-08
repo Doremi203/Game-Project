@@ -26,7 +26,13 @@ public class WeaponMeleeAttack : WeaponComponent
         foreach (var item in hits)
         {
             Rigidbody _targetRigidbody = item.GetComponent<Rigidbody>();
-            if (_targetRigidbody) _targetRigidbody.AddForce(_owner.transform.forward * rigidbodyPushForse);
+            if (_targetRigidbody)
+            {
+                Vector3 targetDir = _targetRigidbody.transform.position - _owner.transform.position;
+                float angle = Vector3.Angle(targetDir, _owner.transform.forward);
+                if (angle <= attackAngle)
+                    _targetRigidbody.AddForce(_owner.transform.forward * rigidbodyPushForse);
+            }
 
             Actor _targetActor = item.GetComponent<Actor>();
             if (!_targetActor) continue;

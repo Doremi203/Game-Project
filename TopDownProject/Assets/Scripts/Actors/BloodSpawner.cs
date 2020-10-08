@@ -55,7 +55,10 @@ public class BloodSpawner : MonoBehaviour
 
             int i = Random.Range(0, bloodDecalPrefabs.Length);
             if (SpawnDecal(bloodDecalPrefabs[i], _origin, _direction, 4f, true))
+            {
                 _successfulRays--;
+                yield return new WaitForSeconds(0.005f);
+            }
         }
 
         for (int a = 0; a < _raysCount; a++)
@@ -65,9 +68,11 @@ public class BloodSpawner : MonoBehaviour
 
             int i = Random.Range(0, bloodDecalPrefabs.Length);
             if (SpawnDecal(bloodDecalPrefabs[i], _origin, _direction, 4f, true))
+            {
                 _successfulRays--;
+                yield return new WaitForSeconds(0.005f);
+            }
         }
-
 
         for (int a = 0; a < _successfulRays; a++)
         {
@@ -75,7 +80,10 @@ public class BloodSpawner : MonoBehaviour
             Vector3 _direction = damageDirection + _offset;
 
             int i = Random.Range(0, bloodDecalPrefabs.Length);
-            SpawnDecal(bloodDecalPrefabs[i], _origin, _direction, 4f, true);
+            if (SpawnDecal(bloodDecalPrefabs[i], _origin, _direction, 4f, true))
+            {
+                yield return new WaitForSeconds(0.005f);
+            }
         }
 
     }
@@ -91,7 +99,7 @@ public class BloodSpawner : MonoBehaviour
 
             Quaternion _rotation = Quaternion.LookRotation(-_hit.normal);
             Vector3 _scale = new Vector3(Random.Range(minScale.x, maxScale.x), Random.Range(minScale.y, maxScale.y), 0.2f);
-            DecalProjector _decalProjector =  Instantiate(decal, _hit.point, _rotation);
+            DecalProjector _decalProjector =  Instantiate(decal, _hit.point + _hit.normal * 0.1f, _rotation);
             if(setSize) _decalProjector.size = _scale;
             _decalProjector.transform.eulerAngles = new Vector3(_decalProjector.transform.eulerAngles.x, _decalProjector.transform.eulerAngles.y, Random.Range(0, 360));
             return true;

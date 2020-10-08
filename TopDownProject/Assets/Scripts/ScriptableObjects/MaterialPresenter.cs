@@ -9,6 +9,8 @@ public class MaterialPresenter : ScriptableObject
 
     const string SavePath = "Assets/Resources/MaterialPresenters/";
 
+#if UNITY_EDITOR
+
     public static void CreateMaterialPresenter(string displayName, Texture2D previewImage, Material material)
     {
         MaterialPresenter _materialPresenter = (MaterialPresenter)ScriptableObject.CreateInstance(typeof(MaterialPresenter));
@@ -24,6 +26,8 @@ public class MaterialPresenter : ScriptableObject
         string _path = AssetDatabase.GenerateUniqueAssetPath(SavePath + displayName + ".asset");
         AssetDatabase.CreateAsset(_materialPresenter, _path);        
     }
+
+#endif
 
     public static MaterialPresenter[] GetMaterialPresenters() => Resources.LoadAll<MaterialPresenter>("MaterialPresenters");
 

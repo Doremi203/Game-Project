@@ -14,6 +14,8 @@ public class ProjectileBase : MonoBehaviour
     [SerializeField] private float enableVisualsDelayMin = 0.02f;
     [SerializeField] private float enableVisualsDelayMax = 0.02f;
     [SerializeField] private SurfaceType defaultSurfaceType;
+    [SerializeField] private bool spawnParticlesOnHit = true;
+    [SerializeField] private bool spawnDecailsOnHit = true;
 
     private float activationTime;
 
@@ -61,13 +63,13 @@ public class ProjectileBase : MonoBehaviour
         ParticleSystem _effect;
         GameObject _decalProjector;
 
-        if (_surfaceType.HitEffect)
+        if (_surfaceType.HitEffect && spawnParticlesOnHit)
         {
             _effect = Instantiate(_surfaceType.HitEffect, _hitPosition, _effectRotation);
             Destroy(_effect.gameObject, 1f);
         }
 
-        if (_surfaceType.HitDecalProjector)
+        if (_surfaceType.HitDecalProjector && spawnDecailsOnHit)
         {
             _decalProjector = Instantiate(_surfaceType.HitDecalProjector.gameObject, _hitPosition, _decalRotation);
             Destroy(_decalProjector.gameObject, 300f);

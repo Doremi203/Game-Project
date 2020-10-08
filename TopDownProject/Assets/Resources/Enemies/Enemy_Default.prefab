@@ -229,7 +229,7 @@ MonoBehaviour:
   - {fileID: 7218260354778939665, guid: f390dd80d214fef47af679196fcafca9, type: 3}
   - {fileID: 2191830000356606254, guid: 4d18b62e0f0449e43b1027574bc823c2, type: 3}
   - {fileID: 5490478621177472442, guid: e9c4919ed55163247999a6e78f3565d6, type: 3}
-  bloodEffectPrefab: {fileID: 3284163157165049137, guid: 332dbe3823375234ab7f15edf58ab2a1,
+  bloodEffectPrefab: {fileID: 3839626805270565441, guid: 840f7281a4fc45843a5dbc0e61a2e004,
     type: 3}
   layerMask:
     serializedVersion: 2
@@ -237,8 +237,8 @@ MonoBehaviour:
   range: 3
   minScale: {x: 0.75, y: 0.75, z: 0.75}
   maxScale: {x: 2, y: 2, z: 2}
-  minSplashDelay: 0.1
-  maxSplashDelay: 0.2
+  minSplashDelay: 0.15
+  maxSplashDelay: 0.16
   bloodAmount: 10
 --- !u!114 &1179782429065987534
 MonoBehaviour:
