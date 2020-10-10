@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3aef449059cfff44d91084a7dab1e80b, type: 3}
   m_Name: Debug
   m_EditorClassIdentifier: 
-  displayName: Debug
+  DisplayName: Debug
   parameters:
   - {fileID: 11400000, guid: b8af542f32a757447a96f2c30443875f, type: 2}

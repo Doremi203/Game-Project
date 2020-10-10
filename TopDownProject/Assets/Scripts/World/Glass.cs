@@ -14,16 +14,16 @@ public class Glass : MonoBehaviour, IDamageable
 
     private bool isDead;
 
-    public void ApplyDamage(Actor damageCauser, float damage, DamageType damageType, Vector3 damageDirection)
+    public bool ApplyDamage(DamageInfo info)
     {
-        if (isDead) return;
+        if (isDead) return false;
         isDead = true;
 
         this.GetComponent<MeshRenderer>().sharedMaterial = brokenMaterial;
         this.GetComponent<Collider>().enabled = false;
         this.GetComponent<NavMeshObstacle>().enabled = false;
 
-        Vector3 _playerPosition = new Vector3(damageCauser.transform.position.x, 0, damageCauser.transform.position.z);
+        Vector3 _playerPosition = new Vector3(info.Causer.transform.position.x, 0, info.Causer.transform.position.z);
         Vector3 _thisPosition = new Vector3(this.transform.position.x, 0, this.transform.position.z);
         Vector3 _thisForward = new Vector3(this.transform.forward.x, 0, this.transform.forward.z);
 
@@ -36,6 +36,8 @@ public class Glass : MonoBehaviour, IDamageable
             _rotation = _rotation + new Vector3(0, 180, 0);
 
         Instantiate(particleSystemPrefab, transform.position, Quaternion.Euler(_rotation));
+
+        return true;
     }
 
 #if UNITY_EDITOR

@@ -16,7 +16,7 @@ public class SettingsUI : MonoBehaviour
 
     private void SetupGroups()
     {
-        ParametersGroup[] _groups = ParametersGroup.GetSettingsGroups();
+        ParametersGroup[] _groups = ParametersGroup.GetGroups();
         foreach (var item in _groups)
         {
             SettingsGroupButtonUI _groupButton = Instantiate(groupButtonPrefab, groupButtonsParent);

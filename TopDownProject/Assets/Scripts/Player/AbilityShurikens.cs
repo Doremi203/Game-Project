@@ -10,6 +10,7 @@ public class AbilityShurikens : AbilityBase
     [SerializeField] private int startShurikensAmount;
     [SerializeField] private float throwPower = 700f;
     [SerializeField] private ProjectileBase shurikenPrefab;
+    [SerializeField] private DamageType damageType;
 
     protected override void Awake()
     {
@@ -22,7 +23,7 @@ public class AbilityShurikens : AbilityBase
         CurrentShurikensAmount--;
         Vector3 _force = owner.transform.forward * throwPower;
         ProjectileBase _bullet = Instantiate(shurikenPrefab, owner.eyesPosition, owner.transform.rotation);
-        _bullet.Setup(owner, 10000f, null);
+        _bullet.Setup(owner, 10000f, damageType);
         _bullet.Rigidbody.AddForce(_force);
     }
 

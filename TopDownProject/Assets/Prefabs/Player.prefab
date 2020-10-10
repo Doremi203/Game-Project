@@ -356,6 +356,7 @@ MonoBehaviour:
   pickupWeapon: {fileID: 11400000, guid: 7210a069296381c418e5b212884c0f45, type: 2}
   lookAround: {fileID: 11400000, guid: 7a7051e5c48b93a43a62f9713edc140b, type: 2}
   cameraOffset: {fileID: 8814509870835152358}
+  baseCameraAimDistance: 5
 --- !u!114 &8814509870093988596
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -375,6 +376,7 @@ MonoBehaviour:
   armBone: {fileID: 8814509871852890794}
   weaponPrefab: {fileID: 5522486085103851796, guid: ac6652c404eb06245b52da11ec5cdcac,
     type: 3}
+  dropOnDeath: 1
 --- !u!114 &8814509870093988556
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -403,6 +405,17 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 8814509870093988595}
+        m_MethodName: set_enabled
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &8814509870093988594
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -416,45 +429,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   desiredRotation: {x: 0, y: 0, z: 0, w: 0}
-  OnDeath:
+  DeathEvent:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 8814509870093988595}
-        m_MethodName: set_enabled
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
       - m_Target: {fileID: 8814509870093988593}
         m_MethodName: set_enabled
         m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 8814509870093988596}
-        m_MethodName: Drop
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 8814509870093988559}
-        m_MethodName: SpawnBloodPuddle
-        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -493,6 +473,7 @@ MonoBehaviour:
   throwPower: 800
   shurikenPrefab: {fileID: 6444695937657245857, guid: 5c4c717e0086d134da71a07877d53749,
     type: 3}
+  damageType: {fileID: 11400000, guid: 0d0217b002e494c4889362d1fcc92a32, type: 2}
 --- !u!114 &8814509870093988558
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -523,22 +504,16 @@ MonoBehaviour:
   - {fileID: 7218260354778939665, guid: f390dd80d214fef47af679196fcafca9, type: 3}
   - {fileID: 2191830000356606254, guid: 4d18b62e0f0449e43b1027574bc823c2, type: 3}
   - {fileID: 5490478621177472442, guid: e9c4919ed55163247999a6e78f3565d6, type: 3}
-  bloodPuddlePrefabs:
-  - {fileID: 7265504507480374327, guid: a19e46e2434e3c64199cb8e9cd8a83db, type: 3}
-  - {fileID: 4719954118144010236, guid: 39785e63fc6e1ce4ca94354a1ba57d7e, type: 3}
-  - {fileID: 6730211169123264455, guid: 041c88d2e8c09d444bcd21cb96d865da, type: 3}
-  - {fileID: 627200202554468492, guid: 07b7d813205eff1428151b5c6ebb62b1, type: 3}
+  bloodEffectPrefab: {fileID: 3284163157165049137, guid: 332dbe3823375234ab7f15edf58ab2a1,
+    type: 3}
   layerMask:
     serializedVersion: 2
-    m_Bits: 1
-  range: 3
+    m_Bits: 0
+  range: 0
   minScale: {x: 0.75, y: 0.75, z: 0.75}
   maxScale: {x: 2, y: 2, z: 2}
   minSplashDelay: 0.075
   maxSplashDelay: 0.1
-  puddleParent: {fileID: 8814509870570515354}
-  minPuddleDelay: 1.5
-  maxPpuddleDelay: 3
 --- !u!114 &8814509870093988592
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5093,7 +5068,7 @@ Camera:
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 32567
+    m_Bits: 4294967295
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0

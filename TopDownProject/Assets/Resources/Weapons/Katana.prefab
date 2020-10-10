@@ -178,6 +178,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   displayName: Katana
+  bonusAimDistance: 0
   weaponType: 0
   animationType: 2
   npcSettings:
@@ -222,7 +223,8 @@ MonoBehaviour:
   attackRadius: 1.3
   absoluteRadius: 0.5
   damage: 1000
-  damageType: {fileID: 11400000, guid: c5ca7e9201afad441b8efca35b93cc1a, type: 2}
+  damageType: {fileID: 11400000, guid: b03c7514a66ff5446ad7aed0f06a5cb1, type: 2}
+  rigidbodyPushForse: 100
   attackDelay: 0.06
   layerMask:
     serializedVersion: 2

@@ -105,45 +105,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   desiredRotation: {x: 0, y: 0, z: 0, w: 0}
-  OnDeath:
+  DeathEvent:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 7750810099474233590}
         m_MethodName: set_enabled
         m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 7750810099474233597}
-        m_MethodName: set_enabled
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 7750810099474233593}
-        m_MethodName: set_enabled
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 7750810099474233594}
-        m_MethodName: Drop
-        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -177,6 +144,7 @@ MonoBehaviour:
   armBone: {fileID: 2026815956877220564}
   weaponPrefab: {fileID: 5522486085103851796, guid: ac6652c404eb06245b52da11ec5cdcac,
     type: 3}
+  dropOnDeath: 1
 --- !u!114 &7750810099474233597
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -239,7 +207,6 @@ MonoBehaviour:
   maxScale: {x: 2, y: 2, z: 2}
   minSplashDelay: 0.15
   maxSplashDelay: 0.16
-  bloodAmount: 10
 --- !u!114 &1179782429065987534
 MonoBehaviour:
   m_ObjectHideFlags: 0

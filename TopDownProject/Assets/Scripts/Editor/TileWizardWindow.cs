@@ -131,12 +131,24 @@ public class TileWizardWindow : EditorWindow
 
     private void ReinstantiateTiles()
     {
-        if (EditorUtility.DisplayDialog("Reinstantiate Tiles", "Are you sure? Materials will be lost!", "Yes", "No"))
+        if (EditorUtility.DisplayDialog("Reinstantiate Tiles", "Are you sure?", "Yes", "No"))
         {
             foreach (var item in FindObjectsOfType<TilePresenter>())
             {
-                if (item.TargetTile == selectedTile)
-                    item.ResetTile();
+                // if (item.TargetTile != selectedTile) continue;
+
+                MeshRenderer[] meshRenderers = item.GetComponentsInChildren<MeshRenderer>(true);
+                Material[] materials = new Material[meshRenderers.Length];
+
+                for (int i = 0; i < meshRenderers.Length; i++)
+                    materials[i] = meshRenderers[i].sharedMaterial;
+
+                item.ResetTile();
+
+                MeshRenderer[] newMeshRenderers = item.GetComponentsInChildren<MeshRenderer>(true);
+
+                for (int i = 0; i < newMeshRenderers.Length; i++)
+                    newMeshRenderers[i].sharedMaterial = materials[i];
             }
         }
     }

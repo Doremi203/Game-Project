@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3aef449059cfff44d91084a7dab1e80b, type: 3}
   m_Name: Graphics
   m_EditorClassIdentifier: 
-  displayName: Graphics
+  DisplayName: Graphics
   parameters:
   - {fileID: 11400000, guid: a9574a1e9c6b71443840bc9cab7ffc4f, type: 2}
   - {fileID: 11400000, guid: d7db9b0f2f156db4580e6d3df961e90b, type: 2}

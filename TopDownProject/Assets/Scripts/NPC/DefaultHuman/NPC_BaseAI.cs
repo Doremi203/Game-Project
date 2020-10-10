@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
@@ -35,9 +36,15 @@ public abstract class NPC_BaseAI : MonoBehaviour, ISoundsListener
         LastSoundEventExpireTime = Time.time + 2f;
     }
 
-    protected virtual void Awake() => npc = this.GetComponent<Actor>();
+    protected virtual void Awake()
+    {
+        npc = this.GetComponent<Actor>();
+        npc.DeathEvent.AddListener(NpcDeath);
+    }
 
     protected virtual void Update() => stateMachine.Tick();
+
+    private void NpcDeath() => this.enabled = false;
 
     public float DistanceToPlayer()
     {

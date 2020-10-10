@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
@@ -7,7 +8,6 @@ using UnityEngine.Events;
 public class WeaponHolder : MonoBehaviour
 {
 
-    // Название скрипта не окончательное. Я не могу придумать ничего лучше. 
     // Этот скрипт отвечает за управление оружием, какие-нибудь условные турели могут его использовать,
     // игрок может, нпс могут.
 
@@ -19,6 +19,7 @@ public class WeaponHolder : MonoBehaviour
     [SerializeField] private bool infinityAmmo;
     [SerializeField] private Transform armBone;
     [SerializeField] private Weapon weaponPrefab;
+    [SerializeField] private bool dropOnDeath = true;
 
     // Взять оружие в руки.
     public void EquipWeapon(Weapon weapon)
@@ -44,6 +45,12 @@ public class WeaponHolder : MonoBehaviour
     private void Awake()
     {
         Owner = this.GetComponent<Actor>();
+        Owner.DeathEvent.AddListener(OwnerDeath);
+    }
+
+    private void OwnerDeath()
+    {
+        if (dropOnDeath) Drop();
     }
 
     private void Start()

@@ -9,12 +9,13 @@ public class DestructionTest : MonoBehaviour, IDamageable
     [SerializeField] private GameObject goodModel;
     [SerializeField] private GameObject badModel;
 
-    public void ApplyDamage(Actor damageCauser, float damage, DamageType damageType, Vector3 damageDirection)
+    public bool ApplyDamage(DamageInfo info)
     {
         goodModel.SetActive(false);
         badModel.SetActive(true);
         this.GetComponent<Collider>().enabled = false;
         this.GetComponent<NavMeshObstacle>().enabled = false;
+        return true;
     }
 
     private void Awake()

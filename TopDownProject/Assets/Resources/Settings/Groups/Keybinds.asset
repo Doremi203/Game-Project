@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3aef449059cfff44d91084a7dab1e80b, type: 3}
   m_Name: Keybinds
   m_EditorClassIdentifier: 
-  displayName: Keybinds
+  DisplayName: Input
   parameters:
   - {fileID: 11400000, guid: 5902d8b25356386429dadff8afbbc912, type: 2}
   - {fileID: 11400000, guid: f662ba75da86eea42b835599de440277, type: 2}

@@ -1166,6 +1166,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   displayName: Shotgun
+  bonusAimDistance: 0
   weaponType: 0
   animationType: 0
   npcSettings:
@@ -1237,7 +1238,7 @@ MonoBehaviour:
   bulletPrefab: {fileID: 6444695937657245857, guid: a46be6a792e635446b920a87e1c6faec,
     type: 3}
   damage: 1000
-  damageType: {fileID: 11400000, guid: c5ca7e9201afad441b8efca35b93cc1a, type: 2}
+  damageType: {fileID: 11400000, guid: ad74705171f10a74aa20b60c97a36bf4, type: 2}
 --- !u!114 &1356035330278172205
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -15,7 +15,7 @@ public class BloodSpawner : MonoBehaviour
     [SerializeField] private Vector3 maxScale;
     [SerializeField] private float minSplashDelay;
     [SerializeField] private float maxSplashDelay;
-    [SerializeField] private int bloodAmount = 10;
+    //[SerializeField] private int bloodAmount = 10;
 
     private Actor owner;
 
@@ -27,20 +27,22 @@ public class BloodSpawner : MonoBehaviour
 
     private void OnDestroy() => owner.OnDamageTaken -= OwnerDamageTaken;
 
-    private void OwnerDamageTaken(Actor damageCauser, float damage, DamageType damageType, Vector3 damageDirection)
+    private void OwnerDamageTaken(DamageInfo info)
     {
+        if (!info.DamageType.SpawnBlood) return;
+
         // Particles
-        Vector3 _relativePos = this.transform.position + damageDirection - transform.position;
+        Vector3 _relativePos = this.transform.position + info.Direction - transform.position;
         _relativePos.y = 0;
         Quaternion _rotation = Quaternion.LookRotation(_relativePos, Vector3.up);
 
         Destroy(Instantiate(bloodEffectPrefab, this.transform.position, _rotation), 2f);
 
         // Decals 
-        StartCoroutine(SpawnBloodWithDelay(damageDirection));
+        StartCoroutine(SpawnBloodWithDelay(info.Direction, info.DamageType.BloodAmount));
     }
 
-    private IEnumerator SpawnBloodWithDelay(Vector3 damageDirection)
+    private IEnumerator SpawnBloodWithDelay(Vector3 damageDirection, int bloodAmount)
     {
         yield return new WaitForSeconds(Random.Range(minSplashDelay, maxSplashDelay));
 

@@ -21,7 +21,9 @@ public class WeaponMeleeAttack : WeaponComponent
     private IEnumerator Attack()
     {
         Actor _owner = weapon.Owner;
+
         yield return new WaitForSeconds(attackDelay);
+
         Collider[] hits = Physics.OverlapSphere(_owner.transform.position, attackRadius);
         foreach (var item in hits)
         {
@@ -55,7 +57,8 @@ public class WeaponMeleeAttack : WeaponComponent
                 if (angle > attackAngle) continue;
             }
 
-            _targetActor.ApplyDamage(_owner, damage, damageType, _owner.transform.forward);
+            DamageInfo info = new DamageInfo(_owner, weapon.gameObject, _owner.transform.forward, damage, damageType);
+            _targetActor.ApplyDamage(info);
         }
     }
 

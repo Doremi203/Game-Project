@@ -16,7 +16,7 @@ public class BloodPuddleSpawner : MonoBehaviour
     private bool isDead;
     private float timeWithoutMoving;
 
-    private void Awake() => actor.OnDeath.AddListener(OnDeath);
+    private void Awake() => actor.DeathEvent.AddListener(OnDeath);
 
     private void OnDeath() => isDead = true;
 

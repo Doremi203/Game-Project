@@ -8,12 +8,13 @@ public class ParametersGroup : ScriptableObject
 
     private const string Path = "Settings/Groups";
 
-    public static ParametersGroup[] GetSettingsGroups() => Resources.LoadAll<ParametersGroup>(Path);
+    public static ParametersGroup[] GetGroups() => Resources.LoadAll<ParametersGroup>(Path);
 
-    public string DisplayName => displayName;
+    public string DisplayName;
     public List<BaseParameter> Parameters => parameters;
 
-    [SerializeField] private string displayName;
     [SerializeField] public List<BaseParameter> parameters;
+
+
 
 }

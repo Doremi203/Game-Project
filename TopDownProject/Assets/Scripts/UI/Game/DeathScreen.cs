@@ -11,11 +11,11 @@ public class DeathScreen : MonoBehaviour
 
     private bool playerDied;
 
-    private void OnDisable() => Player.Instance.OnDeath.RemoveListener(PlayerDied);
+    private void OnDisable() => Player.Instance.DeathEvent.RemoveListener(PlayerDied);
 
     private void Start()
     {
-        Player.Instance.OnDeath.AddListener(PlayerDied);
+        Player.Instance.DeathEvent.AddListener(PlayerDied);
         go.SetActive(false);
     }
 

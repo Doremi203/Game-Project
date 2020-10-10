@@ -15,7 +15,7 @@ public class ActorDeathAnimator : MonoBehaviour
     private void Awake()
     {
         ragdollController = GetComponent<RagdollController>();
-        actor.OnDeath.AddListener(OnDeath);
+        actor.DeathEvent.AddListener(OnDeath);
     }
 
 

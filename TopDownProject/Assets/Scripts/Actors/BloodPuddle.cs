@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.Rendering.HighDefinition;
 
 [RequireComponent(typeof(SphereCollider))]
-public class Ki4ki : MonoBehaviour
+public class BloodPuddle : MonoBehaviour
 {
 
     [SerializeField] private float minSpeed;

@@ -21,6 +21,12 @@ public class Player : Actor
 
     private Weapon closestWeapon;
 
+    public override bool ApplyDamage(DamageInfo info)
+    {
+        if (invincibility.GetValue()) return false;
+        return base.ApplyDamage(info);
+    }
+
     public void TakeWeapon()
     {
         Weapon closestWeapon = FindWeaponAround();
@@ -69,12 +75,6 @@ public class Player : Actor
             closestWeapon = _weapon;
             OnClosestWeaponUpdated?.Invoke(closestWeapon);
         }
-    }
-
-    protected override void HealthChanged(float health)
-    {
-        if (invincibility.GetValue()) return;
-        base.HealthChanged(health);
     }
 
 }

@@ -40,6 +40,7 @@ public class MaterialPainterWindow : EditorWindow
         {
             Ray _ray = SceneView.lastActiveSceneView.camera.ScreenPointToRay(new Vector3(e.mousePosition.x, Screen.height - e.mousePosition.y - 36, 0));
             RaycastHit _hit = new RaycastHit();
+
             if (Physics.Raycast(_ray, out _hit, 1000.0f))
             {
                 if (_hit.distance > 20f) return;
@@ -62,6 +63,15 @@ public class MaterialPainterWindow : EditorWindow
 
     private void OnGUI()
     {
+        if (Selection.activeTransform && selectedMaterial)
+        {
+            if (GUILayout.Button("Paint all selected objects"))
+            {
+                if (EditorUtility.DisplayDialog("Paint objects", "Paint all selected objects including children", "Yes", "No"))
+                    PaintSelectedObjects();
+            }
+        }
+
         if (GUILayout.Button("Stop Painting", GUILayout.Height(50))) selectedMaterial = null;
 
         GUILayout.Space(5f);
@@ -91,6 +101,18 @@ public class MaterialPainterWindow : EditorWindow
         }
 
         GUILayout.EndScrollView();
+    }
+
+    private void PaintSelectedObjects()
+    {
+        foreach (var item in Selection.transforms)
+        {
+            foreach (var meshRenderer in item.GetComponentsInChildren<MeshRenderer>(true))
+            {
+                Undo.RecordObject(meshRenderer, meshRenderer.transform.name);
+                meshRenderer.sharedMaterial = selectedMaterial.Material;
+            }
+        }
     }
 
 }

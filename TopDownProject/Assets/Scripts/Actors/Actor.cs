@@ -12,14 +12,16 @@ public class Actor : MonoBehaviour, IDamageable
 
     [HideInInspector] public Quaternion desiredRotation;
 
-    public Action<Actor, float, DamageType, Vector3> OnDamageTaken;
-    public UnityEvent OnDeath;
+    public Action<DamageInfo> OnDamageTaken;
+    public Action<DamageInfo> OnDeath;
+    public UnityEvent DeathEvent;
 
     public Vector3 eyesPosition => transform.position + eyesOffset;
     public Team Team => team;
     public float RotationSpeed => rotationSpeed;
     public bool IsDead { get; private set; }
     public Collider Hitbox { get; private set; }
+    public DamageInfo LastDamageInfo { get; private set; }
 
     [Header("Actor Settings")]
     [SerializeField] private bool noDelayRotation;
@@ -31,16 +33,19 @@ public class Actor : MonoBehaviour, IDamageable
 
     private HealthComponent healthComponent;
 
-    public virtual void ApplyDamage(Actor damageCauser, float damage, DamageType damageType, Vector3 damageDirection)
+    public virtual bool ApplyDamage(DamageInfo info)
     {
-        healthComponent.ApplyDamage(damage);
-        OnDamageTaken?.Invoke(damageCauser, damage, damageType, damageDirection);
+        if (IsDead) return false;
+        healthComponent.ApplyDamage(info.DamageAmount);
+        OnDamageTaken?.Invoke(info);
+        LastDamageInfo = info;
+        if (healthComponent.Health <= 0) Death();
+        return true;
     }
 
     protected virtual void Awake()
     {
         healthComponent = GetComponent<HealthComponent>();
-        healthComponent.OnHealthChanged.AddListener(HealthChanged);
         Hitbox = GetComponent<Collider>();
     }
 
@@ -57,14 +62,10 @@ public class Actor : MonoBehaviour, IDamageable
     protected virtual void Death()
     {
         IsDead = true;
-        OnDeath.Invoke();
+        Hitbox.enabled = false;
+        OnDeath?.Invoke(LastDamageInfo);
+        DeathEvent.Invoke();
         if(shouldDestroy) Destroy(this.gameObject, destroyDelay);
-    }
-
-    protected virtual void HealthChanged(float health)
-    {
-        if (IsDead) return;
-        if (health <= 0) Death();
     }
 
     protected void OnDrawGizmos()

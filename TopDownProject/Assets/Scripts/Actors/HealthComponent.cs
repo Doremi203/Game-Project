@@ -9,25 +9,25 @@ public class IntEvent : UnityEvent<float> { }
 public class HealthComponent : MonoBehaviour
 {
 
+    public float Health { get; private set; }
+
     [SerializeField] private int startHealth = 1;
     [SerializeField] private bool debugInvicibility;
-
-    private float health;
 
     public IntEvent OnHealthChanged;
 
     public void ApplyDamage(float damage)
     {
-        if(debugInvicibility == false) health -= damage;
-        OnHealthChanged.Invoke(health);
+        if(debugInvicibility == false) Health -= damage;
+        OnHealthChanged.Invoke(Health);
     }
 
     public void Heal(float heal)
     {
-        health += heal;
-        OnHealthChanged.Invoke(health);
+        Health += heal;
+        OnHealthChanged.Invoke(Health);
     }
 
-    private void Awake() => health = startHealth;
+    private void Awake() => Health = startHealth;
 
 }

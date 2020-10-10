@@ -11,12 +11,14 @@ public class Weapon : MonoBehaviour
     public Actor Owner => owner;
     public WeaponHolder WeaponHolder => weaponHolder;
     public string DisplayName => displayName;
+    public float BonusAimDistance => bonusAimDistance;
     public WeaponAnimationType AnimationType => animationType;
     public WeaponNPCSettings NPCSettings => npcSettings;
 
     public WeaponState State { get; private set; }
 
     [SerializeField] private string displayName;
+    [SerializeField] private float bonusAimDistance;
     [SerializeField] private WeaponType weaponType;
     [SerializeField] private WeaponAnimationType animationType;
     [SerializeField] private WeaponNPCSettings npcSettings;

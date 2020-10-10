@@ -435,7 +435,7 @@ PrefabInstance:
     - target: {fileID: 2741657235248208771, guid: edafc0f68bf91ac40ba8b140b0f36224,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.003777948
+      value: -0.002424
       objectReference: {fileID: 0}
     - target: {fileID: 2741657235248208771, guid: edafc0f68bf91ac40ba8b140b0f36224,
         type: 3}
@@ -445,7 +445,7 @@ PrefabInstance:
     - target: {fileID: 2741657235248208771, guid: edafc0f68bf91ac40ba8b140b0f36224,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.0019421425
+      value: 0.001942
       objectReference: {fileID: 0}
     - target: {fileID: 2741657235248208771, guid: edafc0f68bf91ac40ba8b140b0f36224,
         type: 3}
@@ -828,7 +828,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: Cupboard_0 Variant
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 5496530413047896437, guid: ba3c0ee082521214599979bb01d6ebd4, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: ba3c0ee082521214599979bb01d6ebd4, type: 3}
 --- !u!4 &4057280907309172730 stripped
 Transform:

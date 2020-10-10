@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 2432887655795071019}
   - component: {fileID: 1073198094232562070}
   - component: {fileID: 6284254165725167023}
+  - component: {fileID: 6496810139859946256}
   m_Layer: 0
   m_Name: LeftDoor_low
   m_TagString: Untagged
@@ -79,6 +80,19 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!65 &6496810139859946256
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3341471480772824760}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.0049630194, y: 0.010442627, z: 0.0007473595}
+  m_Center: {x: 0.0024815074, y: -0.0000000013969839, z: 0.0003736823}
 --- !u!1 &4944300014802007047
 GameObject:
   m_ObjectHideFlags: 0
@@ -90,6 +104,7 @@ GameObject:
   - component: {fileID: 1594851656283086806}
   - component: {fileID: 7010714836562490455}
   - component: {fileID: 3838483914168184268}
+  - component: {fileID: 4641200434492175222}
   m_Layer: 0
   m_Name: 'RightDoor_low '
   m_TagString: Untagged
@@ -158,6 +173,19 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!65 &4641200434492175222
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4944300014802007047}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.0049630133, y: 0.010442628, z: 0.0007473595}
+  m_Center: {x: -0.0024815071, y: 0.0000000011641532, z: 0.0003736823}
 --- !u!1 &9179697972011229789
 GameObject:
   m_ObjectHideFlags: 0
@@ -169,7 +197,7 @@ GameObject:
   - component: {fileID: 8371916862755846375}
   - component: {fileID: 2676063918793689190}
   - component: {fileID: 1156297557005861337}
-  - component: {fileID: 5496530413047896437}
+  - component: {fileID: 2057342499435251529}
   m_Layer: 0
   m_Name: Cupboard_0
   m_TagString: Untagged
@@ -240,8 +268,8 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!65 &5496530413047896437
-BoxCollider:
+--- !u!64 &2057342499435251529
+MeshCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -249,7 +277,8 @@ BoxCollider:
   m_GameObject: {fileID: 9179697972011229789}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 0
-  serializedVersion: 2
-  m_Size: {x: 0.010010002, y: 0.025999974, z: 0.0048100026}
-  m_Center: {x: -0.0000000030267984, y: 0.012999987, z: -0.00021319347}
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -4742491816739545944, guid: 2042583751f73604ba38bf01fae7e12c, type: 3}

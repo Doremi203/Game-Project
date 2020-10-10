@@ -23,6 +23,9 @@ public class PlayerInput : MonoBehaviour
 	[SerializeField] private KeyCodeParameter lookAround;
 	[SerializeField] private CinemachineCameraOffset cameraOffset;
 
+	[Header("Should be reworked")]
+	[SerializeField] private float baseCameraAimDistance = 5f;
+
 	private PlayerController playerController;
 	private WeaponHolder weaponHolder;
 	private Player player;
@@ -45,10 +48,15 @@ public class PlayerInput : MonoBehaviour
 
 		if (Input.GetKey(lookAround.GetValue()))
         {
-			_targetOffsetX = (Input.mousePosition.x / Screen.width - 0.5f) * 2 * 5;
-			_targetOffsetY = (Input.mousePosition.y / Screen.height - 0.5f) * 2 * 5;
-			//_targetOffsetX = Mathf.Clamp(((Input.mousePosition.x / Screen.width - 0.5f) * 4f), -1, 1) * 5f;
-			//_targetOffsetY = Mathf.Clamp(((Input.mousePosition.y / Screen.height - 0.5f) * 4f), -1, 1) * 5f;
+			float cameraAimDistance = baseCameraAimDistance;
+
+			if (weaponHolder.CurrentWeapon)
+				cameraAimDistance += weaponHolder.CurrentWeapon.BonusAimDistance;
+
+			_targetOffsetX = (Input.mousePosition.x / Screen.width - 0.5f) * 2 * cameraAimDistance;
+			_targetOffsetY = (Input.mousePosition.y / Screen.height - 0.5f) * 2 * cameraAimDistance;
+			//_targetOffsetX = Mathf.Clamp(((Input.mousePosition.x / Screen.width - 0.5f) * 4f), -1, 1) * baseCameraAimDistance;
+			//_targetOffsetY = Mathf.Clamp(((Input.mousePosition.y / Screen.height - 0.5f) * 4f), -1, 1) * baseCameraAimDistance;
 		}
 
 		cameraOffset.m_Offset.x = Mathf.Lerp(cameraOffset.m_Offset.x, _targetOffsetX, 15f * Time.deltaTime);
