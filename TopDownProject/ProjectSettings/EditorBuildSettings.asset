@@ -11,7 +11,4 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/TilesTest/SampleScene.unity
     guid: cbfe36cfddfde964d9dfce63a355d5dd
-  - enabled: 1
-    path: Assets/Scenes/Tests/test.unity
-    guid: 5b705b25fbeef7a4f96ff6ca66835ce3
   m_configObjects: {}

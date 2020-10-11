@@ -12,7 +12,6 @@ public class WeaponProjectilesLauncher : WeaponComponent
     [SerializeField] private float bulletsSpeed = 1000f;
     [SerializeField] private ProjectileBase bulletPrefab;
     [SerializeField] private float damage;
-    [SerializeField] private DamageType damageType;
 
     public override void OnShoot()
     {
@@ -24,7 +23,7 @@ public class WeaponProjectilesLauncher : WeaponComponent
             Vector3 _force = (_owner.transform.forward + _spreadOffset + _verticalOffset) * bulletsSpeed;
 
             ProjectileBase _newBullet = Instantiate(bulletPrefab, _owner.eyesPosition, _owner.transform.rotation);
-            _newBullet.Setup(_owner, damage, damageType);
+            _newBullet.Setup(_owner, damage);
 
             _newBullet.Rigidbody.AddForce(_force, ForceMode.VelocityChange);
         }

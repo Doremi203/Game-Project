@@ -10,6 +10,8 @@ public abstract class ParameterEventBase : MonoBehaviour
 
     private void OnDisable() => BaseParameter.OnSettingsChanged -= SettingsUpdated;
 
+    private void Awake() => SettingsUpdated();
+
     protected abstract void SettingsUpdated();
 
 }

@@ -16,21 +16,20 @@ public class ProjectileBase : MonoBehaviour
     [SerializeField] private SurfaceType defaultSurfaceType;
     [SerializeField] private bool spawnParticlesOnHit = true;
     [SerializeField] private bool spawnDecailsOnHit = true;
+    [SerializeField] private DamageType damageType;
 
     private float activationTime;
 
     protected float damage;
-    protected DamageType damageType;
     protected Team team;
     protected float spawnTime;
     protected Actor owner;
 
-    public void Setup(Actor owner, float damage, DamageType damageType)
+    public void Setup(Actor owner, float damage)
     {
         this.owner = owner;
         this.team = owner.Team;
         this.damage = damage;
-        this.damageType = damageType;
 
         Physics.IgnoreCollision(Hitbox, owner.Hitbox);
 

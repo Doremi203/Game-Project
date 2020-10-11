@@ -43,6 +43,9 @@ public class PlayerInput : MonoBehaviour
 	{
 		if (Input.GetKeyDown(KeyCode.T)) UnityEngine.Application.LoadLevel(0);
 
+		if (Input.GetKeyDown(KeyCode.B)) Time.timeScale = 0.1f;
+		if (Input.GetKeyDown(KeyCode.V)) Time.timeScale = 1f;
+
 		float _targetOffsetX = 0;
 		float _targetOffsetY = 0;
 

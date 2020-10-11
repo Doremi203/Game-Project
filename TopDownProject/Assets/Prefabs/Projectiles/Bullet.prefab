@@ -79,6 +79,9 @@ MonoBehaviour:
   enableVisualsDelayMin: 0.02
   enableVisualsDelayMax: 0.04
   defaultSurfaceType: {fileID: 11400000, guid: 7f6e86797f9a76c49b4a7b8823495f22, type: 2}
+  spawnParticlesOnHit: 1
+  spawnDecailsOnHit: 1
+  damageType: 1
 --- !u!1 &6444695937703864782
 GameObject:
   m_ObjectHideFlags: 0
