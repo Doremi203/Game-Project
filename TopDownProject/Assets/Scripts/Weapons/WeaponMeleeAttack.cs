@@ -14,52 +14,63 @@ public class WeaponMeleeAttack : WeaponComponent
     [SerializeField] private float attackDelay = 0.05f;
     [SerializeField] private LayerMask layerMask;
 
+    private bool rightAttack;
+
     public override void OnShoot() => StartCoroutine(Attack());
 
-    public override void OnDropped() => StopAllCoroutines();
+    public override void OnDropped()
+    {
+        rightAttack = false;
+        StopAllCoroutines();
+    }
 
     private IEnumerator Attack()
     {
-        Actor _owner = weapon.Owner;
+        Actor owner = weapon.Owner;
 
         yield return new WaitForSeconds(attackDelay);
 
-        Collider[] hits = Physics.OverlapSphere(_owner.transform.position, attackRadius);
+        Collider[] hits = Physics.OverlapSphere(owner.transform.position, attackRadius);
         foreach (var item in hits)
         {
             Rigidbody _targetRigidbody = item.GetComponent<Rigidbody>();
             if (_targetRigidbody)
             {
-                Vector3 targetDir = _targetRigidbody.transform.position - _owner.transform.position;
-                float angle = Vector3.Angle(targetDir, _owner.transform.forward);
+                Vector3 targetDir = _targetRigidbody.transform.position - owner.transform.position;
+                float angle = Vector3.Angle(targetDir, owner.transform.forward);
                 if (angle <= attackAngle)
-                    _targetRigidbody.AddForce(_owner.transform.forward * rigidbodyPushForse);
+                    _targetRigidbody.AddForce(owner.transform.forward * rigidbodyPushForse);
             }
 
             Actor _targetActor = item.GetComponent<Actor>();
             if (!_targetActor) continue;
 
-            if (_targetActor == _owner) continue;
-            if (_targetActor.Team == _owner.Team) continue;
+            if (_targetActor == owner) continue;
+            if (_targetActor.Team == owner.Team) continue;
 
             RaycastHit _hit;
-            if (Physics.Linecast(_owner.eyesPosition, _targetActor.eyesPosition, out _hit, layerMask))
+            if (Physics.Linecast(owner.eyesPosition, _targetActor.eyesPosition, out _hit, layerMask))
             {
                 if (_hit.transform != _targetActor.transform) continue;
             }
 
-            float _distance = GameUtilities.GetDistance2D(_owner.transform.position, _targetActor.transform.position);
+            float _distance = GameUtilities.GetDistance2D(owner.transform.position, _targetActor.transform.position);
 
             if (_distance > absoluteRadius)
             {
-                Vector3 targetDir = _targetActor.transform.position - _owner.transform.position;
-                float angle = Vector3.Angle(targetDir, _owner.transform.forward);
+                Vector3 targetDir = _targetActor.transform.position - owner.transform.position;
+                float angle = Vector3.Angle(targetDir, owner.transform.forward);
                 if (angle > attackAngle) continue;
             }
 
-            DamageInfo info = new DamageInfo(_owner, weapon.gameObject, _owner.transform.forward, damage, damageType);
+            Vector3 damageDirection = owner.transform.forward + ((rightAttack ? owner.transform.right : -owner.transform.right) * 0.5f);
+            damageDirection = damageDirection.normalized;
+
+            DamageInfo info = new DamageInfo(owner, weapon.gameObject, damageDirection, damage, damageType);
             _targetActor.ApplyDamage(info);
         }
+
+        rightAttack = !rightAttack;
     }
 
     public void DrawDebug()

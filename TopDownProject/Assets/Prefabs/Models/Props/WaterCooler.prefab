@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 5524610816501246444}
   - component: {fileID: 7732587160725265702}
   - component: {fileID: 8975180017720099260}
+  - component: {fileID: 970128699148938080}
   m_Layer: 0
   m_Name: WaterCooler
   m_TagString: Untagged
@@ -66,7 +67,7 @@ MeshRenderer:
   m_StaticBatchRoot: {fileID: 0}
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
+  m_ScaleInLightmap: 0.2
   m_ReceiveGI: 1
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
@@ -91,5 +92,19 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.32514203, y: 1.3806229, z: 0.30000007}
-  m_Center: {x: 0, y: 0.69031143, z: -0.000000022351742}
+  m_Size: {x: 0.31545517, y: 0.98164093, z: 0.29106227}
+  m_Center: {x: -0.0048433132, y: 0.5055328, z: -0.000000022924866}
+--- !u!136 &970128699148938080
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8092783252129529075}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.12285376
+  m_Height: 0.4044335
+  m_Direction: 1
+  m_Center: {x: 0, y: 1.2018921, z: -0.000000022924867}
