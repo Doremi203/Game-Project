@@ -6,26 +6,35 @@ public class WeaponLazerSight : WeaponComponent
 {
 
     [SerializeField] private LineRenderer linePrefab;
+    [SerializeField] private GameObject lazerDotPrefab;
     [SerializeField] private Vector3 startPointOffset;
     [SerializeField] private float minDistance = 3f;
     [SerializeField] private LayerMask layerMask;
 
     private LineRenderer currentLine;
+    private GameObject currentDot;
 
-    public override void OnPickedUp() => SpawnLine();
-
-    public override void OnDropped() => Destroy(currentLine.gameObject);
-
-    private void Start()
+    public override void OnPickedUp()
     {
-        if (weapon.State == WeaponState.Drop) return;
-        SpawnLine();
+        currentLine = Instantiate(linePrefab, Vector3.zero, Quaternion.identity);
+        currentDot = Instantiate(lazerDotPrefab, Vector3.zero, Quaternion.identity);
+    }
+
+    public override void OnDropped()
+    {
+        Destroy(currentLine.gameObject);
+        Destroy(currentDot.gameObject);
+    }
+
+    private void OnDestroy()
+    {
+        if(currentLine) Destroy(currentLine.gameObject);
+        if (currentDot) Destroy(currentDot.gameObject);
     }
 
     private void Update()
     {
-        if (!currentLine) return;
-        if (!weapon.Owner) return;
+        if (weapon.State == WeaponState.Drop) return;
 
         Ray ray = new Ray(weapon.Owner.eyesPosition, weapon.Owner.transform.forward);
         RaycastHit hit;
@@ -38,15 +47,16 @@ public class WeaponLazerSight : WeaponComponent
             currentLine.gameObject.SetActive(hit.distance >= minDistance);
             currentLine.SetPosition(0, origin);
             currentLine.SetPosition(1, hit.point);
+            currentDot.SetActive(true);
+            currentDot.transform.position = hit.point;
         }
         else
         {
             currentLine.SetPosition(0, origin);
             currentLine.SetPosition(1, targetPoint);
+            currentDot.SetActive(false);
         }
     }
-
-    private void SpawnLine() => currentLine = Instantiate(linePrefab, Vector3.zero, Quaternion.identity);
 
     private void OnDrawGizmosSelected()
     {

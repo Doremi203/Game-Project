@@ -15,19 +15,25 @@ public class RagdollSpawner : MonoBehaviour
 
     private Actor owner;
     private NavMeshAgent agent;
+    private CharacterController characterController;
     private Vector3 lastVelocity;
 
     private void Awake()
     {
         owner = this.GetComponent<Actor>();
-        agent = owner.GetComponent<NavMeshAgent>();
+        agent = this.GetComponent<NavMeshAgent>();
+        if (!agent)
+            characterController = this.GetComponent<CharacterController>();
         owner.DeathEvent.AddListener(ActorDeath);
     }
 
     private void Update()
     {   
         if (owner.IsDead) return;
-        lastVelocity = agent.velocity;
+        if (agent)
+            lastVelocity = agent.velocity;
+        else
+            lastVelocity = characterController.velocity;
     }
 
     private void ActorDeath()
@@ -41,7 +47,7 @@ public class RagdollSpawner : MonoBehaviour
             ragdollModel = Instantiate(headlessRagdollPrefab, actualModel.transform.position, actualModel.transform.rotation);
 
             GameObject head = Instantiate(headPrefab, owner.transform.position + Vector3.down, headBone.transform.rotation);
-            head.GetComponent<Rigidbody>().AddForce(lastVelocity, ForceMode.VelocityChange);
+            head.GetComponent<Rigidbody>().velocity = lastVelocity;
         }
         else
         {
@@ -50,7 +56,7 @@ public class RagdollSpawner : MonoBehaviour
 
         foreach (var item in ragdollModel.GetComponentsInChildren<Rigidbody>())
         {
-            item.AddForce(lastVelocity, ForceMode.VelocityChange);
+            item.velocity = lastVelocity;
         }
 
         Destroy(actualModel);

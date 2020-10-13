@@ -279,7 +279,9 @@ GameObject:
   - component: {fileID: 8814509870093988557}
   - component: {fileID: 8814509870093988558}
   - component: {fileID: 8814509870093988559}
+  - component: {fileID: 3502494756485519381}
   - component: {fileID: 8814509870093988592}
+  - component: {fileID: 679684178995170198}
   m_Layer: 11
   m_Name: PlayerCharacter
   m_TagString: Untagged
@@ -394,17 +396,6 @@ MonoBehaviour:
   OnHealthChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 8814509870079397183}
-        m_MethodName: Spawn
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
       - m_Target: {fileID: 8814509870093988595}
         m_MethodName: set_enabled
         m_Mode: 6
@@ -473,7 +464,6 @@ MonoBehaviour:
   throwPower: 800
   shurikenPrefab: {fileID: 6444695937657245857, guid: 5c4c717e0086d134da71a07877d53749,
     type: 3}
-  damageType: {fileID: 11400000, guid: 0d0217b002e494c4889362d1fcc92a32, type: 2}
 --- !u!114 &8814509870093988558
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -499,21 +489,35 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f9b0f95c2ce22be45bcd29e80b658ab1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bloodDecalPrefabs:
-  - {fileID: 7202852622636977905, guid: bba047e1cb1b44d4689662b91dfe04b9, type: 3}
-  - {fileID: 7218260354778939665, guid: f390dd80d214fef47af679196fcafca9, type: 3}
-  - {fileID: 2191830000356606254, guid: 4d18b62e0f0449e43b1027574bc823c2, type: 3}
-  - {fileID: 5490478621177472442, guid: e9c4919ed55163247999a6e78f3565d6, type: 3}
-  bloodEffectPrefab: {fileID: 3284163157165049137, guid: 332dbe3823375234ab7f15edf58ab2a1,
+  meleeBloodEffectPrefab: {fileID: 3839626805270565441, guid: 840f7281a4fc45843a5dbc0e61a2e004,
     type: 3}
-  layerMask:
-    serializedVersion: 2
-    m_Bits: 0
-  range: 0
-  minScale: {x: 0.75, y: 0.75, z: 0.75}
-  maxScale: {x: 2, y: 2, z: 2}
+  bulletBloodEffectPrefab: {fileID: 5704673992829051401, guid: f5f798653a02e7c42885f330476d9a99,
+    type: 3}
   minSplashDelay: 0.075
   maxSplashDelay: 0.1
+--- !u!114 &3502494756485519381
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8814509870093988597}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eab1dfe6814716c4b84918885ccdbe0d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bloodPrefabs:
+  - {fileID: 7202852622636977905, guid: bba047e1cb1b44d4689662b91dfe04b9, type: 3}
+  - {fileID: 1656996658341146970, guid: f390dd80d214fef47af679196fcafca9, type: 3}
+  - {fileID: 7834097209762148709, guid: 4d18b62e0f0449e43b1027574bc823c2, type: 3}
+  - {fileID: 4530802736335443441, guid: e9c4919ed55163247999a6e78f3565d6, type: 3}
+  minScale: {x: 0.75, y: 0.75}
+  maxScale: {x: 2, y: 2}
+  distance: 4
+  layerMask:
+    serializedVersion: 2
+    m_Bits: 1
 --- !u!114 &8814509870093988592
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -533,6 +537,26 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 1
   bloodyTime: 4
+--- !u!114 &679684178995170198
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8814509870093988597}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c21ffca779147a44d8859d5b2ac7ea1b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  actualModel: {fileID: 8814509871051605900}
+  ragdollPrefab: {fileID: 3519153952845532532, guid: a5e4cd554e4303543af13ad64284dd1a,
+    type: 3}
+  headlessRagdollPrefab: {fileID: 5875591801499291426, guid: 40fa6792fda9e1d44a72d364d202a091,
+    type: 3}
+  headPrefab: {fileID: 5869321520632451850, guid: 9d8761db0295e4f48803d4fa0b6e4cfe,
+    type: 3}
+  headBone: {fileID: 8814509870506613880}
 --- !u!1 &8814509870108020583
 GameObject:
   m_ObjectHideFlags: 0

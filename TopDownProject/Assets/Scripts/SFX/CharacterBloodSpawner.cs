@@ -8,7 +8,8 @@ using UnityEngine.Rendering.HighDefinition;
 public class CharacterBloodSpawner : MonoBehaviour
 {
 
-    [SerializeField] private ParticleSystem bloodEffectPrefab;
+    [SerializeField] private ParticleSystem meleeBloodEffectPrefab;
+    [SerializeField] private ParticleSystem bulletBloodEffectPrefab;
     [SerializeField] private float minSplashDelay;
     [SerializeField] private float maxSplashDelay;
 
@@ -30,11 +31,12 @@ public class CharacterBloodSpawner : MonoBehaviour
         Vector3 _relativePos = this.transform.position + info.Direction - transform.position;
         _relativePos.y = 0;
         Quaternion _rotation = Quaternion.LookRotation(_relativePos, Vector3.up);
-
-        Destroy(Instantiate(bloodEffectPrefab, this.transform.position, _rotation), 2f);
+        ParticleSystem effectToSpawn = info.DamageType == DamageType.Melee ? meleeBloodEffectPrefab : bulletBloodEffectPrefab;
+        Destroy(Instantiate(effectToSpawn, this.transform.position, _rotation), 2f);
 
         // Decals 
-        StartCoroutine(SpawnBloodWithDelay(info.Direction, 10));
+        int bloodAmount = info.DamageType == DamageType.Melee ? 10 : 3;
+        StartCoroutine(SpawnBloodWithDelay(info.Direction, bloodAmount));
     }
 
     private IEnumerator SpawnBloodWithDelay(Vector3 damageDirection, int bloodAmount)

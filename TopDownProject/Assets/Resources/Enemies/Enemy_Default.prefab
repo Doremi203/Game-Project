@@ -4141,7 +4141,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f9b0f95c2ce22be45bcd29e80b658ab1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bloodEffectPrefab: {fileID: 3839626805270565441, guid: 840f7281a4fc45843a5dbc0e61a2e004,
+  meleeBloodEffectPrefab: {fileID: 3839626805270565441, guid: 840f7281a4fc45843a5dbc0e61a2e004,
+    type: 3}
+  bulletBloodEffectPrefab: {fileID: 5704673992829051401, guid: f5f798653a02e7c42885f330476d9a99,
     type: 3}
   minSplashDelay: 0.15
   maxSplashDelay: 0.16
