@@ -25,7 +25,6 @@ public class PatrollingPoint : MonoBehaviour
         }
         return _closestPoint;
     }
-
    
     public List<PatrollingPoint> PatrollingPoints = new List<PatrollingPoint>();
 
@@ -51,6 +50,18 @@ public class PatrollingPoint : MonoBehaviour
         Gizmos.DrawSphere(transform.position, 0.5f);
         Handles.color = Color.yellow;
         Handles.DrawWireDisc(this.transform.position, this.transform.up, detectionDistance);
+    }
+
+    private void OnDrawGizmosSelected()
+    {
+        Gizmos.color = Color.green;
+        foreach (var item in GameObject.FindObjectsOfType<PatrollingPoint>())
+        {
+            if (item.gameObject == this.gameObject) continue;
+            float distance = Vector3.Distance(transform.position, item.transform.position);
+            if (distance > this.detectionDistance + item.detectionDistance) continue;
+            Gizmos.DrawLine(this.transform.position, item.transform.position);
+        }
     }
 
 #endif

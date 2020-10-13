@@ -25,6 +25,7 @@ public class WeaponLazerSight : WeaponComponent
     private void Update()
     {
         if (!currentLine) return;
+        if (!weapon.Owner) return;
 
         Ray ray = new Ray(weapon.Owner.eyesPosition, weapon.Owner.transform.forward);
         RaycastHit hit;

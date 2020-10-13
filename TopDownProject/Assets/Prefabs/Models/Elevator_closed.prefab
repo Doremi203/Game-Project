@@ -122,6 +122,46 @@ PrefabInstance:
       propertyPath: m_Name
       value: Elevator_closed
       objectReference: {fileID: 0}
+    - target: {fileID: 3416557388788220201, guid: f6765916fa322c8499b7cd74da4759d5,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -1.8562932e-13
+      objectReference: {fileID: 0}
+    - target: {fileID: 3416557388788220201, guid: f6765916fa322c8499b7cd74da4759d5,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -2.9842795e-13
+      objectReference: {fileID: 0}
+    - target: {fileID: 3416557388788220201, guid: f6765916fa322c8499b7cd74da4759d5,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3416557388788220201, guid: f6765916fa322c8499b7cd74da4759d5,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: -0.00000070035435
+      objectReference: {fileID: 0}
+    - target: {fileID: 3416557388788220201, guid: f6765916fa322c8499b7cd74da4759d5,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.0000042915317
+      objectReference: {fileID: 0}
+    - target: {fileID: 3416557388788220201, guid: f6765916fa322c8499b7cd74da4759d5,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 5.630192
+      objectReference: {fileID: 0}
+    - target: {fileID: 3416557388788220201, guid: f6765916fa322c8499b7cd74da4759d5,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.00000044043753
+      objectReference: {fileID: 0}
+    - target: {fileID: 3416557388788220201, guid: f6765916fa322c8499b7cd74da4759d5,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 179.99998
+      objectReference: {fileID: 0}
     - target: {fileID: 3928516323823594175, guid: f6765916fa322c8499b7cd74da4759d5,
         type: 3}
       propertyPath: m_IsActive
@@ -131,6 +171,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4993205736562551552, guid: f6765916fa322c8499b7cd74da4759d5,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5758339467419455400, guid: f6765916fa322c8499b7cd74da4759d5,
         type: 3}

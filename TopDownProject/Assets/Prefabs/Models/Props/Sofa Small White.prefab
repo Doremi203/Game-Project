@@ -12,6 +12,9 @@ GameObject:
   - component: {fileID: 8410869424355643920}
   - component: {fileID: 6693309035516681007}
   - component: {fileID: 1053287356483745074}
+  - component: {fileID: 6424387794295427318}
+  - component: {fileID: 2941025358251482276}
+  - component: {fileID: 35223785045611456}
   m_Layer: 0
   m_Name: Sofa Small White
   m_TagString: Untagged
@@ -91,5 +94,44 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1.2674999, y: 0.975, z: 0.963812}
-  m_Center: {x: 0.000000029802322, y: 0.4875, z: -0.09009427}
+  m_Size: {x: 1.2674999, y: 0.975, z: 0.18479341}
+  m_Center: {x: 0, y: 0.4875, z: -0.47960356}
+--- !u!65 &6424387794295427318
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7160194313915608517}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.1776185, y: 0.975, z: 0.9482834}
+  m_Center: {x: 0.5449407, y: 0.4875, z: -0.09785858}
+--- !u!65 &2941025358251482276
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7160194313915608517}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.18958092, y: 0.975, z: 0.9265699}
+  m_Center: {x: -0.5389595, y: 0.4875, z: -0.108715326}
+--- !u!65 &35223785045611456
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7160194313915608517}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.2674999, y: 0.6242479, z: 0.9219118}
+  m_Center: {x: 0, y: 0.31212395, z: -0.11104438}

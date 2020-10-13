@@ -3088,7 +3088,7 @@ GameObject:
   - component: {fileID: 4595377266942597592}
   - component: {fileID: 7668929593718245976}
   m_Layer: 14
-  m_Name: RagdollModel
+  m_Name: HeadlessRagdollModel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4722,6 +4722,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Blood Head Cutted Off Effect
+      objectReference: {fileID: 0}
+    - target: {fileID: 1693887440885382522, guid: a067e592ec1d8d5438998ad8fc381e10,
+        type: 3}
+      propertyPath: m_Layer
+      value: 14
+      objectReference: {fileID: 0}
+    - target: {fileID: 1745695125426586423, guid: a067e592ec1d8d5438998ad8fc381e10,
+        type: 3}
+      propertyPath: m_Layer
+      value: 14
       objectReference: {fileID: 0}
     - target: {fileID: 5664599013947385877, guid: a067e592ec1d8d5438998ad8fc381e10,
         type: 3}

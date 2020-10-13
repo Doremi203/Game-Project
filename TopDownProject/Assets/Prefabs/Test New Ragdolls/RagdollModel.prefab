@@ -2247,7 +2247,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4027267451405951473}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: WeaponHolder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
