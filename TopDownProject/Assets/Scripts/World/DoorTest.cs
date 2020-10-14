@@ -47,6 +47,7 @@ public class DoorTest : MonoBehaviour, IDamageable
         else
             targetRotation = 100f;
 
+        doorObstacle.enabled = true;
         doorObstacle.carving = true;
         isOpened = true;
     }
@@ -57,6 +58,7 @@ public class DoorTest : MonoBehaviour, IDamageable
     {
         doorGameObject.SetActive(true);
         doorBroken.SetActive(false);
+        doorObstacle.enabled = false;
     }
 
     private void Update()
@@ -69,8 +71,9 @@ public class DoorTest : MonoBehaviour, IDamageable
     private void Death()
     {
         isDead = true;
-        doorGameObject.SetActive(false);
+        Destroy(doorGameObject);
         doorBroken.SetActive(true);
+        Destroy(this);
     }
 
 }

@@ -12,6 +12,9 @@ public class WeaponProjectilesLauncher : WeaponComponent
     [SerializeField] private float bulletsSpeed = 1000f;
     [SerializeField] private ProjectileBase bulletPrefab;
     [SerializeField] private float damage;
+    [SerializeField] private AnimationCurve bulletSpreadingPattern;
+
+    private float timesShooted;
 
     public override void OnShoot()
     {
@@ -26,6 +29,19 @@ public class WeaponProjectilesLauncher : WeaponComponent
             _newBullet.Setup(_owner, damage);
 
             _newBullet.Rigidbody.AddForce(_force, ForceMode.VelocityChange);
+        }
+        timesShooted += 1f;
+    }
+
+    private void Update()
+    {
+        if (timesShooted > 0)
+        {
+            timesShooted -= Time.deltaTime;
+        }
+        else
+        {
+            timesShooted = 0;
         }
     }
 

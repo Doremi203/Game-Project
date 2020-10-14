@@ -14,7 +14,7 @@ public static class LevelManager
         SceneManager.LoadScene(level.Scene);
     }
 
-    public static void RestartLevel() => SceneManager.LoadScene(CurrentLevel.Scene);
+    public static void RestartLevel() => SceneManager.LoadScene(SceneManager.GetActiveScene().name);
 
     public static void FinishScene() => FinishLevel();
 

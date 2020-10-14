@@ -149,7 +149,6 @@ public struct WeaponNPCSettings
 {
 
     public float AttackDistance;
-    public float RecommendedAttackDistance;
     public float AttackAngle;
     public float FirstAttackDelay;
 }

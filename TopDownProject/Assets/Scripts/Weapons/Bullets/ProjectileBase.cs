@@ -76,7 +76,7 @@ public class ProjectileBase : MonoBehaviour
             _decalProjector = Instantiate(_surfaceType.HitDecalProjector.gameObject, _hitPosition, _decalRotation);
         }
 
-        if (isAbleToPenetrate)
+        if (isAbleToPenetrate && false)
         {
             Ray firstRay = new Ray(transform.position + transform.forward * 0.1f, this.transform.forward);
             RaycastHit firstHit;
