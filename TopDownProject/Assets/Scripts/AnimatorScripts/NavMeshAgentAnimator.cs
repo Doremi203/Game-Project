@@ -10,11 +10,13 @@ public class NavMeshAgentAnimator : MonoBehaviour
     [SerializeField] private NavMeshAgent agent;
     [SerializeField] private float animationSpeedMultiplier = 0.5f;
 
+    private Vector3 localMove;
+
     private void Update()
     {
-        Vector3 moveDirection = transform.InverseTransformDirection(agent.velocity);
-        animator.SetFloat("Horizontal", moveDirection.x);
-        animator.SetFloat("Vertical", moveDirection.z);
+        localMove = Vector3.Lerp(localMove, transform.InverseTransformDirection(agent.velocity), 25f * Time.deltaTime);
+        animator.SetFloat("Horizontal", localMove.x);
+        animator.SetFloat("Vertical", localMove.z);
         animator.SetFloat("Speed", agent.velocity.magnitude * animationSpeedMultiplier);
     }
 

@@ -6,7 +6,6 @@ using UnityEngine;
 using UnityEngine.Events;
 
 [RequireComponent(typeof(WeaponHolder))]
-[RequireComponent(typeof(PlayerController))]
 public class Player : Actor
 {
 

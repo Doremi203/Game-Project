@@ -9,9 +9,11 @@ public class CharacterControllerAnimator : MonoBehaviour
     [SerializeField] private CharacterController characterController;
     [SerializeField] private float animationSpeedMultiplier = 0.5f;
 
+    private Vector3 localMove;
+
     private void Update()
     {
-        Vector3 localMove = transform.InverseTransformDirection(characterController.velocity);
+        localMove = Vector3.Lerp(localMove, transform.InverseTransformDirection(characterController.velocity), 25f * Time.deltaTime);
         animator.SetFloat("Horizontal", localMove.x);
         animator.SetFloat("Vertical", localMove.z);
         animator.SetFloat("Speed", characterController.velocity.magnitude * animationSpeedMultiplier);

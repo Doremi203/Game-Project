@@ -63,7 +63,9 @@ public class TilePresenterEditor : Editor
     {
         TilePresenter _target = target as TilePresenter;
 
-        if (Handles.Button(_target.transform.position, Quaternion.identity, 0.5f, 0.5f, Handles.RectangleHandleCap))
+        Handles.matrix = _target.transform.localToWorldMatrix;
+
+        if (Handles.Button(Vector3.up * 1.5f, Quaternion.identity, 0.5f, 0.5f, Handles.RectangleHandleCap))
         {
             int _i = _target.CurrentVariantIndex;
             if (_i + 1 >= _target.TargetTile.Variations.Count)
@@ -72,7 +74,7 @@ public class TilePresenterEditor : Editor
                 _i = _i + 1;
             _target.SelectVariation(_i);
         }
-        if (Handles.Button(_target.transform.position + _target.transform.up * -1f, Quaternion.identity, 0.5f, 0.5f, Handles.RectangleHandleCap))
+        if (Handles.Button(Vector3.up * 0.5f, Quaternion.identity, 0.5f, 0.5f, Handles.RectangleHandleCap))
         {
             int _i = _target.CurrentVariantIndex;
             if (_i - 1 < 0)
@@ -81,6 +83,8 @@ public class TilePresenterEditor : Editor
                 _i = _i - 1;
             _target.SelectVariation(_i);
         }
+        if (Handles.Button(Vector3.up * 3f, Quaternion.identity, 0.5f, 0.5f, Handles.SphereHandleCap))
+            _target.Rotate90();
     }
 
 }

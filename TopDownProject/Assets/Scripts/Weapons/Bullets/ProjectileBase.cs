@@ -17,6 +17,11 @@ public class ProjectileBase : MonoBehaviour
     [SerializeField] private bool spawnParticlesOnHit = true;
     [SerializeField] private bool spawnDecailsOnHit = true;
     [SerializeField] private DamageType damageType;
+    [SerializeField] private bool isAbleToPenetrate;
+    [SerializeField] private float maxPenetrationDistance;
+    [SerializeField] private LayerMask penetrationLayerMask;
+    [SerializeField] private LayerMask penetrationHitLayerMask;
+    [SerializeField] private LineRenderer penetrationEffect;
 
     private float activationTime;
 
@@ -38,9 +43,9 @@ public class ProjectileBase : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        Actor _actor = collision.transform.GetComponent<Actor>();
-
         DamageInfo info = new DamageInfo(owner, this.gameObject, this.transform.forward, damage, damageType);
+
+        Actor _actor = collision.transform.GetComponent<Actor>();
 
         if (_actor)
         {
@@ -64,13 +69,42 @@ public class ProjectileBase : MonoBehaviour
         if (_surfaceType.HitEffect && spawnParticlesOnHit)
         {
             _effect = Instantiate(_surfaceType.HitEffect, _hitPosition, _effectRotation);
-            Destroy(_effect.gameObject, 1f);
         }
 
         if (_surfaceType.HitDecalProjector && spawnDecailsOnHit)
         {
             _decalProjector = Instantiate(_surfaceType.HitDecalProjector.gameObject, _hitPosition, _decalRotation);
-            Destroy(_decalProjector.gameObject, 300f);
+        }
+
+        if (isAbleToPenetrate)
+        {
+            Ray firstRay = new Ray(transform.position + transform.forward * 0.1f, this.transform.forward);
+            RaycastHit firstHit;
+            float distance = maxPenetrationDistance;
+            if (Physics.Raycast(firstRay, out firstHit, maxPenetrationDistance, penetrationLayerMask))
+            {
+                distance = firstHit.distance;
+            }
+
+            Ray ray = new Ray(this.transform.position + transform.forward * distance, -transform.forward);
+            RaycastHit hit;
+
+            if (Physics.Raycast(ray, out hit, maxPenetrationDistance, penetrationLayerMask))
+            {
+                Debug.DrawRay(ray.origin, ray.direction * hit.distance, Color.green, 4f);
+                Ray finalRay = new Ray(hit.point, transform.forward);
+                RaycastHit finalHit;
+                if (Physics.Raycast(finalRay, out finalHit, hit.distance, penetrationHitLayerMask))
+                {
+                    Actor actor = finalHit.transform.GetComponent<Actor>();
+                    if (actor)
+                    {
+                        if (actor.Team != team) actor.ApplyDamage(info);
+                    }
+                    else
+                        finalHit.transform.GetComponent<IDamageable>()?.ApplyDamage(info);
+                }
+            }
         }
 
         Destroy(this.gameObject);

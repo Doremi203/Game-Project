@@ -1647,10 +1647,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   displayName: Uzi
+  bonusAimDistance: 0
   weaponType: 1
   animationType: 0
   npcSettings:
     AttackDistance: 20
+    RecommendedAttackDistance: 10
     AttackAngle: 10
     FirstAttackDelay: 0.2
   OnShootEvent:
@@ -1704,7 +1706,6 @@ MonoBehaviour:
   bulletPrefab: {fileID: 6444695937657245857, guid: a46be6a792e635446b920a87e1c6faec,
     type: 3}
   damage: 1000
-  damageType: {fileID: 11400000, guid: c5ca7e9201afad441b8efca35b93cc1a, type: 2}
 --- !u!114 &8932518890179753463
 MonoBehaviour:
   m_ObjectHideFlags: 0

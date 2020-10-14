@@ -1171,6 +1171,7 @@ MonoBehaviour:
   animationType: 0
   npcSettings:
     AttackDistance: 15
+    RecommendedAttackDistance: 6
     AttackAngle: 5
     FirstAttackDelay: 0.2
   OnShootEvent:
@@ -1238,7 +1239,6 @@ MonoBehaviour:
   bulletPrefab: {fileID: 6444695937657245857, guid: a46be6a792e635446b920a87e1c6faec,
     type: 3}
   damage: 1000
-  damageType: {fileID: 11400000, guid: ad74705171f10a74aa20b60c97a36bf4, type: 2}
 --- !u!114 &1356035330278172205
 MonoBehaviour:
   m_ObjectHideFlags: 0

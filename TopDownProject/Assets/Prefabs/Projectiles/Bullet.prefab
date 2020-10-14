@@ -61,8 +61,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.07, y: 0.07, z: 0.07}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 0.05, y: 0.05, z: 0.05}
+  m_Center: {x: 0, y: 0, z: -0.025}
 --- !u!114 &6444695937657245857
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -82,6 +82,16 @@ MonoBehaviour:
   spawnParticlesOnHit: 1
   spawnDecailsOnHit: 1
   damageType: 1
+  isAbleToPenetrate: 1
+  maxPenetrationDistance: 4
+  penetrationLayerMask:
+    serializedVersion: 2
+    m_Bits: 1
+  penetrationHitLayerMask:
+    serializedVersion: 2
+    m_Bits: 43009
+  penetrationEffect: {fileID: 5057229352171386846, guid: 0f7c2abce4d2c50429f483f7ad77004f,
+    type: 3}
 --- !u!1 &6444695937703864782
 GameObject:
   m_ObjectHideFlags: 0
@@ -205,16 +215,16 @@ TrailRenderer:
   m_Time: 0.025
   m_Parameters:
     serializedVersion: 3
-    widthMultiplier: 0.1
+    widthMultiplier: 0.05
     widthCurve:
       serializedVersion: 2
       m_Curve:
       - serializedVersion: 3
         time: 0
-        value: 0.5
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
+        value: 1
+        inSlope: -0.9531344
+        outSlope: -0.9531344
+        tangentMode: 34
         weightedMode: 0
         inWeight: 0.33333334
         outWeight: 0.33333334

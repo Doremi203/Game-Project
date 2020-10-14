@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 4076384783516031213}
   - component: {fileID: 8797454408400876960}
   - component: {fileID: 5009166803760777798}
+  - component: {fileID: 295375610457506929}
   m_Layer: 0
   m_Name: Default Hit Particles
   m_TagString: Untagged
@@ -115,8 +116,8 @@ ParticleSystem:
     startLifetime:
       serializedVersion: 2
       minMaxState: 3
-      scalar: 5
-      minScalar: 1
+      scalar: 10
+      minScalar: 5
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -3792,7 +3793,7 @@ ParticleSystem:
       serializedVersion: 2
       m_Bits: 1
     maxCollisionShapes: 256
-    quality: 1
+    quality: 0
     voxelSize: 0.5
     collisionMessages: 0
     collidesWithDynamic: 1
@@ -4812,3 +4813,15 @@ ParticleSystemRenderer:
   m_Mesh2: {fileID: 0}
   m_Mesh3: {fileID: 0}
   m_MaskInteraction: 0
+--- !u!114 &295375610457506929
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5650669239265360335}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 30c5b9b24609ad040829170827efec0a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

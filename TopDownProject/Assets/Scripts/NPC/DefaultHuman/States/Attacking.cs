@@ -57,14 +57,14 @@ public class Attacking : IState
         {
 
             Vector3 _playerPosition = _player.transform.position;
-            float _bulletSpeed = _projectilesLauncher.BulletSpeed / 4f;
+            float _bulletSpeed = _projectilesLauncher.BulletSpeed;
 
-            Vector3 IC = CalculateInterceptCourse(_playerPosition, _player.GetComponent<PlayerController>().CurrentVelocity, npc.transform.position, _bulletSpeed);
+            Vector3 IC = CalculateInterceptCourse(_playerPosition, _player.GetComponent<CharacterController>().velocity, npc.transform.position, _bulletSpeed);
             if (IC != Vector3.zero)
             {
                 IC.Normalize();
-                float interceptionTime1 = FindClosestPointOfApproach(_playerPosition, _player.GetComponent<PlayerController>().CurrentVelocity, npc.transform.position, IC * _bulletSpeed);
-                interceptionPoint = _playerPosition + _player.GetComponent<PlayerController>().CurrentVelocity * interceptionTime1;
+                float interceptionTime1 = FindClosestPointOfApproach(_playerPosition, _player.GetComponent<CharacterController>().velocity, npc.transform.position, IC * _bulletSpeed);
+                interceptionPoint = _playerPosition + _player.GetComponent<CharacterController>().velocity * interceptionTime1;
             }
 
             currentPrediction = interceptionPoint;
