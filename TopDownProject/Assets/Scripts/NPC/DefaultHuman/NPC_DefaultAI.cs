@@ -80,6 +80,6 @@ public class NPC_DefaultAI : NPC_BaseAI
 
     private bool ShouldInvistigateSound() => Time.time < LastSoundEventExpireTime;
 
-    private bool IsPlayerDead() => !Player.Instance || Player.Instance.IsDead;
+    private bool IsPlayerDead() => !Player.Instance || Player.Instance.Actor.IsDead;
 
 }

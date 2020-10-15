@@ -65,7 +65,7 @@ public class PlayerInput : MonoBehaviour
 		cameraOffset.m_Offset.x = Mathf.Lerp(cameraOffset.m_Offset.x, _targetOffsetX, 15f * Time.deltaTime);
 		cameraOffset.m_Offset.y = Mathf.Lerp(cameraOffset.m_Offset.y, _targetOffsetY, 15f * Time.deltaTime);
 
-		if (player.IsDead) return;
+		if (player.Actor.IsDead) return;
 
 		Vector3 inputVector = new Vector3();
 
@@ -86,10 +86,10 @@ public class PlayerInput : MonoBehaviour
 			Vector3 pointToLook = cameraRay.GetPoint(rayLenght);
 			Debug.DrawLine(cameraRay.origin, pointToLook, Color.blue);
 			Vector3 direction = pointToLook - player.transform.position;
-			player.desiredRotation = Quaternion.LookRotation(new Vector3(direction.x, 0, direction.z));
+			player.Actor.desiredRotation = Quaternion.LookRotation(new Vector3(direction.x, 0, direction.z));
 		}
 
-		if (player.weaponHolder.CurrentWeapon)
+		if (player.WeaponHolder.CurrentWeapon)
 		{
 			if (Input.GetKeyDown(shoot.GetValue())) weaponHolder.CurrentWeapon.Use(true);
 			if (Input.GetKeyUp(shoot.GetValue())) weaponHolder.CurrentWeapon.Use(false);

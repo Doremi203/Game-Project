@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 5078121450077527352}
   - component: {fileID: 5888607336729134997}
   - component: {fileID: 5888607336729134998}
+  - component: {fileID: 2254162768391173520}
   m_Layer: 10
   m_Name: BlueWater
   m_TagString: Untagged
@@ -111,3 +112,17 @@ CapsuleCollider:
   m_Height: 0.29097784
   m_Direction: 1
   m_Center: {x: 0, y: 0.14548892, z: 0.0000000018626451}
+--- !u!114 &2254162768391173520
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6735662098975964397}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b3ebd62ac54ba7343bd5e4653952731e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  physicalObjectsSetting: {fileID: 11400000, guid: 69f8eb038e45c464193a934048c92b36,
+    type: 2}

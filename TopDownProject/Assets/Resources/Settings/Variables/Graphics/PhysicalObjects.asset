@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8991fdc18760ac048bf52987c344ece2, type: 3}
-  m_Name: ContactShadows
+  m_Name: PhysicalObjects
   m_EditorClassIdentifier: 
-  displayName: Contact Shadows
+  displayName: Physical Objects
   defaultValue: 1

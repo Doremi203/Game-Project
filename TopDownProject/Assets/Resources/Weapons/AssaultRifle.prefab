@@ -1007,30 +1007,6 @@ MonoBehaviour:
   bulletPrefab: {fileID: 6444695937657245857, guid: a46be6a792e635446b920a87e1c6faec,
     type: 3}
   damage: 1000
-  bulletSpreadingPattern:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 2
-      outSlope: 2
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0
-    - serializedVersion: 3
-      time: 1
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
 --- !u!114 &851924516917823905
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1287,7 +1263,7 @@ GameObject:
   - component: {fileID: 3939413149946287774}
   - component: {fileID: 4063481746230435220}
   - component: {fileID: 6809551018641110810}
-  - component: {fileID: 3720475214311385465}
+  - component: {fileID: 4720113138488381058}
   m_Layer: 0
   m_Name: Point Light
   m_TagString: Untagged
@@ -1327,7 +1303,7 @@ Light:
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10
   m_Shadows:
-    m_Type: 0
+    m_Type: 1
     m_Resolution: -1
     m_CustomResolution: -1
     m_Strength: 1
@@ -1480,7 +1456,7 @@ MonoBehaviour:
   showAdditionalSettings: 0
   m_AreaLightEmissiveMeshShadowCastingMode: 0
   m_AreaLightEmissiveMeshMotionVectorGenerationMode: 0
---- !u!114 &3720475214311385465
+--- !u!114 &4720113138488381058
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1489,12 +1465,24 @@ MonoBehaviour:
   m_GameObject: {fileID: 8800618876934821721}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cc5619dfa15a39541b6df0309887c332, type: 3}
+  m_Script: {fileID: 11500000, guid: aaeee3b7a8f606a4d82e563980ed684f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shadowsSetting: {fileID: 11400000, guid: a9574a1e9c6b71443840bc9cab7ffc4f, type: 2}
-  contactShadowsSetting: {fileID: 11400000, guid: d7db9b0f2f156db4580e6d3df961e90b,
-    type: 2}
+  ParameterUpdated:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 6809551018641110810}
+        m_MethodName: EnableShadows
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  targetParameter: {fileID: 11400000, guid: 8d8c3dc508acd4b4bb0791d93a762d6e, type: 2}
 --- !u!1 &8815151997237598581
 GameObject:
   m_ObjectHideFlags: 0

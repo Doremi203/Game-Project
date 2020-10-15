@@ -14,6 +14,7 @@ public class Weapon : MonoBehaviour
     public float BonusAimDistance => bonusAimDistance;
     public WeaponAnimationType AnimationType => animationType;
     public WeaponNPCSettings NPCSettings => npcSettings;
+    public bool IsUsing => isUsing;
 
     public WeaponState State { get; private set; }
 

@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 1361153442040728042}
   - component: {fileID: 1455385229454643359}
   - component: {fileID: 5880190703589865370}
+  - component: {fileID: 926089503878837039}
   m_Layer: 10
   m_Name: RegisterFolderGreen
   m_TagString: Untagged
@@ -110,3 +111,17 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &926089503878837039
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1173224940514296439}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b3ebd62ac54ba7343bd5e4653952731e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  physicalObjectsSetting: {fileID: 11400000, guid: 69f8eb038e45c464193a934048c92b36,
+    type: 2}

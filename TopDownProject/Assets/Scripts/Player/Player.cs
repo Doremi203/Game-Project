@@ -6,25 +6,21 @@ using UnityEngine;
 using UnityEngine.Events;
 
 [RequireComponent(typeof(WeaponHolder))]
-public class Player : Actor
+[RequireComponent(typeof(Actor))]
+public class Player : MonoBehaviour
 {
 
     public static Player Instance;
 
     public Action<Weapon> OnClosestWeaponUpdated;
 
-    public WeaponHolder weaponHolder { get; private set; }
+    public Actor Actor { get; private set; }
+    public WeaponHolder WeaponHolder { get; private set; }
 
     [SerializeField] private LayerMask weaponsMask;
     [SerializeField] private BoolParameter invincibility;
 
     private Weapon closestWeapon;
-
-    public override bool ApplyDamage(DamageInfo info)
-    {
-        if (invincibility.GetValue()) return false;
-        return base.ApplyDamage(info);
-    }
 
     public void TakeWeapon()
     {
@@ -32,7 +28,7 @@ public class Player : Actor
 
         if (closestWeapon == null) return;
 
-        weaponHolder.EquipWeapon(closestWeapon);
+        WeaponHolder.EquipWeapon(closestWeapon);
     }
 
     private Weapon FindWeaponAround()
@@ -58,16 +54,15 @@ public class Player : Actor
         return closestWeapon;
     }
 
-    protected override void Awake()
+    private void Awake()
     {
-        base.Awake();
         Player.Instance = this;
-        weaponHolder = this.GetComponent<WeaponHolder>();
+        Actor = GetComponent<Actor>();
+        WeaponHolder = GetComponent<WeaponHolder>();
     }
 
-    protected override void Update()
+    private void Update()
     {
-        base.Update();
         Weapon _weapon = FindWeaponAround();
         if (closestWeapon != _weapon)
         {

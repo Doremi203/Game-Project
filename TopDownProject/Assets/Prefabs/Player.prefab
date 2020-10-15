@@ -230,6 +230,7 @@ GameObject:
   - component: {fileID: 8814509870093988555}
   - component: {fileID: 8814509870093988596}
   - component: {fileID: 8814509870093988556}
+  - component: {fileID: 7468273165355203560}
   - component: {fileID: 8814509870093988594}
   - component: {fileID: 8814509870093988557}
   - component: {fileID: 8814509870093988558}
@@ -361,6 +362,28 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &7468273165355203560
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8814509870093988597}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3970a0991b8f98648880ee72cbda468a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  desiredRotation: {x: 0, y: 0, z: 0, w: 0}
+  DeathEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  noDelayRotation: 1
+  rotationSpeed: 999
+  eyesOffset: {x: 0, y: 0.75, z: 0}
+  shouldDestroy: 0
+  destroyDelay: 1
+  team: {fileID: 11400000, guid: d29a5ea4e91d4b54f866f89571407510, type: 2}
 --- !u!114 &8814509870093988594
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -373,27 +396,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bcc865ae86130304582f345c9cc89a0b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  desiredRotation: {x: 0, y: 0, z: 0, w: 0}
-  DeathEvent:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 8814509870093988593}
-        m_MethodName: set_enabled
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  noDelayRotation: 0
-  rotationSpeed: 999
-  eyesOffset: {x: 0, y: 0.75, z: 0}
-  shouldDestroy: 0
-  destroyDelay: 0
-  team: {fileID: 11400000, guid: d29a5ea4e91d4b54f866f89571407510, type: 2}
   weaponsMask:
     serializedVersion: 2
     m_Bits: 4096
@@ -3858,7 +3860,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 8814509871051605894}
-  actor: {fileID: 8814509870093988594}
+  actor: {fileID: 7468273165355203560}
   ragdollDelay: 0.05
 --- !u!114 &8814509871051605896
 MonoBehaviour:

@@ -71,7 +71,7 @@ public abstract class NPC_BaseAI : MonoBehaviour, ISoundsListener
             if (AngleToPlayer() > visionAngle) return false;
         }
 
-        return !Physics.Linecast(npc.eyesPosition, _player.eyesPosition, detectionMask);
+        return !Physics.Linecast(npc.eyesPosition, _player.Actor.eyesPosition, detectionMask);
     }
 
 #if UNITY_EDITOR

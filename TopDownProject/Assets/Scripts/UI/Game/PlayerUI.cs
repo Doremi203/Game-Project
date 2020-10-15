@@ -17,16 +17,16 @@ public class PlayerUI : MonoBehaviour
     private void Start()
     {
         WeaponChanged();
-        Player.Instance.weaponHolder.OnWeaponChanged.AddListener(WeaponChanged);
+        Player.Instance.WeaponHolder.OnWeaponChanged.AddListener(WeaponChanged);
     }
 
-    private void OnDestroy() => Player.Instance.weaponHolder.OnWeaponChanged.RemoveListener(WeaponChanged);
+    private void OnDestroy() => Player.Instance.WeaponHolder.OnWeaponChanged.RemoveListener(WeaponChanged);
 
     private void WeaponChanged()
     {
         // Отписываемся от событий предыдущего оружия.
         currentWeapon?.OnShootEvent.RemoveListener(RefreshUI);
-        currentWeapon = Player.Instance.weaponHolder.CurrentWeapon;
+        currentWeapon = Player.Instance.WeaponHolder.CurrentWeapon;
         // Подписываемся на новое.
         currentWeapon?.OnShootEvent.AddListener(RefreshUI);
         RefreshUI();
