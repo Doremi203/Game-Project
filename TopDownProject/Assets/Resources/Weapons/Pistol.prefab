@@ -1343,7 +1343,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1482d877a36038459b3311c0fcadc64, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  soundEventDistance: 7
+  soundEventDistance: 8
 --- !u!114 &5093798873797453428
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -19,9 +19,13 @@ public class Roaming : IState
         startingPoint = npc.transform.position;
     }
 
-    public void OnEnter() => SelectNewPosition();
+    public void OnEnter()
+    {
+        agent.ResetPath();
+        SelectNewPosition();
+    }
 
-    public void OnExit() { }
+    public void OnExit() => agent.ResetPath();
 
     public void Tick()
     {

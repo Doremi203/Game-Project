@@ -10,8 +10,8 @@ public class Chilling : IState
 
     public Chilling(NavMeshAgent agent) => this.agent = agent;
 
-    public void OnEnter() => agent.isStopped = true;
-    public void OnExit() => agent.isStopped = false;
+    public void OnEnter() => agent.ResetPath();
+    public void OnExit() { }
     public void Tick() { }
 
 }

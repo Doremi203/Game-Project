@@ -32,7 +32,6 @@ public class Weapon : MonoBehaviour
     protected Actor owner;
     protected WeaponHolder weaponHolder;
 
-    private float nextShootTime;
     private Rigidbody rb;
     private WeaponComponent[] weaponComponents;
 

@@ -252,14 +252,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8814509870093988597}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -2, y: 1, z: -9}
+  m_LocalRotation: {x: -0, y: 1, z: -0, w: 0.00006853044}
+  m_LocalPosition: {x: -6, y: 1, z: 4.58}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 8814509871051605899}
   m_Father: {fileID: 8814509871880483215}
   m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 179.992, z: 0}
 --- !u!143 &8814509870093988595
 CharacterController:
   m_ObjectHideFlags: 0
@@ -330,10 +330,12 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   infinityAmmo: 0
+  dropOnDeath: 1
   armBone: {fileID: 8814509871852890794}
   weaponPrefab: {fileID: 5522486085103851796, guid: ac6652c404eb06245b52da11ec5cdcac,
     type: 3}
-  dropOnDeath: 1
+  defaultWeaponPrefab: {fileID: 5522486085103851796, guid: c9b7a4f29f6aab443ac871e7a6f5e67d,
+    type: 3}
 --- !u!114 &8814509870093988556
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -350,18 +352,7 @@ MonoBehaviour:
   debugInvicibility: 0
   OnHealthChanged:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 8814509870093988595}
-        m_MethodName: set_enabled
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &7468273165355203560
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -377,7 +368,29 @@ MonoBehaviour:
   desiredRotation: {x: 0, y: 0, z: 0, w: 0}
   DeathEvent:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 8814509870093988593}
+        m_MethodName: set_enabled
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 8814509870093988593}
+        m_MethodName: set_enabled
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   noDelayRotation: 1
   rotationSpeed: 999
   eyesOffset: {x: 0, y: 0.75, z: 0}
@@ -948,7 +961,7 @@ CharacterJoint:
   m_Anchor: {x: 0, y: 0, z: 0}
   m_Axis: {x: 0, y: 1, z: 0}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: -0.00000013411045, y: 0.2597631, z: 0.00000011362137}
+  m_ConnectedAnchor: {x: -0.00000020116568, y: 0.259763, z: -0.0000001192093}
   serializedVersion: 2
   m_SwingAxis: {x: 0, y: 0, z: 1}
   m_TwistLimitSpring:
@@ -1660,7 +1673,7 @@ CharacterJoint:
   m_Anchor: {x: 0, y: 0, z: 0}
   m_Axis: {x: 1, y: 0, z: 0}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: -0.000000096856944, y: 0.36814818, z: -0.000000514086}
+  m_ConnectedAnchor: {x: -0.0000003054719, y: 0.36814818, z: -0.00000023469146}
   serializedVersion: 2
   m_SwingAxis: {x: 0, y: 0, z: -1}
   m_TwistLimitSpring:
@@ -1923,7 +1936,7 @@ CharacterJoint:
   m_Anchor: {x: 0, y: 0, z: 0}
   m_Axis: {x: 1, y: 0, z: 0}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: -0.000000014978614, y: 0.30613467, z: 0.062824674}
+  m_ConnectedAnchor: {x: -0.000000110812074, y: 0.30613467, z: 0.062824674}
   serializedVersion: 2
   m_SwingAxis: {x: 0, y: 0, z: 1}
   m_TwistLimitSpring:
@@ -2032,7 +2045,7 @@ CharacterJoint:
   m_Anchor: {x: 0, y: 0, z: 0}
   m_Axis: {x: 1, y: 0, z: 0}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: -0.09788514, y: -0.027668566, z: 0.024147557}
+  m_ConnectedAnchor: {x: -0.09788508, y: -0.027668633, z: 0.024147144}
   serializedVersion: 2
   m_SwingAxis: {x: 0, y: 0, z: -1}
   m_TwistLimitSpring:
@@ -2264,7 +2277,7 @@ CharacterJoint:
   m_Anchor: {x: 0, y: 0, z: 0}
   m_Axis: {x: 1, y: 0, z: 0}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: 0.097816214, y: -0.023146372, z: 0.047817387}
+  m_ConnectedAnchor: {x: 0.097816, y: -0.023146462, z: 0.047816865}
   serializedVersion: 2
   m_SwingAxis: {x: 0, y: 0, z: -1}
   m_TwistLimitSpring:
@@ -2404,7 +2417,7 @@ CharacterJoint:
   m_Anchor: {x: 0, y: 0, z: 0}
   m_Axis: {x: 0, y: -1, z: 0}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: 0.19631052, y: 0.17003943, z: 0.0037837233}
+  m_ConnectedAnchor: {x: 0.19631045, y: 0.17003946, z: 0.0037834812}
   serializedVersion: 2
   m_SwingAxis: {x: 0, y: 0, z: 1}
   m_TwistLimitSpring:
@@ -2513,7 +2526,7 @@ CharacterJoint:
   m_Anchor: {x: 0, y: 0, z: 0}
   m_Axis: {x: 0, y: -1, z: 0}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: -0.19631052, y: 0.17003925, z: 0.0037835315}
+  m_ConnectedAnchor: {x: -0.1963106, y: 0.17003924, z: 0.003783781}
   serializedVersion: 2
   m_SwingAxis: {x: 0, y: 0, z: 1}
   m_TwistLimitSpring:
@@ -2778,7 +2791,7 @@ CharacterJoint:
   m_Anchor: {x: 0, y: 0, z: 0}
   m_Axis: {x: 1, y: 0, z: 0}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: -0.00000009126959, y: 0.3681482, z: -0.00000019371514}
+  m_ConnectedAnchor: {x: 0.00000026077026, y: 0.3681479, z: 0.00000008940699}
   serializedVersion: 2
   m_SwingAxis: {x: 0, y: 0, z: -1}
   m_TwistLimitSpring:
@@ -2980,7 +2993,7 @@ CharacterJoint:
   m_Anchor: {x: 0, y: 0, z: 0}
   m_Axis: {x: 0, y: 1, z: 0}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: 0.00000016391279, y: 0.2597634, z: 0.000000037252903}
+  m_ConnectedAnchor: {x: 0.00000026822093, y: 0.2597633, z: -0.00000019930303}
   serializedVersion: 2
   m_SwingAxis: {x: 0, y: 0, z: 1}
   m_TwistLimitSpring:
@@ -3166,7 +3179,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8814509870835152361}
   m_LocalRotation: {x: 0.7071068, y: -0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: -2, y: 9.5, z: -9}
+  m_LocalPosition: {x: -6, y: 9.5, z: 4.58}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 8814509870965165256}
@@ -3796,7 +3809,6 @@ GameObject:
   m_Component:
   - component: {fileID: 8814509871051605899}
   - component: {fileID: 8814509871051605894}
-  - component: {fileID: 8814509871051605895}
   - component: {fileID: 8814509871051605896}
   - component: {fileID: 8814509871051605897}
   - component: {fileID: 8814509871051605898}
@@ -3847,21 +3859,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &8814509871051605895
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8814509871051605900}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 978f8e0514dd2c04b9309ae448b77a50, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  animator: {fileID: 8814509871051605894}
-  actor: {fileID: 7468273165355203560}
-  ragdollDelay: 0.05
 --- !u!114 &8814509871051605896
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4824,7 +4821,7 @@ CharacterJoint:
   m_Anchor: {x: 0, y: 0, z: 0}
   m_Axis: {x: 1, y: 0, z: 0}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: 0.0000000069145076, y: 0.31582466, z: -0.029001623}
+  m_ConnectedAnchor: {x: 0.000000110879185, y: 0.31582475, z: -0.029001147}
   serializedVersion: 2
   m_SwingAxis: {x: 0, y: 0, z: 1}
   m_TwistLimitSpring:
@@ -4994,7 +4991,6 @@ GameObject:
   - component: {fileID: 8814509871543415584}
   - component: {fileID: 8814509871543415585}
   - component: {fileID: 8814509871543415586}
-  - component: {fileID: 8814509871543415613}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -5010,7 +5006,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8814509871543415587}
   m_LocalRotation: {x: 0.7071068, y: -0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: -2, y: 9.5, z: -9}
+  m_LocalPosition: {x: -6, y: 9.5, z: 4}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 8814509870161149543}
@@ -5161,7 +5157,7 @@ MonoBehaviour:
       enableFptlForForwardOpaque: 0
       enableBigTilePrepass: 0
       isFptlEnabled: 0
-  clearColorMode: 1
+  clearColorMode: 0
   backgroundColorHDR: {r: 11.984314, g: 6.7764707, b: 6.6509805, a: 0}
   clearDepth: 1
   volumeLayerMask:
@@ -5206,25 +5202,6 @@ MonoBehaviour:
       data1: 0
       data2: 0
   defaultFrameSettings: 0
---- !u!95 &8814509871543415613
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8814509871543415587}
-  m_Enabled: 0
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 57d62ccd6f2f0e9419362f4ad40dd0ad, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &8814509871550860802
 GameObject:
   m_ObjectHideFlags: 0

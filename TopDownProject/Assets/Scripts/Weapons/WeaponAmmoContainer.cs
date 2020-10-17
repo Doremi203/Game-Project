@@ -17,6 +17,8 @@ public class WeaponAmmoContainer : WeaponComponent
         if (!weapon.WeaponHolder.InfinityAmmo) CurrentAmmo--;
     }
 
+    public override bool CanPickup() => CurrentAmmo > 0;
+
     private void Start() => CurrentAmmo = Random.Range(startingAmmoMin, startingAmmoMax + 1);
 
 }

@@ -21,13 +21,18 @@ public class Investigating : IState
 
     public void OnEnter()
     {
+        agent.ResetPath();
         agent.stoppingDistance = Random.Range(0.25f, 1f);
         isInvestigatingOver = false;
         Player _player = Player.Instance;
         agent.SetDestination(_player.transform.position);
     }
 
-    public void OnExit() => agent.stoppingDistance = 0;
+    public void OnExit()
+    {
+        agent.stoppingDistance = 0;
+        agent.ResetPath();
+    }
 
     public void Tick()
     {

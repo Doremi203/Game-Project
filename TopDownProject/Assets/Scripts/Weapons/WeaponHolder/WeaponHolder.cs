@@ -17,28 +17,45 @@ public class WeaponHolder : MonoBehaviour
     public bool InfinityAmmo => infinityAmmo;
 
     [SerializeField] private bool infinityAmmo;
+    [SerializeField] private bool dropOnDeath = true;
     [SerializeField] private Transform armBone;
     [SerializeField] private Weapon weaponPrefab;
-    [SerializeField] private bool dropOnDeath = true;
+    [SerializeField] private Weapon defaultWeaponPrefab;
 
-    // Взять оружие в руки.
+    private WeaponHolderState state;    
+
     public void EquipWeapon(Weapon weapon)
     {
-        Drop();
-        CurrentWeapon = weapon;
-        CurrentWeapon.Pickup(this);
-        weapon.transform.SetParent(armBone, true);
-        weapon.transform.position = armBone.position;
-        weapon.transform.localRotation = Quaternion.identity;
+        if (!weapon) return;
+        switch (state)
+        {
+            case WeaponHolderState.Empty:
+                break;
+            case WeaponHolderState.Default:
+                Destroy(CurrentWeapon.gameObject);
+                break;
+            case WeaponHolderState.Weapon:
+                DropCurrentWeapon();
+                break;
+            default:
+                break;
+        }
+        test_EquipWeapon(weapon);
+        state = WeaponHolderState.Weapon;
         OnWeaponChanged.Invoke();
     }
 
     public void Drop()
     {
-        if (CurrentWeapon == null) return;
-        CurrentWeapon.transform.SetParent(null);
-        CurrentWeapon.Drop();
-        CurrentWeapon = null;
+        if (state != WeaponHolderState.Weapon) return;
+        DropCurrentWeapon();
+        if (defaultWeaponPrefab)
+        {
+            test_EquipWeapon(Instantiate(defaultWeaponPrefab));
+            state = WeaponHolderState.Default;
+        }
+        else
+            state = WeaponHolderState.Empty;
         OnWeaponChanged.Invoke();
     }
 
@@ -50,12 +67,54 @@ public class WeaponHolder : MonoBehaviour
 
     private void OwnerDeath()
     {
-        if (dropOnDeath) Drop();
+        switch (state)
+        {
+            case WeaponHolderState.Empty:
+                break;
+            case WeaponHolderState.Default:
+                Destroy(CurrentWeapon.gameObject);
+                break;
+            case WeaponHolderState.Weapon:
+                if (dropOnDeath) Drop();
+                break;
+            default:
+                break;
+        }
     }
 
     private void Start()
     {
-        if (weaponPrefab) EquipWeapon(Instantiate(weaponPrefab));
+        if (weaponPrefab)
+            EquipWeapon(Instantiate(weaponPrefab));
+        else if (defaultWeaponPrefab)
+        {
+            test_EquipWeapon(Instantiate(defaultWeaponPrefab));
+            state = WeaponHolderState.Default;
+            OnWeaponChanged.Invoke();
+        }
+    }
+
+    private void DropCurrentWeapon()
+    {
+        CurrentWeapon.transform.SetParent(null);
+        CurrentWeapon.Drop();
+        CurrentWeapon = null;
+    }
+
+    private void test_EquipWeapon(Weapon weapon)
+    {
+        CurrentWeapon = weapon;
+        CurrentWeapon.Pickup(this);
+        weapon.transform.SetParent(armBone, true);
+        weapon.transform.position = armBone.position;
+        weapon.transform.localRotation = Quaternion.identity;
+    }
+
+    private enum WeaponHolderState
+    {
+        Empty,
+        Default,
+        Weapon
     }
 
 }

@@ -10,7 +10,7 @@ public class PatrollingPoint : MonoBehaviour
     {
         PatrollingPoint _closestPoint = default;
         foreach (var item in GameObject.FindObjectsOfType<PatrollingPoint>())
-        {
+        {          
             if (_closestPoint == null)
             {
                 _closestPoint = item;
@@ -25,16 +25,40 @@ public class PatrollingPoint : MonoBehaviour
         }
         return _closestPoint;
     }
-   
+
+    public static PatrollingPoint GetClosestPoint(Vector3 from, int layerId)
+    {
+        PatrollingPoint _closestPoint = default;
+        foreach (var item in GameObject.FindObjectsOfType<PatrollingPoint>())
+        {
+            if (item.layerId != layerId) continue;
+            if (_closestPoint == null)
+            {
+                _closestPoint = item;
+                continue;
+            }
+            else
+            {
+                float oldDistance = Vector3.Distance(from, _closestPoint.transform.position);
+                float newDistance = Vector3.Distance(from, item.transform.position);
+                if (oldDistance > newDistance) _closestPoint = item;
+            }
+        }
+        return _closestPoint;
+    }
+
+    [HideInInspector]
     public List<PatrollingPoint> PatrollingPoints = new List<PatrollingPoint>();
 
     [Range(1f, 10f)]
     public float detectionDistance = 10f;
+    public int layerId;
 
     private void Awake()
     {
         foreach (var item in GameObject.FindObjectsOfType<PatrollingPoint>())
         {
+            if (item.layerId != layerId) continue;
             if (item.gameObject == this.gameObject) continue;
             float distance = Vector3.Distance(transform.position, item.transform.position);
             if (distance > this.detectionDistance + item.detectionDistance) continue;
@@ -46,9 +70,9 @@ public class PatrollingPoint : MonoBehaviour
 
     private void OnDrawGizmos()
     {
-        Gizmos.color = Color.red;
+        Gizmos.color = layerId % 2 == 0 ? Color.yellow : Color.magenta;
+        Handles.color = layerId % 2 == 0 ? Color.yellow : Color.magenta;
         Gizmos.DrawSphere(transform.position, 0.5f);
-        Handles.color = Color.yellow;
         Handles.DrawWireDisc(this.transform.position, this.transform.up, detectionDistance);
     }
 
@@ -57,6 +81,7 @@ public class PatrollingPoint : MonoBehaviour
         Gizmos.color = Color.green;
         foreach (var item in GameObject.FindObjectsOfType<PatrollingPoint>())
         {
+            if (item.layerId != layerId) continue;
             if (item.gameObject == this.gameObject) continue;
             float distance = Vector3.Distance(transform.position, item.transform.position);
             if (distance > this.detectionDistance + item.detectionDistance) continue;

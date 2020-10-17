@@ -10,33 +10,24 @@ public class Attacking : IState
     private Actor npc;
     private NavMeshAgent agent;
     private WeaponHolder weaponHolder;
-    private NPC_BaseAI ai;
     private Vector3 interceptionPoint;
     private Vector3 currentPrediction;
     private float ableToAttackTime;
 
-    public Attacking(Actor npc, NavMeshAgent agent, WeaponHolder weaponHolder, NPC_BaseAI ai)
+    public Attacking(Actor npc, NavMeshAgent agent, WeaponHolder weaponHolder)
     {
         this.npc = npc;
         this.agent = agent;
         this.weaponHolder = weaponHolder;
-        this.ai = ai;
     }
 
     public void OnEnter()
     {
-        // Возможно стоит записывать stoppingDistance
-        agent.stoppingDistance = weaponHolder.CurrentWeapon.NPCSettings.AttackDistance;
-        agent.isStopped = true;
+        agent.ResetPath();
         ableToAttackTime = Time.time + weaponHolder.CurrentWeapon.NPCSettings.FirstAttackDelay;
     }
 
-    public void OnExit()
-    {
-        agent.stoppingDistance = 0;
-        weaponHolder.CurrentWeapon.Use(false);
-        agent.isStopped = false;
-    }
+    public void OnExit() => weaponHolder.CurrentWeapon.Use(false);
 
     public void Tick()
     {

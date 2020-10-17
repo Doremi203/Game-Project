@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEditor;
 
 public class WeaponMeleeAttack : WeaponComponent
 {
@@ -13,6 +14,7 @@ public class WeaponMeleeAttack : WeaponComponent
     [SerializeField] private float rigidbodyPushForse = 100f;
     [SerializeField] private float attackDelay = 0.05f;
     [SerializeField] private LayerMask layerMask;
+    [SerializeField] private float stunTime;
 
     private bool rightAttack;
 
@@ -68,22 +70,27 @@ public class WeaponMeleeAttack : WeaponComponent
 
             DamageInfo info = new DamageInfo(owner, weapon.gameObject, damageDirection, damage, damageType);
             _targetActor.ApplyDamage(info);
+
+            _targetActor.GetComponent<Stunable>()?.Stun(stunTime);
         }
 
         rightAttack = !rightAttack;
     }
 
-    public void DrawDebug()
+#if UNITY_EDITOR
+
+    private void OnDrawGizmos()
     {
-        return;
         if (weapon == null) return;
         Actor _owner = weapon.Owner;
         if (weapon.Owner == null) return;
-        Gizmos.DrawWireSphere(_owner.transform.position, attackRadius);
-        Gizmos.DrawWireSphere(_owner.transform.position, absoluteRadius);
+        Handles.DrawWireDisc(_owner.transform.position, Vector3.up, attackRadius);
+        Handles.DrawWireDisc(_owner.transform.position, Vector3.up, absoluteRadius);
         Gizmos.color = Color.red;
         Gizmos.DrawLine(_owner.transform.position, _owner.transform.position + Quaternion.AngleAxis(-attackAngle, Vector3.up) * _owner.transform.forward * attackRadius);
         Gizmos.DrawLine(_owner.transform.position, _owner.transform.position + Quaternion.AngleAxis(attackAngle, Vector3.up) * _owner.transform.forward * attackRadius);
     }
+
+#endif
 
 }

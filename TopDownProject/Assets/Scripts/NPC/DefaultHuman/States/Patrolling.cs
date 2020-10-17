@@ -21,10 +21,15 @@ public class Patrolling : IState
     public void OnEnter()
     {
         agent.autoBraking = false;
+        agent.ResetPath();
         FindNextPoint();
     }
 
-    public void OnExit() => agent.autoBraking = true;
+    public void OnExit()
+    {
+        agent.autoBraking = true;
+        agent.ResetPath();
+    }
 
     public void Tick()
     {

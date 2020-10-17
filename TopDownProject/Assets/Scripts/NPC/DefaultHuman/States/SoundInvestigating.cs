@@ -20,12 +20,17 @@ public class SoundInvestigating : IState
 
     public void OnEnter()
     {
+        agent.ResetPath();
         agent.stoppingDistance = Random.Range(0.25f, 1f);
         isInvestigatingOver = false;
         agent.SetDestination(ai.LastSoundEventPosition);
     }
 
-    public void OnExit() => agent.stoppingDistance = 0;
+    public void OnExit()
+    {
+        agent.ResetPath();
+        agent.stoppingDistance = 0;
+    }
 
     public void Tick()
     {

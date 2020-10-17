@@ -25,10 +25,8 @@ public class Player : MonoBehaviour
     public void TakeWeapon()
     {
         Weapon closestWeapon = FindWeaponAround();
-
-        if (closestWeapon == null) return;
-
-        WeaponHolder.EquipWeapon(closestWeapon);
+        WeaponHolder.Drop();
+        if (closestWeapon != null) WeaponHolder.EquipWeapon(closestWeapon);
     }
 
     private Weapon FindWeaponAround()

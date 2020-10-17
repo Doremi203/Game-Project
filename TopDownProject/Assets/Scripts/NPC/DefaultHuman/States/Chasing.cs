@@ -15,9 +15,9 @@ public class Chasing : IState
         this.agent = agent;
     }
 
-    public void OnEnter() { }
+    public void OnEnter() => agent.ResetPath();
 
-    public void OnExit() { }
+    public void OnExit() => agent.ResetPath();
 
     public void Tick()
     {
