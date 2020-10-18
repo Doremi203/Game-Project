@@ -50,7 +50,7 @@ MonoBehaviour:
   displayName: Fisting
   bonusAimDistance: 0
   weaponType: 0
-  animationType: 2
+  animationType: 3
   npcSettings:
     AttackDistance: 1.35
     AttackAngle: 70
@@ -92,14 +92,14 @@ MonoBehaviour:
   attackAngle: 50
   attackRadius: 1
   absoluteRadius: 0.5
-  damage: 400
+  damage: 1000
   damageType: 1
   rigidbodyPushForse: 100
-  attackDelay: 0.06
+  attackDelay: 0.07
   layerMask:
     serializedVersion: 2
     m_Bits: 1
-  stunTime: 0.75
+  stunTime: 1
 --- !u!54 &1707895415305524216
 Rigidbody:
   m_ObjectHideFlags: 0

@@ -4095,7 +4095,8 @@ MonoBehaviour:
   armBone: {fileID: 2026815956877220564}
   weaponPrefab: {fileID: 5522486085103851796, guid: ac6652c404eb06245b52da11ec5cdcac,
     type: 3}
-  defaultWeaponPrefab: {fileID: 0}
+  defaultWeaponPrefab: {fileID: 5522486085103851796, guid: c9b7a4f29f6aab443ac871e7a6f5e67d,
+    type: 3}
 --- !u!114 &7750810099474233597
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4108,15 +4109,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e6a99f63d0205e34fb7646aa11ae35aa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  LastSoundEventPosition: {x: 0, y: 0, z: 0}
-  LastSoundEventExpireTime: 0
   detectionMask:
     serializedVersion: 2
     m_Bits: 1
   visionAngle: 80
   visionRange: 25
-  absoluteVisionRange: 2
+  absoluteVisionRange: 3.5
   targetLostRange: 40
+  LastSoundEventPosition: {x: 0, y: 0, z: 0}
+  reactionTime: 0.4
   AIType: 0
 --- !u!114 &1338462332507150253
 MonoBehaviour:

@@ -228,6 +228,7 @@ MonoBehaviour:
   layerMask:
     serializedVersion: 2
     m_Bits: 1
+  stunTime: 0
 --- !u!54 &1707895415305524216
 Rigidbody:
   m_ObjectHideFlags: 0

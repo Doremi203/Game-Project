@@ -3,6 +3,7 @@
 
     Light,
     Heavy,
-    Melee
+    Melee,
+    Fists
 
 }

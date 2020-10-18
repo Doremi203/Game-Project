@@ -1,21 +1,15 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEditor;
+﻿using UnityEditor;
 using UnityEngine;
+using AdvancedAI;
 
 [RequireComponent(typeof(Actor))]
-public abstract class NPC_BaseAI : MonoBehaviour, ISoundsListener
+public abstract class NPC_BaseAI : MonoBehaviour
 {
-
-    [HideInInspector] public Vector3 LastSoundEventPosition;
-    [HideInInspector] public float LastSoundEventExpireTime;
 
     public float VisionAngle => visionAngle;
     public float AbsoluteVisionRange => absoluteVisionRange;
     public float VisionRange => visionRange;
     public float TargetLostRange => targetLostRange;
-    public StateMachine StateMachine => stateMachine;
 
     [Header("Vision Raycast")]
     [SerializeField] private LayerMask detectionMask;
@@ -25,54 +19,44 @@ public abstract class NPC_BaseAI : MonoBehaviour, ISoundsListener
     [SerializeField] private float absoluteVisionRange;
     [SerializeField] private float targetLostRange;
 
-    protected StateMachine stateMachine = new StateMachine();
     protected Actor npc;
-
-    public void ApplySoundEvent(Actor causer, Vector3 eventPosition)
-    {
-        if (causer == this) return;
-        if (causer.Team == npc.Team) return;
-        LastSoundEventPosition = eventPosition;
-        LastSoundEventExpireTime = Time.time + 2f;
-    }
+    protected StateMachine stateMachine = new StateMachine();
 
     protected virtual void Awake()
     {
-        npc = this.GetComponent<Actor>();
+        npc = GetComponent<Actor>();
         npc.DeathEvent.AddListener(NpcDeath);
     }
 
     protected virtual void Update() => stateMachine.Tick();
 
-    private void NpcDeath() => this.enabled = false;
-
     public float DistanceToPlayer()
     {
-        Player _player = Player.Instance;
-        return GameUtilities.GetDistance2D(npc.transform.position, _player.transform.position);
+        return GameUtilities.GetDistance2D(npc.transform.position, Player.Instance.transform.position);
     }
 
     public float AngleToPlayer()
     {
-        Player _player = Player.Instance;
-        Vector3 _targetDirection = _player.transform.position - npc.transform.position;
+        Vector3 _targetDirection = Player.Instance.transform.position - npc.transform.position;
         return Vector3.Angle(_targetDirection, npc.transform.forward);
     }
 
     public bool CanSeePlayer()
     {
-        Player _player = Player.Instance;
-        float _playerDistance = DistanceToPlayer();
+        Player player = Player.Instance;
+        float playerDistance = DistanceToPlayer();
 
-        if (_playerDistance > visionRange) return false;
+        if (playerDistance > visionRange) return false;
 
-        if (_playerDistance > absoluteVisionRange)
+        if (playerDistance > absoluteVisionRange)
         {
             if (AngleToPlayer() > visionAngle) return false;
         }
 
-        return !Physics.Linecast(npc.eyesPosition, _player.Actor.eyesPosition, detectionMask);
+        return !Physics.Linecast(npc.eyesPosition, player.Actor.eyesPosition, detectionMask);
     }
+
+    private void NpcDeath() => Destroy(this);
 
 #if UNITY_EDITOR
 
@@ -81,7 +65,7 @@ public abstract class NPC_BaseAI : MonoBehaviour, ISoundsListener
         if (!Application.isPlaying) return;
         if (stateMachine == null) return;
 
-        IState currentState = stateMachine.GetCurrentState();
+        IState currentState = stateMachine.CurrentState;
 
         if (currentState == null) return;
 

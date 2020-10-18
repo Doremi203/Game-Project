@@ -1,17 +1,18 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using AdvancedAI;
 
 public class Investigating : IState
 {
 
-    public float stuckTime;
-
-    public bool isInvestigatingOver;
+    public event Action OnIvestigatingOver;
 
     private Actor npc;
     private NavMeshAgent agent;
+    private bool isOver;
 
     public Investigating(Actor npc, NavMeshAgent agent)
     {
@@ -22,10 +23,9 @@ public class Investigating : IState
     public void OnEnter()
     {
         agent.ResetPath();
-        agent.stoppingDistance = Random.Range(0.25f, 1f);
-        isInvestigatingOver = false;
-        Player _player = Player.Instance;
-        agent.SetDestination(_player.transform.position);
+        agent.stoppingDistance = UnityEngine.Random.Range(0.25f, 1f);
+        isOver = false;
+        agent.SetDestination(Player.Instance.transform.position);
     }
 
     public void OnExit()
@@ -38,10 +38,14 @@ public class Investigating : IState
     {
         UpdateRotation();
 
-        if (isInvestigatingOver) return;
+        if (isOver) return;
 
         float _distanceTarget = GameUtilities.GetDistance2D(npc.transform.position, agent.destination);
-        if (_distanceTarget <= agent.stoppingDistance) isInvestigatingOver = true;
+        if (_distanceTarget <= agent.stoppingDistance)
+        {
+            isOver = true;
+            OnIvestigatingOver?.Invoke();
+        }
     }
 
     private void UpdateRotation()

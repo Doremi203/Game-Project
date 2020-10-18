@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using AdvancedAI;
 
 public class Patrolling : IState
 {
