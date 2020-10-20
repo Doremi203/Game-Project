@@ -8,25 +8,27 @@ using AdvancedAI;
 public class Roaming : IState
 {
 
+    private NPC_HumanAI ai;
     private Actor npc;
     private NavMeshAgent agent;
     private float nextChangeTime;
     private Vector3 startingPoint;
 
-    public Roaming(Actor npc, NavMeshAgent agent)
+    public Roaming(NPC_HumanAI ai, Actor npc, NavMeshAgent agent)
     {
+        this.ai = ai;
         this.npc = npc;
         this.agent = agent;
-        startingPoint = npc.transform.position;
     }
 
     public void OnEnter()
     {
+        agent.speed = ai.DefaultSpeed;
         agent.ResetPath();
         SelectNewPosition();
     }
 
-    public void OnExit() => agent.ResetPath();
+    public void OnExit() { }
 
     public void Tick()
     {

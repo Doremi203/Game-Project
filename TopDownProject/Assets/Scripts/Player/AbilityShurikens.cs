@@ -11,6 +11,8 @@ public class AbilityShurikens : AbilityBase
     [SerializeField] private float throwPower = 700f;
     [SerializeField] private ProjectileBase shurikenPrefab;
 
+    public void AddShurikens(int amount) => CurrentShurikensAmount += amount;
+
     protected override void Awake()
     {
         base.Awake();

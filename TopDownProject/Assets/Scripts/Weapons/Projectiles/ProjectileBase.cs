@@ -22,6 +22,8 @@ public class ProjectileBase : MonoBehaviour
     [SerializeField] private LayerMask penetrationLayerMask;
     [SerializeField] private LayerMask penetrationHitLayerMask;
     [SerializeField] private LineRenderer penetrationEffect;
+    [SerializeField] private bool destroyOnHit = true;
+    [SerializeField] private bool destroyByTime = true;
 
     private float activationTime;
 
@@ -38,7 +40,7 @@ public class ProjectileBase : MonoBehaviour
 
         Physics.IgnoreCollision(Hitbox, owner.Hitbox);
 
-        Destroy(this.gameObject, 2f);
+        if (destroyByTime) Destroy(this.gameObject, 2f);
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -68,11 +70,12 @@ public class ProjectileBase : MonoBehaviour
 
         if (_surfaceType.HitEffect && spawnParticlesOnHit)
         {
-            _effect = Instantiate(_surfaceType.HitEffect, _hitPosition, _effectRotation);
+            Instantiate(_surfaceType.HitEffect, _hitPosition, _effectRotation);
         }
 
         if (_surfaceType.HitDecalProjector && spawnDecailsOnHit)
         {
+            // Should be parented by the object bullet hit
             _decalProjector = Instantiate(_surfaceType.HitDecalProjector.gameObject, _hitPosition, _decalRotation);
         }
 
@@ -107,7 +110,9 @@ public class ProjectileBase : MonoBehaviour
             }
         }
 
-        Destroy(this.gameObject);
+        OnHit(collision);
+
+        if(destroyOnHit) Destroy(this.gameObject);
     }
 
     protected virtual void Awake()
@@ -127,5 +132,7 @@ public class ProjectileBase : MonoBehaviour
     {
         if (!visuals.activeSelf && Time.time >= spawnTime + activationTime) visuals.SetActive(true);
     }
+
+    protected virtual void OnHit(Collision collision) { }
 
 }

@@ -7,14 +7,16 @@ using AdvancedAI;
 public class Patrolling : IState
 {
 
+    private NPC_HumanAI ai;
     private Actor npc;
     private NavMeshAgent agent;
 
     private PatrollingPoint lastPoint;
     private PatrollingPoint targetPoint;
 
-    public Patrolling(Actor npc, NavMeshAgent agent)
+    public Patrolling(NPC_HumanAI ai, Actor npc, NavMeshAgent agent)
     {
+        this.ai = ai;
         this.npc = npc;
         this.agent = agent;
     }
@@ -23,14 +25,11 @@ public class Patrolling : IState
     {
         agent.autoBraking = false;
         agent.ResetPath();
+        agent.speed = ai.DefaultSpeed;
         FindNextPoint();
     }
 
-    public void OnExit()
-    {
-        agent.autoBraking = true;
-        agent.ResetPath();
-    }
+    public void OnExit() => agent.autoBraking = true;
 
     public void Tick()
     {

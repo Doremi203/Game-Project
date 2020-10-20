@@ -5,6 +5,7 @@ using AdvancedAI;
 public class Attacking : IState
 {
 
+    private NPC_HumanAI ai;
     private Actor npc;
     private NavMeshAgent agent;
     private WeaponHolder weaponHolder;
@@ -12,8 +13,9 @@ public class Attacking : IState
     private Vector3 currentPrediction;
     private float ableToAttackTime;
 
-    public Attacking(Actor npc, NavMeshAgent agent, WeaponHolder weaponHolder)
+    public Attacking(NPC_HumanAI ai, Actor npc, NavMeshAgent agent, WeaponHolder weaponHolder)
     {
+        this.ai = ai;
         this.npc = npc;
         this.agent = agent;
         this.weaponHolder = weaponHolder;
@@ -21,6 +23,7 @@ public class Attacking : IState
 
     public void OnEnter()
     {
+        agent.speed = ai.ChasingSpeed;
         agent.ResetPath();
         ableToAttackTime = Time.time + weaponHolder.CurrentWeapon.NPCSettings.FirstAttackDelay;
     }

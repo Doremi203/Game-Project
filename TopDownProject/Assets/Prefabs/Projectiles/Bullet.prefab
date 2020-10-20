@@ -92,6 +92,8 @@ MonoBehaviour:
     m_Bits: 43009
   penetrationEffect: {fileID: 5057229352171386846, guid: 0f7c2abce4d2c50429f483f7ad77004f,
     type: 3}
+  destroyOnHit: 1
+  destroyByTime: 1
 --- !u!1 &6444695937703864782
 GameObject:
   m_ObjectHideFlags: 0

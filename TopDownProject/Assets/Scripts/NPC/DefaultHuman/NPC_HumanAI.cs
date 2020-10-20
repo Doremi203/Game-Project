@@ -11,10 +11,16 @@ using AdvancedAI;
 public class NPC_HumanAI : NPC_BaseAI, ISoundsListener
 {
 
+    public float DefaultSpeed => defaultSpeed;
+    public float ChasingSpeed => chasingSpeed;
+
     [HideInInspector] public Vector3 LastSoundEventPosition;
 
+    [Header("Human")]
     [SerializeField] private float reactionTime;
     [SerializeField] private AIType AIType;
+    [SerializeField] private float defaultSpeed = 3.75f;
+    [SerializeField] private float chasingSpeed = 4.75f;
 
     protected NavMeshAgent agent;
     protected WeaponHolder weaponHolder;
@@ -39,21 +45,20 @@ public class NPC_HumanAI : NPC_BaseAI, ISoundsListener
                 defaultState = new Chilling(agent);
                 break;
             case AIType.Patrolling:
-                defaultState = new Patrolling(npc, agent);
+                defaultState = new Patrolling(this, npc, agent);
                 break;
             case AIType.Roaming:
-                defaultState = new Roaming(npc, agent);
+                defaultState = new Roaming(this, npc, agent);
                 break;
             default:
                 defaultState = new Chilling(agent);
                 break;
         }
 
-        var chasing = new Chasing(npc, agent);
-        var attacking = new Attacking(npc, agent, weaponHolder);
-        var investigating = new Investigating(npc, agent);
-        var soundInvestigating = new SoundInvestigating(npc, agent, this);
-        var noWeapon = new NoWeapon(npc, agent);
+        var chasing = new Chasing(this, npc, agent);
+        var attacking = new Attacking(this, npc, agent, weaponHolder);
+        var investigating = new Investigating(this, npc, agent);
+        var soundInvestigating = new SoundEventInvestigating(this, npc, agent);
 
         investigating.OnIvestigatingOver += Investigating_OnIvestigatingOver;
         soundInvestigating.OnIvestigatingOver += SoundInvestigating_OnIvestigatingOver;

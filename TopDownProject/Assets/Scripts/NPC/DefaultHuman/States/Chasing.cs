@@ -7,18 +7,24 @@ using AdvancedAI;
 public class Chasing : IState
 {
 
+    private NPC_HumanAI ai;
     private Actor npc;
     private NavMeshAgent agent;
 
-    public Chasing(Actor npc, NavMeshAgent agent)
+    public Chasing(NPC_HumanAI ai, Actor npc, NavMeshAgent agent)
     {
+        this.ai = ai;
         this.npc = npc;
         this.agent = agent;
     }
 
-    public void OnEnter() => agent.ResetPath();
+    public void OnEnter()
+    {
+        agent.ResetPath();
+        agent.speed = ai.ChasingSpeed; 
+    }
 
-    public void OnExit() => agent.ResetPath();
+    public void OnExit() { }
 
     public void Tick()
     {

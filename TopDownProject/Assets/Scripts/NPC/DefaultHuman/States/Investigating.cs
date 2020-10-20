@@ -10,18 +10,21 @@ public class Investigating : IState
 
     public event Action OnIvestigatingOver;
 
+    private NPC_HumanAI ai;
     private Actor npc;
     private NavMeshAgent agent;
     private bool isOver;
 
-    public Investigating(Actor npc, NavMeshAgent agent)
+    public Investigating(NPC_HumanAI ai, Actor npc, NavMeshAgent agent)
     {
+        this.ai = ai;
         this.npc = npc;
         this.agent = agent;
     }
 
     public void OnEnter()
     {
+        agent.speed = ai.ChasingSpeed;
         agent.ResetPath();
         agent.stoppingDistance = UnityEngine.Random.Range(0.25f, 1f);
         isOver = false;

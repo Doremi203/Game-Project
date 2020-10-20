@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
+using UnityEngine.Rendering.HighDefinition;
 
 public class WeaponMeleeAttack : WeaponComponent
 {
@@ -14,7 +15,8 @@ public class WeaponMeleeAttack : WeaponComponent
     [SerializeField] private float rigidbodyPushForse = 100f;
     [SerializeField] private float attackDelay = 0.05f;
     [SerializeField] private LayerMask layerMask;
-    [SerializeField] private float stunTime;
+    [Header("Decals")]
+    [SerializeField] private DecalProjector decal;
 
     private bool rightAttack;
 
@@ -70,8 +72,19 @@ public class WeaponMeleeAttack : WeaponComponent
 
             DamageInfo info = new DamageInfo(owner, weapon.gameObject, damageDirection, damage, damageType);
             _targetActor.ApplyDamage(info);
+        }
 
-            _targetActor.GetComponent<Stunable>()?.Stun(stunTime);
+        if (decal)
+        {
+            LayerMask mask = LayerMask.GetMask("Default");
+            Ray ray = new Ray(owner.eyesPosition, owner.transform.forward);
+            RaycastHit hit;
+
+            if (Physics.Raycast(ray, out hit, attackRadius, mask))
+            {
+                Quaternion rotation = Quaternion.LookRotation(-hit.normal);
+                Instantiate(decal, hit.point + hit.normal * 0.1f, rotation);
+            }
         }
 
         rightAttack = !rightAttack;

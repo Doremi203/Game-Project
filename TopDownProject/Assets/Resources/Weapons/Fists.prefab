@@ -49,7 +49,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   displayName: Fisting
   bonusAimDistance: 0
-  weaponType: 0
+  weaponType: 1
   animationType: 3
   npcSettings:
     AttackDistance: 1.35
@@ -76,7 +76,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb042a16cd655dc46bbf4add97d0c099, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cooldown: 0.4
+  cooldown: 0.3
 --- !u!114 &-7785049871338195605
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -95,11 +95,11 @@ MonoBehaviour:
   damage: 1000
   damageType: 1
   rigidbodyPushForse: 100
-  attackDelay: 0.07
+  attackDelay: 0.06
   layerMask:
     serializedVersion: 2
     m_Bits: 1
-  stunTime: 1
+  decal: {fileID: 0}
 --- !u!54 &1707895415305524216
 Rigidbody:
   m_ObjectHideFlags: 0

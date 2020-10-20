@@ -3967,7 +3967,6 @@ GameObject:
   - component: {fileID: 8533894057343606874}
   - component: {fileID: 1179782429065987534}
   - component: {fileID: 4578822418125280456}
-  - component: {fileID: 4307273425184554677}
   m_Layer: 11
   m_Name: Enemy_Default
   m_TagString: Untagged
@@ -4071,7 +4070,7 @@ MonoBehaviour:
         m_CallState: 2
   noDelayRotation: 0
   rotationSpeed: 450
-  eyesOffset: {x: 0, y: 0.75, z: 0}
+  eyesOffset: {x: 0, y: 0.55, z: 0}
   shouldDestroy: 0
   destroyDelay: 0
   team: {fileID: 11400000, guid: ae712937a776a6f4f811e4e8676d1419, type: 2}
@@ -4117,8 +4116,10 @@ MonoBehaviour:
   absoluteVisionRange: 3.5
   targetLostRange: 40
   LastSoundEventPosition: {x: 0, y: 0, z: 0}
-  reactionTime: 0.4
+  reactionTime: 0.6
   AIType: 0
+  defaultSpeed: 3.75
+  chasingSpeed: 5
 --- !u!114 &1338462332507150253
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4212,79 +4213,6 @@ MonoBehaviour:
   headPrefab: {fileID: 5869321520632451850, guid: 9d8761db0295e4f48803d4fa0b6e4cfe,
     type: 3}
   headBone: {fileID: 2578115142689022530}
---- !u!114 &4307273425184554677
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7750810099474233598}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ed5bd50bc8c34284b978871f10973207, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  StunnedEvent:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 5698660024320438996}
-        m_MethodName: set_enabled
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 7750810099474233590}
-        m_MethodName: set_isStopped
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
-        m_CallState: 2
-      - m_Target: {fileID: 7750810099474233594}
-        m_MethodName: Drop
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
-        m_CallState: 2
-  UnstunnedEvent:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 5698660024320438996}
-        m_MethodName: set_enabled
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
-        m_CallState: 2
-      - m_Target: {fileID: 7750810099474233590}
-        m_MethodName: set_isStopped
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!1 &7875524271442890258
 GameObject:
   m_ObjectHideFlags: 0

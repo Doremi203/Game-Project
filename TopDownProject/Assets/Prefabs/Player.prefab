@@ -393,7 +393,7 @@ MonoBehaviour:
         m_CallState: 2
   noDelayRotation: 1
   rotationSpeed: 999
-  eyesOffset: {x: 0, y: 0.75, z: 0}
+  eyesOffset: {x: 0, y: 0.55, z: 0}
   shouldDestroy: 0
   destroyDelay: 1
   team: {fileID: 11400000, guid: d29a5ea4e91d4b54f866f89571407510, type: 2}
@@ -431,7 +431,7 @@ MonoBehaviour:
   cooldown: 0.5
   startShurikensAmount: 3
   throwPower: 800
-  shurikenPrefab: {fileID: 6444695937657245857, guid: 5c4c717e0086d134da71a07877d53749,
+  shurikenPrefab: {fileID: -8063682387199288355, guid: 5c4c717e0086d134da71a07877d53749,
     type: 3}
 --- !u!114 &8814509870093988558
 MonoBehaviour:
@@ -5006,7 +5006,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8814509871543415587}
   m_LocalRotation: {x: 0.7071068, y: -0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: -6, y: 9.5, z: 4}
+  m_LocalPosition: {x: -6, y: 9.5, z: 4.58}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 8814509870161149543}

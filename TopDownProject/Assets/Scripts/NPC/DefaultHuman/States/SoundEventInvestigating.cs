@@ -5,25 +5,30 @@ using UnityEngine;
 using UnityEngine.AI;
 using AdvancedAI;
 
-public class SoundInvestigating : IState
+public class SoundEventInvestigating : IState
 {
 
     public event Action OnIvestigatingOver;
 
+    private NPC_HumanAI ai;
     private Actor npc;
     private NavMeshAgent agent;
-    private NPC_HumanAI ai;
     private bool isOver;
+    private Vector3 lastSoundEventPosition;
 
-    public SoundInvestigating(Actor npc, NavMeshAgent agent, NPC_HumanAI ai)
+    public SoundEventInvestigating(NPC_HumanAI ai, Actor npc, NavMeshAgent agent)
     {
+        this.ai = ai;
         this.npc = npc;
         this.agent = agent;
-        this.ai = ai;
     }
+
+    // Test
+    public void SetLastSoundEventPosition(Vector3 position) => lastSoundEventPosition = position;
 
     public void OnEnter()
     {
+        agent.speed = ai.ChasingSpeed;
         agent.ResetPath();
         agent.stoppingDistance = UnityEngine.Random.Range(0.25f, 1f);
         isOver = false;

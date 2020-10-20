@@ -306,7 +306,8 @@ GameObject:
   - component: {fileID: 6444695937657245859}
   - component: {fileID: 6444695937657245858}
   - component: {fileID: 6444695937657245884}
-  - component: {fileID: 6444695937657245857}
+  - component: {fileID: -8063682387199288355}
+  - component: {fileID: 4905031682604814537}
   m_Layer: 9
   m_Name: Shuriken
   m_TagString: Untagged
@@ -358,7 +359,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.2, y: 0.05, z: 0.2}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &6444695937657245857
+--- !u!114 &-8063682387199288355
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -367,7 +368,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 6444695937657245856}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e75260fd5a78e074b8f544c8b9afa5d5, type: 3}
+  m_Script: {fileID: 11500000, guid: 92e0f0f221d2df349a87d05a8800ce73, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   visuals: {fileID: 6444695937703864782}
@@ -377,6 +378,31 @@ MonoBehaviour:
   spawnParticlesOnHit: 0
   spawnDecailsOnHit: 0
   damageType: 1
+  isAbleToPenetrate: 0
+  maxPenetrationDistance: 0
+  penetrationLayerMask:
+    serializedVersion: 2
+    m_Bits: 0
+  penetrationHitLayerMask:
+    serializedVersion: 2
+    m_Bits: 0
+  penetrationEffect: {fileID: 0}
+  destroyOnHit: 0
+  destroyByTime: 0
+  trigger: {fileID: 4905031682604814537}
+--- !u!135 &4905031682604814537
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6444695937657245856}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.3
+  m_Center: {x: 0, y: 0, z: -0.15}
 --- !u!1 &6444695937703864782
 GameObject:
   m_ObjectHideFlags: 0
