@@ -60,8 +60,8 @@ public class NPC_HumanAI : NPC_BaseAI, ISoundsListener
         var investigating = new Investigating(this, npc, agent);
         var soundInvestigating = new SoundEventInvestigating(this, npc, agent);
 
-        investigating.OnIvestigatingOver += Investigating_OnIvestigatingOver;
-        soundInvestigating.OnIvestigatingOver += SoundInvestigating_OnIvestigatingOver;
+        investigating.OnIvestigatingOver += () => stateMachine.SetTrigger("InvestigationEnded");
+        soundInvestigating.OnIvestigatingOver += () => stateMachine.SetTrigger("SoundInvestigationEnded");
 
         // Variables
 
@@ -167,10 +167,6 @@ public class NPC_HumanAI : NPC_BaseAI, ISoundsListener
         LastSoundEventPosition = eventPosition;
         stateMachine.SetTrigger("HeardSound");
     }
-
-    private void Investigating_OnIvestigatingOver() => stateMachine.SetTrigger("InvestigationEnded");
-
-    private void SoundInvestigating_OnIvestigatingOver() => stateMachine.SetTrigger("SoundInvestigationEnded");
 
     private void weaponHolder_OnWeaponChanged()
     {

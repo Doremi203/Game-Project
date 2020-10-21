@@ -9,7 +9,9 @@ namespace AdvancedAI
     public class StateMachine
     {
 
-        public IState CurrentState { get; private set; }
+        public IState CurrentState => currentState;
+
+        private IState currentState;
 
         // Values
         private Dictionary<string, float> floatParameters = new Dictionary<string, float>();
@@ -23,17 +25,17 @@ namespace AdvancedAI
 
         public void Tick()
         {
-            var transition = FindTransition();
-            if (transition != null) SetState(transition.To);
-            CurrentState?.Tick();
+            if (FindTransition(out var transition))
+                SetState(transition.To);
+            currentState?.Tick();
         }
 
         public void SetState(IState state)
         {
-            if (state == CurrentState) return;
-            CurrentState?.OnExit();
-            CurrentState = state;
-            CurrentState.OnEnter();
+            if (state == currentState) return;
+            currentState?.OnExit();
+            currentState = state;
+            currentState.OnEnter();
             // Reset Triggers
             foreach (var key in triggerParameters.Keys.ToList())
                 triggerParameters[key] = false;
@@ -126,16 +128,31 @@ namespace AdvancedAI
             globalTransitions.Add(new Transition(to, conditions));
         }
 
-        private Transition FindTransition()
+        private bool FindTransition(out Transition transition)
         {
             foreach (var item in globalTransitions)
-                if (item.ShouldTransist(this)) return item;
-            if (transitions.ContainsKey(CurrentState.GetType()))
             {
-                foreach (var item in transitions[CurrentState.GetType()])
-                    if (item.ShouldTransist(this)) return item;
+                if (item.ShouldTransist(this))
+                {
+                    transition = item;
+                    return true;
+                }
             }
-            return null;
+
+            if (transitions.ContainsKey(currentState.GetType()))
+            {
+                foreach (var item in transitions[currentState.GetType()])
+                {
+                    if (item.ShouldTransist(this))
+                    {
+                        transition = item;
+                        return true;
+                    }
+                }
+            }
+
+            transition = default;
+            return false;
         }
 
     }

@@ -25,15 +25,12 @@ public abstract class NPC_BaseAI : MonoBehaviour
     protected virtual void Awake()
     {
         npc = GetComponent<Actor>();
-        npc.DeathEvent.AddListener(NpcDeath);
+        npc.DeathEvent.AddListener(() => Destroy(this));
     }
 
     protected virtual void Update() => stateMachine.Tick();
 
-    public float DistanceToPlayer()
-    {
-        return GameUtilities.GetDistance2D(npc.transform.position, Player.Instance.transform.position);
-    }
+    public float DistanceToPlayer() => GameUtilities.GetDistance2D(npc.transform.position, Player.Instance.transform.position);
 
     public float AngleToPlayer()
     {
@@ -55,8 +52,6 @@ public abstract class NPC_BaseAI : MonoBehaviour
 
         return !Physics.Linecast(npc.eyesPosition, player.Actor.eyesPosition, detectionMask);
     }
-
-    private void NpcDeath() => Destroy(this);
 
 #if UNITY_EDITOR
 

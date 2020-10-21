@@ -1,7 +1,7 @@
 ﻿namespace AdvancedAI
 {
 
-    public class Transition
+    public struct Transition
     {
 
         public Transition(IState to, Condition[] conditions)
