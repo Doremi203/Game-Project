@@ -9,9 +9,7 @@ namespace AdvancedAI
     public class StateMachine
     {
 
-        public IState CurrentState => currentState;
-
-        private IState currentState;
+        public IState CurrentState { get; private set; }
 
         // Values
         private Dictionary<string, float> floatParameters = new Dictionary<string, float>();
@@ -27,15 +25,15 @@ namespace AdvancedAI
         {
             if (FindTransition(out var transition))
                 SetState(transition.To);
-            currentState?.Tick();
+            CurrentState?.Tick();
         }
 
         public void SetState(IState state)
         {
-            if (state == currentState) return;
-            currentState?.OnExit();
-            currentState = state;
-            currentState.OnEnter();
+            if (state == CurrentState) return;
+            CurrentState?.OnExit();
+            CurrentState = state;
+            CurrentState.OnEnter();
             // Reset Triggers
             foreach (var key in triggerParameters.Keys.ToList())
                 triggerParameters[key] = false;
@@ -139,9 +137,9 @@ namespace AdvancedAI
                 }
             }
 
-            if (transitions.ContainsKey(currentState.GetType()))
+            if (transitions.ContainsKey(CurrentState.GetType()))
             {
-                foreach (var item in transitions[currentState.GetType()])
+                foreach (var item in transitions[CurrentState.GetType()])
                 {
                     if (item.ShouldTransist(this))
                     {

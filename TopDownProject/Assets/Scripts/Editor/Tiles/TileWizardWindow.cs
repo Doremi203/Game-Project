@@ -24,74 +24,8 @@ public class TileWizardWindow : EditorWindow
 
     private void OnGUI()
     {
-        EditorGUILayout.BeginHorizontal();
-
-        EditorGUILayout.BeginVertical(GUILayout.MinWidth(250f));
-
+        selectedMaterial = (MaterialPresenter)EditorGUILayout.ObjectField(selectedMaterial, typeof(MaterialPresenter), false, GUILayout.MinHeight(30f));
         DrawTilesSelector();
-
-        EditorGUILayout.EndVertical();
-
-        EditorGUILayout.BeginVertical();
-
-        DrawTileInspector();
-
-        EditorGUILayout.EndVertical();
-
-        EditorGUILayout.EndHorizontal();
-    }
-
-    private void DrawTileInspector()
-    {
-        if (selectedTile == false) return;
-
-        GUI.contentColor = Color.white;
-
-        string _name = EditorGUILayout.DelayedTextField("Tile Name", selectedTile.name);
-
-        if (_name != selectedTile.name)
-        {
-            AssetDatabase.RenameAsset(SavePath + selectedTile.name + ".asset", _name);
-        }
-
-        EditorGUILayout.Space();
-
-        GUILayout.Label("Create new variation:");
-
-        GameObject _newVariation = (GameObject)EditorGUILayout.ObjectField(null, typeof(GameObject), false, GUILayout.Height(50));
-        if (_newVariation != null) selectedTile.Variations.Add(_newVariation);
-
-        EditorGUILayout.Space();
-
-        for (int i = 0; i < selectedTile.Variations.Count; i++)
-        {
-            EditorGUILayout.BeginHorizontal();
-
-            GameObject _gameObject = (GameObject)EditorGUILayout.ObjectField(selectedTile.Variations[i], typeof(GameObject), false);
-            if(_gameObject != selectedTile.Variations[i])
-            {
-                selectedTile.Variations[i] = _gameObject;
-                EditorUtility.SetDirty(selectedTile);
-            }
-            if (GUILayout.Button("Remove")) selectedTile.Variations.Remove(selectedTile.Variations[i]);
-
-            EditorGUILayout.EndHorizontal();
-        }
-
-        EditorGUILayout.Space();
-
-        if (IsReady(selectedTile))
-        {
-            if (GUILayout.Button("Instantiate tile", GUILayout.MinHeight(30f))) InstantiateTile(selectedTile);
-        }
-        else
-        {
-            GUI.contentColor = Color.yellow;
-            GUILayout.Label("Every tile should have at least 1 variation.");
-            GUI.contentColor = Color.white;
-        }
-
-       selectedMaterial = (MaterialPresenter)EditorGUILayout.ObjectField(selectedMaterial, typeof(MaterialPresenter), false);
     }
 
     private void DrawTilesSelector()
@@ -118,7 +52,11 @@ public class TileWizardWindow : EditorWindow
 
             if (selectedTile == tiles[i]) GUI.contentColor = Color.green;
 
-            if (GUILayout.Button(tiles[i].name, GUILayout.MinHeight(30f))) selectedTile = tiles[i];
+            if (GUILayout.Button(tiles[i].name, GUILayout.MinHeight(30f)))
+            {
+                selectedTile = tiles[i];
+                Selection.activeObject = tiles[i];              
+            }
 
             GUI.contentColor = Color.white;
 

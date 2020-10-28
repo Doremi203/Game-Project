@@ -17,13 +17,9 @@ public class ProjectileBase : MonoBehaviour
     [SerializeField] private bool spawnParticlesOnHit = true;
     [SerializeField] private bool spawnDecailsOnHit = true;
     [SerializeField] private DamageType damageType;
-    [SerializeField] private bool isAbleToPenetrate;
-    [SerializeField] private float maxPenetrationDistance;
-    [SerializeField] private LayerMask penetrationLayerMask;
-    [SerializeField] private LayerMask penetrationHitLayerMask;
-    [SerializeField] private LineRenderer penetrationEffect;
     [SerializeField] private bool destroyOnHit = true;
     [SerializeField] private bool destroyByTime = true;
+    [SerializeField] private DestroyBehaviour destroyBehaviour;
 
     private float activationTime;
 
@@ -38,7 +34,8 @@ public class ProjectileBase : MonoBehaviour
         this.team = owner.Team;
         this.damage = damage;
 
-        Physics.IgnoreCollision(Hitbox, owner.Hitbox);
+        foreach (var item in owner.Hitboxes)
+            Physics.IgnoreCollision(Hitbox, item.Collider);
 
         if (destroyByTime) Destroy(this.gameObject, 2f);
     }
@@ -47,14 +44,11 @@ public class ProjectileBase : MonoBehaviour
     {
         DamageInfo info = new DamageInfo(owner, this.gameObject, this.transform.forward, damage, damageType);
 
-        Actor _actor = collision.transform.GetComponent<Actor>();
+        IDamageable damageable = collision.transform.GetComponent<IDamageable>();
+        bool isDamageSet = false;
 
-        if (_actor)
-        {
-            if (_actor.Team != team) _actor.ApplyDamage(info);
-        }
-        else
-            collision.transform.GetComponent<IDamageable>()?.ApplyDamage(info);
+        if (damageable != null)
+            isDamageSet = damageable.ApplyDamage(info);
 
         Vector3 _hitPosition = collision.GetContact(0).point;
         Quaternion _effectRotation = Quaternion.LookRotation(-transform.forward, Vector3.up);
@@ -79,40 +73,23 @@ public class ProjectileBase : MonoBehaviour
             _decalProjector = Instantiate(_surfaceType.HitDecalProjector.gameObject, _hitPosition, _decalRotation);
         }
 
-        if (isAbleToPenetrate && false)
-        {
-            Ray firstRay = new Ray(transform.position + transform.forward * 0.1f, this.transform.forward);
-            RaycastHit firstHit;
-            float distance = maxPenetrationDistance;
-            if (Physics.Raycast(firstRay, out firstHit, maxPenetrationDistance, penetrationLayerMask))
-            {
-                distance = firstHit.distance;
-            }
-
-            Ray ray = new Ray(this.transform.position + transform.forward * distance, -transform.forward);
-            RaycastHit hit;
-
-            if (Physics.Raycast(ray, out hit, maxPenetrationDistance, penetrationLayerMask))
-            {
-                Debug.DrawRay(ray.origin, ray.direction * hit.distance, Color.green, 4f);
-                Ray finalRay = new Ray(hit.point, transform.forward);
-                RaycastHit finalHit;
-                if (Physics.Raycast(finalRay, out finalHit, hit.distance, penetrationHitLayerMask))
-                {
-                    Actor actor = finalHit.transform.GetComponent<Actor>();
-                    if (actor)
-                    {
-                        if (actor.Team != team) actor.ApplyDamage(info);
-                    }
-                    else
-                        finalHit.transform.GetComponent<IDamageable>()?.ApplyDamage(info);
-                }
-            }
-        }
-
         OnHit(collision);
 
-        if(destroyOnHit) Destroy(this.gameObject);
+        switch (destroyBehaviour)
+        {
+            case DestroyBehaviour.DontDestroy:
+                break;
+            case DestroyBehaviour.OnHit:
+                Destroy(this.gameObject);
+                break;
+            case DestroyBehaviour.OnDamageSet:
+                if(isDamageSet) Destroy(this.gameObject);
+                break;
+            default:
+                break;
+        }
+
+       // if(destroyOnHit) Destroy(this.gameObject);
     }
 
     protected virtual void Awake()
@@ -134,5 +111,12 @@ public class ProjectileBase : MonoBehaviour
     }
 
     protected virtual void OnHit(Collision collision) { }
+
+    private enum DestroyBehaviour
+    {
+        DontDestroy,
+        OnHit,
+        OnDamageSet
+    }
 
 }

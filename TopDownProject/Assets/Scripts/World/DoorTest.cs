@@ -65,7 +65,7 @@ public class DoorTest : MonoBehaviour, IDamageable
     {
         if (isDead) return;
         if (!isOpened) return;
-        doorObject.localRotation = Quaternion.Lerp(doorObject.localRotation, Quaternion.Euler(new Vector3(0, targetRotation, 0)), 10f * Time.deltaTime);
+        doorObject.localRotation = Quaternion.Lerp(doorObject.localRotation, Quaternion.Euler(new Vector3(0, targetRotation, 0)), 20f * Time.deltaTime);
     }
 
     private void Death()

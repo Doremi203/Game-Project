@@ -17,8 +17,8 @@ public class NPC_HumanAI : NPC_BaseAI, ISoundsListener
     [HideInInspector] public Vector3 LastSoundEventPosition;
 
     [Header("Human")]
+    [SerializeField] private AIType AIType; 
     [SerializeField] private float reactionTime;
-    [SerializeField] private AIType AIType;
     [SerializeField] private float defaultSpeed = 3.75f;
     [SerializeField] private float chasingSpeed = 4.75f;
 
@@ -162,6 +162,7 @@ public class NPC_HumanAI : NPC_BaseAI, ISoundsListener
 
     public void ApplySoundEvent(Actor causer, Vector3 eventPosition)
     {
+        if (AIType == AIType.Default) return;
         if (causer == this) return;
         if (causer.Team == npc.Team) return;
         LastSoundEventPosition = eventPosition;

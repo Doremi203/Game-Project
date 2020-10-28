@@ -6,7 +6,6 @@ using UnityEngine.Events;
 
 [SelectionBase]
 [RequireComponent(typeof(HealthComponent))]
-[RequireComponent(typeof(Collider))]
 public class Actor : MonoBehaviour, IDamageable
 {
 
@@ -20,7 +19,7 @@ public class Actor : MonoBehaviour, IDamageable
     public Team Team => team;
     public float RotationSpeed => rotationSpeed;
     public bool IsDead { get; private set; }
-    public Collider Hitbox { get; private set; }
+    public Hitbox[] Hitboxes { get; private set; }
     public DamageInfo LastDamageInfo { get; private set; }
 
     [Header("Actor Settings")]
@@ -46,7 +45,7 @@ public class Actor : MonoBehaviour, IDamageable
     protected virtual void Awake()
     {
         healthComponent = GetComponent<HealthComponent>();
-        Hitbox = GetComponent<Collider>();
+        Hitboxes = GetComponentsInChildren<Hitbox>(true);
     }
 
     protected virtual void Update()
@@ -62,7 +61,6 @@ public class Actor : MonoBehaviour, IDamageable
     protected virtual void Death()
     {
         IsDead = true;
-        Hitbox.enabled = false;
         OnDeath?.Invoke(LastDamageInfo);
         DeathEvent.Invoke();
         if(shouldDestroy) Destroy(this.gameObject, destroyDelay);

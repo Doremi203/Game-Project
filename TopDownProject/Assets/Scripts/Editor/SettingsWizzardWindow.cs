@@ -4,11 +4,11 @@ using UnityEngine;
 using UnityEditor;
 using System;
 
-public class SettingsWizzard : EditorWindow
+public class SettingsWizzardWindow : EditorWindow
 {
 
     [MenuItem("Window/Settings Wizzard")]
-    public static void ShowWindow() => GetWindow<SettingsWizzard>("Settings Wizzard");
+    public static void ShowWindow() => GetWindow<SettingsWizzardWindow>("Settings Wizzard");
 
     private const string SavePath = "Assets/Resources/Settings/Groups/";
 
@@ -76,7 +76,7 @@ public class SettingsWizzard : EditorWindow
         GUILayout.Space(10f);
 
         string newName = GUILayout.TextArea(selectedGroup.DisplayName);
-        if(newName != selectedGroup.DisplayName)
+        if (newName != selectedGroup.DisplayName)
         {
             selectedGroup.DisplayName = newName;
             EditorUtility.SetDirty(selectedGroup);
@@ -86,29 +86,13 @@ public class SettingsWizzard : EditorWindow
 
         foreach (var item in selectedGroup.parameters)
         {
-            GUILayout.Label(item.DisplayName);
-            DisplayParameter(item);
-            GUILayout.Space(10f);
+            Color color = GUI.contentColor;
+            if (item == Selection.activeObject) GUI.contentColor = Color.green;
+
+            if (GUILayout.Button(item.DisplayName, GUILayout.MinHeight(30f))) Selection.activeObject = item;
+
+            GUI.contentColor = color;
         }
-    }
-
-    private void DisplayParameter(BaseParameter item)
-    {
-        SerializedObject serializedObject = new SerializedObject(item);
-        SerializedProperty serializedProperty = serializedObject.FindProperty("defaultValue");
-
-        if (item is BoolParameter)
-        {
-            bool b = GUILayout.Toggle(serializedProperty.boolValue, "Default value");
-            if (b != serializedProperty.boolValue)
-            {
-                serializedProperty.boolValue = b;
-                serializedObject.ApplyModifiedProperties();
-            }
-            return;
-        }
-
-        GUILayout.Label("The type is uknown");
     }
 
     private void RefreshGroups() => groups = ParametersGroup.GetGroups();
@@ -120,6 +104,7 @@ public class SettingsWizzard : EditorWindow
         AssetDatabase.CreateAsset(group, SavePath + "newGroup" + ".asset");
         selectedGroup = group;
     }
+
     private void DeleteGroup(ParametersGroup selectedGroup)
     {
         if (EditorUtility.DisplayDialog("Delete Group", "Are you sure? The parameters won't be deleted", "Yes", "No"))

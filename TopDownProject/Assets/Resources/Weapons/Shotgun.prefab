@@ -1230,7 +1230,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e63e8ff682f41bb49b9000db48693ba7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startingAmmoMin: 2
+  startingAmmoMin: 4
   startingAmmoMax: 6
 --- !u!114 &6261875302357427692
 MonoBehaviour:
@@ -1244,7 +1244,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dd0709bbd56472745998d1fb382a87e0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bulletSpreadingMultiplier: 0.125
+  spreadMultiplier: 0.1
+  verticalSpreadMultiplier: 0.05
   bulletsCount: 8
   bulletsSpeed: 25
   bulletPrefab: {fileID: 6444695937657245857, guid: a46be6a792e635446b920a87e1c6faec,
