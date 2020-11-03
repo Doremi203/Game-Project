@@ -89,7 +89,6 @@ public class ProjectileBase : MonoBehaviour
                 break;
         }
 
-       // if(destroyOnHit) Destroy(this.gameObject);
     }
 
     protected virtual void Awake()

@@ -911,6 +911,7 @@ GameObject:
   - component: {fileID: -5912516359302260384}
   - component: {fileID: 3132832422611503641}
   - component: {fileID: 5593384568368747109}
+  - component: {fileID: 4060291535952828045}
   - component: {fileID: 8363864089779841205}
   - component: {fileID: 6390358961332711615}
   - component: {fileID: 970181128307725726}
@@ -1002,8 +1003,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dd0709bbd56472745998d1fb382a87e0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spreadMultiplier: 0
-  verticalSpreadMultiplier: 0
+  spreadMultiplier: 0.02
+  verticalSpreadMultiplier: 0.005
   bulletsCount: 1
   bulletsSpeed: 45
   bulletPrefab: {fileID: 6444695937657245857, guid: a46be6a792e635446b920a87e1c6faec,
@@ -1064,6 +1065,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   minPitch: 1
   maxPitch: 0.9
+--- !u!114 &4060291535952828045
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8441526025296156498}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7cc00f2b4e940dd4abeab1235491f2d7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  intensity: 1
+  time: 0.15
 --- !u!82 &8363864089779841205
 AudioSource:
   m_ObjectHideFlags: 0

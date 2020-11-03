@@ -3138,7 +3138,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &3965011791802407533
 Transform:
   m_ObjectHideFlags: 0
@@ -4104,7 +4104,6 @@ GameObject:
   - component: {fileID: 5698660024320438996}
   - component: {fileID: 7750810099474233594}
   - component: {fileID: 7750810099474233597}
-  - component: {fileID: 1338462332507150253}
   - component: {fileID: 6128230765568894497}
   - component: {fileID: 8533894057343606874}
   - component: {fileID: 1179782429065987534}
@@ -4212,17 +4211,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 4177041264929981646}
-        m_MethodName: PlaySound
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
   noDelayRotation: 0
   rotationSpeed: 450
   eyesOffset: {x: 0, y: 0.55, z: 0}
@@ -4272,22 +4260,9 @@ MonoBehaviour:
   targetLostRange: 40
   LastSoundEventPosition: {x: 0, y: 0, z: 0}
   AIType: 0
-  reactionTime: 0.15
+  reactionTime: 0.6
   defaultSpeed: 3.75
   chasingSpeed: 5
---- !u!114 &1338462332507150253
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7750810099474233598}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6b791bf9949a16b47ab22da844f826e3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  SurfaceType: {fileID: 11400000, guid: b262275fdf7a9ad4892e1e81b3d5865b, type: 2}
 --- !u!114 &6128230765568894497
 MonoBehaviour:
   m_ObjectHideFlags: 0

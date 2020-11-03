@@ -1139,6 +1139,7 @@ GameObject:
   - component: {fileID: 6261875302357427692}
   - component: {fileID: 1356035330278172205}
   - component: {fileID: 6226932525090208399}
+  - component: {fileID: -1025526250299821602}
   - component: {fileID: 7141934738785977745}
   - component: {fileID: 7488411153954620646}
   - component: {fileID: 6742688095687498139}
@@ -1278,6 +1279,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   muzzleFlash: {fileID: 4640147724880802643}
   liveTime: 0.05
+--- !u!114 &-1025526250299821602
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8441526025296156498}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7cc00f2b4e940dd4abeab1235491f2d7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  intensity: 2
+  time: 0.2
 --- !u!82 &7141934738785977745
 AudioSource:
   m_ObjectHideFlags: 0

@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 5522486085103851796}
   - component: {fileID: -2561220865688827608}
   - component: {fileID: -7785049871338195605}
+  - component: {fileID: 5411267048134522787}
   - component: {fileID: 1707895415305524216}
   - component: {fileID: 9140354665612466534}
   m_Layer: 12
@@ -100,6 +101,20 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 1
   decal: {fileID: 0}
+--- !u!114 &5411267048134522787
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7618725439625728130}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7cc00f2b4e940dd4abeab1235491f2d7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  intensity: 2.5
+  time: 1
 --- !u!54 &1707895415305524216
 Rigidbody:
   m_ObjectHideFlags: 0

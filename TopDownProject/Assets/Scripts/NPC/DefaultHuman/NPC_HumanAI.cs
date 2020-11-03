@@ -162,7 +162,7 @@ public class NPC_HumanAI : NPC_BaseAI, ISoundsListener
 
     public void ApplySoundEvent(Actor causer, Vector3 eventPosition)
     {
-        if (AIType == AIType.Default) return;
+        //if (AIType == AIType.Default) return;
         if (causer == this) return;
         if (causer.Team == npc.Team) return;
         LastSoundEventPosition = eventPosition;
