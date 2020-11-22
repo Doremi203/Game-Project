@@ -1245,10 +1245,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dd0709bbd56472745998d1fb382a87e0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  firstBulletIgnoreSpread: 0
   spreadMultiplier: 0.1
   verticalSpreadMultiplier: 0.05
   bulletsCount: 8
-  bulletsSpeed: 25
+  minBulletSpeed: 35
+  bulletsSpeed: 45
   bulletPrefab: {fileID: 6444695937657245857, guid: a46be6a792e635446b920a87e1c6faec,
     type: 3}
   damage: 1000

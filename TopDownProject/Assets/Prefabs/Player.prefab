@@ -3226,6 +3226,7 @@ GameObject:
   - component: {fileID: 8814509870835152359}
   - component: {fileID: 8814509870835152360}
   - component: {fileID: 8814509870835152358}
+  - component: {fileID: 904462843}
   m_Layer: 0
   m_Name: CM vcam
   m_TagString: Untagged
@@ -3305,6 +3306,18 @@ MonoBehaviour:
   m_Offset: {x: 0, y: 0, z: 0}
   m_ApplyAfter: 1
   m_PreserveComposition: 0
+--- !u!114 &904462843
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8814509870835152361}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ad9305808b24be74c9a0093b791b6537, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8814509870839440902
 GameObject:
   m_ObjectHideFlags: 0
@@ -3654,6 +3667,7 @@ GameObject:
   - component: {fileID: 8814509870965165256}
   - component: {fileID: 8814509870965165253}
   - component: {fileID: 8814509870965165255}
+  - component: {fileID: 228055393}
   m_Layer: 0
   m_Name: cm
   m_TagString: Untagged
@@ -3709,6 +3723,23 @@ MonoBehaviour:
   m_YawDamping: 0
   m_RollDamping: 0
   m_AngularDamping: 0
+--- !u!114 &228055393
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8814509870965165257}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 68bb026fafb42b14791938953eaace77, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_NoiseProfile: {fileID: 11400000, guid: 69ce8388f6785dd4c8c39915efece2f4, type: 2}
+  m_PivotOffset: {x: 0, y: 0, z: 0}
+  m_AmplitudeGain: 1
+  m_FrequencyGain: 1
+  mNoiseOffsets: {x: 0, y: 0, z: 0}
 --- !u!1 &8814509870990616207
 GameObject:
   m_ObjectHideFlags: 0
@@ -5217,8 +5248,8 @@ MonoBehaviour:
       enableFptlForForwardOpaque: 0
       enableBigTilePrepass: 0
       isFptlEnabled: 0
-  clearColorMode: 0
-  backgroundColorHDR: {r: 0, g: 0, b: 0, a: 0}
+  clearColorMode: 1
+  backgroundColorHDR: {r: 11.984314, g: 6.7764707, b: 6.6509805, a: 0}
   clearDepth: 1
   volumeLayerMask:
     serializedVersion: 2

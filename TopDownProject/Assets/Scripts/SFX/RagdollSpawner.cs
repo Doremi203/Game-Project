@@ -56,7 +56,7 @@ public class RagdollSpawner : MonoBehaviour
 
         foreach (var item in ragdollModel.GetComponentsInChildren<Rigidbody>())
         {
-            item.velocity = lastVelocity;
+            item.velocity = lastVelocity + owner.LastDamageInfo.Direction * 6f;
         }
 
         Destroy(actualModel);

@@ -1711,8 +1711,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dd0709bbd56472745998d1fb382a87e0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bulletSpreadingMultiplier: 0.075
+  firstBulletIgnoreSpread: 1
+  spreadMultiplier: 0
+  verticalSpreadMultiplier: 0
   bulletsCount: 1
+  minBulletSpeed: 30
   bulletsSpeed: 35
   bulletPrefab: {fileID: 6444695937657245857, guid: a46be6a792e635446b920a87e1c6faec,
     type: 3}

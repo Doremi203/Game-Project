@@ -8,11 +8,25 @@ public class Chilling : IState
 {
 
     private NavMeshAgent agent;
+    private Animator animator;
 
-    public Chilling(NavMeshAgent agent) => this.agent = agent;
+    public Chilling(NavMeshAgent agent, Animator animator)
+    {
+        this.agent = agent;
+        this.animator = animator;
+    }
 
-    public void OnEnter() => agent.ResetPath();
-    public void OnExit() { }
+    public void OnEnter()
+    {
+        agent.ResetPath();
+        animator.SetBool("chill", true);
+    }
+
+    public void OnExit()
+    {
+        animator.SetBool("chill", false);
+    }
+
     public void Tick() { }
 
 }

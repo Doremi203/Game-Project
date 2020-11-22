@@ -7,27 +7,40 @@ public class WeaponProjectilesLauncher : WeaponComponent
 
     public float BulletSpeed => bulletsSpeed;
 
+    [SerializeField] private bool firstBulletIgnoreSpread;
     [SerializeField] private float spreadMultiplier;
     [SerializeField] private float verticalSpreadMultiplier;
     [SerializeField] private int bulletsCount = 1;
+    [SerializeField] private float minBulletSpeed;
     [SerializeField] private float bulletsSpeed = 1000f;
     [SerializeField] private ProjectileBase bulletPrefab;
     [SerializeField] private float damage;
 
+    private float nextAccurateBulletTime;
+
     public override void OnShoot()
     {
-        Actor _owner = weapon.Owner;
+        Actor owner = weapon.Owner;
+
         for (int i = 0; i < bulletsCount; i++)
         {
-            Vector3 _spreadOffset = _owner.transform.right * Random.Range(-spreadMultiplier, spreadMultiplier);
-            Vector3 _verticalOffset = _owner.transform.up * Random.Range(-verticalSpreadMultiplier, verticalSpreadMultiplier);
-            Vector3 _force = (_owner.transform.forward + _spreadOffset + _verticalOffset) * bulletsSpeed;
+            Vector3 spreadOffset = (firstBulletIgnoreSpread && Time.time >= nextAccurateBulletTime) ?
+                Vector3.zero :
+                owner.transform.right * Random.Range(-spreadMultiplier, spreadMultiplier);
 
-            ProjectileBase _newBullet = Instantiate(bulletPrefab, _owner.eyesPosition, _owner.transform.rotation);
-            _newBullet.Setup(_owner, damage);
+            Vector3 verticalOffset = (firstBulletIgnoreSpread && Time.time >= nextAccurateBulletTime) ?
+                Vector3.zero :
+                owner.transform.up * Random.Range(-verticalSpreadMultiplier, verticalSpreadMultiplier);
 
-            _newBullet.Rigidbody.AddForce(_force, ForceMode.VelocityChange);
+            Vector3 force = (owner.transform.forward + spreadOffset + verticalOffset) * Random.Range(minBulletSpeed, bulletsSpeed);
+
+            ProjectileBase newBullet = Instantiate(bulletPrefab, owner.eyesPosition, owner.transform.rotation);
+            newBullet.Setup(owner, damage);
+
+            newBullet.Rigidbody.AddForce(force, ForceMode.VelocityChange);
         }
+
+        nextAccurateBulletTime = Time.time + 0.2f;
     }
 
 }

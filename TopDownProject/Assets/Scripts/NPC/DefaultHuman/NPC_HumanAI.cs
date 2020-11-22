@@ -8,7 +8,7 @@ using AdvancedAI;
 
 [RequireComponent(typeof(NavMeshAgent))]
 [RequireComponent(typeof(WeaponHolder))]
-public class NPC_HumanAI : NPC_BaseAI, ISoundsListener
+public class NPC_HumanAI : HumanoidAI, ISoundsListener
 {
 
     public float DefaultSpeed => defaultSpeed;
@@ -21,6 +21,7 @@ public class NPC_HumanAI : NPC_BaseAI, ISoundsListener
     [SerializeField] private float reactionTime;
     [SerializeField] private float defaultSpeed = 3.75f;
     [SerializeField] private float chasingSpeed = 4.75f;
+    [SerializeField] private Animator animator;
 
     protected NavMeshAgent agent;
     protected WeaponHolder weaponHolder;
@@ -42,16 +43,16 @@ public class NPC_HumanAI : NPC_BaseAI, ISoundsListener
         switch (AIType)
         {
             case AIType.Default:
-                defaultState = new Chilling(agent);
+                defaultState = new Chilling(agent, animator);
                 break;
             case AIType.Patrolling:
                 defaultState = new Patrolling(this, npc, agent);
                 break;
             case AIType.Roaming:
-                defaultState = new Roaming(this, npc, agent);
+                defaultState = new Roaming(this, npc, agent, defaultSpeed);
                 break;
             default:
-                defaultState = new Chilling(agent);
+                defaultState = new Chilling(agent, animator);
                 break;
         }
 

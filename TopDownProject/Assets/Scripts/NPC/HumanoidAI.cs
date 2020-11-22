@@ -1,9 +1,8 @@
 ﻿using UnityEditor;
 using UnityEngine;
-using AdvancedAI;
+using UnityEngine.AI;
 
-[RequireComponent(typeof(Actor))]
-public abstract class NPC_BaseAI : MonoBehaviour
+public abstract class HumanoidAI : BaseAI
 {
 
     public float VisionAngle => visionAngle;
@@ -19,18 +18,10 @@ public abstract class NPC_BaseAI : MonoBehaviour
     [SerializeField] private float absoluteVisionRange;
     [SerializeField] private float targetLostRange;
 
-    protected Actor npc;
-    protected StateMachine stateMachine = new StateMachine();
-
-    protected virtual void Awake()
+    public float DistanceToPlayer()
     {
-        npc = GetComponent<Actor>();
-        npc.DeathEvent.AddListener(() => Destroy(this));
+        return GameUtilities.GetDistance2D(npc.transform.position, Player.Instance.transform.position);
     }
-
-    protected virtual void Update() => stateMachine.Tick();
-
-    public float DistanceToPlayer() => GameUtilities.GetDistance2D(npc.transform.position, Player.Instance.transform.position);
 
     public float AngleToPlayer()
     {
@@ -54,22 +45,6 @@ public abstract class NPC_BaseAI : MonoBehaviour
     }
 
 #if UNITY_EDITOR
-
-    private void OnDrawGizmos()
-    {
-        if (!Application.isPlaying) return;
-        if (stateMachine == null) return;
-
-        IState currentState = stateMachine.CurrentState;
-
-        if (currentState == null) return;
-
-        GUIStyle style = new GUIStyle();
-        style.normal.textColor = Color.red;
-        style.fontSize = 25;
-
-        Handles.Label(transform.position, currentState.ToString(), style);
-    }
 
     private void OnDrawGizmosSelected()
     {

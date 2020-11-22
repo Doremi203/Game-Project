@@ -9,6 +9,8 @@ using UnityEngine.Events;
 public class Actor : MonoBehaviour, IDamageable
 {
 
+    public static Action<Actor> ActorDied;
+
     [HideInInspector] public Quaternion desiredRotation;
 
     public Action<DamageInfo> OnDamageTaken;
@@ -21,6 +23,7 @@ public class Actor : MonoBehaviour, IDamageable
     public bool IsDead { get; private set; }
     public Hitbox[] Hitboxes { get; private set; }
     public DamageInfo LastDamageInfo { get; private set; }
+    public int CurrentHealth => currentHealth;
 
     [Header("Actor Settings")]
     [SerializeField] private bool noDelayRotation;
@@ -29,8 +32,10 @@ public class Actor : MonoBehaviour, IDamageable
     [SerializeField] private bool shouldDestroy;
     [SerializeField] private float destroyDelay = 1f;
     [SerializeField] private Team team;
+    [SerializeField] private int startHealth = 1000;
 
     private HealthComponent healthComponent;
+    protected int currentHealth;
 
     public virtual bool ApplyDamage(DamageInfo info)
     {
@@ -48,6 +53,11 @@ public class Actor : MonoBehaviour, IDamageable
         Hitboxes = GetComponentsInChildren<Hitbox>(true);
     }
 
+    protected virtual void Start()
+    {
+        currentHealth = startHealth;
+    }
+
     protected virtual void Update()
     {
         if (IsDead) return;
@@ -63,7 +73,8 @@ public class Actor : MonoBehaviour, IDamageable
         IsDead = true;
         OnDeath?.Invoke(LastDamageInfo);
         DeathEvent.Invoke();
-        if(shouldDestroy) Destroy(this.gameObject, destroyDelay);
+        ActorDied.Invoke(this);
+        if (shouldDestroy) Destroy(this.gameObject, destroyDelay);
     }
 
     protected void OnDrawGizmos()

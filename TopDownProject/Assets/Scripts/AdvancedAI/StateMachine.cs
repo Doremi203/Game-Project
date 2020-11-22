@@ -126,6 +126,16 @@ namespace AdvancedAI
             globalTransitions.Add(new Transition(to, conditions));
         }
 
+        public void DisplayDebugInformation()
+        {
+            GUILayout.Label(CurrentState.GetType().ToString());
+            foreach (var transition in transitions[CurrentState.GetType()])
+            {
+                GUI.contentColor = transition.ShouldTransist(this) ? Color.green : Color.white;
+                GUILayout.Label("To " + transition.To.GetType().ToString());
+            }
+        }
+
         private bool FindTransition(out Transition transition)
         {
             foreach (var item in globalTransitions)

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UIElements;
 
-[RequireComponent(typeof(PlayerController))]
+//[RequireComponent(typeof(PlayerController))]
 [RequireComponent(typeof(WeaponHolder))]
 [RequireComponent(typeof(Player))]
 [RequireComponent(typeof(AbilityShurikens))]
