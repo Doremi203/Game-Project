@@ -91,8 +91,8 @@ public class PlayerInput : MonoBehaviour
 
 		if (player.WeaponHolder.CurrentWeapon)
 		{
-			if (Input.GetKeyDown(shoot.GetValue())) weaponHolder.CurrentWeapon.Use(true);
-			if (Input.GetKeyUp(shoot.GetValue())) weaponHolder.CurrentWeapon.Use(false);
+			if (Input.GetKeyDown(shoot.GetValue())) weaponHolder.UseWeapon(true);
+			if (Input.GetKeyUp(shoot.GetValue())) weaponHolder.UseWeapon(false);
 		}
 
 		if (Input.GetKeyDown(pickupWeapon.GetValue())) player.TakeWeapon();

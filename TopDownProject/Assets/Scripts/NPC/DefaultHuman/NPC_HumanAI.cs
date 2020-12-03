@@ -18,13 +18,14 @@ public class NPC_HumanAI : NPC_BaseAI, ISoundsListener
 
     [Header("Human")]
     [SerializeField] private AIType AIType; 
-    [SerializeField] private float reactionTime;
+    [SerializeField] private float reactionDelay;
     [SerializeField] private float defaultSpeed = 3.75f;
     [SerializeField] private float chasingSpeed = 4.75f;
 
     protected NavMeshAgent agent;
     protected WeaponHolder weaponHolder;
-    protected float reactionDelayTime;
+    protected float timeSeeingPlayer;
+    protected bool isPlayerNoticed;
 
     protected override void Awake()
     {
@@ -151,11 +152,20 @@ public class NPC_HumanAI : NPC_BaseAI, ISoundsListener
         base.Update();
 
         if (CanSeePlayer())
-            reactionDelayTime += Time.deltaTime;
+        {
+            timeSeeingPlayer += Time.deltaTime;
+            if(timeSeeingPlayer >= reactionDelay)
+            {
+                isPlayerNoticed = true;
+            }
+        }
         else
-            reactionDelayTime = 0;
+        {
+            timeSeeingPlayer = 0;
+            isPlayerNoticed = false;
+        }
 
-        stateMachine.SetBool("CanSeePlayer", reactionDelayTime >= reactionTime);
+        stateMachine.SetBool("CanSeePlayer", isPlayerNoticed);
         stateMachine.SetFloat("PlayerDistance", DistanceToPlayer());
         stateMachine.SetBool("IsPlayerDead", !Player.Instance || Player.Instance.Actor.IsDead);
     }

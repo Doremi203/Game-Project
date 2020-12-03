@@ -23,12 +23,12 @@ public class Attacking : IState
 
     public void OnEnter()
     {
-        agent.speed = ai.ChasingSpeed;
+        //agent.speed = ai.ChasingSpeed;
         agent.ResetPath();
         ableToAttackTime = Time.time + weaponHolder.CurrentWeapon.NPCSettings.FirstAttackDelay;
     }
 
-    public void OnExit() => weaponHolder.CurrentWeapon.Use(false);
+    public void OnExit() => weaponHolder.UseWeapon(false);
 
     public void Tick()
     {
@@ -77,7 +77,7 @@ public class Attacking : IState
 
         bool _shouldShoot = weaponHolder.CurrentWeapon.CanUse() && _angleToPrediction <= _weaponAttackAngle;
 
-        weaponHolder.CurrentWeapon.Use(_shouldShoot);
+        weaponHolder.UseWeapon(_shouldShoot);
     }
 
     private void UpdateRotation()

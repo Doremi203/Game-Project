@@ -22,7 +22,8 @@ public class WeaponHolder : MonoBehaviour
     [SerializeField] private Weapon weaponPrefab;
     [SerializeField] private Weapon defaultWeaponPrefab;
 
-    private WeaponHolderState state;    
+    private WeaponHolderState state;
+    private bool isWeaponDisabled;
 
     public void EquipWeapon(Weapon weapon)
     {
@@ -57,6 +58,18 @@ public class WeaponHolder : MonoBehaviour
         else
             state = WeaponHolderState.Empty;
         OnWeaponChanged.Invoke();
+    }
+
+    public void EnableWeaponUsing(bool enable)
+    {
+        isWeaponDisabled = !enable;
+        if (isWeaponDisabled) CurrentWeapon?.Use(false);
+    }
+
+    public void UseWeapon(bool b)
+    {
+        if (isWeaponDisabled) return;
+        CurrentWeapon?.Use(b);
     }
 
     private void Awake()
