@@ -36,11 +36,11 @@ public class WeaponLazerSight : WeaponComponent
     {
         if (weapon.State == WeaponState.Drop) return;
 
-        Ray ray = new Ray(weapon.Owner.eyesPosition, weapon.Owner.transform.forward);
+        Ray ray = new Ray(weapon.Owner.EyesPosition, weapon.Owner.transform.forward);
         RaycastHit hit;
 
         Vector3 origin = this.transform.position + this.transform.TransformDirection(startPointOffset);
-        Vector3 targetPoint = weapon.Owner.eyesPosition + weapon.Owner.transform.forward * 100f;
+        Vector3 targetPoint = weapon.Owner.EyesPosition + weapon.Owner.transform.forward * 100f;
 
         if (Physics.Raycast(ray, out hit, 100f, layerMask))
         {

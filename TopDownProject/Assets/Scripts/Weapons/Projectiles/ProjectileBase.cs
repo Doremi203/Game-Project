@@ -37,7 +37,7 @@ public class ProjectileBase : MonoBehaviour
         foreach (var item in owner.Hitboxes)
             Physics.IgnoreCollision(Hitbox, item.Collider);
 
-        if (destroyByTime) Destroy(this.gameObject, 2f);
+        if (destroyByTime) Destroy(gameObject, 2f);
     }
 
     private void OnCollisionEnter(Collision collision)

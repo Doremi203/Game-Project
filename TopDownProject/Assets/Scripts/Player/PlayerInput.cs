@@ -7,6 +7,7 @@ using UnityEngine.UIElements;
 [RequireComponent(typeof(WeaponHolder))]
 [RequireComponent(typeof(Player))]
 [RequireComponent(typeof(AbilityShurikens))]
+[RequireComponent(typeof(RotationController))]
 public class PlayerInput : MonoBehaviour
 {
 
@@ -30,6 +31,7 @@ public class PlayerInput : MonoBehaviour
 	private WeaponHolder weaponHolder;
 	private Player player;
 	private AbilityShurikens shuriken;
+	private RotationController rotationController;
 
     private void Awake()
     {
@@ -37,6 +39,7 @@ public class PlayerInput : MonoBehaviour
 		weaponHolder = GetComponent<WeaponHolder>();
 		player = GetComponent<Player>();
 		shuriken = GetComponent<AbilityShurikens>();
+		rotationController = GetComponent<RotationController>();
 	}
 
 	private void Update()
@@ -65,7 +68,7 @@ public class PlayerInput : MonoBehaviour
 		cameraOffset.m_Offset.x = Mathf.Lerp(cameraOffset.m_Offset.x, _targetOffsetX, 15f * Time.deltaTime);
 		cameraOffset.m_Offset.y = Mathf.Lerp(cameraOffset.m_Offset.y, _targetOffsetY, 15f * Time.deltaTime);
 
-		if (player.Actor.IsDead) return;
+		if (player.Actor.HealthComponent.IsDead) return;
 
 		Vector3 inputVector = new Vector3();
 
@@ -85,8 +88,7 @@ public class PlayerInput : MonoBehaviour
 		{
 			Vector3 pointToLook = cameraRay.GetPoint(rayLenght);
 			Debug.DrawLine(cameraRay.origin, pointToLook, Color.blue);
-			Vector3 direction = pointToLook - player.transform.position;
-			player.Actor.desiredRotation = Quaternion.LookRotation(new Vector3(direction.x, 0, direction.z));
+			rotationController.LookAtIgnoringY(pointToLook);
 		}
 
 		if (player.WeaponHolder.CurrentWeapon)

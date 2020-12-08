@@ -1,12 +1,9 @@
-﻿using AdvancedAI;
-using UnityEditor;
+﻿using UnityEditor;
 using UnityEngine;
 
 [RequireComponent(typeof(Actor))]
 public abstract class BaseAI : MonoBehaviour
 {
-
-    public StateMachine StateMachine => stateMachine;
 
     protected Actor npc;
     protected StateMachine stateMachine = new StateMachine();
@@ -14,10 +11,17 @@ public abstract class BaseAI : MonoBehaviour
     protected virtual void Awake()
     {
         npc = GetComponent<Actor>();
-        npc.DeathEvent.AddListener(() => Destroy(this));
     }
 
-    protected virtual void Update() => stateMachine.Tick();
+    protected virtual void Start()
+    {
+        npc.HealthComponent.Died += (DamageInfo info) => Destroy(this);
+    }
+
+    protected virtual void Update()
+    {
+        stateMachine.Tick();
+    }
 
 
 #if UNITY_EDITOR

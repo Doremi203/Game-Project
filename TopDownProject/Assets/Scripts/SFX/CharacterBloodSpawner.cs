@@ -18,21 +18,28 @@ public class CharacterBloodSpawner : MonoBehaviour
 
     private void Awake()
     {
-        owner = this.GetComponent<Actor>();
-        bloodSpawner = this.GetComponent<BloodSpawner>();
-        owner.OnDamageTaken += OwnerDamageTaken;
+        owner = GetComponent<Actor>();
+        bloodSpawner = GetComponent<BloodSpawner>();
     }
 
-    private void OnDestroy() => owner.OnDamageTaken -= OwnerDamageTaken;
+    private void Start()
+    {
+        owner.HealthComponent.Damaged += OwnerDamageTaken;
+    }
 
-    private void OwnerDamageTaken(DamageInfo info)
+    private void OnDestroy()
+    {
+        owner.HealthComponent.Damaged -= OwnerDamageTaken;
+    }
+
+    private void OwnerDamageTaken(DamageInfo info, float beforeHealth, float currentHealth)
     {
         // Particles
-        Vector3 _relativePos = this.transform.position + info.Direction - transform.position;
-        _relativePos.y = 0;
-        Quaternion _rotation = Quaternion.LookRotation(_relativePos, Vector3.up);
+        Vector3 direction = transform.position + info.Direction - transform.position;
+        direction.y = 0;
+        Quaternion _rotation = Quaternion.LookRotation(direction, Vector3.up);
         ParticleSystem effectToSpawn = info.DamageType == DamageType.Melee ? meleeBloodEffectPrefab : bulletBloodEffectPrefab;
-        Destroy(Instantiate(effectToSpawn, this.transform.position, _rotation), 2f);
+        Destroy(Instantiate(effectToSpawn, transform.position, _rotation), 2f);
 
         // Decals 
         int bloodAmount = info.DamageType == DamageType.Melee ? 10 : 3;

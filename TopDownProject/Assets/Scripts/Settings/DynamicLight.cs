@@ -16,8 +16,8 @@ public class DynamicLight : MonoBehaviour
 
     private void Awake()
     {
-        light = this.GetComponent<Light>();
-        lightData = this.GetComponent<HDAdditionalLightData>();
+        light = GetComponent<Light>();
+        lightData = GetComponent<HDAdditionalLightData>();
     }
 
     private void Start() => UpdateSettings();

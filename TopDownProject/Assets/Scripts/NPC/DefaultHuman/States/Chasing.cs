@@ -2,9 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
-using AdvancedAI;
 
-public class Chasing : IState
+public class Chasing : IState, IStateEnterCallbackReciver, IStateTickCallbackReciver
 {
 
     private NPC_HumanAI ai;
@@ -24,28 +23,10 @@ public class Chasing : IState
         agent.speed = ai.ChasingSpeed; 
     }
 
-    public void OnExit() { }
-
     public void Tick()
     {
-        UpdateRotation();
-        SetDestianation();
-    }
-
-    private void UpdateRotation()
-    {
-        Vector3 relativePos = agent.steeringTarget - npc.transform.position;
-        relativePos.y = 0;
-        if (relativePos != Vector3.zero)
-        {
-            npc.desiredRotation = Quaternion.LookRotation(relativePos, Vector3.up);
-        }
-    }
-
-    private void SetDestianation()
-    {
-        Player _player = Player.Instance;
-        agent.SetDestination(_player.transform.position);
+        npc.GetComponent<RotationController>().LookAtIgnoringY(agent.steeringTarget);
+        agent.SetDestination(Player.Instance.transform.position);
     }
 
 }

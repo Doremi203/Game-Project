@@ -2,31 +2,20 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
-using AdvancedAI;
 
-public class Chilling : IState
+public class Chilling : IState, IStateEnterCallbackReciver
 {
 
     private NavMeshAgent agent;
-    private Animator animator;
 
-    public Chilling(NavMeshAgent agent, Animator animator)
+    public Chilling(NavMeshAgent agent)
     {
         this.agent = agent;
-        this.animator = animator;
     }
 
     public void OnEnter()
     {
         agent.ResetPath();
-        animator.SetBool("chill", true);
     }
-
-    public void OnExit()
-    {
-        animator.SetBool("chill", false);
-    }
-
-    public void Tick() { }
 
 }

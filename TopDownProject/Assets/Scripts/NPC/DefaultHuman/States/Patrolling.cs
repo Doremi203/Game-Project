@@ -2,9 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
-using AdvancedAI;
 
-public class Patrolling : IState
+public class Patrolling : IState, IStateEnterCallbackReciver, IStateExitCallbackReciver, IStateTickCallbackReciver
 {
 
     private NPC_HumanAI ai;
@@ -29,26 +28,19 @@ public class Patrolling : IState
         FindNextPoint();
     }
 
-    public void OnExit() => agent.autoBraking = true;
+    public void OnExit()
+    {
+        agent.autoBraking = true;
+    }
 
     public void Tick()
     {
-        RotationUpdate();
+        npc.GetComponent<RotationController>().LookAtIgnoringY(agent.steeringTarget);
 
         if (targetPoint == null) return;
 
-        if (GameUtilities.GetDistance2D(npc.transform.position, targetPoint.transform.position) < 0.5f)
+        if (GameUtilities.GetDistanceIgnoringY(npc.transform.position, targetPoint.transform.position) < 0.5f)
             FindNextPoint();
-    }
-
-    private void RotationUpdate()
-    {
-        Vector3 relativePos = agent.steeringTarget - npc.transform.position;
-        relativePos.y = 0;
-        if (relativePos != Vector3.zero)
-        {
-            npc.desiredRotation = Quaternion.LookRotation(relativePos, Vector3.up);
-        }
     }
 
     private void FindNextPoint()

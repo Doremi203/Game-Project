@@ -12,11 +12,11 @@ public class PlayerController : MonoBehaviour
 	private CharacterController characterController;
 	private Vector3 velocityVector;
 
-    public void SetVelocity(Vector3 velocityVector) => this.velocityVector = velocityVector;
+	public void SetVelocity(Vector3 velocityVector) => this.velocityVector = velocityVector;
 
-    private void Awake() => characterController = gameObject.GetComponent<CharacterController>();
+	private void Awake() => characterController = gameObject.GetComponent<CharacterController>();
 
-    private void Update()
+	private void Update()
 	{
 		velocityVector.y = -gravity * 10f * Time.deltaTime;
 		characterController.Move(velocityVector * moveSpeed * Time.deltaTime);

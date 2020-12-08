@@ -4100,10 +4100,12 @@ GameObject:
   - component: {fileID: 7750810099474233591}
   - component: {fileID: 7750810099474233590}
   - component: {fileID: 7750810099474233593}
+  - component: {fileID: 6350413699833903651}
   - component: {fileID: 7750810099474233592}
   - component: {fileID: 5698660024320438996}
   - component: {fileID: 7750810099474233594}
   - component: {fileID: 7750810099474233597}
+  - component: {fileID: 2201582550760299858}
   - component: {fileID: 6128230765568894497}
   - component: {fileID: 8533894057343606874}
   - component: {fileID: 1179782429065987534}
@@ -4167,6 +4169,19 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.5, y: 2, z: 0.5}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &6350413699833903651
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7750810099474233598}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 28b98c25de58b8140b548529d06f2feb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rotationSpeed: 450
 --- !u!114 &7750810099474233592
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4181,9 +4196,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startHealth: 1000
   debugInvicibility: 0
-  OnHealthChanged:
-    m_PersistentCalls:
-      m_Calls: []
 --- !u!114 &5698660024320438996
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4196,37 +4208,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3970a0991b8f98648880ee72cbda468a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  desiredRotation: {x: 0, y: 0, z: 0, w: 0}
-  DeathEvent:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 7750810099474233590}
-        m_MethodName: set_enabled
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 4177041264929981646}
-        m_MethodName: PlaySound
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  noDelayRotation: 0
-  rotationSpeed: 450
   eyesOffset: {x: 0, y: 0.55, z: 0}
-  shouldDestroy: 0
-  destroyDelay: 0
   team: {fileID: 11400000, guid: ae712937a776a6f4f811e4e8676d1419, type: 2}
 --- !u!114 &7750810099474233594
 MonoBehaviour:
@@ -4262,19 +4244,30 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e6a99f63d0205e34fb7646aa11ae35aa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  detectionMask:
-    serializedVersion: 2
-    m_Bits: 1
-  visionAngle: 80
-  visionRange: 10
-  absoluteVisionRange: 4
-  targetLostRange: 15
-  LastSoundEventPosition: {x: 0, y: 0, z: 0}
   AIType: 0
   reactionTime: 0.6
   defaultSpeed: 3.75
   chasingSpeed: 5
   animator: {fileID: 2332155301275440479}
+--- !u!114 &2201582550760299858
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7750810099474233598}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a644e6fb0db6d99438053879d05fbb0e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  detectionMask:
+    serializedVersion: 2
+    m_Bits: 1
+  visionAngle: 85
+  visionRange: 7
+  absoluteVisionRange: 3
+  reactionTime: 0.35
 --- !u!114 &6128230765568894497
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5063,7 +5056,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 91457333ba2b6bb4681c5508c235286e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  actor: {fileID: 5698660024320438996}
+  healthComponent: {fileID: 7750810099474233592}
   damageMultiplier: 1
 --- !u!1 &8971424792012861944
 GameObject:

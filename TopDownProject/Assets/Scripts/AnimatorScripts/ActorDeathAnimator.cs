@@ -15,11 +15,10 @@ public class ActorDeathAnimator : MonoBehaviour
     private void Awake()
     {
         ragdollController = GetComponent<RagdollController>();
-        actor.DeathEvent.AddListener(OnDeath);
+        actor.HealthComponent.Died += Death;
     }
 
-
-    private void OnDeath()
+    private void Death(DamageInfo info)
     {
         animator.SetTrigger("death");
         StartCoroutine(Death());

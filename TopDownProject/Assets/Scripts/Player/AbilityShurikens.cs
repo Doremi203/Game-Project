@@ -23,7 +23,7 @@ public class AbilityShurikens : AbilityBase
     {
         CurrentShurikensAmount--;
         Vector3 _force = owner.transform.forward * throwPower;
-        ProjectileBase _bullet = Instantiate(shurikenPrefab, owner.eyesPosition, owner.transform.rotation);
+        ProjectileBase _bullet = Instantiate(shurikenPrefab, owner.EyesPosition, owner.transform.rotation);
         _bullet.Setup(owner, 1000f);
         _bullet.Rigidbody.AddForce(_force);
     }

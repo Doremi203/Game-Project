@@ -34,7 +34,7 @@ public class WeaponProjectilesLauncher : WeaponComponent
 
             Vector3 force = (owner.transform.forward + spreadOffset + verticalOffset) * Random.Range(minBulletSpeed, bulletsSpeed);
 
-            ProjectileBase newBullet = Instantiate(bulletPrefab, owner.eyesPosition, owner.transform.rotation);
+            ProjectileBase newBullet = Instantiate(bulletPrefab, owner.EyesPosition, owner.transform.rotation);
             newBullet.Setup(owner, damage);
 
             newBullet.Rigidbody.AddForce(force, ForceMode.VelocityChange);

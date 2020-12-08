@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
@@ -20,25 +21,29 @@ public class RagdollSpawner : MonoBehaviour
 
     private void Awake()
     {
-        owner = this.GetComponent<Actor>();
-        agent = this.GetComponent<NavMeshAgent>();
+        owner = GetComponent<Actor>();
+        agent = GetComponent<NavMeshAgent>();
         if (!agent)
-            characterController = this.GetComponent<CharacterController>();
-        owner.DeathEvent.AddListener(ActorDeath);
+            characterController = GetComponent<CharacterController>();
+    }
+
+    private void Start()
+    {
+        owner.HealthComponent.Died += Death;
     }
 
     private void Update()
     {   
-        if (owner.IsDead) return;
+        if (owner.HealthComponent.IsDead) return;
         if (agent)
             lastVelocity = agent.velocity;
         else
             lastVelocity = characterController.velocity;
     }
 
-    private void ActorDeath()
+    private void Death(DamageInfo lastDamageInfo)
     {
-        bool lostHead = owner.LastDamageInfo.DamageType == DamageType.Melee && Random.Range(0, 5) == 0;
+        bool lostHead = lastDamageInfo.DamageType == DamageType.Melee && UnityEngine.Random.Range(0, 5) == 0;
 
         GameObject ragdollModel = default;
 
@@ -56,7 +61,7 @@ public class RagdollSpawner : MonoBehaviour
 
         foreach (var item in ragdollModel.GetComponentsInChildren<Rigidbody>())
         {
-            item.velocity = lastVelocity + owner.LastDamageInfo.Direction * 6f;
+            item.velocity = lastVelocity + lastDamageInfo.Direction * 6f;
         }
 
         Destroy(actualModel);

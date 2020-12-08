@@ -4,46 +4,56 @@ using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.AI;
-using AdvancedAI;
 
 [RequireComponent(typeof(NavMeshAgent))]
 [RequireComponent(typeof(WeaponHolder))]
-public class NPC_HumanAI : HumanoidAI, ISoundsListener
+[RequireComponent(typeof(NPCVision))]
+public class NPC_HumanAI : BaseAI, ISoundsListener
 {
 
     public float DefaultSpeed => defaultSpeed;
     public float ChasingSpeed => chasingSpeed;
-
-    [HideInInspector] public Vector3 LastSoundEventPosition;
 
     [Header("Human")]
     [SerializeField] private AIType AIType; 
     [SerializeField] private float reactionTime;
     [SerializeField] private float defaultSpeed = 3.75f;
     [SerializeField] private float chasingSpeed = 4.75f;
-    [SerializeField] private Animator animator;
 
-    protected NavMeshAgent agent;
-    protected WeaponHolder weaponHolder;
-    protected float reactionDelayTime;
+    private NavMeshAgent agent;
+    private WeaponHolder weaponHolder;
+    private NPCVision vision;
+
+    private IState defaultState;
+    private Chasing chasing;
+    private Attacking attacking;
+    private Investigating investigating;
+
+    private Trigger soundHeardTrigger;
+
+    public void ApplySoundEvent(Actor causer, Vector3 eventPosition)
+    {
+        if (causer == this) return;
+        if (causer.Team == npc.Team) return;
+        investigating.SetInvestigationPosition(eventPosition);
+        soundHeardTrigger.SetActive();
+    }
 
     protected override void Awake()
     {
         base.Awake();
 
-        agent = this.GetComponent<NavMeshAgent>();
-        weaponHolder = this.GetComponent<WeaponHolder>();
-
-        weaponHolder.OnWeaponChanged.AddListener(weaponHolder_OnWeaponChanged);
+        agent = GetComponent<NavMeshAgent>();
+        weaponHolder = GetComponent<WeaponHolder>();
+        vision = GetComponent<NPCVision>();
 
         agent.updateRotation = false;
 
         // States
-        IState defaultState;
         switch (AIType)
         {
             case AIType.Default:
-                defaultState = new Chilling(agent, animator);
+                defaultState = new Chilling(agent);
                 break;
             case AIType.Patrolling:
                 defaultState = new Patrolling(this, npc, agent);
@@ -52,98 +62,32 @@ public class NPC_HumanAI : HumanoidAI, ISoundsListener
                 defaultState = new Roaming(this, npc, agent, defaultSpeed);
                 break;
             default:
-                defaultState = new Chilling(agent, animator);
+                defaultState = new Chilling(agent);
                 break;
         }
 
-        var chasing = new Chasing(this, npc, agent);
-        var attacking = new Attacking(this, npc, agent, weaponHolder);
-        var investigating = new Investigating(this, npc, agent);
-        var soundInvestigating = new SoundEventInvestigating(this, npc, agent);
+        chasing = new Chasing(this, npc, agent);
+        attacking = new Attacking(this, npc, agent, weaponHolder);
+        investigating = new Investigating(this, npc, agent);
 
-        investigating.OnIvestigatingOver += () => stateMachine.SetTrigger("InvestigationEnded");
-        soundInvestigating.OnIvestigatingOver += () => stateMachine.SetTrigger("SoundInvestigationEnded");
-
-        // Variables
-
-        stateMachine.AddFloat("AttackDistance", 3);
-        stateMachine.AddFloat("PlayerDistance", 0);
-        stateMachine.AddBool("CanSeePlayer", false);
-        stateMachine.AddBool("IsPlayerDead", false);
-        stateMachine.AddTrigger("HeardSound");
-        stateMachine.AddTrigger("InvestigationEnded");
-        stateMachine.AddTrigger("SoundInvestigationEnded");
+        soundHeardTrigger = stateMachine.CreateTrigger();
 
         // Transitions
+        stateMachine.AddTransition(defaultState, chasing, () => vision.IsSeeingPlayer);
+        stateMachine.AddTransition(defaultState, investigating, () => soundHeardTrigger.IsActive);
 
-        stateMachine.AddTransition(defaultState, chasing, new Condition[1]
-        {
-            new BoolCondition("CanSeePlayer", true)
-        });
+        stateMachine.AddTransition(chasing, investigating, () => !vision.IsSeeingPlayer);
+        stateMachine.AddTransition(chasing, attacking, () => vision.DistanceToPlayer() < weaponHolder.CurrentWeapon.NPCSettings.AttackDistance);
 
-        stateMachine.AddTransition(defaultState, soundInvestigating, new Condition[2]
-        {
-            new BoolCondition("CanSeePlayer", false),
-            new TriggerCondition("HeardSound")
-        });
+        stateMachine.AddTransition(attacking, investigating, () => !vision.IsSeeingPlayer);
+        stateMachine.AddTransition(attacking, chasing, () => vision.DistanceToPlayer() > weaponHolder.CurrentWeapon.NPCSettings.AttackDistance);
 
-        stateMachine.AddTransition(chasing, attacking, new Condition[2]
-        {
-            new BoolCondition("CanSeePlayer", true),
-            new FloatCondition("PlayerDistance", "AttackDistance", FloatConditionType.Less)
-        });
+        stateMachine.AddTransition(investigating, chasing, () => vision.IsSeeingPlayer);
+        stateMachine.AddTransition(investigating, defaultState, () => investigating.IsOver);
 
-        stateMachine.AddTransition(chasing, investigating, new Condition[1] 
-        { 
-            new BoolCondition("CanSeePlayer", false)
-        });
-
-        stateMachine.AddTransition(attacking, chasing, new Condition[2]
-        {
-            new BoolCondition("CanSeePlayer", true),
-            new FloatCondition("PlayerDistance", "AttackDistance", FloatConditionType.Greater)
-        });
-
-        stateMachine.AddTransition(attacking, investigating, new Condition[1] 
-        { 
-            new BoolCondition("CanSeePlayer", false)
-        });
-
-        stateMachine.AddTransition(investigating, chasing, new Condition[1]
-        {
-            new BoolCondition("CanSeePlayer", true)
-        });
-
-        stateMachine.AddTransition(investigating, defaultState, new Condition[2]
-        {
-            new BoolCondition("CanSeePlayer", false),
-            new TriggerCondition("InvestigationEnded")
-        });
-
-        stateMachine.AddTransition(investigating, soundInvestigating, new Condition[2] 
-        {
-            new BoolCondition("CanSeePlayer", false),
-            new TriggerCondition("HeardSound")
-        });
-
-        stateMachine.AddTransition(soundInvestigating, chasing, new Condition[1]
-        {
-            new BoolCondition("CanSeePlayer", true)
-        });
-
-        stateMachine.AddTransition(soundInvestigating, defaultState, new Condition[2]
-        {
-            new BoolCondition("CanSeePlayer", false),
-            new TriggerCondition("SoundInvestigationEnded")
-        });
-
-        stateMachine.AddGlobalTransition(defaultState, new Condition[1]
-        {
-            new BoolCondition("IsPlayerDead", true)
-        });
+        stateMachine.AddGlobalTransition(defaultState, () => Player.Instance.Actor.HealthComponent.IsDead);
 
         // Start State
-
         stateMachine.SetState(defaultState);
     }
 
@@ -151,29 +95,10 @@ public class NPC_HumanAI : HumanoidAI, ISoundsListener
     {
         base.Update();
 
-        if (CanSeePlayer())
-            reactionDelayTime += Time.deltaTime;
-        else
-            reactionDelayTime = 0;
-
-        stateMachine.SetBool("CanSeePlayer", reactionDelayTime >= reactionTime);
-        stateMachine.SetFloat("PlayerDistance", DistanceToPlayer());
-        stateMachine.SetBool("IsPlayerDead", !Player.Instance || Player.Instance.Actor.IsDead);
-    }
-
-    public void ApplySoundEvent(Actor causer, Vector3 eventPosition)
-    {
-        //if (AIType == AIType.Default) return;
-        if (causer == this) return;
-        if (causer.Team == npc.Team) return;
-        LastSoundEventPosition = eventPosition;
-        stateMachine.SetTrigger("HeardSound");
-    }
-
-    private void weaponHolder_OnWeaponChanged()
-    {
-        if (weaponHolder.CurrentWeapon)
-            stateMachine.SetFloat("AttackDistance", weaponHolder.CurrentWeapon.NPCSettings.AttackDistance);
+        if (vision.IsSeeingPlayer)
+        {
+            investigating.SetInvestigationPosition(Player.Instance.Actor.transform.position);
+        }
     }
 
 }

@@ -8,9 +8,6 @@ using UnityEngine.Events;
 public class WeaponHolder : MonoBehaviour
 {
 
-    // Этот скрипт отвечает за управление оружием, какие-нибудь условные турели могут его использовать,
-    // игрок может, нпс могут.
-
     public UnityEvent OnWeaponChanged;
     public Weapon CurrentWeapon { get; private set; }
     public Actor Owner { get; private set; }
@@ -61,11 +58,23 @@ public class WeaponHolder : MonoBehaviour
 
     private void Awake()
     {
-        Owner = this.GetComponent<Actor>();
-        Owner.DeathEvent.AddListener(OwnerDeath);
+        Owner = GetComponent<Actor>();
     }
 
-    private void OwnerDeath()
+    private void Start()
+    {
+        Owner.HealthComponent.Died += OwnerDied;
+        if (weaponPrefab)
+            EquipWeapon(Instantiate(weaponPrefab));
+        else if (defaultWeaponPrefab)
+        {
+            test_EquipWeapon(Instantiate(defaultWeaponPrefab));
+            state = WeaponHolderState.Default;
+            OnWeaponChanged.Invoke();
+        }
+    }
+
+    private void OwnerDied(DamageInfo info)
     {
         switch (state)
         {
@@ -79,18 +88,6 @@ public class WeaponHolder : MonoBehaviour
                 break;
             default:
                 break;
-        }
-    }
-
-    private void Start()
-    {
-        if (weaponPrefab)
-            EquipWeapon(Instantiate(weaponPrefab));
-        else if (defaultWeaponPrefab)
-        {
-            test_EquipWeapon(Instantiate(defaultWeaponPrefab));
-            state = WeaponHolderState.Default;
-            OnWeaponChanged.Invoke();
         }
     }
 

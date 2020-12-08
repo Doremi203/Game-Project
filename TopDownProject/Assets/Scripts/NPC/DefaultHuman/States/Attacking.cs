@@ -1,8 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.AI;
-using AdvancedAI;
 
-public class Attacking : IState
+public class Attacking : IState, IStateEnterCallbackReciver, IStateExitCallbackReciver, IStateTickCallbackReciver
 {
 
     private NPC_HumanAI ai;
@@ -23,18 +22,21 @@ public class Attacking : IState
 
     public void OnEnter()
     {
-        agent.speed = ai.ChasingSpeed;
+        agent.speed = 0f;
         agent.ResetPath();
         ableToAttackTime = Time.time + weaponHolder.CurrentWeapon.NPCSettings.FirstAttackDelay;
     }
 
-    public void OnExit() => weaponHolder.CurrentWeapon.Use(false);
+    public void OnExit()
+    {
+        weaponHolder.CurrentWeapon.Use(false);
+    }
 
     public void Tick()
     {
         CalculatePrediction();
-        UpdateRotation();
-        if(Time.time >= ableToAttackTime) TryShoot();
+        npc.GetComponent<RotationController>().LookAtIgnoringY(currentPrediction);
+        if (Time.time >= ableToAttackTime) TryShoot();
     }
 
     private void CalculatePrediction()
@@ -78,16 +80,6 @@ public class Attacking : IState
         bool _shouldShoot = weaponHolder.CurrentWeapon.CanUse() && _angleToPrediction <= _weaponAttackAngle;
 
         weaponHolder.CurrentWeapon.Use(_shouldShoot);
-    }
-
-    private void UpdateRotation()
-    {
-        Vector3 relativePos = currentPrediction - npc.transform.position;
-        relativePos.y = 0;
-        if (relativePos != Vector3.zero)
-        {
-            npc.desiredRotation = Quaternion.LookRotation(relativePos, Vector3.up);
-        }
     }
 
     public static Vector3 CalculateInterceptCourse(Vector3 aTargetPos, Vector3 aTargetSpeed, Vector3 aInterceptorPos, float aInterceptorSpeed)

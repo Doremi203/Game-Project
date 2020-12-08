@@ -9,21 +9,19 @@ public class Hitbox : MonoBehaviour, IDamageable
 
     public Collider Collider { get; private set; }
 
-    [SerializeField] private Actor actor;
+    [SerializeField] private HealthComponent healthComponent;
     [SerializeField] private float damageMultiplier = 1f;
 
     public bool ApplyDamage(DamageInfo info)
     {
-        info.DamageAmount *= damageMultiplier;
-        return ((IDamageable)actor).ApplyDamage(info);
+        info.DamageAmount = info.DamageAmount * damageMultiplier;
+        return healthComponent.ApplyDamage(info);
     }
 
     private void Awake()
     {
         Collider = GetComponent<Collider>();
-        actor.OnDeath += ActorDeath;
+        healthComponent.Died += (DamageInfo info) => Collider.enabled = false;
     }
-
-    private void ActorDeath(DamageInfo obj) => Collider.enabled = false;
 
 }

@@ -11,12 +11,15 @@ public class DeathScreen : MonoBehaviour
 
     private bool playerDied;
 
-    private void OnDisable() => Player.Instance.Actor.DeathEvent.RemoveListener(PlayerDied);
-
     private void Start()
     {
-        Player.Instance.Actor.DeathEvent.AddListener(PlayerDied);
+        Player.Instance.Actor.HealthComponent.Died += PlayerDied;
         go.SetActive(false);
+    }
+
+    private void OnDisable()
+    {
+        Player.Instance.Actor.HealthComponent.Died -= PlayerDied;
     }
 
     private void Update()
@@ -27,7 +30,7 @@ public class DeathScreen : MonoBehaviour
 
     private void RestartLevel() => LevelManager.RestartLevel();
 
-    private void PlayerDied()
+    private void PlayerDied(DamageInfo info)
     {
         go.SetActive(true);
         playerDied = true;

@@ -53,12 +53,12 @@ public class WeaponMeleeAttack : WeaponComponent
             if (_targetActor.Team == owner.Team) continue;
 
             RaycastHit _hit;
-            if (Physics.Linecast(owner.eyesPosition, _targetActor.eyesPosition, out _hit, layerMask))
+            if (Physics.Linecast(owner.EyesPosition, _targetActor.EyesPosition, out _hit, layerMask))
             {
                 if (_hit.transform != _targetActor.transform) continue;
             }
 
-            float _distance = GameUtilities.GetDistance2D(owner.transform.position, _targetActor.transform.position);
+            float _distance = GameUtilities.GetDistanceIgnoringY(owner.transform.position, _targetActor.transform.position);
 
             if (_distance > absoluteRadius)
             {
@@ -71,13 +71,13 @@ public class WeaponMeleeAttack : WeaponComponent
             damageDirection = damageDirection.normalized;
 
             DamageInfo info = new DamageInfo(owner, weapon.gameObject, damageDirection, damage, damageType);
-            _targetActor.ApplyDamage(info);
+            _targetActor.HealthComponent.ApplyDamage(info);
         }
 
         if (decal)
         {
             LayerMask mask = LayerMask.GetMask("Default");
-            Ray ray = new Ray(owner.eyesPosition, owner.transform.forward);
+            Ray ray = new Ray(owner.EyesPosition, owner.transform.forward);
             RaycastHit hit;
 
             if (Physics.Raycast(ray, out hit, attackRadius, mask))

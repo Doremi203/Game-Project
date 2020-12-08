@@ -3,17 +3,18 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
-using AdvancedAI;
 
-public class Investigating : IState
+public class Investigating : IState, IStateEnterCallbackReciver, IStateExitCallbackReciver, IStateTickCallbackReciver
 {
 
     public event Action OnIvestigatingOver;
 
+    public bool IsOver { get; private set; }
+
     private NPC_HumanAI ai;
     private Actor npc;
     private NavMeshAgent agent;
-    private bool isOver;
+    private Vector3 investigationPosition;
 
     public Investigating(NPC_HumanAI ai, Actor npc, NavMeshAgent agent)
     {
@@ -22,13 +23,18 @@ public class Investigating : IState
         this.agent = agent;
     }
 
+    public void SetInvestigationPosition(Vector3 position)
+    {
+        investigationPosition = position;
+    }
+
     public void OnEnter()
     {
         agent.speed = ai.ChasingSpeed;
         agent.ResetPath();
         agent.stoppingDistance = UnityEngine.Random.Range(0.25f, 1f);
-        isOver = false;
-        agent.SetDestination(Player.Instance.transform.position);
+        IsOver = false;
+        agent.SetDestination(investigationPosition);
     }
 
     public void OnExit()
@@ -39,25 +45,15 @@ public class Investigating : IState
 
     public void Tick()
     {
-        UpdateRotation();
+        npc.GetComponent<RotationController>().LookAtIgnoringY(agent.steeringTarget);
 
-        if (isOver) return;
+        if (IsOver) return;
 
-        float _distanceTarget = GameUtilities.GetDistance2D(npc.transform.position, agent.destination);
+        float _distanceTarget = GameUtilities.GetDistanceIgnoringY(npc.transform.position, agent.destination);
         if (_distanceTarget <= agent.stoppingDistance)
         {
-            isOver = true;
+            IsOver = true;
             OnIvestigatingOver?.Invoke();
-        }
-    }
-
-    private void UpdateRotation()
-    {
-        Vector3 relativePos = agent.steeringTarget - npc.transform.position;
-        relativePos.y = 0;
-        if (relativePos != Vector3.zero)
-        {
-            npc.desiredRotation = Quaternion.LookRotation(relativePos, Vector3.up);
         }
     }
 

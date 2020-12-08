@@ -22,7 +22,7 @@ public class DoorTest : MonoBehaviour, IDamageable
     {
         if (isDead) return false;
         if (info.DamageType == DamageType.Melee) return false;
-        healthComponent.ApplyDamage(info.DamageAmount);
+        //healthComponent.ApplyDamage(info.DamageAmount);
         if (healthComponent.Health <= 0)
             Death();
         return true;
