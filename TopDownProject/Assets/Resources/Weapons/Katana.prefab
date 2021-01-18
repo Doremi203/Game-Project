@@ -184,6 +184,7 @@ MonoBehaviour:
   weaponType: 1
   animationType: 2
   npcSettings:
+    AimDistance: 3
     AttackDistance: 1.35
     AttackAngle: 70
     FirstAttackDelay: 0

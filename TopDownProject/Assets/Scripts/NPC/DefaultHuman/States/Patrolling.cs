@@ -6,14 +6,14 @@ using UnityEngine.AI;
 public class Patrolling : IState, IStateEnterCallbackReciver, IStateExitCallbackReciver, IStateTickCallbackReciver
 {
 
-    private NPC_HumanAI ai;
+    private HumanAI ai;
     private Actor npc;
     private NavMeshAgent agent;
 
     private PatrollingPoint lastPoint;
     private PatrollingPoint targetPoint;
 
-    public Patrolling(NPC_HumanAI ai, Actor npc, NavMeshAgent agent)
+    public Patrolling(HumanAI ai, Actor npc, NavMeshAgent agent)
     {
         this.ai = ai;
         this.npc = npc;
@@ -24,7 +24,7 @@ public class Patrolling : IState, IStateEnterCallbackReciver, IStateExitCallback
     {
         agent.autoBraking = false;
         agent.ResetPath();
-        agent.speed = ai.DefaultSpeed;
+        //agent.speed = ai.DefaultSpeed;
         FindNextPoint();
     }
 

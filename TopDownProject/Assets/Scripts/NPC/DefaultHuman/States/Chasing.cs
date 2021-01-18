@@ -6,11 +6,11 @@ using UnityEngine.AI;
 public class Chasing : IState, IStateEnterCallbackReciver, IStateTickCallbackReciver
 {
 
-    private NPC_HumanAI ai;
+    private HumanAI ai;
     private Actor npc;
     private NavMeshAgent agent;
 
-    public Chasing(NPC_HumanAI ai, Actor npc, NavMeshAgent agent)
+    public Chasing(HumanAI ai, Actor npc, NavMeshAgent agent)
     {
         this.ai = ai;
         this.npc = npc;
@@ -20,7 +20,7 @@ public class Chasing : IState, IStateEnterCallbackReciver, IStateTickCallbackRec
     public void OnEnter()
     {
         agent.ResetPath();
-        agent.speed = ai.ChasingSpeed; 
+        //agent.speed = ai.ChasingSpeed; 
     }
 
     public void Tick()

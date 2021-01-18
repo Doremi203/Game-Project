@@ -11,12 +11,12 @@ public class Investigating : IState, IStateEnterCallbackReciver, IStateExitCallb
 
     public bool IsOver { get; private set; }
 
-    private NPC_HumanAI ai;
+    private HumanAI ai;
     private Actor npc;
     private NavMeshAgent agent;
     private Vector3 investigationPosition;
 
-    public Investigating(NPC_HumanAI ai, Actor npc, NavMeshAgent agent)
+    public Investigating(HumanAI ai, Actor npc, NavMeshAgent agent)
     {
         this.ai = ai;
         this.npc = npc;
@@ -30,7 +30,7 @@ public class Investigating : IState, IStateEnterCallbackReciver, IStateExitCallb
 
     public void OnEnter()
     {
-        agent.speed = ai.ChasingSpeed;
+        //agent.speed = ai.ChasingSpeed;
         agent.ResetPath();
         agent.stoppingDistance = UnityEngine.Random.Range(0.25f, 1f);
         IsOver = false;

@@ -2,7 +2,7 @@
 using UnityEngine;
 
 [RequireComponent(typeof(Actor))]
-public abstract class BaseAI : MonoBehaviour
+public abstract class AI : MonoBehaviour
 {
 
     protected Actor npc;
@@ -16,12 +16,17 @@ public abstract class BaseAI : MonoBehaviour
     protected virtual void Start()
     {
         npc.HealthComponent.Died += (DamageInfo info) => Destroy(this);
+        SetupStateMachine();
+        stateMachine.SetState(GetInitialState());
     }
 
     protected virtual void Update()
     {
         stateMachine.Tick();
     }
+
+    protected abstract void SetupStateMachine();
+    protected abstract IState GetInitialState();
 
 
 #if UNITY_EDITOR

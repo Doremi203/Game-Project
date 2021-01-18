@@ -7,14 +7,14 @@ using UnityEngine.AI;
 public class Roaming : IState, IStateEnterCallbackReciver, IStateTickCallbackReciver
 {
 
-    private NPC_HumanAI ai;
+    private HumanAI ai;
     private Actor npc;
     private NavMeshAgent agent;
     private float nextChangeTime;
     private Vector3 startingPoint;
     private float speed;
 
-    public Roaming(NPC_HumanAI ai, Actor npc, NavMeshAgent agent, float speed)
+    public Roaming(HumanAI ai, Actor npc, NavMeshAgent agent, float speed)
     {
         this.ai = ai;
         this.npc = npc;

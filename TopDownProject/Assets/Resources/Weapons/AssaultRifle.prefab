@@ -955,6 +955,7 @@ MonoBehaviour:
   weaponType: 1
   animationType: 0
   npcSettings:
+    AimDistance: 0
     AttackDistance: 20
     AttackAngle: 10
     FirstAttackDelay: 0
@@ -1012,6 +1013,9 @@ MonoBehaviour:
   bulletPrefab: {fileID: 6444695937657245857, guid: a46be6a792e635446b920a87e1c6faec,
     type: 3}
   damage: 1000
+  raycastLayer:
+    serializedVersion: 2
+    m_Bits: 164865
 --- !u!114 &851924516917823905
 MonoBehaviour:
   m_ObjectHideFlags: 0

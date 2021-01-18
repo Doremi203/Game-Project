@@ -8,23 +8,14 @@ using UnityEngine.AI;
 [RequireComponent(typeof(NavMeshAgent))]
 [RequireComponent(typeof(WeaponHolder))]
 [RequireComponent(typeof(NPCVision))]
-public class NPC_HumanAI : BaseAI, ISoundsListener
+public class HumanAI : AI, ISoundsListener
 {
-
-    public float DefaultSpeed => defaultSpeed;
-    public float ChasingSpeed => chasingSpeed;
-
-    [Header("Human")]
-    [SerializeField] private AIType AIType; 
-    [SerializeField] private float reactionTime;
-    [SerializeField] private float defaultSpeed = 3.75f;
-    [SerializeField] private float chasingSpeed = 4.75f;
 
     private NavMeshAgent agent;
     private WeaponHolder weaponHolder;
     private NPCVision vision;
 
-    private IState defaultState;
+    private Chilling chilling;
     private Chasing chasing;
     private Attacking attacking;
     private Investigating investigating;
@@ -49,32 +40,18 @@ public class NPC_HumanAI : BaseAI, ISoundsListener
 
         agent.updateRotation = false;
 
-        // States
-        switch (AIType)
-        {
-            case AIType.Default:
-                defaultState = new Chilling(agent);
-                break;
-            case AIType.Patrolling:
-                defaultState = new Patrolling(this, npc, agent);
-                break;
-            case AIType.Roaming:
-                defaultState = new Roaming(this, npc, agent, defaultSpeed);
-                break;
-            default:
-                defaultState = new Chilling(agent);
-                break;
-        }
-
+        chilling = new Chilling(agent);
         chasing = new Chasing(this, npc, agent);
         attacking = new Attacking(this, npc, agent, weaponHolder);
         investigating = new Investigating(this, npc, agent);
 
         soundHeardTrigger = stateMachine.CreateTrigger();
+    }
 
-        // Transitions
-        stateMachine.AddTransition(defaultState, chasing, () => vision.IsSeeingPlayer);
-        stateMachine.AddTransition(defaultState, investigating, () => soundHeardTrigger.IsActive);
+    protected override void SetupStateMachine()
+    {
+        stateMachine.AddTransition(chilling, chasing, () => vision.IsSeeingPlayer);
+        stateMachine.AddTransition(chilling, investigating, () => soundHeardTrigger.IsActive);
 
         stateMachine.AddTransition(chasing, investigating, () => !vision.IsSeeingPlayer);
         stateMachine.AddTransition(chasing, attacking, () => vision.DistanceToPlayer() < weaponHolder.CurrentWeapon.NPCSettings.AttackDistance);
@@ -83,12 +60,14 @@ public class NPC_HumanAI : BaseAI, ISoundsListener
         stateMachine.AddTransition(attacking, chasing, () => vision.DistanceToPlayer() > weaponHolder.CurrentWeapon.NPCSettings.AttackDistance);
 
         stateMachine.AddTransition(investigating, chasing, () => vision.IsSeeingPlayer);
-        stateMachine.AddTransition(investigating, defaultState, () => investigating.IsOver);
+        stateMachine.AddTransition(investigating, chilling, () => investigating.IsOver);
 
-        stateMachine.AddGlobalTransition(defaultState, () => Player.Instance.Actor.HealthComponent.IsDead);
+        stateMachine.AddGlobalTransition(chilling, () => Player.Instance.Actor.HealthComponent.IsDead);
+    }
 
-        // Start State
-        stateMachine.SetState(defaultState);
+    protected override IState GetInitialState()
+    {
+        return chilling;
     }
 
     protected override void Update()

@@ -4,7 +4,7 @@ using UnityEngine.AI;
 public class Attacking : IState, IStateEnterCallbackReciver, IStateExitCallbackReciver, IStateTickCallbackReciver
 {
 
-    private NPC_HumanAI ai;
+    private HumanAI ai;
     private Actor npc;
     private NavMeshAgent agent;
     private WeaponHolder weaponHolder;
@@ -12,7 +12,7 @@ public class Attacking : IState, IStateEnterCallbackReciver, IStateExitCallbackR
     private Vector3 currentPrediction;
     private float ableToAttackTime;
 
-    public Attacking(NPC_HumanAI ai, Actor npc, NavMeshAgent agent, WeaponHolder weaponHolder)
+    public Attacking(HumanAI ai, Actor npc, NavMeshAgent agent, WeaponHolder weaponHolder)
     {
         this.ai = ai;
         this.npc = npc;
@@ -22,7 +22,6 @@ public class Attacking : IState, IStateEnterCallbackReciver, IStateExitCallbackR
 
     public void OnEnter()
     {
-        agent.speed = 0f;
         agent.ResetPath();
         ableToAttackTime = Time.time + weaponHolder.CurrentWeapon.NPCSettings.FirstAttackDelay;
     }

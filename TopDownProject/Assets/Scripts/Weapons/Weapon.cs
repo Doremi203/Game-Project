@@ -148,6 +148,7 @@ public class Weapon : MonoBehaviour
 public struct WeaponNPCSettings
 {
 
+    public float AimDistance;
     public float AttackDistance;
     public float AttackAngle;
     public float FirstAttackDelay;
